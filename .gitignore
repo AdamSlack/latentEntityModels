@@ -1,4 +1,13 @@
+#####
+## Repo Specific
+#####
+
 books/
+stanford-ner-2017-06-09/
+
+#####
+## Default Ignores (node js and npm related)
+#####
 
 # Logs
 logs

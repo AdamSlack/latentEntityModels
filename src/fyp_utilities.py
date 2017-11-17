@@ -12,8 +12,8 @@ import math
 GAUSSIAN005 = 0.03989422804
 
 def create_stanford_tagger():
-    classifiers = 'c:\\Users\\Adam Slack\\Documents\\GitHub\\fyp\\stanford\\stanford-ner-2017-06-09\\classifiers\\english.all.3class.distsim.crf.ser.gz'
-    jar_location = 'c:\\Users\\Adam Slack\\Documents\\GitHub\\fyp\\stanford\\stanford-ner-2017-06-09\\stanford-ner-3.8.0.jar'
+    classifiers = '../stanford-ner-2017-06-09/classifiers/english.all.3class.distsim.crf.ser.gz'
+    jar_location = '../stanford-ner-2017-06-09\\stanford-ner-3.8.0.jar'
     return StanfordNERTagger(classifiers, jar_location, encoding='utf-8')
 
 def read_file(fp):
@@ -126,7 +126,7 @@ def gaussian_filter_005(x):
     return GAUSSIAN005*math.pow(math.e,-0.005*math.pow(x,2))
     
 def main():
-    fp = 'C:\\Users\\Adam Slack\\Documents\\GitHub\\fyp\\data\\books\\alice_in_wonderland.txt'
+    fp = '../test_data/alice_in_wonderland.txt'
     
     document = read_file(fp)
     entities = extract_entities(document)
