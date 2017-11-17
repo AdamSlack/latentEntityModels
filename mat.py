@@ -46,7 +46,7 @@ class Mat:
         self.data [row_idx, col_idx] = val
     
     
-    def get_col(col):
+    def get_col(self, col):
         """ """        
         col_idx = -1
         
