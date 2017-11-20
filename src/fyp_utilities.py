@@ -27,6 +27,7 @@ def read_file(fp):
 
 def load_data_samples(dirpath, seperator='/', globule='*.txt'):
     """ Reads all txt files at a specified location and returns array of data. """
+    print('Reading Data')
     if(path.isdir(dirpath)):
         fps = glob.glob(dirpath + seperator + globule)
         return [read_file(fp) for fp in fps]
@@ -61,6 +62,7 @@ def map_type_entity_idx(entity_array):
 
 def map_entity_idx(entity_array):
     """ """
+    print('Mapping Entity occurence index')
     entities = defaultdict(list)
     for idx, e, t in entity_array:
         entities[e].append(idx)
@@ -73,6 +75,7 @@ def cherry_entity_tuple(entity_array, element_idx):
 
 def map_word_occurences(document):
     """ """
+    print('Mapping Word Occurrences')
     occurences = defaultdict(list)
     for idx, w in enumerate(document):
         occurences[w.lower()].append(idx)
@@ -86,6 +89,7 @@ def extract_tagged_entities(doc):
     
 def extract_entities(document):
     """ """
+    print('Extracting Entities')
     tagged_document = tag_document(document)
     entities = extract_tagged_entities(tagged_document)
     return entities
@@ -107,18 +111,25 @@ def filter_punctuation(document):
 
 def calcuate_GETD(entity_map, term_map):
     """ constructs a matrix of entity-term associations. indexable by entity and term"""
-    e_keys = [e.lower() for e in entity_map.keys()]    
-    t_keys = [t.lower() for t in term_map.keys()]
+    print('Building Gaussion Entity Term Matrix')
+    e_keys = entity_map.keys()
+    t_keys = term_map.keys()
+    e_cnt = len(e_keys)
+    t_cnt = len(t_keys)
+    print(str(e_cnt) + ' Entity Keys - ' + str(t_cnt) + ' Term Keys' )
 
-    getd = Mat(col_headings=e_keys, row_headings=t_keys)
+    getd = Mat(col_headings=[e.lower() for e in e_keys],
+               row_headings=[t.lower() for t in t_keys])
 
-    for e_key in e_keys:
+    for idx, e_key in enumerate(e_keys):
+        print('Completed ' + str(idx) + ' / ' + str(e_cnt))
         for t_key in t_keys:
             val = 0
             for e in entity_map[e_key]:
                 for t in term_map[t_key]:
                     val += gaussian_filter(e - t, 0.001)
-            getd.set(col=e_key, row=t_key, val=val)
+            if val > 0.0005:
+                getd.set(col=e_key.lower(), row=t_key.lower(), val=1.0)
     return getd
     
 def gaussian_filter(x, a):
@@ -129,23 +140,3 @@ def gaussian_filter_005(x):
     """ returns G(x) for x when a = .005  """
     return GAUSSIAN005 * math.pow(math.e,-0.005*math.pow(x,2))
     
-def main():
-    fp = '../test_data/alice_in_wonderland.txt'
-    
-    document = read_file(fp)
-    entities = extract_entities(document)
-    word_map = map_word_occurences(word_tokenize(document))
-    getd = calcuate_GETD(map_entity_idx(entities), word_map)
-    
-    term = 'alice'
-    rows = getd.row_headings
-    col_val = getd.get_col(term)
-
-    document_array = filter_punctuation(document)
-    word_occurences = map_word_occurences(document_array)
-
-    entity_idxs = cherry_entity_tuple(entities, 0)
-    entity_names = cherry_entity_tuple(entities, 1)
-    
-
-main()
