@@ -58,13 +58,3 @@ class Mat:
 
     def get_row():
         """ """
-
-        
-m = Mat(['a', 'b', 'c'], ['1','2', '3'])
-m.set('a','1',4)
-
-print(m.data)
-print(m.row_headings)
-print(m.col_headings)
-
-print(m.get('a','1'))

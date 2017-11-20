@@ -8,12 +8,13 @@ import pandas as pd
 from nltk.tokenize import RegexpTokenizer
 import string
 import math
+from mat import Mat
 
 GAUSSIAN005 = 0.03989422804
 
 def create_stanford_tagger():
     classifiers = '../stanford-ner-2017-06-09/classifiers/english.all.3class.distsim.crf.ser.gz'
-    jar_location = '../stanford-ner-2017-06-09\\stanford-ner-3.8.0.jar'
+    jar_location = '../stanford-ner-2017-06-09/stanford-ner-3.8.0.jar'
     return StanfordNERTagger(classifiers, jar_location, encoding='utf-8')
 
 def read_file(fp):
@@ -105,25 +106,28 @@ def filter_punctuation(document):
     return filter(lambda w: w not in punc, tokens)
 
 def calcuate_GETD(entity_map, term_map):
-    e_keys = entity_map.keys()    
-    t_keys = term_map.keys()
-    
+    """ constructs a matrix of entity-term associations. indexable by entity and term"""
+    e_keys = [e.lower() for e in entity_map.keys()]    
+    t_keys = [t.lower() for t in term_map.keys()]
+
+    getd = Mat(col_headings=e_keys, row_headings=t_keys)
+
     for e_key in e_keys:
-        for e in entity_map[e_key]:
-            for t_key in t_keys:
-                val = 0
-                for t in term_map[t_key]: 
-                    val += gaussian_filter(e-t, 0.001)
-                     print(e_key + ' & ' + t_key + ':  ' + str(val))
-        
+        for t_key in t_keys:
+            val = 0
+            for e in entity_map[e_key]:
+                for t in term_map[t_key]:
+                    val += gaussian_filter(e - t, 0.001)
+            getd.set(col=e_key, row=t_key, val=val)
+    return getd
     
 def gaussian_filter(x, a):
     """ returns g(x) for x when g(x).a = a """
-    return math.sqrt(a/math.pi)*math.pow(math.e,-a*math.pow(x,2))
+    return math.sqrt(a / math.pi) * math.pow( math.e , -a * math.pow( x ,2 ))
     
 def gaussian_filter_005(x):
     """ returns G(x) for x when a = .005  """
-    return GAUSSIAN005*math.pow(math.e,-0.005*math.pow(x,2))
+    return GAUSSIAN005 * math.pow(math.e,-0.005*math.pow(x,2))
     
 def main():
     fp = '../test_data/alice_in_wonderland.txt'
@@ -131,11 +135,15 @@ def main():
     document = read_file(fp)
     entities = extract_entities(document)
     word_map = map_word_occurences(word_tokenize(document))
-    calcuate_GETD(map_entity_idx(entities), word_map)
+    getd = calcuate_GETD(map_entity_idx(entities), word_map)
     
+    term = 'alice'
+    rows = getd.row_headings
+    col_val = getd.get_col(term)
+
     document_array = filter_punctuation(document)
     word_occurences = map_word_occurences(document_array)
-    #print(word_occurences)
+
     entity_idxs = cherry_entity_tuple(entities, 0)
     entity_names = cherry_entity_tuple(entities, 1)
     
