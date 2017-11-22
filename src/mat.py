@@ -66,7 +66,7 @@ class Mat:
         else:
             col_idx = col
 
-        return self.data[::, col_idx]
+        return np.array(self.data[::, col_idx]).flatten()
 
     def get_row():
         """ """
