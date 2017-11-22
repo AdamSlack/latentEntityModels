@@ -4,14 +4,14 @@ import numpy as np
 
 def main():
     fp = '../test_data/alice_in_wonderland.txt'
-    fp = '../books/Hitchhiker\'s Guide to the Galaxy - Douglas Adams.txt'
-    fp = '../books/Dirk Gently\'s Holistic Detective Agency - Douglas Adams.txt'
-    fp = '../books/Harry Potter and the Sorcerer\'s Stone - J. K. Rowling.txt'
+    #fp = '../books/Hitchhiker\'s Guide to the Galaxy - Douglas Adams.txt'
+    #fp = '../books/Dirk Gently\'s Holistic Detective Agency - Douglas Adams.txt'
+    #fp = '../books/Harry Potter and the Sorcerer\'s Stone - J. K. Rowling.txt'
     document = read_file(fp)
     entities = extract_entities(document)
     word_map = map_word_occurences(word_tokenize(document))
     getd = time_action(calcuate_GETD, map_entity_idx(entities), word_map)
-    
+    getd = getd_tf_idf(getd)
     rows = getd.row_headings
     cols = getd.col_headings
 

@@ -9,6 +9,7 @@ from nltk.tokenize import RegexpTokenizer
 import string
 import math
 from mat import Mat
+import numpy as np
 
 GAUSSIAN005 = 0.03989422804
 
@@ -139,4 +140,23 @@ def gaussian_filter(x, a):
 def gaussian_filter_005(x):
     """ returns G(x) for x when a = .005  """
     return GAUSSIAN005 * math.pow(math.e,-0.005*math.pow(x,2))
-    
+
+
+def getd_tf_idf(getd: 'Mat'):
+    """ """
+    print('perfoming tf-idf on gaussian entity')
+    entities = getd.col_headings
+    words = getd.row_headings
+    corupus_counts = np.zeros(len(words))
+    for e in entities:
+        print(e)
+        col = getd.get_col(col=e)
+        print(col)
+        corupus_counts = np.add(corupus_counts, col)
+    print(corupus_counts)
+    for e in entities:
+        for idx, w in enumerate(getd.get_col(e)):
+            tf_idf = w * (1/corupus_counts[idx])
+            getd.set(col=e, row=words[idx], val=tf_idf)
+
+    return getd

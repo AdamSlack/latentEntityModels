@@ -55,6 +55,7 @@ class Mat:
         else:
             col_idx = col
 
+        return self.data[::, col_idx]
 
     def get_row():
         """ """
