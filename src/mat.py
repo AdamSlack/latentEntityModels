@@ -45,6 +45,17 @@ class Mat:
             
         self.data [row_idx, col_idx] = val
     
+    def set_col(self, col_name, col):
+        """ """        
+        col_idx = -1
+        
+        if isinstance(col, str):
+            col_idx = self.col_headings[col]
+        else:
+            col_idx = col  
+
+        self.data[::,col_idx] = col
+
     
     def get_col(self, col):
         """ """        

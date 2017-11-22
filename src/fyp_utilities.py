@@ -153,9 +153,11 @@ def getd_tf_idf(getd: 'Mat'):
         col = getd.get_col(col=e)
         print(col)
         corupus_counts = np.add(corupus_counts, col)
+
     print(corupus_counts)
     for e in entities:
         for idx, w in enumerate(getd.get_col(e)):
+            print(idx)  
             tf_idf = w * (1/corupus_counts[idx])
             getd.set(col=e, row=words[idx], val=tf_idf)
 

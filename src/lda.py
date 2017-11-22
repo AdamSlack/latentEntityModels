@@ -36,7 +36,7 @@ def time_action(action, *args):
   return res
 
 print("Loading Books...")
-data_samples = time_action(read_data_samples, '/home/adam/Documents/txtBooks/book_txt', '*.txt')
+data_samples = time_action(read_data_samples, '../books', '*.txt')
 print(str(len(data_samples)) + ' data samples read from file')
 
 print("Extracting tf features for LDA...")
