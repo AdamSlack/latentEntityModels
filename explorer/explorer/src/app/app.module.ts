@@ -6,11 +6,15 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { BookExplorerComponent } from './book-explorer/book-explorer.component';
 import { ExplorerApiService } from './services/explorer-api.service';
+import { BannerComponent } from './banner/banner.component';
+import { BannegstrComponent } from './bannegstr/bannegstr.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookExplorerComponent
+    BookExplorerComponent,
+    BannerComponent,
+    BannegstrComponent
   ],
   imports: [
     BrowserModule,

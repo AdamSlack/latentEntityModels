@@ -3,34 +3,53 @@ div.entity-collection {
     font-family: 'Roboto', sans-serif;
     padding: 15px;
     max-height: 400px;
+    min-height: 400px;    
     overflow-x: hidden;
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        background-color: #222;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #666;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        
+    }
 }
 table.entity-collection {
     font-family: 'Roboto', sans-serif;
     width: 100%;
+    border-collapse: collapse; 
+    border-top: solid 1px #333;
     tr {
+        
+        border-bottom: solid 1px #333;
         td {
-            background: #eee;
+            padding-top: 5px;
+            padding-bottom: 5px;  
+            background: #222;
             &:hover {
-                background: #fff;
-                transition: background-color 0.2s ease;                        
+                background: #333;
+                transition: background-color 0.2s ease;
+                     
             }
         }
-        background: #eee;
-        &:hover {
-            background: #fff;
-            transition: background-color 0.2s ease;                        
-        }
+
     }
 }
 
 .title {
+    font-size: 20px;
     padding: 15px;
     margin: auto;
-    font-family: 'Roboto', sans-serif;    
+    font-family: 'Roboto', sans-serif;
+    color: #ddd;   
 }
 .container {
+    color: #ddd;
+    background: #222;
     padding: 5px;
     margin: 5px;    
     width: 20%;    

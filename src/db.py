@@ -43,5 +43,5 @@ def select_book_entity_terms(db, book_title, entity):
     """ create a cursor for all terms in the DB for specified entity and book """
     cursor = db.cursor()
 
-    cursor.execute('select term, strength from books where book_title = %s and entity = %s', (book_title, entity))
+    cursor.execute('select term, strength from books where book_title = %s and entity = %s order by strength using >', (book_title, entity))
     return cursor
