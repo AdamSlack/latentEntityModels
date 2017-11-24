@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="title">
+      Entities
+  </div>
+  <div class="entity-collection">
+    <table class="entity-collection">
+      <tr *ngFor="let entity of entities">
+        <td (click)="requestEntity(entity)">
+          {{entity}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="container">
+  <div class="title">
+      {{selectedEntity}}
+  </div>
+  <div class="entity-collection">
+    <table class="entity-collection">
+      <tr *ngFor="let term of terms">
+        <td>
+          {{term.term}}
+        </td>
+        <td>
+            {{term.strength}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

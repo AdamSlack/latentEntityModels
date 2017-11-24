@@ -19,7 +19,7 @@ def insert_book_entity_term(db, book_title, entity, term, strength):
     try:
         cursor.execute("""
             insert into books (book_title, entity, term, strength)
-            values (%s, %s, %s %s)
+            values (%s, %s, %s, %s)
         """, (book_title, entity, term, strength))
     except:
         db.rollback()
@@ -29,18 +29,19 @@ def insert_book_entity_term(db, book_title, entity, term, strength):
     db.commit()
     return True
 
-def select_book_entities(db, book_title, full=False):
+def select_book_entities(db, book_title : 'str', full=False):
     """ create a cursor for all entities in the DB for a specified book """
+    print('Selecting entities for book: ' + book_title)
     cursor = db.cursor()
     if full:
-        cursor.execute('select * from books where book_title = %s', book_title)
+        cursor.execute("""select * from books where book_title = %s""", (book_title,))
     else:
-        cursor.execute('select entity from books where book_title = %s', book_title)
+        cursor.execute("""select distinct entity from books where book_title = %s""", (book_title,))
     return cursor
 
 def select_book_entity_terms(db, book_title, entity):
     """ create a cursor for all terms in the DB for specified entity and book """
     cursor = db.cursor()
 
-    cursor.execute('select entity from books where book_title = %s', book_title)
+    cursor.execute('select term, strength from books where book_title = %s and entity = %s', (book_title, entity))
     return cursor
