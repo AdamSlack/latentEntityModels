@@ -13,6 +13,12 @@ create table books(
     primary key(book_title, entity, term)
 );
 
+create table topics(
+    topic_id    int     not null,
+    term        text    not null,
+    strength    float   not null,
+    primary key(topic_id, term)
+);
 
 
 commit;

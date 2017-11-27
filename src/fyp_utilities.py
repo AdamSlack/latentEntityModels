@@ -82,6 +82,13 @@ def map_word_occurences(document):
         occurences[w.lower()].append(idx)
     return occurences
 
+def map_word_frequencies(document):
+    print('Mapping Word frequencies')
+    occurences = defaultdict(0)
+    for w in document:
+        occurences[w.lower()] += 1 
+    return occurences
+
 def extract_tagged_entities(doc):
     """ recursively extract entities in tagged tree """
     entity_array = [(idx, e[0], e[1]) for idx, e in enumerate(doc) if valid_entity(e[0], e[1])]    
@@ -147,15 +154,15 @@ def getd_tf_idf(getd: 'Mat'):
     print('perfoming tf-idf on gaussian entity')
     entities = getd.col_headings
     words = getd.row_headings
-    corupus_counts = np.zeros(len(words))
+    corpus_counts = np.zeros(len(words))
     
     for e in entities:
         col = getd.get_col(col=e)
-        corupus_counts = np.add(corupus_counts, col)
+        corpus_counts = np.add(corpus_counts, col)
 
     for e in entities:
         for idx, w in enumerate(getd.get_col(e)):
-            tf_idf = w * (1/corupus_counts[idx])
+            tf_idf = w * (1/corpus_counts[idx])
             if math.isnan(tf_idf):
                 tf_idf = 0
             getd.set(col=e, row=idx, val=tf_idf)
