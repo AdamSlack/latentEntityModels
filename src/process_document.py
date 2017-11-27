@@ -1,8 +1,15 @@
 import db
 from fyp_utilities import *
-import glob, os
 
-def assimilate_document(fp, book, conn):
+def main():
+    """ Main """
+    conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+    book = 'alice_in_wonderland'
+    #fp = '../books/Hitchhiker\'s Guide to the Galaxy - Douglas Adams.txt'
+    #fp = '../books/Dirk Gently\'s Holistic Detective Agency - Douglas Adams.txt'
+    #fp = '../books/Harry Potter and the Sorcerer\'s Stone - J. K. Rowling.txt'
+    fp = '../test_data/' + book + '.txt'
+    
     document = read_file(fp)
 
     entities = extract_entities(document)
@@ -22,19 +29,6 @@ def assimilate_document(fp, book, conn):
             if strength > 0:
                 if not db.insert_book_entity_term(book_title=book, entity=e, term=t, strength=getd.get(col=e, row=t), db=conn):
                     print('FAILED TO INSERT: ' + e + ' : ' + t)
-
-def main():
-    """ Main """
-    conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
-
-    dir_path = '../books/'
-    glob_str = '*.txt'
-    print('Begginging Process of assimilation')
-    for fp in glob.glob(dir_path + glob_str):
-        book = fp[len(dir_path): (len(fp) - len(glob_str) + 1) ]
-        print('Starting to process: ' + book)
-        assimilate_document(fp, book, conn)
-        print(book + ' Processed')
 
 if __name__ == '__main__':
     main()

@@ -5,6 +5,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 import json
 import db as db
+from urllib.parse import unquote
 
 
 class Server(BaseHTTPRequestHandler):
@@ -17,6 +18,7 @@ class Server(BaseHTTPRequestHandler):
         conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
         res = db.select_book_entity_terms(db=conn, book_title=book_title, entity=entity)
         res = [{'term': row[0], 'strength': row[1] }for row in res]
+        print(book_title)
         conn.close()
         return res
 
@@ -25,12 +27,19 @@ class Server(BaseHTTPRequestHandler):
         """ """
         conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
         res = db.select_book_entities(db=conn, book_title=book_title, full=full)
+        print(book_title)
         if full:
             res = [{'entity' : row[2], 'term' : row[3], 'strength' : row[4]} for row in res]
         else:
             res = [row[0] for row in res]
         conn.close()
         return res
+
+
+    def fetch_book_titles(self):
+        """ """
+        conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+        return [title[0] for title in db.select_book_titles(conn)]
 
     def process_GET(self, url):
         """ parse an incoming url """
@@ -45,10 +54,17 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(400)
             return 'INVALID URL RECIEVED'    
 
+        if comp_len == 1:
+            res = self.fetch_book_titles()
+            json_obj = json.dumps({'books' : res}, indent = 2)
+            self.send_response(200)
+            return json_obj
+
+
         if comp_len == 2 :
             book = components[1]
             print(book)
-            res = self.fetch_book_entities(book_title=book)
+            res = self.fetch_book_entities(book_title=unquote(book))
             json_obj = json.dumps({'book' : book, 'entities' : res}, indent = 2)
             self.send_response(200)
             return  json_obj
@@ -60,7 +76,7 @@ class Server(BaseHTTPRequestHandler):
         if comp_len == 3:
             book = components[1]
             print(book)
-            res = self.fetch_book_entities(book_title=book, full = True)
+            res = self.fetch_book_entities(book_title=unquote(book), full = True)
             json_obj = json.dumps({'book' : book, 'entities' : res}, indent = 2)
             self.send_response(200)
             return  json_obj
@@ -68,7 +84,7 @@ class Server(BaseHTTPRequestHandler):
         if comp_len == 4 :
             book = components[1]
             entity = components[3]
-            res = self.fetch_book_entity_terms(book_title=book, entity = entity)
+            res = self.fetch_book_entity_terms(book_title=unquote(book), entity = entity)
             json_obj = json.dumps({'book' : book, 'entity' : entity, 'terms' : res}, indent = 2)
             self.send_response(200)
             return json_obj

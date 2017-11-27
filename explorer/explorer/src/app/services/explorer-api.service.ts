@@ -26,5 +26,9 @@ export class ExplorerApiService {
       return this.http.get(url);
     }
 
-  
+    public requestBookTitles() : Observable<any> {
+      let url = this.ROOT + '/books';
+      console.log('url')
+      return this.http.get(url);
+    }
 }
