@@ -84,9 +84,9 @@ def map_word_occurences(document):
 
 def map_word_frequencies(document):
     print('Mapping Word frequencies')
-    occurences = defaultdict(0)
+    occurences = defaultdict(int)
     for w in document:
-        occurences[w.lower()] += 1 
+        occurences[w[0].lower()] += 1 
     return occurences
 
 def extract_tagged_entities(doc):

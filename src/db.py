@@ -41,9 +41,26 @@ def select_topic_ids(db):
     cursor.execute("""select distinct book_title from books""")
     return cursor
 
+def insert_book_topic_distribution(db, book, distributions):
+    """ insert topic distribution scores for a given book into the database """
+    cursor = db.cursor()
+    for idx, topic in enumerate(distributions) :
+        try:
+            cursor.execute("""
+                insert into book_topics (book_title, topic_id, score)
+                values (%s, %s, %s)
+            """, (book, idx, distributions[topic]))
+        except:
+            db.rollback()
+            return False
+
+    cursor.close()
+    db.commit()
+    return True
+
+
 def insert_topic_term(db, topic_id, term, strength):
     """ inserts the topic id and associated term """
-    """ Insert an entity-term for a book into the DB. """
     cursor = db.cursor()
     try:
         cursor.execute("""
