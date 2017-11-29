@@ -34,7 +34,7 @@ def time_action(action, *args):
   print("Action done in: %0.3fs." % (time() - t0))
   return res
 
-def calculate_document_distributions(model, feature_names, n_top_words, tf):
+def calculate_document_distributions(lda_model, feature_names, n_top_words, data_samples, count_vectorzer):
   """ Calculates the topic distributions for each document."""
 
 def main():
@@ -57,8 +57,8 @@ def main():
   print('\nWriting topics in LDA model:')
   tf_feature_names = tf_vectorizer.get_feature_names()
   store_top_words(lda, tf_feature_names, n_top_words)
-  print('Completed DB insertion.')
-  proportions = calculate_document_distributions(lda, tf_feature_names, n_top_words)
+  #print('Completed DB insertion.')
+  proportions = calculate_document_distributions(lda, tf_feature_names, n_top_words, data_samples, tf_vectorizer)
 
 if __name__ == '__main__':
   main()

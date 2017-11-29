@@ -35,6 +35,12 @@ def select_book_titles(db):
     cursor.execute("""select distinct book_title from books""")
     return cursor
 
+def select_topic_ids(db):
+    """ Create a cursor returining all topic ids"""
+    cursor = db.cursor()
+    cursor.execute("""select distinct book_title from books""")
+    return cursor
+
 def insert_topic_term(db, topic_id, term, strength):
     """ inserts the topic id and associated term """
     """ Insert an entity-term for a book into the DB. """
