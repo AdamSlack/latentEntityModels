@@ -28,5 +28,4 @@ create table book_topics(
     primary key(book_title, topic_id)
 );
 
-
 commit;

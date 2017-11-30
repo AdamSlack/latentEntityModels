@@ -1,11 +1,11 @@
 <div class="container">
   <div class="title">
-      Processed Books
+    📚 Books
   </div>
   <div class="entity-collection">
     <table class="entity-collection">
-      <tr *ngFor="let title of bookTitles">
-        <td (click)="requestEntities(title)">
+      <tr *ngFor="let title of bookTitles" [ngClass]="(title==selectedBook)?'selected':''">
+        <td (click)="requestEntities(title); requestTopics(title);">
           {{title}}
         </td>
       </tr>
@@ -15,11 +15,30 @@
 
 <div class="container">
   <div class="title">
-      Entities
+    🕮 Topics
   </div>
   <div class="entity-collection">
     <table class="entity-collection">
-      <tr *ngFor="let entity of entities">
+      <tr *ngFor="let topic of topics" >
+        <td>
+          {{topic.id}}
+        </td>
+        <td>
+          {{topic.pct}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="title">
+    👤 Entities
+  </div>
+  <div class="entity-collection">
+    <table class="entity-collection">
+      <tr *ngFor="let entity of entities" [ngClass]="(entity==selectedEntity)?'selected':''">
         <td (click)="requestEntityTerms(entity)">
           {{entity}}
         </td>
@@ -30,7 +49,7 @@
 
 <div class="container">
   <div class="title">
-      Selected Entity: {{selectedEntity}}
+    📃 {{selectedEntity}}
   </div>
   <div class="entity-collection">
     <table class="entity-collection">

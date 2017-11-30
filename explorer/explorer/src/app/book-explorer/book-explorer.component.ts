@@ -14,6 +14,8 @@ export class BookExplorerComponent implements OnInit {
   public entities : Array<string>;
   public terms : {term : string, strength : number}
   public bookTitles : Array<string>;
+  public topics : Array<{id: string, pct: number}>
+
   public selectedEntity : string = 'Select an Entity';
   public selectedBook : string = 'select a book';
 
@@ -21,6 +23,7 @@ export class BookExplorerComponent implements OnInit {
   private entitySubscription : Subscription;
   private entityTermSubscription : Subscription;
   private bookTitleSubscription : Subscription;
+  private bookTopicSubscription : Subscription
 
   constructor(public bookQuery : ExplorerApiService) { }
 
@@ -41,7 +44,19 @@ export class BookExplorerComponent implements OnInit {
     })
   }
 
-  public request
+  public requestTopics(bookTitle: string) {
+    if(this.bookTopicSubscription) {
+      this.bookTopicSubscription.unsubscribe();
+    }
+    
+    this.bookTopicSubscription = this.bookQuery.requestBookTopics(bookTitle).subscribe((res) => {
+      let api_topics = res.topics;
+      let sum = api_topics.reduce((a,b) => a + b.score, 0); 
+      this.topics = api_topics.map((t) => {
+        return {id: 'Topic ' + t.topic_id.toString(), pct: (t.score/sum*100).toFixed(2)}
+      }).sort((a,b) => b.pct - a.pct);
+    });
+  }
   
   ngOnInit() {
     this.bookTitleSubscription = this.bookQuery.requestBookTitles().subscribe((res) => {

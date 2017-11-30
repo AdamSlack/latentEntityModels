@@ -58,6 +58,12 @@ def insert_book_topic_distribution(db, book, distributions):
     db.commit()
     return True
 
+def select_book_topics(db, book_title):
+    """ Create a cursor pointing to all book topics for a given book"""
+    cursor = db.cursor()
+    cursor.execute("""select * from book_topics where lower(book_title) = lower(%s)""", (book_title,))
+    return cursor
+
 
 def insert_topic_term(db, topic_id, term, strength):
     """ inserts the topic id and associated term """

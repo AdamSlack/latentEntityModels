@@ -18,23 +18,30 @@ div.entity-collection {
         
     }
 }
+.selected{
+    transition: background-color 0.2s ease;    
+    background: #ddd !important;
+    color: #222 !important;
+}
+
 table.entity-collection {
     font-family: 'Roboto', sans-serif;
     width: 100%;
     border-collapse: collapse; 
     border-top: solid 1px #333;
+    transition: background-color 0.2s ease;    
+    
     tr {
-        
-        border-bottom: solid 1px #333;
+        background: #222;
+        border-bottom: solid 1px #333;        
+        &:hover {
+            background: #333;
+            transition: background-color 0.2s ease;
+                 
+        }
         td {
             padding-top: 5px;
             padding-bottom: 5px;  
-            background: #222;
-            &:hover {
-                background: #333;
-                transition: background-color 0.2s ease;
-                     
-            }
         }
 
     }
@@ -42,7 +49,7 @@ table.entity-collection {
 
 .title {
     font-size: 20px;
-    padding: 15px;
+    padding: 10px;
     margin: auto;
     font-family: 'Roboto', sans-serif;
     color: #ddd;   
@@ -55,5 +62,5 @@ table.entity-collection {
     width: 20%;    
     float: left;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);        
-    
+    min-width: 400px;
 }
