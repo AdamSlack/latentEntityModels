@@ -4,6 +4,7 @@ import copy
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 import json
+from os import curdir, sep
 import db as db
 from urllib.parse import unquote
 
@@ -52,8 +53,9 @@ class Server(BaseHTTPRequestHandler):
 
     def process_GET(self, url):
         """ parse an incoming url """
-
-        components = url.lower().strip('/').split('/')
+            
+        components = url.lower().strip('/').strip('api/').split('/')
+        print(components)
         comp_len = len(components)
         if comp_len == 0 or comp_len > 4:
             self.send_response(400)
@@ -113,16 +115,37 @@ class Server(BaseHTTPRequestHandler):
     def process_POST():
         """ processess URL from POST Request """
 
-
+    def process_root(self, url):
+        """ process requests for files at root. """
+        file = url.strip('/').split('/')
+        print(file)
+        if len(file[0]) == 0:
+            fp = 'index.html'
+        else:
+            fp = file[0]
+        print(fp)
+        print(curdir + sep + fp)
+        return open(curdir + sep + fp, 'rb')
+        
     def do_GET(self):
         url = urlparse(self.path)
-        output = self.process_GET(url.geturl())
-        
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('content-type','application/json')
-        self.end_headers()
-        
-        self.wfile.write(bytes(output + '\n', "utf8"))
+        urlstr = url.geturl()
+        print(urlstr)
+        if len(urlstr.strip('/').split('/')) == 1:
+            output = self.process_root(urlstr)
+            self.send_header('content-type', 'text/html')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(output.read())
+            output.close()
+        else:
+            output = self.process_GET(urlstr)
+            self.send_header('content-type','application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(bytes(output + '\n', "utf8"))
+
         return
 
     def do_POST(self):
