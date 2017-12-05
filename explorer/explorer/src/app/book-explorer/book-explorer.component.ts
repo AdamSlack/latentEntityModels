@@ -18,12 +18,16 @@ export class BookExplorerComponent implements OnInit {
 
   public selectedEntity : string = 'Select an Entity';
   public selectedBook : string = 'select a book';
+  public topicIDs : Array<number> = [];
+  public topicTerms: Array<{topicID: number, terms : Array<string>}> = [];
 
   // subscriptions
   private entitySubscription : Subscription;
   private entityTermSubscription : Subscription;
   private bookTitleSubscription : Subscription;
   private bookTopicSubscription : Subscription
+  private topicIDSubscription: Subscription;
+  private topicTermSubscriptions: Array<Subscription> = [];
 
   constructor(public bookQuery : ExplorerApiService) { }
 
@@ -57,13 +61,36 @@ export class BookExplorerComponent implements OnInit {
       }).sort((a,b) => b.pct - a.pct);
     });
   }
+
+  public requestTopicIDs() {
+    if(this.topicIDSubscription) {
+      this.topicIDSubscription.unsubscribe()
+    }
+    this.topicIDSubscription = this.bookQuery.requestTopicIDs().subscribe((res) => {
+      this.topicIDs = res.topic_ids;
+      this.topicTermSubscriptions.length = this.topicIDs.length;
+      this.topicTerms.length = this.requestTopicIDs.length;
+      this.topicIDs.forEach((id) => this.requestTopicTerm(id));
+    });
+  }
+
+  public requestTopicTerm(topicID) {
+    if (this.topicTermSubscriptions[topicID]) {
+      this.topicTermSubscriptions[topicID].unsubscribe()
+    }
+    this.topicTermSubscriptions[topicID] = this.bookQuery.requestTopicTerms(topicID).subscribe((res) => {
+      this.topicTerms[topicID] = res;
+    });
+    console.log(this.topicTerms);
+  }
   
-  
+
 
   ngOnInit() {
     this.bookTitleSubscription = this.bookQuery.requestBookTitles().subscribe((res) => {
       this.bookTitles = res.books;
-    })
+    });
+    this.requestTopicIDs();
   }
 
 }
