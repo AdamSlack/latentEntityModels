@@ -63,7 +63,7 @@ export class BookExplorerComponent implements OnInit {
     console.log('Present Terms')
     console.log(presentTerms);
     let topicScores = presentTerms.map((t) => {
-      return {topicID : t.topicID, score : t.terms.length}
+      return {topicID : t.topicID, score : t.terms.reduce((a,b) => a + b.strength, 0)}
     });
     console.log('Topic Scores');
     console.log(topicScores);
