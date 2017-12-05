@@ -19,7 +19,7 @@ export class BookExplorerComponent implements OnInit {
   public selectedBook : string = 'select a book';
   public topicIDs : Array<number> = [];
   public topicTerms: Array<{topic_id: number, terms : Array<{term: string, strength: number}>}> = [];
-  public entityTopics: Array<{topicID : number, pct : number}> =[];
+  public entityTopics: Array<{topicID : number, pct : string}> =[];
 
 
   // subscriptions
@@ -70,7 +70,7 @@ export class BookExplorerComponent implements OnInit {
 
     let sum = topicScores.reduce((a,b) => a + b.score, 0);
     this.entityTopics = topicScores.map((t) => {
-      return {topicID : t.topicID, pct : t.score/sum }
+      return {topicID : t.topicID, pct : ((t.score/sum) * 100 ).toFixed(2)}
     });
     console.log('Entity Topics')
     console.log(this.entityTopics)
