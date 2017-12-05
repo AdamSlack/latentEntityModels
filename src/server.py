@@ -162,8 +162,8 @@ class Server(BaseHTTPRequestHandler):
 
 def main():
     """ main """
-    server = HTTPServer(('localhost', 8081), Server)
-    print('Starting server at http://localhost:8081')
+    server = HTTPServer(('localhost', 12345), Server)
+    print('Starting server at http://localhost:12345')
     server.serve_forever()
 
 
