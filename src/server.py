@@ -36,7 +36,7 @@ class Server(BaseHTTPRequestHandler):
         """ """
         conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
         res = db.select_topic_terms(conn, topic_id)
-        terms =[t[0] for t in res]
+        terms =[{'term' : t[0], 'strength' : t[1]} for t in res]
         conn.close()
         return terms
 
@@ -56,7 +56,7 @@ class Server(BaseHTTPRequestHandler):
         if full:
             res = [{'entity' : row[2], 'term' : row[3], 'strength' : row[4]} for row in res]
         else:
-            res = [{'term' : row[0], 'strength' : row[0]} for row in res]
+            res = [row[0] for row in res]
         conn.close()
         return res
 
