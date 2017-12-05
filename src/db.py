@@ -64,6 +64,17 @@ def select_book_topics(db, book_title):
     cursor.execute("""select * from book_topics where lower(book_title) = lower(%s)""", (book_title,))
     return cursor
 
+def select_topic_terms(db, topic_id):
+    """ """
+    cursor = db.cursor()
+    cursor.execute("""select term from topics where topic_id = %s""", (topic_id,))
+    return cursor
+
+def select_topic_ids(db):
+    """ """
+    cursor = db.cursor()
+    cursor.execute("""select distinct topic_id from topics""")
+    return cursor
 
 def insert_topic_term(db, topic_id, term, strength):
     """ inserts the topic id and associated term """

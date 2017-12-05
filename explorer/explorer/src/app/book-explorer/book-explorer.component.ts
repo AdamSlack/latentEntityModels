@@ -34,7 +34,7 @@ export class BookExplorerComponent implements OnInit {
     this.entityTermSubscription = this.bookQuery.requestEntityTerms(this.selectedBook, entity).subscribe((res) => {
       this.selectedEntity = entity;
       this.terms = res.terms;
-    })
+    });
   }
 
   public requestEntities(bookTitle: string) {
@@ -58,6 +58,8 @@ export class BookExplorerComponent implements OnInit {
     });
   }
   
+  
+
   ngOnInit() {
     this.bookTitleSubscription = this.bookQuery.requestBookTitles().subscribe((res) => {
       this.bookTitles = res.books;

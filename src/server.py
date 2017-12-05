@@ -32,6 +32,21 @@ class Server(BaseHTTPRequestHandler):
         conn.close()
         return res
 
+    def fetch_topic_terms(self, topic_id):
+        """ """
+        conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+        res = db.select_topic_terms(db, topic_id)
+        terms =[t[0] for t in res]
+        conn.close()
+        return terms
+
+    def fetch_topic_ids(self):
+        """ """
+        conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+        res = db.select_topic_ids(conn)
+        topic_ids = [t[0] for t in res]
+        conn.close()
+        return topic_ids
 
     def fetch_book_entities(self, book_title, full=False):
         """ """
@@ -61,17 +76,24 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(400)
             return 'INVALID URL RECIEVED'
         
-        if components[0] != 'books':
-            self.send_response(400)
-            return 'INVALID URL RECIEVED'    
+        if comp_len == 1 and components[0] == 'topics':
+            res = self.fetch_topic_ids()
+            json_obj = json.dumps({'topic_ids': res}, indent=2)
+            self.send_response(200)
+            return json_obj
 
-        if comp_len == 1:
+        if comp_len == 2 and components[0] == 'topics':
+            topic_id = components[1]
+            res = self.fetch_topic_terms(topic_id)
+            json_obj = json.dumps({'topic_id': topic_id, 'terms': res})
+
+        if comp_len == 1 and components[0] == 'books':
             res = self.fetch_book_titles()
             json_obj = json.dumps({'books' : res}, indent = 2)
             self.send_response(200)
             return json_obj
 
-        if comp_len == 2 :
+        if comp_len == 2 and components[0] == 'books':
             book = components[1]
             print(book)
             print(unquote(book))
@@ -82,7 +104,7 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(200)
             return  json_obj
 
-        if comp_len == 3 and components[2] == 'entities':
+        if comp_len == 3 and components[2] == 'entities' and components[0] == 'books':
             book = components[1]
             print(book)
             res = self.fetch_book_entities(book_title=unquote(book), full = True)
@@ -90,7 +112,7 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(200)
             return  json_obj
 
-        if comp_len == 3 and components[2] == 'topics':
+        if comp_len == 3 and components[2] == 'topics' and components[0] == 'books':
             book = components[1]
             print(book)
             res = self.fetch_book_topics(book_title=unquote(book))
@@ -108,7 +130,7 @@ class Server(BaseHTTPRequestHandler):
 
         
         self.send_response(400)
-        json_obj = json.loads('{"entity": "Oooh-Weee, Don\'t quite know what you\'re wanting there!"}')
+        json_obj = json.loads('{"Invalid URL": "Oooh-Weee, Don\'t quite know what you\'re wanting there!"}')
         return  json.dumps(json_obj, indent=2)
 
 

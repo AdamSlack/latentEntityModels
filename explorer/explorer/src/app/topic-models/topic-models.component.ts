@@ -75,8 +75,7 @@ export class TopicModelsComponent implements OnInit {
     var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
    
     
-    var z = d3.scaleOrdinal(d3.schemeCategory20c)
-    // .range(['#98abc5', '#8a89a6', '#7b6888', '#6ba486b', '#a05d56', '#d0743c', '#ff8c00'])
+    var z = d3.scaleOrdinal(d3.schemeCategory10)
         .domain(topicIDs); 
     // z = d3.scaleOrdinal()
     // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
