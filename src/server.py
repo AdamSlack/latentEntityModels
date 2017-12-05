@@ -56,7 +56,7 @@ class Server(BaseHTTPRequestHandler):
         if full:
             res = [{'entity' : row[2], 'term' : row[3], 'strength' : row[4]} for row in res]
         else:
-            res = [row[0] for row in res]
+            res = [{'term' : row[0], 'strength' : row[0]} for row in res]
         conn.close()
         return res
 

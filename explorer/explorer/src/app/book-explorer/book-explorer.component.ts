@@ -18,7 +18,7 @@ export class BookExplorerComponent implements OnInit {
   public selectedEntity : string = 'Select an Entity';
   public selectedBook : string = 'select a book';
   public topicIDs : Array<number> = [];
-  public topicTerms: Array<{topicID: number, terms : Array<string>}> = [];
+  public topicTerms: Array<{topicID: number, terms : Array<{term: string, strength: number}>}> = [];
   public entityTopic : Array<{topicID : number, pct : number}> =[];
 
 
@@ -57,7 +57,7 @@ export class BookExplorerComponent implements OnInit {
     let presentTerms = this.topicTerms.map((topic) => {
       return {
         topicID: topic.topicID,
-        terms : topic.terms.filter((term) => entityTerms.indexOf(term.toLowerCase()) > -1 )
+        terms : topic.terms.filter((term) => entityTerms.indexOf(term.term.toLowerCase()) > -1 )
       }
     });
     console.log('Present Terms')
