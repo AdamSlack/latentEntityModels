@@ -12,14 +12,15 @@ export class BookExplorerComponent implements OnInit {
 
   // variables
   public entities : Array<string>;
-  public terms : {term : string, strength : number}
+  public terms : Array<{term : string, strength : number}>
   public bookTitles : Array<string>;
   public topics : Array<{id: string, pct: number}>
-
   public selectedEntity : string = 'Select an Entity';
   public selectedBook : string = 'select a book';
   public topicIDs : Array<number> = [];
   public topicTerms: Array<{topicID: number, terms : Array<string>}> = [];
+  public entityTopic : Array<{topicID : number, pct : number}> =[];
+
 
   // subscriptions
   private entitySubscription : Subscription;
@@ -38,6 +39,7 @@ export class BookExplorerComponent implements OnInit {
     this.entityTermSubscription = this.bookQuery.requestEntityTerms(this.selectedBook, entity).subscribe((res) => {
       this.selectedEntity = entity;
       this.terms = res.terms;
+      this.mapEntityTermTopics()
     });
   }
 
@@ -47,6 +49,32 @@ export class BookExplorerComponent implements OnInit {
       this.entities = res.entities;
     })
   }
+
+  public mapEntityTermTopics() {
+    console.log(this.terms);
+    console.log(this.topicTerms);
+    let entityTerms = this.terms.map((t) => t.term.toLowerCase());
+    let presentTerms = this.topicTerms.map((topic) => {
+      return {
+        topicID: topic.topicID,
+        terms : topic.terms.filter((term) => entityTerms.indexOf(term.toLowerCase()) > -1 )
+      }
+    });
+    console.log('Present Terms')
+    console.log(presentTerms);
+    let topicScores = presentTerms.map((t) => {
+      return {topicID : t.topicID, score : t.terms.length}
+    });
+    console.log('Topic Scores');
+    console.log(topicScores);
+
+    let sum = topicScores.reduce((a,b) => a + b.score, 0);
+    this.entityTopic = topicScores.map((t) => {
+      return {topicID : t.topicID, pct : t.score/sum }
+    });
+    console.log('Entity Topics')
+    console.log(this.entityTopic)
+}
 
   public requestTopics(bookTitle: string) {
     if(this.bookTopicSubscription) {
