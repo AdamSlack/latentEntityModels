@@ -304,7 +304,7 @@ var BookExplorerComponent = (function () {
         this.selectedBook = 'select a book';
         this.topicIDs = [];
         this.topicTerms = [];
-        this.entityTopic = [];
+        this.entityTopics = [];
         this.topicTermSubscriptions = [];
     }
     BookExplorerComponent.prototype.requestEntityTerms = function (entity) {
@@ -331,7 +331,7 @@ var BookExplorerComponent = (function () {
         var entityTerms = this.terms.map(function (t) { return t.term.toLowerCase(); });
         var presentTerms = this.topicTerms.map(function (topic) {
             return {
-                topicID: topic.topicID,
+                topicID: topic.topic_id,
                 terms: topic.terms.filter(function (term) { return entityTerms.indexOf(term.term.toLowerCase()) > -1; })
             };
         });
@@ -343,11 +343,11 @@ var BookExplorerComponent = (function () {
         console.log('Topic Scores');
         console.log(topicScores);
         var sum = topicScores.reduce(function (a, b) { return a + b.score; }, 0);
-        this.entityTopic = topicScores.map(function (t) {
-            return { topicID: t.topicID, pct: t.score / sum };
+        this.entityTopics = topicScores.map(function (t) {
+            return { topicID: t.topicID, pct: ((t.score / sum) * 100).toFixed(2) };
         });
         console.log('Entity Topics');
-        console.log(this.entityTopic);
+        console.log(this.entityTopics);
     };
     BookExplorerComponent.prototype.requestTopics = function (bookTitle) {
         var _this = this;
@@ -430,7 +430,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ExplorerApiService = (function () {
     function ExplorerApiService(http) {
         this.http = http;
-        this.ROOT = 'http://grapesoda.hopto.org:8080/api/';
+        this.ROOT = 'http://grapesoda.hopto.org/api/';
     }
     ExplorerApiService.prototype.requestEntities = function (book_title) {
         // example... 'http://localhost:8080/stockbroker?stockID=AMG&granularity=TIME_SERIES_DAILY'

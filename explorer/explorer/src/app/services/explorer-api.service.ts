@@ -8,7 +8,7 @@ export class ExplorerApiService {
 
   constructor(private http: HttpClient) { }
   
-    public ROOT : string = 'http://grapesoda.hopto.org:8080/api/';
+    public ROOT : string = 'http://grapesoda.hopto.org/api/';
   
     public requestEntities(book_title: string) : Observable<any> {
       // example... 'http://localhost:8080/stockbroker?stockID=AMG&granularity=TIME_SERIES_DAILY'
