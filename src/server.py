@@ -35,7 +35,7 @@ class Server(BaseHTTPRequestHandler):
     def fetch_topic_terms(self, topic_id):
         """ """
         conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
-        res = db.select_topic_terms(db, topic_id)
+        res = db.select_topic_terms(conn, topic_id)
         terms =[t[0] for t in res]
         conn.close()
         return terms

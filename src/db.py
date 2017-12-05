@@ -67,7 +67,7 @@ def select_book_topics(db, book_title):
 def select_topic_terms(db, topic_id):
     """ """
     cursor = db.cursor()
-    cursor.execute("""select term from topics where topic_id = %s""", (topic_id,))
+    cursor.execute("""select term from topics where topic_id = %s""", (int(topic_id),))
     return cursor
 
 def select_topic_ids(db):
