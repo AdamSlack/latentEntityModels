@@ -18,8 +18,8 @@ export class BookExplorerComponent implements OnInit {
   public selectedEntity : string = 'Select an Entity';
   public selectedBook : string = 'select a book';
   public topicIDs : Array<number> = [];
-  public topicTerms: Array<{topicID: number, terms : Array<{term: string, strength: number}>}> = [];
-  public entityTopic : Array<{topicID : number, pct : number}> =[];
+  public topicTerms: Array<{topic_id: number, terms : Array<{term: string, strength: number}>}> = [];
+  public entityTopics: Array<{topicID : number, pct : string}> =[];
 
 
   // subscriptions
@@ -56,7 +56,7 @@ export class BookExplorerComponent implements OnInit {
     let entityTerms = this.terms.map((t) => t.term.toLowerCase());
     let presentTerms = this.topicTerms.map((topic) => {
       return {
-        topicID: topic.topicID,
+        topicID: topic.topic_id,
         terms : topic.terms.filter((term) => entityTerms.indexOf(term.term.toLowerCase()) > -1 )
       }
     });
@@ -69,11 +69,11 @@ export class BookExplorerComponent implements OnInit {
     console.log(topicScores);
 
     let sum = topicScores.reduce((a,b) => a + b.score, 0);
-    this.entityTopic = topicScores.map((t) => {
-      return {topicID : t.topicID, pct : t.score/sum }
+    this.entityTopics = topicScores.map((t) => {
+      return {topicID : t.topicID, pct : ((t.score/sum) * 100 ).toFixed(2)}
     });
     console.log('Entity Topics')
-    console.log(this.entityTopic)
+    console.log(this.entityTopics)
 }
 
   public requestTopics(bookTitle: string) {
