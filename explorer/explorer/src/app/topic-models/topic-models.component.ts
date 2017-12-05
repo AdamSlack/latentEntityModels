@@ -107,13 +107,40 @@ export class TopicModelsComponent implements OnInit {
             .attr("class", "g")
             .attr("transform", function(d) { return "translate(" + x(d.book) + ",0)"; });
       
-        book.selectAll("rect")
-            .data(function(d) { return d.data; })
+      var bars = book.selectAll("rect")
+            .data(function(d) {
+              d.data.book_title = d.book; 
+              return d.data; 
+            })
           .enter().append("rect")
             .attr("width", x.bandwidth())
             .attr("y", function(d) { return y(d.y1); })
             .attr("height", function(d) { return y(d.y0) - y(d.y1); })
-            .style("fill", function(d) { return z(d.topicID); });
+            .style("fill", function(d) { return z(d.topicID); })
+            .on("mousemove", (d) => {
+              div.style("left", d3.event.pageX+10+"px");
+              div.style("top", d3.event.pageY-25+"px");
+              div.style("display", "inline-block");
+              console.log(d);
+              div.html('<strong>' + d.book_title + '</strong>');
+            })
+            .on('mouseout', (d) => {
+              div.style("display", "none")
+            });
+
+        var div = d3.select("body").append("div").attr("class", "toolTip");
+            div.style('position', 'absolute')
+               .style('display', 'none')
+               .style('width', 'auto')
+               .style('height', 'auto')
+               .style('background', 'rgba(34,34,34,0.8)')
+               .style('border', '0 none')
+               .style('border', 'radius 8px 8px 8px 8px')
+               .style('box-shadow', '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)')
+               .style('color', '#fff')
+               .style('font-size', '0.75em')
+               .style('padding', '5px')
+               .style('text-align', 'left');
   }
 
   ngOnInit() {
