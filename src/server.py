@@ -86,6 +86,7 @@ class Server(BaseHTTPRequestHandler):
             topic_id = components[1]
             res = self.fetch_topic_terms(topic_id)
             json_obj = json.dumps({'topic_id': topic_id, 'terms': res})
+            return json_obj
 
         if comp_len == 1 and components[0] == 'books':
             res = self.fetch_book_titles()
