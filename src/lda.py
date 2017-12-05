@@ -6,10 +6,11 @@ import db as db
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 from fyp_utilities import *
+from collections import defaultdict
 
 n_samples = 2000
 n_features = 1000
-n_topics = 25
+n_topics = 10
 n_top_words = 1000
 
 def store_top_words(model, feature_names, n_top_words):

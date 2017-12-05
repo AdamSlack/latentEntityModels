@@ -4,7 +4,27 @@ div.entity-collection {
     padding: 15px;
     max-height: 400px;
     min-height: 400px;    
-    overflow-x: hidden;
+    overflow-x: auto;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        background-color: #222;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #666;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        
+    }
+}
+
+div.visualisation {
+    font-family: 'Roboto', sans-serif;
+    padding: 15px;
+    max-height: 400px;
+    min-height: 400px;    
+    overflow-x: auto;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {

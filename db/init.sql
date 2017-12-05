@@ -28,4 +28,9 @@ create table book_topics(
     primary key(book_title, topic_id)
 );
 
+drop materialized view if exists book_titles;
+create materialized view book_titles as
+    select distinct book_title from books;
+
+
 commit;

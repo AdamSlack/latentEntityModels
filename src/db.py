@@ -32,7 +32,7 @@ def insert_book_entity_term(db, book_title, entity, term, strength):
 def select_book_titles(db):
     """ Create a cursor pointing to all book titles"""
     cursor = db.cursor()
-    cursor.execute("""select distinct book_title from books""")
+    cursor.execute("""select book_title from book_titles""")
     return cursor
 
 def select_topic_ids(db):
