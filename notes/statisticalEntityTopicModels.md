@@ -4,7 +4,7 @@ D.Newman, C Chemudugunta, P Smyth
 
 ## Abstract
 
-The purpose pf news articles are to convey info
+The purpose of news articles are to convey info
 
 Summarising relationships is hard
 
@@ -53,4 +53,20 @@ This paper focuses on the intersection of Entity Modelling and topic Modelling
 Topic models have been extended to include additional information
 - Steyvers et al.'s author topic model
 - Blei and Jordan modelled images and captions
+
+Entity Modelling related to this involve
+- entity recognition
+- entity resolution
+- entity social networks
+Work includes
+- McCallum et al. use conditional random fields for noun co-references
+- Zhu et al. use non-probabilistic latent semantic indexing for recognising and relating entities
+
+This paper uses simple and effective NER techniques to extract entities (as preprocessing)
+
+Primary goal is not that, its really the relating of entities, topics and words
+
+
+
+
 
