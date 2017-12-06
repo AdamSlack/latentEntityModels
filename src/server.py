@@ -1,6 +1,3 @@
-import xmlschema
-from pprint import pprint
-import copy
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 import json
@@ -148,8 +145,8 @@ class Server(BaseHTTPRequestHandler):
         else:
             fp = file[0]
         print(fp)
-        print(curdir + sep + fp)
-        return open(curdir + sep + fp, 'rb')
+        print(curdir + sep + 'dist' + sep + fp)
+        return open(curdir + sep + 'dist'+ sep + fp, 'rb')
         
     def do_GET(self):
         url = urlparse(self.path)
@@ -157,9 +154,9 @@ class Server(BaseHTTPRequestHandler):
         print(urlstr)
         if len(urlstr.strip('/').split('/')) == 1:
             output = self.process_root(urlstr)
+            self.send_response(200)
             self.send_header('content-type', 'text/html')
             self.send_header('Access-Control-Allow-Origin', '*')
-            self.send_response(200)
             self.end_headers()
             self.wfile.write(output.read())
             output.close()
@@ -186,8 +183,8 @@ class Server(BaseHTTPRequestHandler):
 
 def main():
     """ main """
-    server = HTTPServer(('localhost', 12345), Server)
-    print('Starting server at http://localhost:12345')
+    server = HTTPServer(('0.0.0.0', 80), Server)
+    print('Starting server at http://0.0.0.0:80')
     server.serve_forever()
 
 
