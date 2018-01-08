@@ -95,27 +95,37 @@ def sum_sentence_lengths(corpus_sents):
     """ sums accross the length of sentences in a corpus """
     return sum(len(sent) for sent in corpus_sents)
 
-def split_Corpus(corpus_words, corpus_sents, pct):
+def split_Corpus(corpus_sents, corpus_words, pct):
     """ Splits a corpus into training and testing data """
     sent_count = len(corpus_sents)
-    word_count = len(word_count)
+    word_count = len(corpus_words)
 
-    ten_pct_sent_cnt = sent_count * (1/pct)
+    ten_pct_sent_cnt = int(sent_count * (pct/100))
 
-    training_sents = [::-ten_pct_sent_cnt]
-    test_sents = [ten_pct_sent_cnt::]
+    training_sents = corpus_sents[0 : sent_count - ten_pct_sent_cnt]
+    test_sents = corpus_sents[sent_count - ten_pct_sent_cnt : sent_count]
 
-    print('Training Sent Length', len(training_sents))
-    print('Test Sent Length', len(test_sents))
+    test_word_cnt = sum_sentence_lengths(test_sents)
+    
+    training_words = corpus_words[0 : word_count - test_word_cnt]
+    test_words = corpus_words[word_count - test_word_cnt : word_count]
+
+    return training_sents, test_sents, training_words, test_words
+
+def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit):
+    """ Evaluate a trained HMM model using a provided set of test sentences and words """
+    
+    tags = viterbi(pos_obs, pos_states, pos_starts, pos_trans, pos_emit)
 
     
+
     
-    
+        
 def main():
     tagged_sents = brown.tagged_sents(tagset='universal')
     tagged_words = brown.tagged_words(tagset='universal')
 
-    split_Corpus(tagged_sents, tagged_words, 10)
+    training_sents, test_sents, training_words, test_words = split_Corpus(tagged_sents, tagged_words, 10)
     
     print('Corpus Sentence Count:', len(tagged_sents))
     print('Corpus Word Count:', len(tagged_words))
@@ -124,12 +134,12 @@ def main():
 
     pos_states = tagset
 
-    pos_starts = calc_start_state_probs(tagged_sents, pos_states)
-    pos_trans = calc_trans_probs(tagged_sents, pos_states)
+    pos_starts = calc_start_state_probs(training_sents, pos_states)
+    pos_trans = calc_trans_probs(training_sents, pos_states)
 
-    pos_emit = calc_emit_probs(tagged_words, pos_states, pos_obs)
-        
-    tags = viterbi(pos_obs, pos_states, pos_starts, pos_trans, pos_emit)
+    pos_emit = calc_emit_probs(training_words, pos_states, pos_obs)
+
+    evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit
 
     print('\t'.join(tags))
     print('\t'.join(pos_obs))
