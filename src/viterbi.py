@@ -1,18 +1,5 @@
-##
-##  Viterbi Algorithm
-##  Source from Wikipedia
-##  Modified by Adam Slack
-##
 from nltk.corpus import brown
 from nltk.tag.mapping import _UNIVERSAL_TAGS as tagset
-# Example observation:
-# ['my', 'name', 'is', 'adam', 'and', 'i', 'like', 'to', 'code']
-
-# Example states
-# [Adj, Adv, Con, Det, Noun, Num, Pre, Pro, Verb]
-
-# Example starting probabilities
-# []
 
 def max_transition(prev_states, states, curr, trans_p):
     """ 
@@ -20,6 +7,7 @@ def max_transition(prev_states, states, curr, trans_p):
     for the current state.
     """
     return max(prev_states[prev]['prob'] * trans_p[prev][curr] for prev in states)
+
 
 def initialise_start_probabilities(states, start_p, emit_p, obs):
     """
@@ -102,36 +90,45 @@ def calc_emit_probs(corpus_words, states, obs):
     return { state : {
         ob.lower() : state_obs_counts[state][ob.lower()] / state_counts[state] for ob in obs
     } for state in states}
-        
 
-def main():
+def sum_sentence_lengths(corpus_sents):
+    """ sums accross the length of sentences in a corpus """
+    return sum(len(sent) for sent in corpus_sents)
 
-    # Wiki Example Data.
-    obs = ('normal', 'cold', 'dizzy', 'cold')
+def split_Corpus(corpus_words, corpus_sents, pct):
+    """ Splits a corpus into training and testing data """
+    sent_count = len(corpus_sents)
+    word_count = len(word_count)
 
-    states = ('Healthy', 'Fever', 'dead')
+    ten_pct_sent_cnt = sent_count * (1/pct)
 
-    start_p = {'Healthy': 0.6, 'Fever': 0.4, 'dead':0.0}
+    training_sents = [::-ten_pct_sent_cnt]
+    test_sents = [ten_pct_sent_cnt::]
 
-    trans_p = {
-        'Healthy' : {'Healthy': 0.65, 'Fever': 0.3, 'dead': 0.05},
-        'Fever' : {'Healthy': 0.35, 'Fever': 0.55, 'dead': 0.1},
-        'dead' : {'Healthy': 0.0, 'Fever': 0.0, 'dead':1.0}
-    }
+    print('Training Sent Length', len(training_sents))
+    print('Test Sent Length', len(test_sents))
 
-    emit_p = {
-        'Healthy' : {'normal': 0.5, 'cold': 0.4, 'dizzy': 0.1},
-        'Fever' : {'normal': 0.1, 'cold': 0.3, 'dizzy': 0.6},
-        'dead' : {'normal': 0.0, 'cold' : 1.0, 'dizzy': 0.0}
-    }
-
-    pos_obs = [ob.lower() for ob in ['I','am','a','walrus','!']]
-    pos_states = tagset
-    pos_starts = calc_start_state_probs(brown.tagged_sents(tagset='universal'), pos_states)
-    pos_trans = calc_trans_probs(brown.tagged_sents(tagset='universal'), pos_states)
-    pos_emit = calc_emit_probs(brown.tagged_words(tagset='universal'), pos_states, pos_obs)
-    # need to build a set of data in a structure similar to above...
     
+    
+    
+def main():
+    tagged_sents = brown.tagged_sents(tagset='universal')
+    tagged_words = brown.tagged_words(tagset='universal')
+
+    split_Corpus(tagged_sents, tagged_words, 10)
+    
+    print('Corpus Sentence Count:', len(tagged_sents))
+    print('Corpus Word Count:', len(tagged_words))
+    
+    pos_obs = [ob.lower() for ob in ['I','am','a','walrus','!']]
+
+    pos_states = tagset
+
+    pos_starts = calc_start_state_probs(tagged_sents, pos_states)
+    pos_trans = calc_trans_probs(tagged_sents, pos_states)
+
+    pos_emit = calc_emit_probs(tagged_words, pos_states, pos_obs)
+        
     tags = viterbi(pos_obs, pos_states, pos_starts, pos_trans, pos_emit)
 
     print('\t'.join(tags))
