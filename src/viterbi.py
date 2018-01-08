@@ -1,5 +1,6 @@
 from nltk.corpus import brown
 from nltk.tag.mapping import _UNIVERSAL_TAGS as tagset
+from collections import defaultdict
 
 def max_transition(prev_states, states, curr, trans_p):
     """ 
@@ -60,7 +61,7 @@ def calc_start_state_probs(corpus_sents, states):
     total = len(starts)
     for state in starts:
         counts[state] += 1
-    return {state: counts[state]/total for state in states}
+    return defaultdict(int,{state: counts[state]/total for state in states})
 
 def calc_trans_probs(corpus_sents, states):
     """ calculate probability of transitioning from one state to the next."""
@@ -87,9 +88,9 @@ def calc_emit_probs(corpus_words, states, obs):
         if word in state_obs_counts[state]:
             state_obs_counts[state][word] += 1
 
-    return { state : {
+    return { state : defaultdict(int,{
         ob.lower() : state_obs_counts[state][ob.lower()] / state_counts[state] for ob in obs
-    } for state in states}
+    }) for state in states}
 
 def sum_sentence_lengths(corpus_sents):
     """ sums accross the length of sentences in a corpus """
@@ -115,10 +116,11 @@ def split_Corpus(corpus_sents, corpus_words, pct):
 def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit):
     """ Evaluate a trained HMM model using a provided set of test sentences and words """
     
-    tags = viterbi(pos_obs, pos_states, pos_starts, pos_trans, pos_emit)
+    tags = [viterbi([ob[0].lower() for ob in sent], pos_states, pos_starts, pos_trans, pos_emit) for sent in test_sents ]
 
-    
-
+    score = sum(sum(1 if tag == test_sents[s_idx][t_idx][1] else 0 for t_idx, tag in enumerate(sent) ) for s_idx, sent in enumerate(tags))
+                    
+    print('Score:', score/len(test_words))
     
         
 def main():
@@ -139,10 +141,10 @@ def main():
 
     pos_emit = calc_emit_probs(training_words, pos_states, pos_obs)
 
-    evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit
+    evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit)
 
-    print('\t'.join(tags))
-    print('\t'.join(pos_obs))
+    #print('\t'.join(tags))
+    #print('\t'.join(pos_obs))
 
 if __name__ == '__main__':
     main()
