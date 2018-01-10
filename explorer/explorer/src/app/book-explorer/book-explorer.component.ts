@@ -77,6 +77,7 @@ export class BookExplorerComponent implements OnInit {
 }
 
   public requestTopics(bookTitle: string) {
+  
     if(this.bookTopicSubscription) {
       this.bookTopicSubscription.unsubscribe();
     }
