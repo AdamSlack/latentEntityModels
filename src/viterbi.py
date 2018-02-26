@@ -54,6 +54,7 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
         previous = V[t + 1][previous]["prev"]
     return opt
 
+
 def calc_start_state_probs(corpus_sents, states):
     """calculate the probability of a sentence starting with a perticular state.""" 
     starts = [sent[0][1] for sent in corpus_sents]
@@ -63,6 +64,7 @@ def calc_start_state_probs(corpus_sents, states):
         counts[state] += 1
     return defaultdict(int,{state: counts[state]/total for state in states})
 
+
 def calc_trans_probs(corpus_sents, states):
     """ calculate probability of transitioning from one state to the next."""
     trans_counts = {source : { sink : 0 for sink in states} for source in states}
@@ -71,6 +73,7 @@ def calc_trans_probs(corpus_sents, states):
             trans_counts[sent[i][1]][sent[i+1][1]] += 1
 
     trans_sums = {state : sum(trans_counts[state].values()) for state in states}
+    
     return { source : {
         sink : trans_counts[source][sink] / trans_sums[source] for sink in states
     } for source in states}
@@ -92,9 +95,11 @@ def calc_emit_probs(corpus_words, states, obs):
         ob.lower() : state_obs_counts[state][ob.lower()] / state_counts[state] for ob in obs
     }) for state in states}
 
+
 def sum_sentence_lengths(corpus_sents):
     """ sums accross the length of sentences in a corpus """
     return sum(len(sent) for sent in corpus_sents)
+
 
 def split_Corpus(corpus_sents, corpus_words, pct):
     """ Splits a corpus into training and testing data """
@@ -113,6 +118,7 @@ def split_Corpus(corpus_sents, corpus_words, pct):
 
     return training_sents, test_sents, training_words, test_words
 
+
 def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit):
     """ Evaluate a trained HMM model using a provided set of test sentences and words """
     
@@ -120,10 +126,14 @@ def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, po
 
     score = sum(sum(1 if tag == test_sents[s_idx][t_idx][1] else 0 for t_idx, tag in enumerate(sent) ) for s_idx, sent in enumerate(tags))
                     
-    print('Score:', score/len(test_words))
-    
+    return score/len(test_words)
+
         
 def main():
+
+    ##
+    ## Main Init...
+    ##
     tagged_sents = brown.tagged_sents(tagset='universal')
     tagged_words = brown.tagged_words(tagset='universal')
 
@@ -132,19 +142,48 @@ def main():
     print('Corpus Sentence Count:', len(tagged_sents))
     print('Corpus Word Count:', len(tagged_words))
     
-    pos_obs = [ob.lower() for ob in ['I','am','a','walrus','!']]
+    sent = ['you', 'are', 'a', 'dumb', 'person', '.']
+    pos_obs = [ob.lower() for ob in sent]
 
     pos_states = tagset
 
+    ##
+    ## General Model Evaluation.
+    ##
+    #print('Calculating Training Set Starting probabilities')
     pos_starts = calc_start_state_probs(training_sents, pos_states)
+    #print('Training Set Starting Probabilities calculated')
+
+    #print('Calculating Training Set Transition Probabilities')
     pos_trans = calc_trans_probs(training_sents, pos_states)
+    #print('Training set Transition probabilities calcualted')
 
-    pos_emit = calc_emit_probs(training_words, pos_states, pos_obs)
+    #print('Calculating Training set Emission Probabilities')
+    pos_emit = calc_emit_probs(training_words, pos_states, [ob[0] for ob in test_words])
+    #print('Training Set Emission Probabilities Calculated')
 
-    evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit)
+    print('Evaluating Viterbi Decoded HMM')
+    score = evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit)
+    #print('Viterbi Decoded HMM Evaluated')
 
-    #print('\t'.join(tags))
-    #print('\t'.join(pos_obs))
+    print('Model Score:', str(score))
 
+    ##
+    ## Sentence Evaluation.
+    ##
+    pos_starts = calc_start_state_probs(tagged_sents, pos_states)
+
+    pos_trans = calc_trans_probs(tagged_sents, pos_states)
+
+    pos_emit = calc_emit_probs(tagged_words, pos_states, pos_obs)
+
+    print('Applying Model to Sentence: ' + ' '.join(sent))
+    tags = viterbi(pos_obs, pos_states, pos_starts, pos_trans, pos_emit)
+
+    print('\t'.join(tags))
+    print('\t'.join(sent))
+    
+
+    
 if __name__ == '__main__':
     main()
