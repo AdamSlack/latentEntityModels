@@ -183,8 +183,10 @@ class Server(BaseHTTPRequestHandler):
 
 def main():
     """ main """
-    server = HTTPServer(('0.0.0.0', 80), Server)
-    print('Starting server at http://0.0.0.0:80')
+    port = 8000
+    url = 'localhost'
+    server = HTTPServer((url, port), Server)
+    print('Starting server at ' + url + ':' + str(port))
     server.serve_forever()
 
 
