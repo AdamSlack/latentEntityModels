@@ -8,10 +8,10 @@ export class ExplorerApiService {
 
   constructor(private http: HttpClient) { }
   
-    public ROOT : string = 'http://grapesoda.hopto.org/api/';
+    public ROOT : string = 'http://localhost:8000/'; //'http://grapesoda.hopto.org/api/';
   
     public requestEntities(book_title: string) : Observable<any> {
-      // example... 'http://localhost:8080/stockbroker?stockID=AMG&granularity=TIME_SERIES_DAILY'
+      // example... 'http://localhost:8080/'
       let url =  this.ROOT + 'books/' + book_title;
       console.log(url);
   
@@ -19,7 +19,7 @@ export class ExplorerApiService {
     }
 
     public requestEntityTerms(book_title: string, entity : string) : Observable<any> {
-      // example... 'http://localhost:8080/stockbroker?stockID=AMG&granularity=TIME_SERIES_DAILY'
+      // example... 'http://localhost:8080/'
       let url =  this.ROOT + 'books/' + book_title + '/entities/' + entity;
       console.log(url);
   
