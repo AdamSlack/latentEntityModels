@@ -142,7 +142,7 @@ def main():
     print('Corpus Sentence Count:', len(tagged_sents))
     print('Corpus Word Count:', len(tagged_words))
     
-    sent = ['you', 'are', 'a', 'dumb', 'person', '.']
+    sent = ['Peter','went', 'on', 'a', 'walk', 'to', 'the', 'shops', '.']
     pos_obs = [ob.lower() for ob in sent]
 
     pos_states = tagset
