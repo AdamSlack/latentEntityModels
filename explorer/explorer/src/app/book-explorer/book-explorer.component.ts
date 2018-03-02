@@ -45,8 +45,8 @@ export class BookExplorerComponent implements OnInit {
 
   public requestEntities(bookTitle: string) {
     this.selectedBook = bookTitle;
-    this.entitySubscription = this.bookQuery.requestEntities(bookTitle).subscribe((res) => {
-      this.entities = res.entities;
+    this.entitySubscription = this.bookQuery.requestEntities(bookTitle).subscribe((res : {entities : string[]}) => {
+      this.entities = res.entities.sort();
     })
   }
 
@@ -87,7 +87,7 @@ export class BookExplorerComponent implements OnInit {
       let sum = api_topics.reduce((a,b) => a + b.score, 0); 
       this.topics = api_topics.map((t) => {
         return {id: 'Topic ' + t.topic_id.toString(), pct: (t.score/sum*100).toFixed(2)}
-      }).sort((a,b) => b.pct - a.pct);
+      });//.sort((a,b) => b.pct - a.pct);
     });
   }
 
@@ -116,8 +116,8 @@ export class BookExplorerComponent implements OnInit {
 
 
   ngOnInit() {
-    this.bookTitleSubscription = this.bookQuery.requestBookTitles().subscribe((res) => {
-      this.bookTitles = res.books;
+    this.bookTitleSubscription = this.bookQuery.requestBookTitles().subscribe((res :{ books : string[]}) => {
+      this.bookTitles = res.books.sort();
     });
     this.requestTopicIDs();
   }

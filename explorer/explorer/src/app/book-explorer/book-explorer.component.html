@@ -5,7 +5,7 @@
   <div class="entity-collection">
     <table class="entity-collection">
       <tr *ngFor="let title of bookTitles" [ngClass]="(title==selectedBook)?'selected':''">
-        <td (click)="requestEntities(title); requestTopics(title);">
+        <td (click)="requestEntities(title); requestTopics(title);" class="entity">
           {{title}}
         </td>
       </tr>
@@ -20,11 +20,11 @@
   <div class="entity-collection">
     <table class="entity-collection">
       <tr *ngFor="let topic of topics" >
-        <td>
+        <td class="entity">
           {{topic.id}}
         </td>
-        <td>
-          {{topic.pct}}
+        <td class="entity">
+          {{topic.pct}}%
         </td>
       </tr>
     </table>
@@ -47,8 +47,11 @@
   <div class="entity-collection">
     <table class="entity-collection">
       <tr *ngFor="let entity of entities" [ngClass]="(entity==selectedEntity)?'selected':''">
-        <td (click)="requestEntityTerms(entity)">
+        <td class="entity" (click)="requestEntityTerms(entity)">
           {{entity}}
+        </td>
+        <td class="add-to">
+          <div class="row-btn">+</div>
         </td>
       </tr>
     </table>
@@ -62,10 +65,10 @@
   <div class="entity-collection">
     <table class="entity-collection">
       <tr *ngFor="let term of terms">
-        <td>
+        <td class="entity">
           {{term.term}}
         </td>
-        <td>
+        <td class="entity">
             {{term.strength}}
         </td>
       </tr>
@@ -80,11 +83,11 @@
   <div class="entity-collection">
     <table class="entity-collection">
       <tr *ngFor="let topic of entityTopics">
-        <td>
+        <td class="entity">
           {{topic.topicID}}
         </td>
-        <td>
-          {{topic.pct}}
+        <td class="entity">
+          {{topic.pct}}%
         </td>
       </tr>
     </table>

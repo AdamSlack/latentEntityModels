@@ -19,6 +19,14 @@ div.entity-collection {
     }
 }
 
+td.add-to {
+    float: right;
+    color: #fff;
+    background: #226622;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);        
+    
+}
+
 div.visualisation {
     font-family: 'Roboto', sans-serif;
     padding: 15px;
@@ -43,6 +51,10 @@ div.visualisation {
     background: #ddd !important;
     color: #222 !important;
 }
+.row-btn {
+    padding: 2px 5px;
+    margin-top: 1px;
+}
 
 table.entity-collection {
     font-family: 'Roboto', sans-serif;
@@ -59,9 +71,20 @@ table.entity-collection {
             transition: background-color 0.2s ease;
                  
         }
-        td {
+        td.entity {
             padding-top: 5px;
             padding-bottom: 5px;  
+        }
+        td.add-to {
+            float: right;
+            color: #fff;
+            background: #226622;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);        
+            &:hover {
+                background: #224422;
+                transition: background-color 0.2s ease;
+                     
+            }
         }
 
     }
