@@ -61,8 +61,8 @@ export class TopicModelsComponent implements OnInit {
     console.log(data);
 
     var margin = {top: 0, right: 0, bottom: 0, left: 0},
-        width = 3000 - margin.left - margin.right,
-        height = 380 - margin.top - margin.bottom;
+        width = 2999 - margin.left - margin.right,
+        height = 360 - margin.top - margin.bottom;
         
     var svg = d3.select(this.chart.nativeElement)
     svg.selectAll('*').remove();

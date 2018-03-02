@@ -15,8 +15,10 @@ export class BookExplorerComponent implements OnInit {
   public selectedBook : string = 'select a book';
 
   public entities : Array<string>;
+  public filteredEntities : Array<string> = [];
   public terms : Array<{term : string, strength : number}>
   public bookTitles : Array<string>;
+  public filteredBookTitles : Array<string> = [];
 
   public topics : Array<{id: string, pct: number}>
   public topicIDs : Array<number> = [];
@@ -26,6 +28,9 @@ export class BookExplorerComponent implements OnInit {
 
   public trackedEntities : Array<{name: string, book : string, topics : Array<{topicID: number, pct : string}>}> = [];
 
+  public entitySearch : string = '';
+  public bookSearch : string = '';
+
   // subscriptions
   private entitySubscription : Subscription;
   private entityTermSubscription : Subscription;
@@ -34,29 +39,46 @@ export class BookExplorerComponent implements OnInit {
   private topicIDSubscription: Subscription;
   private topicTermSubscriptions: Array<Subscription> = [];
 
+
+
   constructor(public bookQuery : ExplorerApiService) {
 
   }
 
-  public requestEntityTerms(entity: string) {
+  public filterEntities() {
+    if(this.entitySearch === '') {
+      this.filteredEntities = this.entities;
+      return;
+    }
+    this.filteredEntities = this.entities.filter((e) => e.toLocaleLowerCase().includes(this.entitySearch.toLocaleLowerCase()));
+  }
+  public filterBookTitles() {
+    this.filteredBookTitles = this.bookTitles.filter((b) => b.toLocaleLowerCase().includes(this.bookSearch.toLocaleLowerCase()))
+  }
+
+  public requestEntityTerms(entity: string, track : boolean = false) {
     if(this.entityTermSubscription) {
       this.entityTermSubscription.unsubscribe();
     }
     this.entityTermSubscription = this.bookQuery.requestEntityTerms(this.selectedBook, entity).subscribe((res) => {
       this.selectedEntity = entity;
       this.terms = res.terms;
-      this.mapEntityTermTopics()
+      this.mapEntityTermTopics(track)
     });
   }
 
   public requestEntities(bookTitle: string) {
     this.selectedBook = bookTitle;
+    this.selectedEntity = '';
+    this.terms = [];
+    this.entityTopics = [];
     this.entitySubscription = this.bookQuery.requestEntities(bookTitle).subscribe((res : {entities : string[]}) => {
       this.entities = res.entities.sort();
+      this.filterEntities();
     })
   }
 
-  public mapEntityTermTopics() {
+  public mapEntityTermTopics(track : boolean = false) {
     console.log(this.terms);
     console.log(this.topicTerms);
     let entityTerms = this.terms.map((t) => t.term.toLowerCase());
@@ -78,6 +100,13 @@ export class BookExplorerComponent implements OnInit {
     this.entityTopics = topicScores.map((t) => {
       return {topicID : t.topicID, pct : ((t.score/sum) * 100 ).toFixed(2)}
     });
+    if(track) {
+      this.trackedEntities.push({
+        name: this.selectedEntity,
+        book : this.selectedBook,
+        topics : this.entityTopics
+      });
+    }
     console.log('Entity Topics')
     console.log(this.entityTopics)
 }
@@ -120,18 +149,31 @@ export class BookExplorerComponent implements OnInit {
   }
   
   public trackEntity(name : string) {
-    this.requestEntityTerms(name);
-    this.trackedEntities.push({
-      name: name,
-      book : this.selectedBook,
-      topics : this.entityTopics
+    this.requestEntityTerms(name, true);
+  }
+  public untrackEntity(
+    entity : {
+      name : string,
+      book : string,
+      topics : {
+        topicID : number,
+        pct : string
+      }[]}
+    ) {
+    this.trackedEntities = this.trackedEntities.filter((e) => {
+      return e.name != entity.name ||
+      e.book != entity.book ||
+      !e.topics.every((t, i) => {
+        return t.pct == entity.topics[i].pct
+         && t.topicID == entity.topics[i].topicID;
+      });
     });
   }
-
 
   ngOnInit() {
     this.bookTitleSubscription = this.bookQuery.requestBookTitles().subscribe((res :{ books : string[]}) => {
       this.bookTitles = res.books.sort();
+      this.filterBookTitles();
     });
     this.requestTopicIDs();
   }

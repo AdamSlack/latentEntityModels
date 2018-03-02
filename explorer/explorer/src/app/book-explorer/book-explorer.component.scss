@@ -1,4 +1,5 @@
-
+div.flexi {
+}
 div.entity-collection {
     font-family: 'Roboto', sans-serif;
     padding: 15px;
@@ -55,9 +56,32 @@ div.visualisation {
     padding: 2px 5px;
 }
 
+input.search {
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    margin-left: 10px;
+    padding: 0px 10px;
+    width: auto;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #226622;
+    background: #222;
+    color: #eee;
+    transition: 0.2s;
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid #228822;
+        transition: 0.2s;
+    }
+    .icon .bar {
+        float: left;
+    }
+}
+
 table.entity-collection {
     font-family: 'Roboto', sans-serif;
-    width: 100%;
+    width: 99%;
     border-collapse: collapse; 
     border-top: solid 1px #333;    
     tr {
@@ -70,19 +94,19 @@ table.entity-collection {
             transition: background-color 0.2s ease;
                  
         }
-        td.no-wrap {
-            width: auto;
-        }
+
         td.entity {
             padding-top: 5px;
-            padding-bottom: 5px;  
+            padding-bottom: 5px; 
+            width:100%; 
         }
         td.add-to {
             margin-top: 2px;
             color: #fff;
             background: #226622;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
-            transition: background-color 0.2s ease;            
+            transition: background-color 0.2s ease;
+            text-align: center;                      
             &:hover {
                 background: #224422;
                 transition: background-color 0.2s ease;
@@ -90,6 +114,19 @@ table.entity-collection {
             }
         }
 
+        td.remove-from {
+            margin-top: 2px;
+            color: #fff;
+            background: #662222;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+            transition: background-color 0.2s ease;  
+            text-align: center;          
+            &:hover {
+                background: #442222;
+                transition: background-color 0.2s ease;
+                     
+            }
+        }
     }
 }
 
@@ -101,12 +138,17 @@ table.entity-collection {
     color: #ddd;   
 }
 .container {
+    float: left;    
     color: #ddd;
     background: #222;
     padding: 5px;
     margin: 5px;    
     width: 20%;    
-    float: left;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);        
     min-width: 400px;
+}
+
+.double {
+    width : 40% !important;
+    min-width: 800px;
 }
