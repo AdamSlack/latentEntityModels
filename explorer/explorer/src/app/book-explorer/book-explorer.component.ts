@@ -11,16 +11,20 @@ export class BookExplorerComponent implements OnInit {
 
 
   // variables
+  public selectedEntity : string = 'Select an Entity';
+  public selectedBook : string = 'select a book';
+
   public entities : Array<string>;
   public terms : Array<{term : string, strength : number}>
   public bookTitles : Array<string>;
+
   public topics : Array<{id: string, pct: number}>
-  public selectedEntity : string = 'Select an Entity';
-  public selectedBook : string = 'select a book';
   public topicIDs : Array<number> = [];
   public topicTerms: Array<{topic_id: number, terms : Array<{term: string, strength: number}>}> = [];
+  
   public entityTopics: Array<{topicID : number, pct : string}> =[];
 
+  public trackedEntities : Array<{name: string, book : string, topics : Array<{topicID: number, pct : string}>}> = [];
 
   // subscriptions
   private entitySubscription : Subscription;
@@ -30,7 +34,9 @@ export class BookExplorerComponent implements OnInit {
   private topicIDSubscription: Subscription;
   private topicTermSubscriptions: Array<Subscription> = [];
 
-  constructor(public bookQuery : ExplorerApiService) { }
+  constructor(public bookQuery : ExplorerApiService) {
+
+  }
 
   public requestEntityTerms(entity: string) {
     if(this.entityTermSubscription) {
@@ -113,6 +119,14 @@ export class BookExplorerComponent implements OnInit {
     console.log(this.topicTerms);
   }
   
+  public trackEntity(name : string) {
+    this.requestEntityTerms(name);
+    this.trackedEntities.push({
+      name: name,
+      book : this.selectedBook,
+      topics : this.entityTopics
+    });
+  }
 
 
   ngOnInit() {

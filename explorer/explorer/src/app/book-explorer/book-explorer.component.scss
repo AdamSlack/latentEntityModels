@@ -53,33 +53,36 @@ div.visualisation {
 }
 .row-btn {
     padding: 2px 5px;
-    margin-top: 1px;
 }
 
 table.entity-collection {
     font-family: 'Roboto', sans-serif;
     width: 100%;
     border-collapse: collapse; 
-    border-top: solid 1px #333;
-    transition: background-color 0.2s ease;    
-    
+    border-top: solid 1px #333;    
     tr {
         background: #222;
-        border-bottom: solid 1px #333;        
+        border-bottom: solid 1px #333;   
+        transition: background-color 0.2s ease;
+        
         &:hover {
             background: #333;
             transition: background-color 0.2s ease;
                  
+        }
+        td.no-wrap {
+            width: auto;
         }
         td.entity {
             padding-top: 5px;
             padding-bottom: 5px;  
         }
         td.add-to {
-            float: right;
+            margin-top: 2px;
             color: #fff;
             background: #226622;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);        
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+            transition: background-color 0.2s ease;            
             &:hover {
                 background: #224422;
                 transition: background-color 0.2s ease;

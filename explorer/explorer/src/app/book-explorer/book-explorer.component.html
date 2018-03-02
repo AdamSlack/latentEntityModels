@@ -50,7 +50,7 @@
         <td class="entity" (click)="requestEntityTerms(entity)">
           {{entity}}
         </td>
-        <td class="add-to">
+        <td class="add-to" (click)="trackEntity(entity)">
           <div class="row-btn">+</div>
         </td>
       </tr>
@@ -84,7 +84,7 @@
     <table class="entity-collection">
       <tr *ngFor="let topic of entityTopics">
         <td class="entity">
-          {{topic.topicID}}
+          Topic {{topic.topicID}}
         </td>
         <td class="entity">
           {{topic.pct}}%
@@ -94,4 +94,29 @@
   </div>
 </div>
 
+<div class="container">
+    <div class="title">
+      📃📃📃 Entity Comparisons
+    </div>
+    <div class="entity-collection">
+      <table class="entity-collection">
+        <tr>
+          <td class="enitity">
+            Entity
+          </td>
+          <td class="enitity no-wrap" *ngFor="let n of [0,1,2,3,4,5,6,7,8,9]">
+            Topic {{n}}
+          </td>
+        </tr>
+        <tr *ngFor="let entity of trackedEntities">
+          <td class="entity no-wrap">
+            {{entity.name}}
+          </td>
+          <td *ngFor="let topic of entity.topics"class="entity no-wrap">
+            {{topic.pct}}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
