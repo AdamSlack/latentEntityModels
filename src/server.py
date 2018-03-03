@@ -1,15 +1,31 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
-import json
 from os import curdir, sep
-import db as db
 from urllib.parse import unquote
+import json
+
+## DB Utilities
+import db as db
+
+## POS tagging
+import viterbi as viterbi
+from nltk.corpus import brown
+from nltk.tag.mapping import _UNIVERSAL_TAGS as tagset
 
 
 class Server(BaseHTTPRequestHandler):
 
     def __init__(self, request, client_address, server):
         super().__init__(request, client_address, server)
+
+        ## Viterbi Setup
+
+        #self.tagged_sents = brown.tagged_sents(tagset='universal')
+        #self.tagged_words = brown.tagged_words(tagset='universal')
+        #self.pos_states = tagset
+        #self.pos_starts = viterbi.calc_start_state_probs(self.tagged_sents, self.pos_states)
+        #self.pos_trans = viterbi.calc_trans_probs(self.tagged_sents, self.pos_states)
+
 
     def fetch_book_entity_terms(self, book_title, entity):
         """ """
@@ -188,6 +204,21 @@ def main():
     server = HTTPServer((url, port), Server)
     print('Starting server at ' + url + ':' + str(port))
     server.serve_forever()
+
+    ## Initialise corpus
+    tagged_sents = brown.tagged_sents(tagset='universal')
+    tagged_words = brown.tagged_words(tagset='universal')
+
+    ## fetch tagset    
+    pos_states = tagset
+
+    ## calc HMM state probabilities.
+    pos_starts = viterbi.calc_start_state_probs(tagged_sents, pos_states)
+    pos_trans = viterbi.calc_trans_probs(tagged_sents, pos_states)
+    # pos_emit = calc_emit_probs(tagged_words, pos_states, pos_obs)
+    # tags = viterbi(pos_obs, pos_states, pos_starts, pos_trans, pos_emit)
+
+
 
 
 if __name__ == '__main__':
