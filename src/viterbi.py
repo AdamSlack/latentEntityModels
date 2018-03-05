@@ -1,6 +1,7 @@
 from nltk.corpus import brown
 from nltk.tag.mapping import _UNIVERSAL_TAGS as tagset
 from collections import defaultdict
+import argparse
 
 def max_transition(prev_states, states, curr, trans_p):
     """ 
@@ -131,6 +132,10 @@ def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, po
         
 def main():
 
+    parser = argparse.ArgumentParser(description="Viterbi Decoded HMM POS tagger.")
+    parser.add_argument('words', type=str, nargs='+', help="Word in the sentence to be tagged.")
+    args = parser.parse_args()
+    
     ##
     ## Main Init...
     ##
@@ -141,8 +146,11 @@ def main():
     
     print('Corpus Sentence Count:', len(tagged_sents))
     print('Corpus Word Count:', len(tagged_words))
-    
-    sent = ['Peter','went', 'on', 'a', 'walk', 'to', 'the', 'shops', '.']
+
+    sent = ['No', 'sentence', 'was', 'found', '.']
+    if len(args.words) != 0:
+        print('Parsed Args: ', args.words)
+        sent = args.words
     pos_obs = [ob.lower() for ob in sent]
 
     pos_states = tagset
@@ -151,22 +159,22 @@ def main():
     ## General Model Evaluation.
     ##
     #print('Calculating Training Set Starting probabilities')
-    pos_starts = calc_start_state_probs(training_sents, pos_states)
+    #pos_starts = calc_start_state_probs(training_sents, pos_states)
     #print('Training Set Starting Probabilities calculated')
 
     #print('Calculating Training Set Transition Probabilities')
-    pos_trans = calc_trans_probs(training_sents, pos_states)
+    #pos_trans = calc_trans_probs(training_sents, pos_states)
     #print('Training set Transition probabilities calcualted')
 
     #print('Calculating Training set Emission Probabilities')
-    pos_emit = calc_emit_probs(training_words, pos_states, [ob[0] for ob in test_words])
+    #pos_emit = calc_emit_probs(training_words, pos_states, [ob[0] for ob in test_words])
     #print('Training Set Emission Probabilities Calculated')
 
-    print('Evaluating Viterbi Decoded HMM')
-    score = evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit)
+    #print('Evaluating Viterbi Decoded HMM')
+    #score = evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit)
     #print('Viterbi Decoded HMM Evaluated')
 
-    print('Model Score:', str(score))
+    #print('Model Score:', str(score))
 
     ##
     ## Sentence Evaluation.
@@ -180,8 +188,10 @@ def main():
     print('Applying Model to Sentence: ' + ' '.join(sent))
     tags = viterbi(pos_obs, pos_states, pos_starts, pos_trans, pos_emit)
 
-    print('\t'.join(tags))
-    print('\t'.join(sent))
+    for i in range(0, len(tags)):
+        print('(Tag, Word):', tags[i] + '\t' + sent[i])
+    #print('\t'.join(tags))
+    #print('\t'.join(sent))
     
 
     
