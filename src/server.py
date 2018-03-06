@@ -199,15 +199,10 @@ class Server(BaseHTTPRequestHandler):
 
 def main():
     """ main """
-<<<<<<< HEAD
-    server = HTTPServer(('0.0.0.0', 8000), Server)
-    print('Starting server at http://0.0.0.0:80')
-=======
     port = 8000
     url = 'localhost'
     server = HTTPServer((url, port), Server)
     print('Starting server at ' + url + ':' + str(port))
->>>>>>> 1ed463325dd03306ea06f5ccde9fec621b28f9f2
     server.serve_forever()
 
     ## Initialise corpus
