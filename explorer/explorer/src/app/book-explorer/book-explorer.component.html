@@ -1,34 +1,40 @@
-<div class="container">
-  <div class="title">
-    📚 Books
+<div class="flexi">
+  
+  <div class="container">
+    <div class="title">
+      📚 Books
+      <input class="search"
+        [(ngModel)]="bookSearch"
+        (keyup)="filterBookTitles()"
+        placeholder="Search for a book">
+    </div>
+    <div class="entity-collection">
+      <table class="entity-collection">
+        <tr *ngFor="let title of filteredBookTitles" [ngClass]="(title==selectedBook)?'selected':''">
+          <td (click)="requestEntities(title); requestTopics(title);" class="entity">
+            {{title}}
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="entity-collection">
-    <table class="entity-collection">
-      <tr *ngFor="let title of bookTitles" [ngClass]="(title==selectedBook)?'selected':''">
-        <td (click)="requestEntities(title); requestTopics(title);">
-          {{title}}
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
 
-<div class="container">
-  <div class="title">
-    🕮 Topics
-  </div>
-  <div class="entity-collection">
-    <table class="entity-collection">
-      <tr *ngFor="let topic of topics" >
-        <td>
-          {{topic.id}}
-        </td>
-        <td>
-          {{topic.pct}}
-        </td>
-      </tr>
-    </table>
-  </div>
+  <div class="container">
+    <div class="title">
+      🕮 Topics
+    </div>
+    <div class="entity-collection">
+      <table class="entity-collection">
+        <tr *ngFor="let topic of topics" >
+          <td class="entity">
+            {{topic.id}}
+          </td>
+          <td class="entity">
+            {{topic.pct}}%
+          </td>
+        </tr>
+      </table>
+    </div>
 </div>
 
 <div class="container">
@@ -43,12 +49,17 @@
 <div class="container">
   <div class="title">
     👤 Entities
+    <input class="search" [(ngModel)]="entitySearch"(keyup)="filterEntities()" placeholder="Search for an entity">      
   </div>
   <div class="entity-collection">
     <table class="entity-collection">
-      <tr *ngFor="let entity of entities" [ngClass]="(entity==selectedEntity)?'selected':''">
-        <td (click)="requestEntityTerms(entity)">
+      <tr *ngFor="let entity of filteredEntities"
+         [ngClass]="(entity==selectedEntity)?'selected':''">
+        <td class="entity" (click)="requestEntityTerms(entity)">
           {{entity}}
+        </td>
+        <td class="add-to" (click)="trackEntity(entity)">
+          <div class="row-btn">+</div>
         </td>
       </tr>
     </table>
@@ -62,10 +73,10 @@
   <div class="entity-collection">
     <table class="entity-collection">
       <tr *ngFor="let term of terms">
-        <td>
+        <td class="entity">
           {{term.term}}
         </td>
-        <td>
+        <td class="entity">
             {{term.strength}}
         </td>
       </tr>
@@ -80,15 +91,53 @@
   <div class="entity-collection">
     <table class="entity-collection">
       <tr *ngFor="let topic of entityTopics">
-        <td>
-          {{topic.topicID}}
+        <td class="entity">
+          Topic {{topic.topicID}}
         </td>
-        <td>
-          {{topic.pct}}
+        <td class="entity">
+          {{topic.pct}}%
         </td>
       </tr>
     </table>
   </div>
 </div>
 
+<div class="container double">
+    <div class="title">
+      👥 Entity Comparisons
+    </div>
+    <div class="entity-collection">
+      <table class="entity-collection">
+        <tr>
+          <td class="">
+            Entity
+          </td>
+          <td class="" *ngFor="let n of [0,1,2,3,4,5,6,7,8,9]">
+            Topic {{n}}
+          </td>
+        </tr>
+        <tr *ngFor="let entity of trackedEntities">
+          <td class="">
+            {{entity.name}}
+          </td>
+          <td *ngFor="let topic of entity.topics"class="">
+            {{topic.pct}}
+          </td>
+          <td class="remove-from" (click)="untrackEntity(entity)">
+              <div class="row-btn">-</div>
+            </td>
+        </tr>
+      </table>
+    </div>
+</div>
 
+<div class="container">
+    <div class="title">
+        ☕ Blank        
+    </div>
+    <div class="entity-collection">
+      
+    </div>
+  </div>
+
+</div>
