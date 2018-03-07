@@ -11,10 +11,11 @@ import * as d3 from 'd3';
 export class TopicModelsComponent implements OnInit {
 
   public bookTitleSubscription : Subscription;
+  public topicIDSubscription : Subscription;
   public topicDisributionSubscriptions : Array<Subscription>;
   public topicDistributions : Array<{book: string, topics : Array<{topic_id: number, score: number}>}> = [];
   public sortKey : number = 0;
-  
+  public topicIDs : number[] = [];
 
   @ViewChild('chart') chart: ElementRef;
 
@@ -39,7 +40,7 @@ export class TopicModelsComponent implements OnInit {
     //   }
     // });
 
-    let topicIDs = [0,1,2,3,4,5,6,7,8,9];
+    let topicIDs = this.topicIDs;
     let books = this.topicDistributions.map((t) => t.book);
     let topicData = this.topicDistributions.map((t, idx) =>  {
       let scores = t.topics.map((t) => t.score)
@@ -143,16 +144,21 @@ export class TopicModelsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookTitleSubscription = this.api.requestBookTitles().subscribe((titleRes) => {
-      this.topicDisributionSubscriptions = titleRes.books.map((book) => {
-        return this.api.requestBookTopics(book).subscribe((bookRes) => {
-          this.topicDistributions.push(bookRes)
-          if(this.topicDistributions.length == titleRes.books.length){
-            this.buildDistributionFigure();
-          }
+    this.topicIDSubscription = this.api.requestTopicIDs().subscribe((res) => {
+      console.log(res);
+      this.topicIDs = res.topic_ids;
+      this.bookTitleSubscription = this.api.requestBookTitles().subscribe((titleRes) => {
+        this.topicDisributionSubscriptions = titleRes.books.map((book) => {
+          return this.api.requestBookTopics(book).subscribe((bookRes) => {
+            this.topicDistributions.push(bookRes)
+            if(this.topicDistributions.length == titleRes.books.length){
+              this.buildDistributionFigure();
+            }
+          });
         });
       });
     });
+    
   }
 
 }

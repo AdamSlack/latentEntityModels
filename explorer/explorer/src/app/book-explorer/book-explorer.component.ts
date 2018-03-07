@@ -39,8 +39,6 @@ export class BookExplorerComponent implements OnInit {
   private topicIDSubscription: Subscription;
   private topicTermSubscriptions: Array<Subscription> = [];
 
-
-
   constructor(public bookQuery : ExplorerApiService) {
 
   }
