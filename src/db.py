@@ -1,5 +1,9 @@
 import psycopg2 as pg
 
+#
+#
+#
+#
 def connect_to_db(host, dbname, user, password):
     """ Connect to Database returning pyscopg2 cursor object """
     try:
@@ -13,6 +17,10 @@ def connect_to_db(host, dbname, user, password):
     except:
         print('Unable to connect to DB')
 
+#
+#
+#
+#
 def insert_book_entity_term(db, book_title, entity, term, strength):
     """ Insert an entity-term for a book into the DB. """
     cursor = db.cursor()
@@ -29,18 +37,30 @@ def insert_book_entity_term(db, book_title, entity, term, strength):
     db.commit()
     return True
 
+#
+#
+#
+#
 def select_book_titles(db):
     """ Create a cursor pointing to all book titles"""
     cursor = db.cursor()
     cursor.execute("""select book_title from book_titles""")
     return cursor
 
+#
+#
+#
+#
 def select_topic_ids(db):
     """ Create a cursor returining all topic ids"""
     cursor = db.cursor()
     cursor.execute("""select distinct book_title from books""")
     return cursor
 
+#
+#
+#
+#
 def insert_book_topic_distribution(db, book, distributions):
     """ insert topic distribution scores for a given book into the database """
     cursor = db.cursor()
@@ -58,24 +78,40 @@ def insert_book_topic_distribution(db, book, distributions):
     db.commit()
     return True
 
+#
+#
+#
+#
 def select_book_topics(db, book_title):
     """ Create a cursor pointing to all book topics for a given book"""
     cursor = db.cursor()
     cursor.execute("""select * from book_topics where lower(book_title) = lower(%s)""", (book_title,))
     return cursor
 
+#
+#
+#
+#
 def select_topic_terms(db, topic_id):
     """ """
     cursor = db.cursor()
     cursor.execute("""select term, strength from topics where topic_id = %s""", (int(topic_id),))
     return cursor
 
+#
+#
+#
+#
 def select_topic_ids(db):
     """ """
     cursor = db.cursor()
     cursor.execute("""select distinct topic_id from topics""")
     return cursor
 
+#
+#
+#
+#
 def insert_topic_term(db, topic_id, term, strength):
     """ inserts the topic id and associated term """
     cursor = db.cursor()
@@ -92,6 +128,10 @@ def insert_topic_term(db, topic_id, term, strength):
     db.commit()
     return True
 
+#
+#
+#
+#
 def select_book_entities(db, book_title : 'str', full=False):
     """ create a cursor for all entities in the DB for a specified book """
     print('Selecting entities for book: ' + book_title)
@@ -102,6 +142,10 @@ def select_book_entities(db, book_title : 'str', full=False):
         cursor.execute("""select distinct entity from books where lower(book_title) = lower(%s)""", (book_title,))
     return cursor
 
+#
+#
+#
+#
 def select_book_entity_terms(db, book_title, entity):
     """ create a cursor for all terms in the DB for specified entity and book """
     cursor = db.cursor()
