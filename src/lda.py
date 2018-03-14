@@ -13,7 +13,7 @@ from collections import defaultdict
 
 n_samples = 2000
 n_features = 1000
-n_topics = 100
+n_topics = 10
 n_top_words = 1000
 
 #
