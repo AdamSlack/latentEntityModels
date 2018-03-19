@@ -53,12 +53,25 @@ E.~Brill.
   processing: A case study in part-of-speech tagging.
 \newblock {\em Comput. Linguist.}, 21(4):543--565, Dec. 1995.
 
+\bibitem{Chang2009-jr}
+J.~Chang, S.~Gerrish, C.~Wang, J.~L. Boyd-graber, and D.~M. Blei.
+\newblock Reading tea leaves: How humans interpret topic models.
+\newblock In Y.~Bengio, D.~Schuurmans, J.~D. Lafferty, C.~K.~I. Williams, and
+  A.~Culotta, editors, {\em Advances in Neural Information Processing Systems
+  22}, pages 288--296. Curran Associates, Inc., 2009.
+
 \bibitem{Cutting1992-vx}
 D.~Cutting, J.~Kupiec, J.~Pedersen, and P.~Sibun.
 \newblock A practical part-of-speech tagger.
 \newblock In {\em Proceedings of the Third Conference on Applied Natural
   Language Processing}, ANLC '92, pages 133--140, Stroudsburg, PA, USA, 1992.
   Association for Computational Linguistics.
+
+\bibitem{Deerwester1989-yl}
+S.~C. Deerwester, S.~T. Dumais, G.~W. Furnas, R.~A. Harshman, T.~K. Landauer,
+  K.~E. Lochbaum, and L.~A. Streeter.
+\newblock Computer information retrieval using latent semantic structure, June
+  1989.
 
 \bibitem{Feng2010-dp}
 Y.~Feng and M.~Lapata.
@@ -150,6 +163,13 @@ E.~Tjong~Kim and F.~De~Meulder.
 \newblock Introduction to the {CoNLL-2003} shared task: {Language-Independent}
   named entity recognition.
 \newblock June 2003.
+
+\bibitem{Xie2015-wv}
+P.~Xie, D.~Yang, and E.~Xing.
+\newblock Incorporating word correlation knowledge into topic modeling.
+\newblock In {\em Proceedings of the 2015 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies}, pages 725--734, 2015.
 
 \bibitem{Zhang2011-dn}
 T.~Zhang, Z.-M. Lu, K.~L. Chan, and Z.~Li.
