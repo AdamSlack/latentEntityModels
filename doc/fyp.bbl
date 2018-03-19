@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem{WebServer-lc}
+Web server survey | netcraft.
+\newblock \url{https://news.netcraft.com/archives/category/web-server-survey/}.
+\newblock Accessed: 2017-10-16.
+
+\bibitem{Brill1992-hh}
+E.~Brill.
+\newblock A simple rule-based part of speech tagger.
+\newblock In {\em Proceedings of the Workshop on Speech and Natural Language},
+  HLT '91, pages 112--116, Stroudsburg, PA, USA, 1992. Association for
+  Computational Linguistics.
+
+\bibitem{Brill1995-sr}
+E.~Brill.
+\newblock Transformation-based error-driven learning and natural language
+  processing: A case study in part-of-speech tagging.
+\newblock {\em Comput. Linguist.}, 21(4):543--565, Dec. 1995.
+
+\bibitem{Cutting1992-vx}
+D.~Cutting, J.~Kupiec, J.~Pedersen, and P.~Sibun.
+\newblock A practical part-of-speech tagger.
+\newblock In {\em Proceedings of the Third Conference on Applied Natural
+  Language Processing}, ANLC '92, pages 133--140, Stroudsburg, PA, USA, 1992.
+  Association for Computational Linguistics.
+
+\bibitem{Huang2009-xb}
+H.~Huang and X.~Zhang.
+\newblock Part-of-speech tagger based on maximum entropy model.
+\newblock In {\em 2009 2nd {IEEE} International Conference on Computer Science
+  and Information Technology}, pages 26--29, Aug. 2009.
+
+\bibitem{Leech1994-rh}
+G.~Leech, R.~Garside, and M.~Bryant.
+\newblock {CLAWS4}: The tagging of the british national corpus.
+\newblock In {\em Proceedings of the 15th Conference on Computational
+  Linguistics - Volume 1}, COLING '94, pages 622--628, Stroudsburg, PA, USA,
+  1994. Association for Computational Linguistics.
+
+\end{thebibliography}
