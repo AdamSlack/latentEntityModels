@@ -6,10 +6,10 @@
 \contentsline {section}{\numberline {2.1}Introduction}{4}
 \contentsline {section}{\numberline {2.2}Part-Of-Speech Tagging}{5}
 \contentsline {section}{\numberline {2.3}POS Tagging Techiques and Tools}{6}
-\contentsline {section}{\numberline {2.4}Named Entity Recognition}{6}
-\contentsline {subsection}{\numberline {2.4.1}NER Techniques}{6}
-\contentsline {subsection}{\numberline {2.4.2}NER Tools}{6}
-\contentsline {section}{\numberline {2.5}Topic Models}{6}
-\contentsline {subsection}{\numberline {2.5.1}Latent Semantic Analysis}{6}
-\contentsline {subsection}{\numberline {2.5.2}Probabilistic Latent Semantic Indexing}{6}
-\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{6}
+\contentsline {section}{\numberline {2.4}Named Entity Recognition}{7}
+\contentsline {subsection}{\numberline {2.4.1}NER Techniques}{7}
+\contentsline {subsection}{\numberline {2.4.2}NER Tools}{8}
+\contentsline {section}{\numberline {2.5}Topic Models}{9}
+\contentsline {subsection}{\numberline {2.5.1}Latent Semantic Analysis}{9}
+\contentsline {subsection}{\numberline {2.5.2}Probabilistic Latent Semantic Indexing}{10}
+\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{10}
