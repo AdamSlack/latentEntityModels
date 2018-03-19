@@ -12,12 +12,12 @@
 \contentsline {section}{\numberline {2.5}Topic Models}{10}
 \contentsline {subsection}{\numberline {2.5.1}Latent Semantic Analysis}{10}
 \contentsline {subsection}{\numberline {2.5.2}Probabilistic Latent Semantic Indexing}{11}
-\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{11}
-\contentsline {chapter}{\numberline {3}New Ideas}{12}
-\contentsline {section}{\numberline {3.1}Introduction}{12}
-\contentsline {chapter}{\numberline {4}Prototyping}{13}
-\contentsline {section}{\numberline {4.1}Introduction}{13}
-\contentsline {chapter}{\numberline {5}Results and Evaluation}{14}
-\contentsline {section}{\numberline {5.1}Introduction}{14}
-\contentsline {chapter}{\numberline {6}Conclusion}{15}
-\contentsline {section}{\numberline {6.1}Introduction}{15}
+\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{12}
+\contentsline {chapter}{\numberline {3}New Ideas}{15}
+\contentsline {section}{\numberline {3.1}Introduction}{15}
+\contentsline {chapter}{\numberline {4}Prototyping}{16}
+\contentsline {section}{\numberline {4.1}Introduction}{16}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{17}
+\contentsline {section}{\numberline {5.1}Introduction}{17}
+\contentsline {chapter}{\numberline {6}Conclusion}{18}
+\contentsline {section}{\numberline {6.1}Introduction}{18}

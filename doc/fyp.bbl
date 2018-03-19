@@ -23,6 +23,13 @@ O.~Bender, F.~J. Och, and H.~Ney.
   Learning at {HLT-NAACL} 2003 - Volume 4}, CONLL '03, pages 148--151,
   Stroudsburg, PA, USA, 2003. Association for Computational Linguistics.
 
+\bibitem{Biro2008-ld}
+I.~B{\'\i}r{\'o}, J.~Szab{\'o}, and A.~A. Bencz{\'u}r.
+\newblock Latent dirichlet allocation in web spam filtering.
+\newblock In {\em Proceedings of the 4th International Workshop on Adversarial
+  Information Retrieval on the Web}, AIRWeb '08, pages 29--32, New York, NY,
+  USA, 2008. ACM.
+
 \bibitem{Blei2003-dj}
 D.~M. Blei, A.~Y. Ng, and M.~I. Jordan.
 \newblock Latent dirichlet allocation.
@@ -53,6 +60,14 @@ D.~Cutting, J.~Kupiec, J.~Pedersen, and P.~Sibun.
   Language Processing}, ANLC '92, pages 133--140, Stroudsburg, PA, USA, 1992.
   Association for Computational Linguistics.
 
+\bibitem{Feng2010-dp}
+Y.~Feng and M.~Lapata.
+\newblock Topic models for image annotation and text illustration.
+\newblock In {\em Human Language Technologies: The 2010 Annual Conference of
+  the North American Chapter of the Association for Computational Linguistics},
+  HLT '10, pages 831--839, Stroudsburg, PA, USA, 2010. Association for
+  Computational Linguistics.
+
 \bibitem{Finkel2005-uz}
 J.~R. Finkel, T.~Grenager, and C.~Manning.
 \newblock Incorporating non-local information into information extraction
@@ -60,11 +75,25 @@ J.~R. Finkel, T.~Grenager, and C.~Manning.
 \newblock {\em Proceedings of the 43nd Annual Meeting of the Association for
   Computational Linguistics (ACL 2005)}, pages 363--370, 2005.
 
+\bibitem{Hofmann1999-qb}
+T.~Hofmann.
+\newblock Probabilistic latent semantic indexing.
+\newblock In {\em Proceedings of the 22Nd Annual International {ACM} {SIGIR}
+  Conference on Research and Development in Information Retrieval}, SIGIR '99,
+  pages 50--57, New York, NY, USA, 1999. ACM.
+
 \bibitem{Huang2009-xb}
 H.~Huang and X.~Zhang.
 \newblock Part-of-speech tagger based on maximum entropy model.
 \newblock In {\em 2009 2nd {IEEE} International Conference on Computer Science
   and Information Technology}, pages 26--29, Aug. 2009.
+
+\bibitem{Kumar2004-da}
+C.~A. Kumar and S.~Srinivas.
+\newblock On the performance of latent semantic indexing-based information
+  retrieval.
+\newblock {\em CIT. Journal of Computing and Information Technology},
+  17(3):259--264, Oct. 2004.
 
 \bibitem{Lafferty2001-ab}
 J.~D. Lafferty, A.~McCallum, and F.~C.~N. Pereira.
@@ -73,6 +102,11 @@ J.~D. Lafferty, A.~McCallum, and F.~C.~N. Pereira.
 \newblock In {\em Proceedings of the Eighteenth International Conference on
   Machine Learning}, pages 282--289. Morgan Kaufmann Publishers Inc., June
   2001.
+
+\bibitem{Landauer1998-kx}
+T.~K. Landauer, P.~W. Foltz, and D.~Laham.
+\newblock An introduction to latent semantic analysis.
+\newblock {\em Discourse Process.}, 25(2-3):259--284, Jan. 1998.
 
 \bibitem{Leech1994-rh}
 G.~Leech, R.~Garside, and M.~Bryant.
@@ -116,6 +150,13 @@ E.~Tjong~Kim and F.~De~Meulder.
 \newblock Introduction to the {CoNLL-2003} shared task: {Language-Independent}
   named entity recognition.
 \newblock June 2003.
+
+\bibitem{Zhang2011-dn}
+T.~Zhang, Z.-M. Lu, K.~L. Chan, and Z.~Li.
+\newblock Automatic image annotation and retrieval using the latent dirichlet
+  allocation model.
+\newblock {\em IJCSES International Journal of Computer Sciences and
+  Engineering Systems}, 5(1), 2011.
 
 \bibitem{Zhou2002-st}
 G.~Zhou and J.~Su.
