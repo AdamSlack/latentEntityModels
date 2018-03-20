@@ -15,16 +15,16 @@
 \contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{10}
 \contentsline {section}{\numberline {2.6}Evaluating Topic Models}{12}
 \contentsline {subsection}{\numberline {2.6.1}Interpretability and Coherence}{12}
-\contentsline {subsection}{\numberline {2.6.2}Comparing Models}{13}
-\contentsline {subsection}{\numberline {2.6.3}Perplexity}{14}
-\contentsline {section}{\numberline {2.7}Entitiy Modeling}{14}
-\contentsline {subsection}{\numberline {2.7.1}Entity Linking}{14}
-\contentsline {subsection}{\numberline {2.7.2}Entity Topic Models}{14}
-\contentsline {chapter}{\numberline {3}New Ideas}{15}
-\contentsline {section}{\numberline {3.1}Introduction}{15}
-\contentsline {chapter}{\numberline {4}Prototyping}{16}
-\contentsline {section}{\numberline {4.1}Introduction}{16}
-\contentsline {chapter}{\numberline {5}Results and Evaluation}{17}
-\contentsline {section}{\numberline {5.1}Introduction}{17}
-\contentsline {chapter}{\numberline {6}Conclusion}{18}
-\contentsline {section}{\numberline {6.1}Introduction}{18}
+\contentsline {subsection}{\numberline {2.6.2}Comparing Models}{14}
+\contentsline {subsection}{\numberline {2.6.3}Perplexity}{15}
+\contentsline {section}{\numberline {2.7}Entitiy Modeling}{15}
+\contentsline {subsection}{\numberline {2.7.1}Entity Linking}{15}
+\contentsline {subsection}{\numberline {2.7.2}Entity Topic Models}{15}
+\contentsline {chapter}{\numberline {3}New Ideas}{16}
+\contentsline {section}{\numberline {3.1}Introduction}{16}
+\contentsline {chapter}{\numberline {4}Prototyping}{17}
+\contentsline {section}{\numberline {4.1}Introduction}{17}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{18}
+\contentsline {section}{\numberline {5.1}Introduction}{18}
+\contentsline {chapter}{\numberline {6}Conclusion}{19}
+\contentsline {section}{\numberline {6.1}Introduction}{19}

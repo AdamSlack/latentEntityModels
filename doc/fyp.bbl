@@ -154,10 +154,25 @@ A.~McCallum and W.~Li.
   Learning at {HLT-NAACL} 2003 - Volume 4}, CONLL '03, pages 188--191,
   Stroudsburg, PA, USA, 2003. Association for Computational Linguistics.
 
+\bibitem{Morstatter2016-co}
+F.~Morstatter and H.~Liu.
+\newblock A novel measure for coherence in statistical topic models.
+\newblock In {\em Proceedings of the 54th Annual Meeting of the Association for
+  Computational Linguistics (Volume 2: Short Papers)}, volume~2, pages
+  543--548, 2016.
+
 \bibitem{Nadeau2007-tp}
 D.~Nadeau and S.~Sekine.
 \newblock A survey of named entity recognition and classification.
 \newblock {\em Lingvistic{\ae} Investigationes}, 30(1):3--26, Jan. 2007.
+
+\bibitem{Newman2010-op}
+D.~Newman, J.~H. Lau, K.~Grieser, and T.~Baldwin.
+\newblock Automatic evaluation of topic coherence.
+\newblock In {\em Human Language Technologies: The 2010 Annual Conference of
+  the North American Chapter of the Association for Computational Linguistics},
+  HLT '10, pages 100--108, Stroudsburg, PA, USA, 2010. Association for
+  Computational Linguistics.
 
 \bibitem{Ratinov2009-gw}
 L.~Ratinov and D.~Roth.

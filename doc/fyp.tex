@@ -16,6 +16,7 @@
 \usepackage{dsfont}
 \usepackage{graphicx}
 \graphicspath{{images/}}
+\usepackage{mathtools}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
@@ -157,12 +158,19 @@ Topic models are machine representations of word groups that have been deemed to
 \subsection{Interpretability and Coherence}
 For human interpretable topic models, it is necessary that the terms within each topic be semantically related, or that it is clear why words in a topic co-exist. Whilst attempts have been made to utilise machine learning methods in the production of coherent topic models, the evaluation of them is somewhat lax. Whilst on the surface, models appear to be more coherent with the inclusion of methods like Markov Random Fields, the coherence is often done subjectively using the opinions of juman judges.~\cite{Xie2015-wv} Even though the use of human judges may be an imprecise method of evaluation, it does provide insight into the interpretability of derived models. For tools that aim to provide users with insight into large corpora of data, interpretability of the results is a key element defining the success of the tool. With low coherence of topics and thus low levels of interpretability, communicating any extracted information becomes increasingly difficult.
 
-Assessing the interpretability and coherence of topic models has been somewhat formalised through the proposal of a ‘word intrusion’ and ‘topic intrusion’ tests. The word intrusion test assesses the coherence of a topic by introducing words that don’t belong in a topic and asking humans to identify the misplaced word. A Topic Intrusion test is performed by introducing an incorrect topic and asking humans to identify the misplaced topic. It was found that in cases where topics are incoherent or difficult to interpret, that humans would tend to choose a word seemingly at random.~\cite{Chang2009-jr}.
+Assessing the interpretability and coherence of topic models has been somewhat formalised through the proposal of a ‘word intrusion’ and ‘topic intrusion’ tests. The word intrusion test assesses the coherence of a topic by introducing words that don’t belong in a topic and asking humans to identify the misplaced word. A Topic Intrusion test is performed by introducing an incorrect topic and asking humans to identify the misplaced topic. It was found that in cases where topics are incoherent or difficult to interpret, that humans would tend to choose a word seemingly at random.~\cite{Chang2009-jr}. This method has been extended by asking humans to select two intruder words, where only one of them is actually an intrusion. The idea is that in well defined topics not only will the correct intruding word be selected, but also there will be no means for individuals to distinguish between the strength of belonging for the remaining words. If participants can't decide on what is an intruding word, then there should be a seemingly randomised selection.~\cite{Morstatter2016-co} Both approaches result in different assessments of any derived topics, there is no indication however as to which metric is a better estimate of the coherence of topics.
 
-The precision metrics defined for word and topic intrusion tests may be of value when evaluating the quality of derived Entity Models, though they rely heavily on human evaluation of topics. Use of judges is time consuming and potentially unreliable. A more formal method of evaluating coherence was proposed by comparing word vectors formed in a semantic space.~\cite{Aletras2013-oo}
+The precision metrics defined for word and topic intrusion tests may be of value when evaluating the quality of derived Entity Models, though they rely heavily on human evaluation of topics. Use of judges is time consuming and potentially unreliable. A more formal method of evaluating coherence was proposed by comparing word vectors formed in a semantic space built from wikipedia articles. By considering the distributional similarity of word vectors formed by pairs of words in topics, the semantic cohesion of topics can be estimated using one of a few different metrics. When considering the inter-rater agreement between the calculations and human raters, the spearman rank correllation values had an average of  \(\bar{x}=0.77\) and a standard deviation of\(,\sigma=0.04\). The relative aggreement between each method of evaluation suggests that any of them could serve as valuable means of evaluating the coherence of topics. ~\cite{Aletras2013-oo}
 
-By considering the distributional similarity of word vectors formed by pairs of words in topics, the semantic cohesion of topics can be estimated using one of a few different metrics.
+Given a topic \(T = {w_1,...,w_n}\), the coherence of that topic is defined as the mean similarity of each possible word pairing \(Sim(w_i, w_j)\) where \(w_i, w_j \in T\).~\cite{Newman2010-op}
 
+% NOTE: {n \choose m} is a combinatorics expression for the total number of possible of m pairings in a set of n elements 
+
+\[
+  Coherence_{sim}(T)=\frac{\underset{i+1<j<n}{\sum _{1<i<n-1}}Sim(w_i, w_j)}{{n \choose 2}}
+\]
+
+The similarity of two words \(Sim(w_i,w_j)\) could be one of many measures, including the cosine of the word vectors, or the jaccard coefficient. 
 %The precision of a topic \(k\) is defined as the number of correctly identified intruding word over the total number of intruding words. 
 %
 %$$P_{k}^{m} = \sum_{s} \mathds{1}(i_{k,s}^{m} = \omega_{k}^{m})/S$$
@@ -186,10 +194,10 @@ When regarding topics as a \(k-dimensional\) model, visualising the topic space 
 These visualisations might be effective at explaining why a perticular model performs in a certain way at some secondary task, or it might be useful for identifying traits of models that ar valuable for perticular tasks. However, the visualisations don't provide any quantitative insight into how one model may perform when compared to another.
 
 \subsection{Perplexity}
-Perplexity is a commonly used metric accross topic modelling literature, and is an estimate of how well a model reduces a document
+Perplexity is a commonly used metric accross topic modelling literature, and is an estimate of how well a model reduces a document. 
 
 \section{Entitiy Modeling}
-Entity Modelling exists as a field of study aside from topic modelling. However this study is considering the use of topic models
+Entity Modelling exists as a field of study aside from topic modelling. However this study is considering the use of topic models as a means of describing and relating entities within a corpus.
 
 \subsection{Entity Linking}
 
