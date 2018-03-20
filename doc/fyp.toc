@@ -7,20 +7,24 @@
 \contentsline {section}{\numberline {2.2}Part-Of-Speech Tagging}{5}
 \contentsline {section}{\numberline {2.3}POS Tagging Techiques and Tools}{5}
 \contentsline {section}{\numberline {2.4}Named Entity Recognition}{6}
-\contentsline {subsection}{\numberline {2.4.1}NER Techniques}{6}
+\contentsline {subsection}{\numberline {2.4.1}NER Techniques}{7}
 \contentsline {subsection}{\numberline {2.4.2}NER Tools}{7}
-\contentsline {section}{\numberline {2.5}Topic Models}{7}
-\contentsline {subsection}{\numberline {2.5.1}Latent Semantic Analysis}{7}
-\contentsline {subsection}{\numberline {2.5.2}Probabilistic Latent Semantic Indexing}{8}
-\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{8}
-\contentsline {section}{\numberline {2.6}Evaluating Topic Models}{10}
-\contentsline {subsection}{\numberline {2.6.1}Interpretability and Coherence}{10}
-\contentsline {subsection}{\numberline {2.6.2}Comparing Models}{11}
-\contentsline {chapter}{\numberline {3}New Ideas}{13}
-\contentsline {section}{\numberline {3.1}Introduction}{13}
-\contentsline {chapter}{\numberline {4}Prototyping}{14}
-\contentsline {section}{\numberline {4.1}Introduction}{14}
-\contentsline {chapter}{\numberline {5}Results and Evaluation}{15}
-\contentsline {section}{\numberline {5.1}Introduction}{15}
-\contentsline {chapter}{\numberline {6}Conclusion}{16}
-\contentsline {section}{\numberline {6.1}Introduction}{16}
+\contentsline {section}{\numberline {2.5}Topic Models}{8}
+\contentsline {subsection}{\numberline {2.5.1}Latent Semantic Analysis}{9}
+\contentsline {subsection}{\numberline {2.5.2}Probabilistic Latent Semantic Indexing}{9}
+\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{10}
+\contentsline {section}{\numberline {2.6}Evaluating Topic Models}{12}
+\contentsline {subsection}{\numberline {2.6.1}Interpretability and Coherence}{12}
+\contentsline {subsection}{\numberline {2.6.2}Comparing Models}{13}
+\contentsline {subsection}{\numberline {2.6.3}Perplexity}{14}
+\contentsline {section}{\numberline {2.7}Entitiy Modeling}{14}
+\contentsline {subsection}{\numberline {2.7.1}Entity Linking}{14}
+\contentsline {subsection}{\numberline {2.7.2}Entity Topic Models}{14}
+\contentsline {chapter}{\numberline {3}New Ideas}{15}
+\contentsline {section}{\numberline {3.1}Introduction}{15}
+\contentsline {chapter}{\numberline {4}Prototyping}{16}
+\contentsline {section}{\numberline {4.1}Introduction}{16}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{17}
+\contentsline {section}{\numberline {5.1}Introduction}{17}
+\contentsline {chapter}{\numberline {6}Conclusion}{18}
+\contentsline {section}{\numberline {6.1}Introduction}{18}

@@ -40,7 +40,7 @@
 % TABLE OF CONTENTS - SPACING CHANGE, TOC, SPACING CHANGE
 \renewcommand{\baselinestretch}{0.5}\normalsize
 \tableofcontents
-\renewcommand{\baselinestretch}{1.5}\normalsize
+\renewcommand{\baselinestretch}{2.0}\normalsize
 
 %
 %
@@ -161,7 +161,7 @@ Assessing the interpretability and coherence of topic models has been somewhat f
 
 The precision metrics defined for word and topic intrusion tests may be of value when evaluating the quality of derived Entity Models, though they rely heavily on human evaluation of topics. Use of judges is time consuming and potentially unreliable. A more formal method of evaluating coherence was proposed by comparing word vectors formed in a semantic space.~\cite{Aletras2013-oo}
 
-By considering the distributional sim
+By considering the distributional similarity of word vectors formed by pairs of words in topics, the semantic cohesion of topics can be estimated using one of a few different metrics.
 
 %The precision of a topic \(k\) is defined as the number of correctly identified intruding word over the total number of intruding words. 
 %
@@ -185,6 +185,15 @@ When regarding topics as a \(k-dimensional\) model, visualising the topic space 
 
 These visualisations might be effective at explaining why a perticular model performs in a certain way at some secondary task, or it might be useful for identifying traits of models that ar valuable for perticular tasks. However, the visualisations don't provide any quantitative insight into how one model may perform when compared to another.
 
+\subsection{Perplexity}
+Perplexity is a commonly used metric accross topic modelling literature, and is an estimate of how well a model reduces a document
+
+\section{Entitiy Modeling}
+Entity Modelling exists as a field of study aside from topic modelling. However this study is considering the use of topic models
+
+\subsection{Entity Linking}
+
+\subsection{Entity Topic Models}
 
 %
 %
