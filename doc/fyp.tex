@@ -21,6 +21,10 @@
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
+
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
@@ -41,6 +45,7 @@
 % TABLE OF CONTENTS - SPACING CHANGE, TOC, SPACING CHANGE
 \renewcommand{\baselinestretch}{0.5}\normalsize
 \tableofcontents
+\listoffigures
 \renewcommand{\baselinestretch}{2.0}\normalsize
 
 %
@@ -139,7 +144,10 @@ The simplified process for generating LDA Models is as follows:\\
 \(3. For\, each\, of\, the\, N\, words\, w_n:\)\\
 {\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_n \sim Multinomial(\theta)  \)}\\
 {\hspace*{15mm} \(b)\, Choose\, a\, word\, w_n\, from\, P(w_n |z_n, \beta)\)}\\
-\hspace*{40mm} ENTER PLATE DIAGRAM HERE
+\begin{figure}
+
+  \caption{LDA Plate Notation\label{fig:lda_plate_notation}}}
+\end{figure}
 
 In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word wnis a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents will be known in this study, a more accurate estimation could be used.
 
@@ -162,7 +170,7 @@ Assessing the interpretability and coherence of topic models has been somewhat f
 
 The precision metrics defined for word and topic intrusion tests may be of value when evaluating the quality of derived Entity Models, though they rely heavily on human evaluation of topics. Use of judges is time consuming and potentially unreliable. A more formal method of evaluating coherence was proposed by comparing word vectors formed in a semantic space built from wikipedia articles. By considering the distributional similarity of word vectors formed by pairs of words in topics, the semantic cohesion of topics can be estimated using one of a few different metrics. When considering the inter-rater agreement between the calculations and human raters, the spearman rank correllation values had an average of  \(\bar{x}=0.77\) and a standard deviation of\(,\sigma=0.04\). The relative aggreement between each method of evaluation suggests that any of them could serve as valuable means of evaluating the coherence of topics. ~\cite{Aletras2013-oo}
 
-Given a topic \(T = {w_1,...,w_n}\), the coherence of that topic is defined as the mean similarity of each possible word pairing \(Sim(w_i, w_j)\) where \(w_i, w_j \in T\).~\cite{Newman2010-op}
+Given a topic \(T = {w_1,...,w_n}\), the coherence of that topic is defined as the mean similarity of each possible word pairing \(Sim(w_i, w_j)\) where \(w_i, w_j \in T\). The similarity of two words could be one of many measures, including the cosine of the word vectors, or the jaccard coefficient.~\cite{Newman2010-op}
 
 % NOTE: {n \choose m} is a combinatorics expression for the total number of possible of m pairings in a set of n elements 
 
@@ -170,7 +178,7 @@ Given a topic \(T = {w_1,...,w_n}\), the coherence of that topic is defined as t
   Coherence_{sim}(T)=\frac{\underset{i+1<j<n}{\sum _{1<i<n-1}}Sim(w_i, w_j)}{{n \choose 2}}
 \]
 
-The similarity of two words \(Sim(w_i,w_j)\) could be one of many measures, including the cosine of the word vectors, or the jaccard coefficient. 
+ 
 %The precision of a topic \(k\) is defined as the number of correctly identified intruding word over the total number of intruding words. 
 %
 %$$P_{k}^{m} = \sum_{s} \mathds{1}(i_{k,s}^{m} = \omega_{k}^{m})/S$$
@@ -179,8 +187,8 @@ The similarity of two words \(Sim(w_i,w_j)\) could be one of many measures, incl
 \subsection{Comparing Models}
 When evaluating topic models, it is often done from the perspective selecting the best topic model. This could be doen through the use of interpretability and coherence tests, or it could be done through a models performance at some secondary task.For exploratory purposes, visual means of comparison could also be used to explore the differences between models and methods.
 
-When regarding topics as a \(k-dimensional\) model, visualising the topic space can be challenging. One approach to comparing topic models is to look at the similarities between each topic in a pair of models. In the form of a bipartite graph, it is clear which topics in two models are conceptually similar. The bipartite graph in figure~\ref{fig:topic_modelling_comparisons} shows that even though two methods do have different conceptual topics, there are some topics in both that are somewhat similar. The similarities and differences between the two models are seen further if relationships between documents are plotted.The noticable difference between the two topic modelling methods made visiable in the visualisation is that LDA appears to form relations between the document clusters that LSA kept distinct.
-
+When regarding topics as a \(k-dimensional\) model, visualising the topic space can be challenging. One approach to comparing topic models is to look at the similarities between each topic in a pair of models. In the form of a bipartite graph, it is clear which topics in two models are conceptually similar. The bipartite graph in figure~\ref{fig:topic_modelling_comparisons} shows that even though two methods do have different conceptual topics, there are some topics in both that are somewhat similar. The similarities and differences between the two models are seen further if relationships between documents are plotted.The noticable difference between the two topic modelling methods made visiable in the visualisation is that LDA appears to form relations between the document clusters that LSA kept distinct.~\cite{Crossno2011-sn}
+\renewcommand{\baselinestretch}{0.5}\normalsize
 \begin{figure}[h]
   \begin{subfigure}
     \includegraphics[scale=0.20]{lda_lsa_topic_view}
@@ -188,8 +196,10 @@ When regarding topics as a \(k-dimensional\) model, visualising the topic space 
   \begin{subfigure}
     \includegraphics[scale=0.35]{lda_lsa_document_view}
   \end{subfigure}
-  \caption{(Left) Bipartite graph showing strength of conceptual similarity between topics in two models. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods ~\cite{Crossno2011-sn}  \label{fig:topic_modelling_comparisons}}
+  \caption{(Left) Bipartite topic conceptual similarity graph. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods \label{fig:topic_modelling_comparisons}}
 \end{figure}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+
 
 These visualisations might be effective at explaining why a perticular model performs in a certain way at some secondary task, or it might be useful for identifying traits of models that ar valuable for perticular tasks. However, the visualisations don't provide any quantitative insight into how one model may perform when compared to another.
 
