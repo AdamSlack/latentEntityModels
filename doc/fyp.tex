@@ -138,16 +138,22 @@ Latent Dirichlet Allocation (LDA) uses mixture models to generate a collection o
 
 For each document win a corpus \(D\), LDA produces a mixture model representing proportions of\(k\) topics for \(w\). Where each word \(w_n\) wof length \(N\), has a set  denoting the probability of \(w_n\) belonging to each of \(k\) topics. Collections of models could be compared conceptually to weighted groups produced by some clustering method.
 
-The simplified process for generating LDA Models is as follows:\\
+\renewcommand{\baselinestretch}{1.5}\normalsize
+The simplified process for generating LDA Models is as follows:
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
 \(1. Choose\, N \sim Poisson(\xi)\)\\
 \(2. Choose\, \theta \sim Dirichlet(\alpha)\)\\
 \(3. For\, each\, of\, the\, N\, words\, w_n:\)\\
 {\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_n \sim Multinomial(\theta)  \)}\\
 {\hspace*{15mm} \(b)\, Choose\, a\, word\, w_n\, from\, P(w_n |z_n, \beta)\)}\\
-\begin{figure}
 
+\begin{figure}[h]
+  
   \caption{LDA Plate Notation\label{fig:lda_plate_notation}}}
 \end{figure}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+
 
 In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word wnis a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents will be known in this study, a more accurate estimation could be used.
 
@@ -168,14 +174,14 @@ For human interpretable topic models, it is necessary that the terms within each
 
 Assessing the interpretability and coherence of topic models has been somewhat formalised through the proposal of a ‘word intrusion’ and ‘topic intrusion’ tests. The word intrusion test assesses the coherence of a topic by introducing words that don’t belong in a topic and asking humans to identify the misplaced word. A Topic Intrusion test is performed by introducing an incorrect topic and asking humans to identify the misplaced topic. It was found that in cases where topics are incoherent or difficult to interpret, that humans would tend to choose a word seemingly at random.~\cite{Chang2009-jr}. This method has been extended by asking humans to select two intruder words, where only one of them is actually an intrusion. The idea is that in well defined topics not only will the correct intruding word be selected, but also there will be no means for individuals to distinguish between the strength of belonging for the remaining words. If participants can't decide on what is an intruding word, then there should be a seemingly randomised selection.~\cite{Morstatter2016-co} Both approaches result in different assessments of any derived topics, there is no indication however as to which metric is a better estimate of the coherence of topics.
 
-The precision metrics defined for word and topic intrusion tests may be of value when evaluating the quality of derived Entity Models, though they rely heavily on human evaluation of topics. Use of judges is time consuming and potentially unreliable. A more formal method of evaluating coherence was proposed by comparing word vectors formed in a semantic space built from wikipedia articles. By considering the distributional similarity of word vectors formed by pairs of words in topics, the semantic cohesion of topics can be estimated using one of a few different metrics. When considering the inter-rater agreement between the calculations and human raters, the spearman rank correllation values had an average of  \(\bar{x}=0.77\) and a standard deviation of\(,\sigma=0.04\). The relative aggreement between each method of evaluation suggests that any of them could serve as valuable means of evaluating the coherence of topics. ~\cite{Aletras2013-oo}
+The precision metrics defined for word and topic intrusion tests may be of value when evaluating the quality of derived Entity Models, though they rely heavily on human evaluation of topics. Use of judges is time consuming and potentially unreliable. A more formal method of evaluating coherence was proposed by comparing word vectors formed in a semantic space built from wikipedia articles. By considering the distributional similarity of word vectors formed by pairs of words in topics, the semantic cohesion of topics can be estimated using one of a few different metrics. When considering the inter-rater agreement between the calculations and human raters, the spearmann rank correllation values had an average of  \(\bar{x}=0.77\) and a standard deviation of\(,\sigma=0.04\). The relative aggreement between each method of evaluation suggests that any of them could serve as valuable means of evaluating the coherence of topics. ~\cite{Aletras2013-oo}
 
 Given a topic \(T = {w_1,...,w_n}\), the coherence of that topic is defined as the mean similarity of each possible word pairing \(Sim(w_i, w_j)\) where \(w_i, w_j \in T\). The similarity of two words could be one of many measures, including the cosine of the word vectors, or the jaccard coefficient.~\cite{Newman2010-op}
 
 % NOTE: {n \choose m} is a combinatorics expression for the total number of possible of m pairings in a set of n elements 
 
 \[
-  Coherence_{sim}(T)=\frac{\underset{i+1<j<n}{\sum _{1<i<n-1}}Sim(w_i, w_j)}{{n \choose 2}}
+  Coherence_{sim}(T)=\frac{\underset{i+1<j<n}{\underset{1<i<n-1}{\sum}}Sim(w_i, w_j)}{{n \choose 2}}
 \]
 
  
@@ -188,6 +194,7 @@ Given a topic \(T = {w_1,...,w_n}\), the coherence of that topic is defined as t
 When evaluating topic models, it is often done from the perspective selecting the best topic model. This could be doen through the use of interpretability and coherence tests, or it could be done through a models performance at some secondary task.For exploratory purposes, visual means of comparison could also be used to explore the differences between models and methods.
 
 When regarding topics as a \(k-dimensional\) model, visualising the topic space can be challenging. One approach to comparing topic models is to look at the similarities between each topic in a pair of models. In the form of a bipartite graph, it is clear which topics in two models are conceptually similar. The bipartite graph in figure~\ref{fig:topic_modelling_comparisons} shows that even though two methods do have different conceptual topics, there are some topics in both that are somewhat similar. The similarities and differences between the two models are seen further if relationships between documents are plotted.The noticable difference between the two topic modelling methods made visiable in the visualisation is that LDA appears to form relations between the document clusters that LSA kept distinct.~\cite{Crossno2011-sn}
+
 \renewcommand{\baselinestretch}{0.5}\normalsize
 \begin{figure}[h]
   \begin{subfigure}
@@ -245,6 +252,7 @@ Entity Modelling exists as a field of study aside from topic modelling. However 
 \chapter{Conclusion}
 \section{Introduction}
 
-\bibliographystyle{abbrv}
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\bibliographystyle{unsrt}
 \bibliography{./biblio}
 \end{document}

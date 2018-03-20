@@ -1,216 +1,217 @@
 \begin{thebibliography}{10}
 
-\bibitem{noauthor_undated-ik}
-The stanford natural language processing group.
-\newblock \url{https://nlp.stanford.edu/projects/project-ner.shtml}.
-\newblock Accessed: 2018-1-10.
-
 \bibitem{WebServer-lc}
 Web server survey | netcraft.
 \newblock \url{https://news.netcraft.com/archives/category/web-server-survey/}.
 \newblock Accessed: 2017-10-16.
 
-\bibitem{Aletras2013-oo}
-N.~Aletras and M.~Stevenson.
-\newblock Evaluating topic coherence using distributional semantics.
-\newblock In {\em Proceedings of the 10th International Conference on
-  Computational Semantics ({IWCS} 2013)--Long Papers}, pages 13--22.
-  aclweb.org, 2013.
-
-\bibitem{Atdag2013-qo}
-S.~Atda{\u g} and V.~Labatut.
-\newblock A comparison of named entity recognition tools applied to
-  biographical texts.
-\newblock Aug. 2013.
-
-\bibitem{Bender2003-lc}
-O.~Bender, F.~J. Och, and H.~Ney.
-\newblock Maximum entropy models for named entity recognition.
-\newblock In {\em Proceedings of the Seventh Conference on Natural Language
-  Learning at {HLT-NAACL} 2003 - Volume 4}, CONLL '03, pages 148--151,
-  Stroudsburg, PA, USA, 2003. Association for Computational Linguistics.
-
-\bibitem{Biro2008-ld}
-I.~B{\'\i}r{\'o}, J.~Szab{\'o}, and A.~A. Bencz{\'u}r.
-\newblock Latent dirichlet allocation in web spam filtering.
-\newblock In {\em Proceedings of the 4th International Workshop on Adversarial
-  Information Retrieval on the Web}, AIRWeb '08, pages 29--32, New York, NY,
-  USA, 2008. ACM.
-
-\bibitem{Blei2003-dj}
-D.~M. Blei, A.~Y. Ng, and M.~I. Jordan.
-\newblock Latent dirichlet allocation.
-\newblock {\em J. Mach. Learn. Res.}, 3(Jan):993--1022, 2003.
-
-\bibitem{Borthwick1999-tg}
-A.~Borthwick and R.~Grishman.
-\newblock A maximum entropy approach to named entity recognition.
-\newblock 1999.
+\bibitem{Brill1995-sr}
+Eric Brill.
+\newblock Transformation-based error-driven learning and natural language
+  processing: A case study in part-of-speech tagging.
+\newblock {\em Comput. Linguist.}, 21(4):543--565, December 1995.
 
 \bibitem{Brill1992-hh}
-E.~Brill.
+Eric Brill.
 \newblock A simple rule-based part of speech tagger.
 \newblock In {\em Proceedings of the Workshop on Speech and Natural Language},
   HLT '91, pages 112--116, Stroudsburg, PA, USA, 1992. Association for
   Computational Linguistics.
 
-\bibitem{Brill1995-sr}
-E.~Brill.
-\newblock Transformation-based error-driven learning and natural language
-  processing: A case study in part-of-speech tagging.
-\newblock {\em Comput. Linguist.}, 21(4):543--565, Dec. 1995.
-
-\bibitem{Chang2009-jr}
-J.~Chang, S.~Gerrish, C.~Wang, J.~L. Boyd-graber, and D.~M. Blei.
-\newblock Reading tea leaves: How humans interpret topic models.
-\newblock In Y.~Bengio, D.~Schuurmans, J.~D. Lafferty, C.~K.~I. Williams, and
-  A.~Culotta, editors, {\em Advances in Neural Information Processing Systems
-  22}, pages 288--296. Curran Associates, Inc., 2009.
-
-\bibitem{Crossno2011-sn}
-P.~J. Crossno, A.~T. Wilson, T.~M. Shead, and D.~M. Dunlavy.
-\newblock {TopicView}: Visually comparing topic models of text collections.
-\newblock In {\em 2011 {IEEE} 23rd International Conference on Tools with
-  Artificial Intelligence}, pages 936--943, Nov. 2011.
+\bibitem{Huang2009-xb}
+H~Huang and X~Zhang.
+\newblock Part-of-speech tagger based on maximum entropy model.
+\newblock In {\em 2009 2nd {IEEE} International Conference on Computer Science
+  and Information Technology}, pages 26--29, August 2009.
 
 \bibitem{Cutting1992-vx}
-D.~Cutting, J.~Kupiec, J.~Pedersen, and P.~Sibun.
+Doug Cutting, Julian Kupiec, Jan Pedersen, and Penelope Sibun.
 \newblock A practical part-of-speech tagger.
 \newblock In {\em Proceedings of the Third Conference on Applied Natural
   Language Processing}, ANLC '92, pages 133--140, Stroudsburg, PA, USA, 1992.
   Association for Computational Linguistics.
 
-\bibitem{Deerwester1989-yl}
-S.~C. Deerwester, S.~T. Dumais, G.~W. Furnas, R.~A. Harshman, T.~K. Landauer,
-  K.~E. Lochbaum, and L.~A. Streeter.
-\newblock Computer information retrieval using latent semantic structure, June
-  1989.
+\bibitem{Leech1994-rh}
+Geoffrey Leech, Roger Garside, and Michael Bryant.
+\newblock {CLAWS4}: The tagging of the british national corpus.
+\newblock In {\em Proceedings of the 15th Conference on Computational
+  Linguistics - Volume 1}, COLING '94, pages 622--628, Stroudsburg, PA, USA,
+  1994. Association for Computational Linguistics.
 
-\bibitem{Feng2010-dp}
-Y.~Feng and M.~Lapata.
-\newblock Topic models for image annotation and text illustration.
-\newblock In {\em Human Language Technologies: The 2010 Annual Conference of
-  the North American Chapter of the Association for Computational Linguistics},
-  HLT '10, pages 831--839, Stroudsburg, PA, USA, 2010. Association for
-  Computational Linguistics.
+\bibitem{Ratnaparkhi1996-oa}
+A~Ratnaparkhi.
+\newblock A maximum entropy model for part-of-speech tagging.
+\newblock {\em of the conference on empirical methods in …}, 1996.
 
-\bibitem{Finkel2005-uz}
-J.~R. Finkel, T.~Grenager, and C.~Manning.
-\newblock Incorporating non-local information into information extraction
-  systems by gibbs sampling.
-\newblock {\em Proceedings of the 43nd Annual Meeting of the Association for
-  Computational Linguistics (ACL 2005)}, pages 363--370, 2005.
+\bibitem{Malecha2010-fl}
+G~Malecha and I~Smith.
+\newblock Maximum entropy part-of-speech tagging in {NLTK}.
+\newblock {\em unpublished course-related report}, 2010.
 
-\bibitem{Hofmann1999-qb}
-T.~Hofmann.
-\newblock Probabilistic latent semantic indexing.
-\newblock In {\em Proceedings of the 22Nd Annual International {ACM} {SIGIR}
-  Conference on Research and Development in Information Retrieval}, SIGIR '99,
-  pages 50--57, New York, NY, USA, 1999. ACM.
+\bibitem{Nadeau2007-tp}
+David Nadeau and Satoshi Sekine.
+\newblock A survey of named entity recognition and classification.
+\newblock {\em Lingvistic{\ae} Investigationes}, 30(1):3--26, January 2007.
 
-\bibitem{Huang2009-xb}
-H.~Huang and X.~Zhang.
-\newblock Part-of-speech tagger based on maximum entropy model.
-\newblock In {\em 2009 2nd {IEEE} International Conference on Computer Science
-  and Information Technology}, pages 26--29, Aug. 2009.
+\bibitem{Ratinov2009-gw}
+Lev Ratinov and Dan Roth.
+\newblock Design challenges and misconceptions in named entity recognition.
+\newblock In {\em Proceedings of the Thirteenth Conference on Computational
+  Natural Language Learning}, CoNLL '09, pages 147--155, Stroudsburg, PA, USA,
+  2009. Association for Computational Linguistics.
 
-\bibitem{Kumar2004-da}
-C.~A. Kumar and S.~Srinivas.
-\newblock On the performance of latent semantic indexing-based information
-  retrieval.
-\newblock {\em CIT. Journal of Computing and Information Technology},
-  17(3):259--264, Oct. 2004.
+\bibitem{Zhou2002-st}
+Guodong Zhou and Jian Su.
+\newblock Named entity recognition using an {HMM-based} chunk tagger.
+\newblock In {\em Proceedings of the 40th Annual Meeting on Association for
+  Computational Linguistics}, ACL '02, pages 473--480, Stroudsburg, PA, USA,
+  2002. Association for Computational Linguistics.
+
+\bibitem{Borthwick1999-tg}
+A~Borthwick and R~Grishman.
+\newblock A maximum entropy approach to named entity recognition.
+\newblock 1999.
+
+\bibitem{Bender2003-lc}
+Oliver Bender, Franz~Josef Och, and Hermann Ney.
+\newblock Maximum entropy models for named entity recognition.
+\newblock In {\em Proceedings of the Seventh Conference on Natural Language
+  Learning at {HLT-NAACL} 2003 - Volume 4}, CONLL '03, pages 148--151,
+  Stroudsburg, PA, USA, 2003. Association for Computational Linguistics.
+
+\bibitem{Tjong_Kim2003-ym}
+Erik Tjong~Kim and Fien De~Meulder.
+\newblock Introduction to the {CoNLL-2003} shared task: {Language-Independent}
+  named entity recognition.
+\newblock June 2003.
 
 \bibitem{Lafferty2001-ab}
-J.~D. Lafferty, A.~McCallum, and F.~C.~N. Pereira.
+John~D Lafferty, Andrew McCallum, and Fernando C~N Pereira.
 \newblock Conditional random fields: Probabilistic models for segmenting and
   labeling sequence data.
 \newblock In {\em Proceedings of the Eighteenth International Conference on
   Machine Learning}, pages 282--289. Morgan Kaufmann Publishers Inc., June
   2001.
 
-\bibitem{Landauer1998-kx}
-T.~K. Landauer, P.~W. Foltz, and D.~Laham.
-\newblock An introduction to latent semantic analysis.
-\newblock {\em Discourse Process.}, 25(2-3):259--284, Jan. 1998.
-
-\bibitem{Leech1994-rh}
-G.~Leech, R.~Garside, and M.~Bryant.
-\newblock {CLAWS4}: The tagging of the british national corpus.
-\newblock In {\em Proceedings of the 15th Conference on Computational
-  Linguistics - Volume 1}, COLING '94, pages 622--628, Stroudsburg, PA, USA,
-  1994. Association for Computational Linguistics.
-
-\bibitem{Malecha2010-fl}
-G.~Malecha and I.~Smith.
-\newblock Maximum entropy part-of-speech tagging in {NLTK}.
-\newblock {\em unpublished course-related report}, 2010.
-
 \bibitem{McCallum2003-yu}
-A.~McCallum and W.~Li.
+Andrew McCallum and Wei Li.
 \newblock Early results for named entity recognition with conditional random
   fields, feature induction and web-enhanced lexicons.
 \newblock In {\em Proceedings of the Seventh Conference on Natural Language
   Learning at {HLT-NAACL} 2003 - Volume 4}, CONLL '03, pages 188--191,
   Stroudsburg, PA, USA, 2003. Association for Computational Linguistics.
 
+\bibitem{Atdag2013-qo}
+Samet Atda{\u g} and Vincent Labatut.
+\newblock A comparison of named entity recognition tools applied to
+  biographical texts.
+\newblock August 2013.
+
+\bibitem{Finkel2005-uz}
+J~R Finkel, T~Grenager, and C~Manning.
+\newblock Incorporating non-local information into information extraction
+  systems by gibbs sampling.
+\newblock {\em Proceedings of the 43nd Annual Meeting of the Association for
+  Computational Linguistics (ACL 2005)}, pages 363--370, 2005.
+
+\bibitem{noauthor_undated-ik}
+The stanford natural language processing group.
+\newblock \url{https://nlp.stanford.edu/projects/project-ner.shtml}.
+\newblock Accessed: 2018-1-10.
+
+\bibitem{Blei2003-dj}
+David~M Blei, Andrew~Y Ng, and Michael~I Jordan.
+\newblock Latent dirichlet allocation.
+\newblock {\em J. Mach. Learn. Res.}, 3(Jan):993--1022, 2003.
+
+\bibitem{Deerwester1989-yl}
+Scott~C Deerwester, Susan~T Dumais, George~W Furnas, Richard~A Harshman,
+  Thomas~K Landauer, Karen~E Lochbaum, and Lynn~A Streeter.
+\newblock Computer information retrieval using latent semantic structure, June
+  1989.
+
+\bibitem{Landauer1998-kx}
+Thomas~K Landauer, Peter~W Foltz, and Darrell Laham.
+\newblock An introduction to latent semantic analysis.
+\newblock {\em Discourse Process.}, 25(2-3):259--284, January 1998.
+
+\bibitem{Kumar2004-da}
+Cherukuri~Aswani Kumar and Suripeddi Srinivas.
+\newblock On the performance of latent semantic indexing-based information
+  retrieval.
+\newblock {\em CIT. Journal of Computing and Information Technology},
+  17(3):259--264, October 2004.
+
+\bibitem{Hofmann1999-qb}
+Thomas Hofmann.
+\newblock Probabilistic latent semantic indexing.
+\newblock In {\em Proceedings of the 22Nd Annual International {ACM} {SIGIR}
+  Conference on Research and Development in Information Retrieval}, SIGIR '99,
+  pages 50--57, New York, NY, USA, 1999. ACM.
+
+\bibitem{Biro2008-ld}
+Istv{\'a}n B{\'\i}r{\'o}, J{\'a}cint Szab{\'o}, and Andr{\'a}s~A Bencz{\'u}r.
+\newblock Latent dirichlet allocation in web spam filtering.
+\newblock In {\em Proceedings of the 4th International Workshop on Adversarial
+  Information Retrieval on the Web}, AIRWeb '08, pages 29--32, New York, NY,
+  USA, 2008. ACM.
+
+\bibitem{Feng2010-dp}
+Yansong Feng and Mirella Lapata.
+\newblock Topic models for image annotation and text illustration.
+\newblock In {\em Human Language Technologies: The 2010 Annual Conference of
+  the North American Chapter of the Association for Computational Linguistics},
+  HLT '10, pages 831--839, Stroudsburg, PA, USA, 2010. Association for
+  Computational Linguistics.
+
+\bibitem{Zhang2011-dn}
+Tong Zhang, Zhe-Ming Lu, Kap~Luk Chan, and Zhen Li.
+\newblock Automatic image annotation and retrieval using the latent dirichlet
+  allocation model.
+\newblock {\em IJCSES International Journal of Computer Sciences and
+  Engineering Systems}, 5(1), 2011.
+
+\bibitem{Xie2015-wv}
+Pengtao Xie, Diyi Yang, and Eric Xing.
+\newblock Incorporating word correlation knowledge into topic modeling.
+\newblock In {\em Proceedings of the 2015 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies}, pages 725--734, 2015.
+
+\bibitem{Chang2009-jr}
+Jonathan Chang, Sean Gerrish, Chong Wang, Jordan~L Boyd-graber, and David~M
+  Blei.
+\newblock Reading tea leaves: How humans interpret topic models.
+\newblock In Y~Bengio, D~Schuurmans, J~D Lafferty, C~K~I Williams, and
+  A~Culotta, editors, {\em Advances in Neural Information Processing Systems
+  22}, pages 288--296. Curran Associates, Inc., 2009.
+
 \bibitem{Morstatter2016-co}
-F.~Morstatter and H.~Liu.
+Fred Morstatter and Huan Liu.
 \newblock A novel measure for coherence in statistical topic models.
 \newblock In {\em Proceedings of the 54th Annual Meeting of the Association for
   Computational Linguistics (Volume 2: Short Papers)}, volume~2, pages
   543--548, 2016.
 
-\bibitem{Nadeau2007-tp}
-D.~Nadeau and S.~Sekine.
-\newblock A survey of named entity recognition and classification.
-\newblock {\em Lingvistic{\ae} Investigationes}, 30(1):3--26, Jan. 2007.
+\bibitem{Aletras2013-oo}
+Nikolaos Aletras and Mark Stevenson.
+\newblock Evaluating topic coherence using distributional semantics.
+\newblock In {\em Proceedings of the 10th International Conference on
+  Computational Semantics ({IWCS} 2013)--Long Papers}, pages 13--22.
+  aclweb.org, 2013.
 
 \bibitem{Newman2010-op}
-D.~Newman, J.~H. Lau, K.~Grieser, and T.~Baldwin.
+David Newman, Jey~Han Lau, Karl Grieser, and Timothy Baldwin.
 \newblock Automatic evaluation of topic coherence.
 \newblock In {\em Human Language Technologies: The 2010 Annual Conference of
   the North American Chapter of the Association for Computational Linguistics},
   HLT '10, pages 100--108, Stroudsburg, PA, USA, 2010. Association for
   Computational Linguistics.
 
-\bibitem{Ratinov2009-gw}
-L.~Ratinov and D.~Roth.
-\newblock Design challenges and misconceptions in named entity recognition.
-\newblock In {\em Proceedings of the Thirteenth Conference on Computational
-  Natural Language Learning}, CoNLL '09, pages 147--155, Stroudsburg, PA, USA,
-  2009. Association for Computational Linguistics.
-
-\bibitem{Ratnaparkhi1996-oa}
-A.~Ratnaparkhi.
-\newblock A maximum entropy model for part-of-speech tagging.
-\newblock {\em of the conference on empirical methods in …}, 1996.
-
-\bibitem{Tjong_Kim2003-ym}
-E.~Tjong~Kim and F.~De~Meulder.
-\newblock Introduction to the {CoNLL-2003} shared task: {Language-Independent}
-  named entity recognition.
-\newblock June 2003.
-
-\bibitem{Xie2015-wv}
-P.~Xie, D.~Yang, and E.~Xing.
-\newblock Incorporating word correlation knowledge into topic modeling.
-\newblock In {\em Proceedings of the 2015 Conference of the North American
-  Chapter of the Association for Computational Linguistics: Human Language
-  Technologies}, pages 725--734, 2015.
-
-\bibitem{Zhang2011-dn}
-T.~Zhang, Z.-M. Lu, K.~L. Chan, and Z.~Li.
-\newblock Automatic image annotation and retrieval using the latent dirichlet
-  allocation model.
-\newblock {\em IJCSES International Journal of Computer Sciences and
-  Engineering Systems}, 5(1), 2011.
-
-\bibitem{Zhou2002-st}
-G.~Zhou and J.~Su.
-\newblock Named entity recognition using an {HMM-based} chunk tagger.
-\newblock In {\em Proceedings of the 40th Annual Meeting on Association for
-  Computational Linguistics}, ACL '02, pages 473--480, Stroudsburg, PA, USA,
-  2002. Association for Computational Linguistics.
+\bibitem{Crossno2011-sn}
+P~J Crossno, A~T Wilson, T~M Shead, and D~M Dunlavy.
+\newblock {TopicView}: Visually comparing topic models of text collections.
+\newblock In {\em 2011 {IEEE} 23rd International Conference on Tools with
+  Artificial Intelligence}, pages 936--943, November 2011.
 
 \end{thebibliography}
