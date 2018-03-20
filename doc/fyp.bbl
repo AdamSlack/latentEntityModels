@@ -10,6 +10,13 @@ Web server survey | netcraft.
 \newblock \url{https://news.netcraft.com/archives/category/web-server-survey/}.
 \newblock Accessed: 2017-10-16.
 
+\bibitem{Aletras2013-oo}
+N.~Aletras and M.~Stevenson.
+\newblock Evaluating topic coherence using distributional semantics.
+\newblock In {\em Proceedings of the 10th International Conference on
+  Computational Semantics ({IWCS} 2013)--Long Papers}, pages 13--22.
+  aclweb.org, 2013.
+
 \bibitem{Atdag2013-qo}
 S.~Atda{\u g} and V.~Labatut.
 \newblock A comparison of named entity recognition tools applied to
@@ -59,6 +66,12 @@ J.~Chang, S.~Gerrish, C.~Wang, J.~L. Boyd-graber, and D.~M. Blei.
 \newblock In Y.~Bengio, D.~Schuurmans, J.~D. Lafferty, C.~K.~I. Williams, and
   A.~Culotta, editors, {\em Advances in Neural Information Processing Systems
   22}, pages 288--296. Curran Associates, Inc., 2009.
+
+\bibitem{Crossno2011-sn}
+P.~J. Crossno, A.~T. Wilson, T.~M. Shead, and D.~M. Dunlavy.
+\newblock {TopicView}: Visually comparing topic models of text collections.
+\newblock In {\em 2011 {IEEE} 23rd International Conference on Tools with
+  Artificial Intelligence}, pages 936--943, Nov. 2011.
 
 \bibitem{Cutting1992-vx}
 D.~Cutting, J.~Kupiec, J.~Pedersen, and P.~Sibun.

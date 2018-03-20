@@ -1,5 +1,5 @@
 
-\documentclass[12pt]{report}
+\documentclass[10pt]{report}
 
 \usepackage{geometry}
 \geometry{
@@ -12,13 +12,20 @@
   }
 \usepackage[utf8]{inputenc}
 \usepackage{cite}
-
+\usepackage{url}
 \usepackage{dsfont}
+\usepackage{graphicx}
+\graphicspath{{images/}}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
-\renewcommand{\baselinestretch}{1.5}
 
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-50pt}{25pt}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
 \title{Analysing Narratives: Automatic Descriptive Feature Extraction Through Latent Entity modelling}
 \author{Adam Slack}
 \date{}
@@ -27,12 +34,21 @@
 
  
 \begin{titlepage}
-\maketitle
+  \maketitle
 \end{titlepage}
 
+% TABLE OF CONTENTS - SPACING CHANGE, TOC, SPACING CHANGE
+\renewcommand{\baselinestretch}{0.5}\normalsize
 \tableofcontents
+\renewcommand{\baselinestretch}{1.5}\normalsize
 
+%
+%
+% Chapter 1 - Introcduction
+%
+%
 \chapter{Introduction}
+
 \section{Introduction}
 The Web; A seemingly ever-expanding resource, with data being generated and information published at an accelerating rate~\cite{WebServer-lc}. As more gain access to the internet, the rate at which new information is made available will only increase. Whether the origins of data be, social media, news outlets, or e-commerce reviews, much of the resources on the web exist in a natural language format. From this data there exists underlying information that can be extracted and utilised in decision making process. Given the amount of processing required to consume data on this scale, it is necessary to ensure that computational methods exist that can accommodate for individual or business needs to understand data. Many methods for Methods that allow the processing of data to extract surface level information exist, however there is room for further understanding. By relating distinct pieces of information or subsets of data, it is possible to frame or contextualise a solution to a problem within a wider setting. This paper aims to provide a novel method capable of providing succinct summaries of documents in terms of entity topics.
 
@@ -48,6 +64,12 @@ The aim of this project the value of information that can be extracted from text
 \section{Motivation}
 Motivations for this project include the need for more effective...
 
+
+%
+%
+%  Chapter 2 - Literature Review
+%
+%
 \chapter{Literature Review}
 
 \section{Introduction}
@@ -137,20 +159,62 @@ For human interpretable topic models, it is necessary that the terms within each
 
 Assessing the interpretability and coherence of topic models has been somewhat formalised through the proposal of a ‘word intrusion’ and ‘topic intrusion’ tests. The word intrusion test assesses the coherence of a topic by introducing words that don’t belong in a topic and asking humans to identify the misplaced word. A Topic Intrusion test is performed by introducing an incorrect topic and asking humans to identify the misplaced topic. It was found that in cases where topics are incoherent or difficult to interpret, that humans would tend to choose a word seemingly at random.~\cite{Chang2009-jr}.
 
-The precision of a topic \(k\) is defined as the number of correctly identified intruding word over the total number of intruding words. 
+The precision metrics defined for word and topic intrusion tests may be of value when evaluating the quality of derived Entity Models, though they rely heavily on human evaluation of topics. Use of judges is time consuming and potentially unreliable. A more formal method of evaluating coherence was proposed by comparing word vectors formed in a semantic space.~\cite{Aletras2013-oo}
 
-$$P_{k}^{m} = \sum_{s} \mathds{1}(i_{k,s}^{m} = \omega_{k}^{m})/S$$
+By considering the distributional sim
+
+%The precision of a topic \(k\) is defined as the number of correctly identified intruding word over the total number of intruding words. 
+%
+%$$P_{k}^{m} = \sum_{s} \mathds{1}(i_{k,s}^{m} = \omega_{k}^{m})/S$$
 
 
+\subsection{Comparing Models}
+When evaluating topic models, it is often done from the perspective selecting the best topic model. This could be doen through the use of interpretability and coherence tests, or it could be done through a models performance at some secondary task.For exploratory purposes, visual means of comparison could also be used to explore the differences between models and methods.
+
+When regarding topics as a \(k-dimensional\) model, visualising the topic space can be challenging. One approach to comparing topic models is to look at the similarities between each topic in a pair of models. In the form of a bipartite graph, it is clear which topics in two models are conceptually similar. The bipartite graph in figure~\ref{fig:topic_modelling_comparisons} shows that even though two methods do have different conceptual topics, there are some topics in both that are somewhat similar. The similarities and differences between the two models are seen further if relationships between documents are plotted.The noticable difference between the two topic modelling methods made visiable in the visualisation is that LDA appears to form relations between the document clusters that LSA kept distinct.
+
+\begin{figure}[h]
+  \begin{subfigure}
+    \includegraphics[scale=0.20]{lda_lsa_topic_view}
+  \end{subfigure}
+  \begin{subfigure}
+    \includegraphics[scale=0.35]{lda_lsa_document_view}
+  \end{subfigure}
+  \caption{(Left) Bipartite graph showing strength of conceptual similarity between topics in two models. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods ~\cite{Crossno2011-sn}  \label{fig:topic_modelling_comparisons}}
+\end{figure}
+
+These visualisations might be effective at explaining why a perticular model performs in a certain way at some secondary task, or it might be useful for identifying traits of models that ar valuable for perticular tasks. However, the visualisations don't provide any quantitative insight into how one model may perform when compared to another.
+
+
+%
+%
+% Chapter 3 - New Ideas
+%
+%
 \chapter{New Ideas}
 \section{Introduction}
 
+%
+%
+%
+%
+%
 \chapter{Prototyping}
 \section{Introduction}
 
+%
+%
+%
+%
+%
 \chapter{Results and Evaluation}
 \section{Introduction}
 
+%
+%
+%
+%
+%
 \chapter{Conclusion}
 \section{Introduction}
 
