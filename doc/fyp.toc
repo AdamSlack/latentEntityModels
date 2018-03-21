@@ -5,26 +5,28 @@
 \contentsline {chapter}{\numberline {2}Literature Review}{5}
 \contentsline {section}{\numberline {2.1}Introduction}{5}
 \contentsline {section}{\numberline {2.2}Part-Of-Speech Tagging}{6}
-\contentsline {section}{\numberline {2.3}POS Tagging Techiques and Tools}{6}
-\contentsline {section}{\numberline {2.4}Named Entity Recognition}{7}
-\contentsline {subsection}{\numberline {2.4.1}NER Techniques}{8}
-\contentsline {subsection}{\numberline {2.4.2}NER Tools}{8}
-\contentsline {section}{\numberline {2.5}Topic Models}{9}
-\contentsline {subsection}{\numberline {2.5.1}Latent Semantic Analysis}{10}
-\contentsline {subsection}{\numberline {2.5.2}Probabilistic Latent Semantic Indexing}{10}
-\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{11}
-\contentsline {section}{\numberline {2.6}Evaluating Topic Models}{13}
-\contentsline {subsection}{\numberline {2.6.1}Interpretability and Coherence}{13}
-\contentsline {subsection}{\numberline {2.6.2}Comparing Models}{15}
-\contentsline {subsection}{\numberline {2.6.3}Perplexity}{16}
-\contentsline {section}{\numberline {2.7}Entity Modeling}{16}
-\contentsline {subsection}{\numberline {2.7.1}Entity Linking}{16}
-\contentsline {subsection}{\numberline {2.7.2}Entity Topic Models}{16}
-\contentsline {chapter}{\numberline {3}New Ideas}{17}
-\contentsline {section}{\numberline {3.1}Introduction}{17}
-\contentsline {chapter}{\numberline {4}Prototyping}{18}
-\contentsline {section}{\numberline {4.1}Introduction}{18}
-\contentsline {chapter}{\numberline {5}Results and Evaluation}{19}
-\contentsline {section}{\numberline {5.1}Introduction}{19}
-\contentsline {chapter}{\numberline {6}Conclusion}{20}
-\contentsline {section}{\numberline {6.1}Introduction}{20}
+\contentsline {subsection}{\numberline {2.2.1}POS Tagging Techiques and Tools}{6}
+\contentsline {section}{\numberline {2.3}Named Entity Recognition}{7}
+\contentsline {subsection}{\numberline {2.3.1}NER Techniques}{8}
+\contentsline {subsection}{\numberline {2.3.2}NER Tools}{8}
+\contentsline {section}{\numberline {2.4}Topic Models}{9}
+\contentsline {subsection}{\numberline {2.4.1}Latent Semantic Analysis}{10}
+\contentsline {subsection}{\numberline {2.4.2}Probabilistic Latent Semantic Indexing}{10}
+\contentsline {subsection}{\numberline {2.4.3}Latent Dirichlet Allocation}{11}
+\contentsline {section}{\numberline {2.5}Evaluating Topic Models}{13}
+\contentsline {subsection}{\numberline {2.5.1}Perplexity}{13}
+\contentsline {subsection}{\numberline {2.5.2}Interpretability and Coherence}{14}
+\contentsline {subsection}{\numberline {2.5.3}Comparing Models}{16}
+\contentsline {section}{\numberline {2.6}Entity Modeling}{17}
+\contentsline {subsection}{\numberline {2.6.1}Entity Linking}{17}
+\contentsline {subsection}{\numberline {2.6.2}Entity Topic Models}{17}
+\contentsline {chapter}{\numberline {3}New Ideas}{18}
+\contentsline {section}{\numberline {3.1}Introduction}{18}
+\contentsline {section}{\numberline {3.2}Analysis Pipeline}{18}
+\contentsline {section}{\numberline {3.3}Gaussian Entity-Term Matrix}{18}
+\contentsline {chapter}{\numberline {4}Prototyping}{19}
+\contentsline {section}{\numberline {4.1}Introduction}{19}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{20}
+\contentsline {section}{\numberline {5.1}Introduction}{20}
+\contentsline {chapter}{\numberline {6}Conclusion}{21}
+\contentsline {section}{\numberline {6.1}Introduction}{21}

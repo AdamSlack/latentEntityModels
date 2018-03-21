@@ -94,7 +94,7 @@ As long as the POS tagging tool utilised performs comparably to those in literat
 The role POS tagging plays in this study is to produce a corpus of words that can be filtered by type. When building a model of words associated with entities and deriving topics that describe entities, words such as ‘The’, ‘To’ and ‘where’ won’t provide much information about entities within a corpus. Removing them may see an improvement in the quality of any derived models.
 
 
-\section{POS Tagging Techiques and Tools}
+\subsection{POS Tagging Techiques and Tools}
 The Natural Language Toolkit (NLTK) by default utilises a Maximum Entropy POS Tagger using the Penn-Treebank tagset. The main benefit to this POS tagger is its ease of use and accessibility. The performance of the MaxEnt tagger used in NLTK was reported score an accuracy of 96.64\% on all words, and 85.56\% on unknown words.~\cite{Ratnaparkhi1996-oa} However, in similar implementations, certain tags had error rates of 100\% , this was likely a result of the absence of certain features necessary to correctly tag specific parts of speech like ‘TO’ which occured 14,748 times in a study and was never correctly classified ~\cite{Malecha2010-fl}. 
 
 By comparison, the CLAWS tagger achieved a reported 96\% accuracy, though accuracy fell to 82\% when text was not preprocessed to filter spelling variants and shakespearean english words. The challenges with POS tagging is the variance of sentence structure, as well as ambiguity that can occur within the english language. Fictional narratives like that of shakespeare frequently contribute to the open classes of words (Adjectives, Nouns, etc), meaning that there is an increased likelihood of unknown or spelling variant words. Whilst modern texts are not likely to be as creative with the english language as shakespeare, it would be naive to assume the CLAWS tagger would achieve the upper bounds for its accuracy. Estimating the performance of the CLAWS tagger on the corpora being used in this investigation makes the performance of both the CLAWS tagger and NLTK’s MaxEnt tagger roughly comparable.
@@ -136,23 +136,21 @@ As this study is focused on written narratives, any corpora used will be diverse
 \subsection{Latent Dirichlet Allocation}
 Latent Dirichlet Allocation (LDA) uses mixture models to generate a collection of topics which can be used to describe individual documents within a corpus. By representing individual topics as probability distributions of words found within the corpus, additional documents can be expressed as distributions of the topics already derived. This approach overcomes some of the drawbacks of the pLSA method, whilst providing a somewhat human-interpretable representation of the corpus.~\cite{Blei2003-dj}
 
-
 {\hspace*{40mm}Needs reworking...}
 
-For each document win a corpus \(D\), LDA produces a mixture model representing  \(k\) topics for \(w\). Where each word \(w_n\) of length \(N\), has a set denoting the probability of \(w_n\) belonging to each of \(k\) topics. Collections of models could be compared conceptually to weighted groups produced by some clustering method.\\
+For each document win a corpus \(D\), LDA produces a mixture model representing  \(k\) topics for \(w\). Where each word \(w_n\) of length \(N\), has a set denoting the probability of \(w_n\) belonging to each of \(k\) topics. Collections of models could be compared conceptually to weighted groups produced by some clustering method.
 
 \renewcommand{\baselinestretch}{1.5}\normalsize
-The simplified process for generating LDA Models is as follows:
+The simplified process for generating an LDA model across \(m\) documents is as follows:
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \(1. Choose\, N \sim Poisson(\xi)\)\\
-\(2. Choose\, \theta \sim Dirichlet(\alpha)\)\\
-\(3. For\, each\, of\, the\, N\, words\, w_n:\)\\
-{\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_n \sim Multinomial(\theta_m)  \)}\\
-{\hspace*{15mm} \(b)\, Choose\, a\, word\, w_n \sim Multinomial(\phi_m) \)}\\
+\(2. Choose\, \theta_m \sim Dirichlet(\alpha)\)\\
+\(3. For\, each\, of\, the\, N_m\, words\, w_{m,n}:\)\\
+{\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_{m,n} \sim Multinomial(\theta_m)  \)}\\
+{\hspace*{15mm} \(b)\, Choose\, a\, word\, w_{m,n} \sim Multinomial(\phi_{z_{m,n}}) \)}\\
 
 \begin{figure}[h]
-  
   \caption{LDA Plate Notation\label{fig:lda_plate_notation}}}
 \end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
@@ -165,7 +163,7 @@ The total probability of an LDA model is defined as:
 \]
 
 \renewcommand{\baselinestretch}{2.0}\normalsize
-In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word wnis a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents will be known in this study, the first step in the process is redundant.
+In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word wnis a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents are known parameters, the first step in the process is redundant leaving only steps 2 and 3.
 
 The versatility of LDA is one of its strongest characteristics. The method has seen use in a range of different settings, from filtering web spam, to the semantic annotation of satellite images. As a bayesian statistical process, it is possible to utilise other methods with relative ease given its modularity.
 
@@ -179,6 +177,26 @@ As a bag of words method, each unigram is treated as being unrelated to other wo
 
 \section{Evaluating Topic Models}
 Topic models are machine representations of word groups that have been deemed to be somehow related. The challenge for evaluating topic models is that it depends on the task which they are being applied to. Directly evaluating the accuracy of topic models is tough, as an unsupervised bayesian method, the probabilities are not interpretable, they are what they are and no ground truth exist. Where produced models can be effectively evaluated is on their efficacy at some secondary task, this could be to predict or estimate topics that might be present in documents not present in the sample used to train models.
+
+
+\subsection{Perplexity}
+Perplexity is a commonly used metric accross topic modelling literature, and is an estimate of how well a probability distribution or probabilistic model predicts a sample. In the literature for pLSA and LDA, perplexity is one of the main metrics used to evaluate the quality of the methods.~\cite{Blei2003-dj,Hofmann1999-qb} 
+
+Perplexity can be calculated by subsampling a corpus into training and testing sets. By using the test set as unlablled data the perplexity of a model is measured as its ability to estimate the probabilities density of the \(M\) documents in the test set.
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+For LDA, the perplexity is defined as:
+
+\[
+  perplexity(D_{test}) = exp({-{{\sum^{M}_{d=1} log(p(w_d))}\over{\sum^{M}_{d=1} N_d}})
+\]
+
+\renewcommand{\baselinestretch}{2.0}\normalsize
+The probability of a word \(w_d\) is seemingly glossed over in many papers, however some methods for estimating the value have been proposed. The harmonic mean is often used as an estimator due to its relative simplicity and computational efficiency, however it has been subject to criticism regarding its suitablity for these Other methods including 'left-to'right' and a chib-style estimator have been shown to be more effective estimators.~\cite{Newton1994-ws,Wallach2008-ti,Chib1995-wq,Wallach2009-ot}
+
+
+The use of perplexity as a metric for evaluating topic models does not necessarily mean that the model is correct or accurate, but rather that the model is capable of predicting a sample, not that the prediction is correct. If a topic model assigned equal proabilities accross all words in a vocabulary, then the perplexity would be high, indicating that the topic model provides no insight into the relationships between documents.
+
 \subsection{Interpretability and Coherence}
 For human interpretable topic models, it is necessary that the terms within each topic be semantically related, or that it is clear why words in a topic co-exist. Whilst attempts have been made to utilise machine learning methods in the production of coherent topic models, the evaluation of them is somewhat lax. Whilst on the surface, models appear to be more coherent with the inclusion of methods like Markov Random Fields, the coherence is often done subjectively using the opinions of juman judges.~\cite{Xie2015-wv} Even though the use of human judges may be an imprecise method of evaluation, it does provide insight into the interpretability of derived models. For tools that aim to provide users with insight into large corpora of data, interpretability of the results is a key element defining the success of the tool. With low coherence of topics and thus low levels of interpretability, communicating any extracted information becomes increasingly difficult.
 
@@ -215,21 +233,17 @@ When regarding topics as a \(k-dimensional\) model, visualising the topic space 
   \end{subfigure}
   \caption{(Left) Bipartite topic conceptual similarity graph. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods \label{fig:topic_modelling_comparisons}}
 \end{figure}
+
 \renewcommand{\baselinestretch}{2.0}\normalsize
-
-
 These visualisations might be effective at explaining why a perticular model performs in a certain way at some secondary task, or it might be useful for identifying traits of models that ar valuable for perticular tasks. However, the visualisations don't provide any quantitative insight into how one model may perform when compared to another.
 
-\subsection{Perplexity}
-Perplexity is a commonly used metric accross topic modelling literature, and is an estimate of how well a probability distribution or probabilistic model predicts a sample. In the literature for pLSA and LDA, perplexity is one of the main metrics used to evaluate the quality of the methods.~\cite{Blei2003-dj,Hofmann1999-qb}
-
-Perplexity can be calculated by subsampling a corpus into training and testing sets.
-
-
 \section{Entity Modeling}
-Entity Modelling exists as a field of study aside from topic modelling. However this study is considering the use of topic models as a means of describing and relating entities within a corpus.
+Entity Modelling exists as a small field of study aside from topic modelling and could be regarded as an extention of the NER domain. It relates to the extraction of entity descriptinos, as well as the linking of distinct entities. Many of the challenges in this field stem from the high levels of ambiguity present in natural language. Attempts have been made to utilise Topic Models in the task of entitty resolution as well as forming links and relationships between entities within a document, Whilst semantic resources have been investigated as tools for the automatic tagging of extracted entities.
 
 \subsection{Entity Linking}
+Entity linking has been demonstrated though specialised Entity-Topic Models.The focus of research in this area has been on the development of methods that produce topics that link entities. An Example approach involved finding mentions of concrete entities, such as \('iPod',\, 'Steve Jobs',\) and \(iPhone\) and forming a unifying \('Apple\, Inc'\) topic.~\cite{Han2012-gy} The approach used, whilst being statistically valid focuses on real world entities, which 
+
+Whilst Entity linking is a valuable task, many 
 
 \subsection{Entity Topic Models}
 
@@ -240,6 +254,13 @@ Entity Modelling exists as a field of study aside from topic modelling. However 
 %
 \chapter{New Ideas}
 \section{Introduction}
+
+\section{Analysis Pipeline}
+
+\section{Gaussian Entity-Term Matrix}
+
+
+
 
 %
 %

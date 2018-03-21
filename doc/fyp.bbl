@@ -171,6 +171,28 @@ Tong Zhang, Zhe-Ming Lu, Kap~Luk Chan, and Zhen Li.
 \newblock {\em IJCSES International Journal of Computer Sciences and
   Engineering Systems}, 5(1), 2011.
 
+\bibitem{Newton1994-ws}
+Michael~A Newton and Adrian~E Raftery.
+\newblock Approximate bayesian inference with the weighted likelihood
+  bootstrap.
+\newblock {\em J. R. Stat. Soc. Series B Stat. Methodol.}, 56(1):3--48, 1994.
+
+\bibitem{Wallach2008-ti}
+Hanna~Megan Wallach.
+\newblock {\em Structured topic models for language}.
+\newblock PhD thesis, University of Cambridge, 2008.
+
+\bibitem{Chib1995-wq}
+Siddhartha Chib.
+\newblock Marginal likelihood from the gibbs output.
+\newblock {\em J. Am. Stat. Assoc.}, 90(432):1313--1321, 1995.
+
+\bibitem{Wallach2009-ot}
+Hanna~M Wallach, Iain Murray, Ruslan Salakhutdinov, and David Mimno.
+\newblock Evaluation methods for topic models.
+\newblock In {\em Proceedings of the 26th Annual International Conference on
+  Machine Learning}, ICML '09, pages 1105--1112, New York, NY, USA, 2009. ACM.
+
 \bibitem{Xie2015-wv}
 Pengtao Xie, Diyi Yang, and Eric Xing.
 \newblock Incorporating word correlation knowledge into topic modeling.
@@ -213,5 +235,13 @@ P~J Crossno, A~T Wilson, T~M Shead, and D~M Dunlavy.
 \newblock {TopicView}: Visually comparing topic models of text collections.
 \newblock In {\em 2011 {IEEE} 23rd International Conference on Tools with
   Artificial Intelligence}, pages 936--943, November 2011.
+
+\bibitem{Han2012-gy}
+Xianpei Han and Le~Sun.
+\newblock An entity-topic model for entity linking.
+\newblock In {\em Proceedings of the 2012 Joint Conference on Empirical Methods
+  in Natural Language Processing and Computational Natural Language Learning},
+  EMNLP-CoNLL '12, pages 105--115, Stroudsburg, PA, USA, 2012. Association for
+  Computational Linguistics.
 
 \end{thebibliography}
