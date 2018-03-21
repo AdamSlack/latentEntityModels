@@ -136,7 +136,10 @@ As this study is focused on written narratives, any corpora used will be diverse
 \subsection{Latent Dirichlet Allocation}
 Latent Dirichlet Allocation (LDA) uses mixture models to generate a collection of topics which can be used to describe individual documents within a corpus. By representing individual topics as probability distributions of words found within the corpus, additional documents can be expressed as distributions of the topics already derived. This approach overcomes some of the drawbacks of the pLSA method, whilst providing a somewhat human-interpretable representation of the corpus.~\cite{Blei2003-dj}
 
-For each document win a corpus \(D\), LDA produces a mixture model representing proportions of\(k\) topics for \(w\). Where each word \(w_n\) wof length \(N\), has a set  denoting the probability of \(w_n\) belonging to each of \(k\) topics. Collections of models could be compared conceptually to weighted groups produced by some clustering method.
+
+{\hspace*{40mm}Needs reworking...}
+
+For each document win a corpus \(D\), LDA produces a mixture model representing  \(k\) topics for \(w\). Where each word \(w_n\) of length \(N\), has a set denoting the probability of \(w_n\) belonging to each of \(k\) topics. Collections of models could be compared conceptually to weighted groups produced by some clustering method.\\
 
 \renewcommand{\baselinestretch}{1.5}\normalsize
 The simplified process for generating LDA Models is as follows:
@@ -145,8 +148,8 @@ The simplified process for generating LDA Models is as follows:
 \(1. Choose\, N \sim Poisson(\xi)\)\\
 \(2. Choose\, \theta \sim Dirichlet(\alpha)\)\\
 \(3. For\, each\, of\, the\, N\, words\, w_n:\)\\
-{\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_n \sim Multinomial(\theta)  \)}\\
-{\hspace*{15mm} \(b)\, Choose\, a\, word\, w_n\, from\, P(w_n |z_n, \beta)\)}\\
+{\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_n \sim Multinomial(\theta_m)  \)}\\
+{\hspace*{15mm} \(b)\, Choose\, a\, word\, w_n \sim Multinomial(\phi_m) \)}\\
 
 \begin{figure}[h]
   
@@ -154,8 +157,15 @@ The simplified process for generating LDA Models is as follows:
 \end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 
+\renewcommand{\baselinestretch}{1.0}\normalsize
+The total probability of an LDA model is defined as:
 
-In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word wnis a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents will be known in this study, a more accurate estimation could be used.
+\[
+  P(\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod P(\phi_i|\beta) \prod P(\theta_j|\alpha)\prod P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
+\]
+
+\renewcommand{\baselinestretch}{2.0}\normalsize
+In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word wnis a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents will be known in this study, the first step in the process is redundant.
 
 The versatility of LDA is one of its strongest characteristics. The method has seen use in a range of different settings, from filtering web spam, to the semantic annotation of satellite images. As a bayesian statistical process, it is possible to utilise other methods with relative ease given its modularity.
 
@@ -212,6 +222,10 @@ These visualisations might be effective at explaining why a perticular model per
 
 \subsection{Perplexity}
 Perplexity is a commonly used metric accross topic modelling literature, and is an estimate of how well a probability distribution or probabilistic model predicts a sample. In the literature for pLSA and LDA, perplexity is one of the main metrics used to evaluate the quality of the methods.~\cite{Blei2003-dj,Hofmann1999-qb}
+
+Perplexity can be calculated by subsampling a corpus into training and testing sets.
+
+
 \section{Entity Modeling}
 Entity Modelling exists as a field of study aside from topic modelling. However this study is considering the use of topic models as a means of describing and relating entities within a corpus.
 

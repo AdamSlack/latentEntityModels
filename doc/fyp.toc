@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {2.6.1}Interpretability and Coherence}{13}
 \contentsline {subsection}{\numberline {2.6.2}Comparing Models}{15}
 \contentsline {subsection}{\numberline {2.6.3}Perplexity}{16}
-\contentsline {section}{\numberline {2.7}Entitiy Modeling}{16}
+\contentsline {section}{\numberline {2.7}Entity Modeling}{16}
 \contentsline {subsection}{\numberline {2.7.1}Entity Linking}{16}
 \contentsline {subsection}{\numberline {2.7.2}Entity Topic Models}{16}
 \contentsline {chapter}{\numberline {3}New Ideas}{17}
