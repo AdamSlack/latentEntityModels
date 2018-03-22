@@ -19,14 +19,14 @@
 \contentsline {subsection}{\numberline {2.5.3}Comparing Models}{17}
 \contentsline {section}{\numberline {2.6}Entity Modeling}{18}
 \contentsline {subsection}{\numberline {2.6.1}Entity Linking}{18}
-\contentsline {subsection}{\numberline {2.6.2}Entity Topic Models}{18}
-\contentsline {chapter}{\numberline {3}New Ideas}{19}
-\contentsline {section}{\numberline {3.1}Introduction}{19}
-\contentsline {section}{\numberline {3.2}Analysis Pipeline}{19}
-\contentsline {section}{\numberline {3.3}Gaussian Entity-Term Matrix}{19}
-\contentsline {chapter}{\numberline {4}Prototyping}{20}
-\contentsline {section}{\numberline {4.1}Introduction}{20}
-\contentsline {chapter}{\numberline {5}Results and Evaluation}{21}
-\contentsline {section}{\numberline {5.1}Introduction}{21}
-\contentsline {chapter}{\numberline {6}Conclusion}{22}
-\contentsline {section}{\numberline {6.1}Introduction}{22}
+\contentsline {subsection}{\numberline {2.6.2}Entity Topic Models}{19}
+\contentsline {chapter}{\numberline {3}New Ideas}{20}
+\contentsline {section}{\numberline {3.1}Introduction}{20}
+\contentsline {section}{\numberline {3.2}Gaussian Entity-Term Matrix}{20}
+\contentsline {section}{\numberline {3.3}Analysis Pipeline}{21}
+\contentsline {chapter}{\numberline {4}Prototyping}{22}
+\contentsline {section}{\numberline {4.1}Introduction}{22}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{23}
+\contentsline {section}{\numberline {5.1}Introduction}{23}
+\contentsline {chapter}{\numberline {6}Conclusion}{24}
+\contentsline {section}{\numberline {6.1}Introduction}{24}

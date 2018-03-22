@@ -84,7 +84,7 @@ The second aim involves the development of a software environment, the objective
 \renewcommand{\baselinestretch}{2.0}\normalsize
 
 \section{Motivation}
-Motivations for this project include the need for more effective...
+Motivations for this project include the need for more effective methods and tools capable of analysing data in natural language form. Additionally the development of tools utilising these methods can assist in providing others with means of understanding more about themselves, their habits, and their preferences.
 
 
 %
@@ -254,16 +254,18 @@ When regarding topics as a \(k-dimensional\) model, visualising the topic space 
 These visualisations might be effective at explaining why a perticular model performs in a certain way at some secondary task, or it might be useful for identifying traits of models that ar valuable for perticular tasks. However, the visualisations don't provide any quantitative insight into how one model may perform when compared to another.
 
 \section{Entity Modeling}
-Entity Modelling exists as a small field of study aside from topic modelling and could be regarded as an extention of the NER domain. It relates to the extraction of entity descriptinos, as well as the linking of distinct entities. Many of the challenges in this field stem from the high levels of ambiguity present in natural language. Attempts have been made to utilise Topic Models in the task of entitty resolution as well as forming links and relationships between entities within a document, Whilst semantic resources have been investigated as tools for the automatic tagging of extracted entities.
+Entity Modelling exists as a small field of study aside from topic modelling and could be regarded as an extention of the NER domain. It relates to the extraction of entity description s, as well as the linking of distinct entities. Many of the challenges in this field stem from the high levels of ambiguity present in natural language. Attempts have been made to utilise Topic Models in the task of entitty resolution as well as forming links and relationships between entities within a document, Whilst semantic resources have been investigated as tools for the automatic tagging of extracted entities.
 
 \subsection{Entity Linking}
 Entity linking is the task identifying how entities in a corpus relate to each other, It involves the resolution of entity mentions that refer to the same entity in order to perform optimally.
 
 Topic models have been utilised in the task of entity linking through the application and development of specialised Entity-Topic Models.One such investigation involved finding mentions of concrete entities, such as \('iPod',\, 'Steve Jobs',\) and \(iPhone\) and forming a unifying \('Apple\, Inc'\) topic.~\cite{Han2012-gy} The approach added an additional step to the generative LDA algorithm which sampled topic, and entity assignments for each entity. The focus of the paper utilising the topical context within which each entity was mentioned, to try and resolve entities with multiple mentions through relationships that may form between entities in the model.
 
-The Entity-Topic Models suggested are statistically sound, and perform well 
+The Entity-Topic Models suggested are statistically sound, and perform well in predictive tasks oriented around wikipedia information. The key drawback for this study is the use of short documents to train, test, and evaluate derived models. Models were trained dataset of news articles from the TAC 2009 dataset ~\cite{Macnamee-pd}, which being short in length often benefit the assumption made in the study regarding how entities relate to the topics within the document. For longer texts and perticularly narratives, this assumption is not necessarily valid; wide ranges of topics may be present, with entities only being expressed in the context of some of these topics. The limitation of this entity-topic modelling method could come from the base LDA method. As a bag-of-words approach, 
 
 \subsection{Entity Topic Models}
+
+
 
 %
 %
@@ -272,11 +274,26 @@ The Entity-Topic Models suggested are statistically sound, and perform well
 %
 \chapter{New Ideas}
 \section{Introduction}
+In chapter 2 many different topic modelling and wider NLP techniques were considered, with only those specific to entity-topic modelling being close to meeting the aims that this project has. The LDA Topic modelling method provides a base statistical method from which this investigation can be launched.
 
-\section{Analysis Pipeline}
+The main drawback with specific entity-topic modelling methods relate to the assumptions made regarding the relationships between entities and topics in a document. Not necessarily applicable to larger documents and written narratives it is clear that some adaptation is required for general LDA based entity-topic modelling methods. Additionally, there is clearly no publically available tools that allow non-technical individuals to explore and investigate entity-topic models, resulting in the field remaining relevant only in literature.
+
+An obvious adaptation to entity-topic modelling methods is to incorporate some weighting metric to associated terms and topics, there is potential for this step to be done as a pre-processing method.
 
 \section{Gaussian Entity-Term Matrix}
 
+Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_i\}\) where \(\underline{e}_i = \{e_{i,0}, ..., e_{i,m}\}\), and a set of words \(\underline{W}=\{\underline{w}_0, ..., \underline{w}_j\}}\), then a matrix \(D\) when indexed by \(i,j\) can be defined as:
+
+\[
+  D_{i,j}= \sum^{|\underline{e}_i|}_{m=0}\sum^{|\underline{w}_j|}_{n=0}\sqrt{a\over{\pi}}\cdot e^{-a\cdot(e_{i,m} - w_{j,n})}
+\]
+
+\[
+  D = 
+\]
+
+
+\section{Analysis Pipeline}
 
 
 
