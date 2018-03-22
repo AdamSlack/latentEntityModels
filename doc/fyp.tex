@@ -65,7 +65,23 @@ Entity models build upon the concept of topic modelling, particularly the kinds 
 
 
 \section{Aims and Objectives}
-The aim of this project the value of information that can be extracted from text through the use of Latent Entity Modelling
+The aims of this project are two-fold. The first aim is to utilise and extend natural language processing methods to model and extract latent information describing entities within narratives. The second aim is to develop a system within which corpora can be easily and effectively analysed and explored when methods developed for aim one are applied.
+
+Natural Language Processing is a large field with many analytical methods available for modelling purposes, and as such the scope of the first aim is required to be well defined. Objectives for the first aim include:
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\begin{itemize}
+\item To survey the fields of Natural Language Processing and Topic Modelling to identify methods valuable for the task of Entity-Topic Modelling.
+\item To Define a Entity-Topic Modelling method capable of deriving interpret-able topics which describe entities within narratives.
+\end{itemize}
+
+The second aim involves the development of a software environment, the objectives of which include:
+\begin{itemize}
+\item To develop a front-end user interface for the visual exploration of entity-topic models.  
+\item To implement back-end infrastructure allowing for dynamic visualisations in front-end user interfaces.
+  \item To create a software pipeline that extracts entity-topic data from a provided corpus.
+\end{itemize}
+\renewcommand{\baselinestretch}{2.0}\normalsize
 
 \section{Motivation}
 Motivations for this project include the need for more effective...
@@ -241,9 +257,11 @@ These visualisations might be effective at explaining why a perticular model per
 Entity Modelling exists as a small field of study aside from topic modelling and could be regarded as an extention of the NER domain. It relates to the extraction of entity descriptinos, as well as the linking of distinct entities. Many of the challenges in this field stem from the high levels of ambiguity present in natural language. Attempts have been made to utilise Topic Models in the task of entitty resolution as well as forming links and relationships between entities within a document, Whilst semantic resources have been investigated as tools for the automatic tagging of extracted entities.
 
 \subsection{Entity Linking}
-Entity linking has been demonstrated though specialised Entity-Topic Models.The focus of research in this area has been on the development of methods that produce topics that link entities. An Example approach involved finding mentions of concrete entities, such as \('iPod',\, 'Steve Jobs',\) and \(iPhone\) and forming a unifying \('Apple\, Inc'\) topic.~\cite{Han2012-gy} The approach used, whilst being statistically valid focuses on real world entities, which 
+Entity linking is the task identifying how entities in a corpus relate to each other, It involves the resolution of entity mentions that refer to the same entity in order to perform optimally.
 
-Whilst Entity linking is a valuable task, many 
+Topic models have been utilised in the task of entity linking through the application and development of specialised Entity-Topic Models.One such investigation involved finding mentions of concrete entities, such as \('iPod',\, 'Steve Jobs',\) and \(iPhone\) and forming a unifying \('Apple\, Inc'\) topic.~\cite{Han2012-gy} The approach added an additional step to the generative LDA algorithm which sampled topic, and entity assignments for each entity. The focus of the paper utilising the topical context within which each entity was mentioned, to try and resolve entities with multiple mentions through relationships that may form between entities in the model.
+
+The Entity-Topic Models suggested are statistically sound, and perform well 
 
 \subsection{Entity Topic Models}
 
