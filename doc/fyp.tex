@@ -176,7 +176,7 @@ The simplified process for generating an LDA model across \(m\) documents is as 
 The total probability of an LDA model is defined as:
 
 \[
-  P(\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod P(\phi_i|\beta) \prod P(\theta_j|\alpha)\prod P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
+  P(\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
 \]
 
 \renewcommand{\baselinestretch}{2.0}\normalsize
@@ -283,7 +283,7 @@ An obvious adaptation to entity-topic modelling methods is to incorporate some w
 
 \section{Gaussian Entity-Term Matrix}
 
-The Gaussian Entity-term matrix is a means of segmenting a given document into entities and associated terms. The matrix for a given document consists of strengths of associactions between a entity-word pairing. It functions under an assumption that the more seperation there is between two words in a document, the weaker the association is between those two words. By modelling documents not as a bag of words, but as sequences it is possible to capture some of the relationships between different words prior to applying additional statistical methods.
+The Gaussian Entity-term matrix (GETM) is a means of segmenting a given document into entities and associated terms. The matrix for a given document consists of strengths of associactions between a entity-word pairing. It functions under an assumption that the more seperation there is between two words in a document, the weaker the association is between those two  words. By modelling documents not as a bag of words, but as sequences it is possible to capture some of the relationships between different words prior to applying additional statistical methods.
 
 Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_i\}\) where \(\underline{e}_i = \{e_{i,0}, ..., e_{i,m}\}\), and a set of words \(\underline{W}=\{\underline{w}_0, ..., \underline{w}_j\}}\), then a matrix \(D\) when indexed by \(i,j\) can be defined as:
 
@@ -299,9 +299,10 @@ Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_
     \vdots && \vdots && \vdots && \ddots && \vdots\cr
     w_j && D_{j,0} && D_{j,1} && \hdots && D_{j,i}
   }
-  
 \]
 
+\section{Entity Topic Model}
+By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document.
 
 \section{Analysis Pipeline}
 
