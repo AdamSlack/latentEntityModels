@@ -26,6 +26,9 @@
 \usepackage{chngcntr}
 \counterwithout{figure}{chapter}
 
+\usepackage{caption}
+\captionsetup[figure]{font=footnotesize,labelfont=footnotesize}
+
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
@@ -73,7 +76,8 @@ The Web; A seemingly ever-expanding resource, with data being generated and info
 Information Retrieval (IR), Machine Learning (ML), and Natural Language Processing (NLP) when considered in conjunction with each other,  concern themselves with the extracting of information from data in a natural language texts. Relating textual data yields information valuable to many different entities, including businesses when marketing products, individuals when choosing what to read, and even researchers considering the current state of a research area. For a business, relating entities extracted from texts, can help identify target groups to aim products at. For an individual, relating entities can assist in decisions on what to read, buy, and watch based on similarities between things that they do and don’t like. For research, the identification of common themes, or prominent authors can be achieved through the relating of entities.
 
 A Latent Entity in this investigation is defined as an abstract representation of some entity that can be used to describe one or more concrete entities. Thus the term Latent Entity Modelling is defined as a transformation from a corpus of text to a collection of Latent Entities describing a corpus. Latent Entities represent a layer of abstraction from a corpus,  wherein it is possible to describe the corpus as a whole in terms of the Latent Entities.
-Entity models build upon the concept of topic modelling, particularly the kinds of topics derived through Latent Dirichlet Allocation. A Topic in this sense is a probability distribution of words, such that the degree of membership for each word in a topic indicates the probability of that word being an indicator of that topic.
+
+Entity models build upon the concept of topic modelling, particularly the kinds of topics derived through Latent Dirichlet Allocation. A Topic in this sense is a probability distribution of words, such that the degree of membership for each word in a topic indicates the probability of that word being an indicator of that topic. By performing clustering on entities expressed interms of entity topic models, this paper investigates if it is possible to 
 
 
 \section{Aims and Objectives}
@@ -222,7 +226,6 @@ For LDA, the perplexity is defined as:
 \renewcommand{\baselinestretch}{2.0}\normalsize
 The probability of a word \(w_d\) is seemingly glossed over in many papers, however some methods for estimating the value have been proposed. The harmonic mean is often used as an estimator due to its relative simplicity and computational efficiency, however it has been subject to criticism regarding its suitablity for these Other methods including 'left-to'right' and a chib-style estimator have been shown to be more effective estimators.~\cite{Newton1994-ws,Wallach2008-ti,Chib1995-wq,Wallach2009-ot}
 
-
 The use of perplexity as a metric for evaluating topic models does not necessarily mean that the model is correct or accurate, but rather that the model is capable of predicting a sample, not that the prediction is correct. If a topic model assigned equal proabilities accross all words in a vocabulary, then the perplexity would be high, indicating that the topic model provides no insight into the relationships between documents.
 
 \subsection{Interpretability and Coherence}
@@ -239,7 +242,6 @@ Given a topic \(T = {w_1,...,w_n}\), the coherence of that topic is defined as t
 \[
   Coherence_{sim}(T)=\frac{\underset{i+1<j<n}{\underset{1<i<n-1}{\sum}}Sim(w_i, w_j)}{{n \choose 2}}
 \]
-
  
 %The precision of a topic \(k\) is defined as the number of correctly identified intruding word over the total number of intruding words. 
 %
@@ -290,7 +292,8 @@ In chapter 2 many different topic modelling and wider NLP techniques were consid
 
 The main drawback with specific entity-topic modelling methods relate to the assumptions made regarding the relationships between entities and topics in a document. Not necessarily applicable to larger documents and written narratives it is clear that some adaptation is required for general LDA based entity-topic modelling methods. Additionally, there is clearly no publically available tools that allow non-technical individuals to explore and investigate entity-topic models, resulting in the field remaining relevant only in literature.
 
-An obvious adaptation to entity-topic modelling methods is to incorporate some weighting metric to associated terms and topics, there is potential for this step to be done as a pre-processing method.
+An obvious adaptation to entity-topic modelling methods is to incorporate some weighting metric to associated terms and topics, there is potential for this step to be done as a pre-processing method. Further improvements relate to the clustering of similar entity topic models as latent entities. This provides some estimation of different types of entities that may be present within a corpus
+
 
 \section{Gaussian Entity-Term Matrix}
 
@@ -312,12 +315,78 @@ Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_
   }
 \]
 
+\section{Latent Entities}
+A Latent Entity is an abstract statistical model that approximately describes some entities within a corpus. Identifying Latent Entities is possible though clustering entity topic models extracted from a corpus. In the case of k-means clustering, each entity in a GETM matrix is expressed as distributions of entity topics and turned into an Entity-Topic Model. Each Entity-Topic Model can then be clustered in n-dimentional space on topic distributions. The center of each cluster extracted through k-means can then be labelled as a latent entity which abstractly represents entities within that cluster.
+
+As each latent entity remains a probability distribution of entity topics, it is possible to state how similar a given entity is to a latent entity. Each similarity metric of entity to latent entity can then be used to express the entity in terms of similarities to latent entities.
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{*2c}
+      \multicolumn{2}{c}{Harry}\\
+      Term&Strength\\
+      \hline
+      Scar&0.1\\
+      Magic&0.09\\
+      Muggles&0.09\\
+      Expelliarmus&0.05
+    \end{tabular}              
+    \begin{tabular}{*2c}
+      \multicolumn{2}{c}{Hermione}\\
+      Term&Strength\\
+      \hline
+      Magic&0.11\\
+      Wand&0.09\\
+      Superiority&0.04\\
+      Unkempt&0.04      
+    \end{tabular}
+    \begin{tabular}{*2c}
+      \multicolumn{2}{c}{Ron}\\
+      Term&Strength\\
+      \hline
+      Drooble&0.07\\
+      Magic&0.06\\
+      Snigger&0.05\\
+      Sherbert&0.03
+    \end{tabular}
+  \caption{Example entity-term associations between three entities\label{fig:example_entity_term_associations}}
+\end{figure}
+
+\begin{figure}
+  \centering
+    \begin{tabular}{*4c}
+      Topics&Harry&Hermione&Ron\\
+      \hline
+      Topic 1 & 0.6 & 0.5  & 0.4 \\
+      Topic 2 & 0.1 & 0.2  & 0.1 \\
+      Topic 3 & 0.1 & 0.2  & 0.2 \\
+      Topic 4 & 0.2 & 0.1  & 0.3 \\  
+    \end{tabular}
+    \vline \,
+    \begin{tabular}{*1c}
+      \multicolumn{1}{c}{Latent Entity}\\
+      \hline
+      0.5 \\
+      0.13 \\
+      0.17\\
+      0.2\\
+      
+      \end{tabular}
+  \caption{Example entity-Topic distributions for entities in Figure~\ref{fig:example_entity_term_associations} and the associated Latent Entity. \label{fig:example_entity_topic_distribution}}
+\end{figure}
+
+
+
 \section{Entity Topic Model}
-By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document.
+By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document. Using GETMs add an additional set of pre-processing steps to the standard LDA algorithm.
 
 \subsection{Evaluating ETMs}
-The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods would be made even more visible if used on Entity Topic Models. The intruding word test 
+The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods may be made even more visible if used on Entity Topic Models. An adaptation of the intruding word test applicable to ETMs proposed here is the intruding Entity Test.
+
+The intruding entity test involves taking an individual topic entities that are most strongly associated with that topic, and then introducing an entity not all associated with that topic. Should the topics 
+
 \section{Analysis Pipeline}
+
 
 \section{Topic Model Explorer}
 

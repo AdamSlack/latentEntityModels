@@ -1,8 +1,10 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces LDA Plate Notation}}{15}
-\contentsline {figure}{\numberline {2}{\ignorespaces (Left) Bipartite topic conceptual similarity graph. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods }}{20}
+\contentsline {figure}{\numberline {1}{\ignorespaces LDA Plate Notation\relax }}{15}
+\contentsline {figure}{\numberline {2}{\ignorespaces (Left) Bipartite topic conceptual similarity graph. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods \relax }}{20}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3}{\ignorespaces Example entity-term associations between three entities\relax }}{25}
+\contentsline {figure}{\numberline {4}{\ignorespaces Example entity-Topic distributions for entities in Figure\nobreakspace {}3\hbox {} and the associated Latent Entity. \relax }}{25}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
