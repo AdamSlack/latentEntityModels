@@ -132,7 +132,7 @@ def insert_topic_term(db, topic_id, term, strength):
 #
 #
 #
-def select_book_entities(db, book_title : 'str', full=False):
+def select_book_entities(db, book_title, full=False):
     """ create a cursor for all entities in the DB for a specified book """
     print('Selecting entities for book: ' + book_title)
     cursor = db.cursor()
