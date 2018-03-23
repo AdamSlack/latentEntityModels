@@ -1,35 +1,41 @@
-\contentsline {chapter}{\numberline {1}Declaration}{1}
-\contentsline {chapter}{\numberline {2}Abstract}{2}
-\contentsline {chapter}{\numberline {3}Introduction}{4}
-\contentsline {section}{\numberline {3.1}Introduction}{4}
-\contentsline {section}{\numberline {3.2}Aims and Objectives}{5}
-\contentsline {section}{\numberline {3.3}Motivation}{6}
-\contentsline {chapter}{\numberline {4}Literature Review}{7}
-\contentsline {section}{\numberline {4.1}Introduction}{7}
-\contentsline {section}{\numberline {4.2}Part-Of-Speech Tagging}{8}
-\contentsline {subsection}{\numberline {4.2.1}POS Tagging Techiques and Tools}{8}
-\contentsline {section}{\numberline {4.3}Named Entity Recognition}{9}
-\contentsline {subsection}{\numberline {4.3.1}NER Techniques}{10}
-\contentsline {subsection}{\numberline {4.3.2}NER Tools}{10}
-\contentsline {section}{\numberline {4.4}Topic Models}{11}
-\contentsline {subsection}{\numberline {4.4.1}Latent Semantic Analysis}{12}
-\contentsline {subsection}{\numberline {4.4.2}Probabilistic Latent Semantic Indexing}{12}
-\contentsline {subsection}{\numberline {4.4.3}Latent Dirichlet Allocation}{13}
-\contentsline {section}{\numberline {4.5}Evaluating Topic Models}{15}
-\contentsline {subsection}{\numberline {4.5.1}Perplexity}{15}
-\contentsline {subsection}{\numberline {4.5.2}Interpretability and Coherence}{16}
-\contentsline {subsection}{\numberline {4.5.3}Comparing Models}{18}
-\contentsline {section}{\numberline {4.6}Entity Modeling}{19}
-\contentsline {subsection}{\numberline {4.6.1}Entity Linking}{19}
-\contentsline {subsection}{\numberline {4.6.2}Entity Topic Models}{20}
-\contentsline {chapter}{\numberline {5}New Ideas}{21}
-\contentsline {section}{\numberline {5.1}Introduction}{21}
-\contentsline {section}{\numberline {5.2}Gaussian Entity-Term Matrix}{21}
-\contentsline {section}{\numberline {5.3}Entity Topic Model}{22}
-\contentsline {section}{\numberline {5.4}Analysis Pipeline}{22}
-\contentsline {chapter}{\numberline {6}Prototyping}{23}
-\contentsline {section}{\numberline {6.1}Introduction}{23}
-\contentsline {chapter}{\numberline {7}Results and Evaluation}{24}
-\contentsline {section}{\numberline {7.1}Introduction}{24}
-\contentsline {chapter}{\numberline {8}Conclusion}{25}
-\contentsline {section}{\numberline {8.1}Introduction}{25}
+\contentsline {section}{Declaration}{1}
+\contentsline {section}{Abstract}{2}
+\contentsline {chapter}{\numberline {1}Introduction}{6}
+\contentsline {section}{\numberline {1.1}Introduction}{6}
+\contentsline {section}{\numberline {1.2}Aims and Objectives}{7}
+\contentsline {section}{\numberline {1.3}Motivation}{8}
+\contentsline {chapter}{\numberline {2}Literature Review}{9}
+\contentsline {section}{\numberline {2.1}Introduction}{9}
+\contentsline {section}{\numberline {2.2}Part-Of-Speech Tagging}{10}
+\contentsline {subsection}{\numberline {2.2.1}POS Tagging Techiques and Tools}{10}
+\contentsline {section}{\numberline {2.3}Named Entity Recognition}{11}
+\contentsline {subsection}{\numberline {2.3.1}NER Techniques}{12}
+\contentsline {subsection}{\numberline {2.3.2}NER Tools}{12}
+\contentsline {section}{\numberline {2.4}Topic Models}{13}
+\contentsline {subsection}{\numberline {2.4.1}Latent Semantic Analysis}{14}
+\contentsline {subsection}{\numberline {2.4.2}Probabilistic Latent Semantic Indexing}{14}
+\contentsline {subsection}{\numberline {2.4.3}Latent Dirichlet Allocation}{15}
+\contentsline {section}{\numberline {2.5}Evaluating Topic Models}{17}
+\contentsline {subsection}{\numberline {2.5.1}Perplexity}{17}
+\contentsline {subsection}{\numberline {2.5.2}Interpretability and Coherence}{18}
+\contentsline {subsection}{\numberline {2.5.3}Comparing Models}{20}
+\contentsline {section}{\numberline {2.6}Entity Modeling}{21}
+\contentsline {subsection}{\numberline {2.6.1}Entity Linking}{21}
+\contentsline {subsection}{\numberline {2.6.2}Entity Topic Models}{22}
+\contentsline {chapter}{\numberline {3}New Ideas}{23}
+\contentsline {section}{\numberline {3.1}Introduction}{23}
+\contentsline {section}{\numberline {3.2}Gaussian Entity-Term Matrix}{23}
+\contentsline {section}{\numberline {3.3}Entity Topic Model}{24}
+\contentsline {subsection}{\numberline {3.3.1}Evaluating ETMs}{24}
+\contentsline {section}{\numberline {3.4}Analysis Pipeline}{24}
+\contentsline {section}{\numberline {3.5}Topic Model Explorer}{24}
+\contentsline {chapter}{\numberline {4}Prototyping}{25}
+\contentsline {section}{\numberline {4.1}Introduction}{25}
+\contentsline {section}{\numberline {4.2}Architecture Overview}{25}
+\contentsline {section}{\numberline {4.3}Corpus Pre-Processing}{25}
+\contentsline {section}{\numberline {4.4}Processing GETM}{25}
+\contentsline {section}{\numberline {4.5}Processing LDA}{25}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{26}
+\contentsline {section}{\numberline {5.1}Introduction}{26}
+\contentsline {chapter}{\numberline {6}Conclusion}{27}
+\contentsline {section}{\numberline {6.1}Introduction}{27}

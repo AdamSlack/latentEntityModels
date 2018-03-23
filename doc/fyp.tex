@@ -37,14 +37,22 @@
 \date{}
 
 \begin{document}
-
-\chapter{Declaration}
-
-\chapter{Abstract}
  
 \begin{titlepage}
   \maketitle
 \end{titlepage}
+
+\addcontentsline{toc}{section}{Declaration}
+\section*{Declaration}
+I declare that this work is my own and not someone elses. May god beat down upon me with hellfire should this declaration be falsly claimed.
+
+
+\newpage
+\addcontentsline{toc}{section}{Abstract}
+\section*{Abstract}
+Latent Entities are approximations of entities found within a corpus allowing for similar entities to be grouped into classes. Through the use of a document segmentation method processing entities and associated terms, LDA can be applied with the intention of extracting topics from each entity segmentation.
+
+
 
 % TABLE OF CONTENTS - SPACING CHANGE, TOC, SPACING CHANGE
 \renewcommand{\baselinestretch}{0.5}\normalsize
@@ -171,7 +179,7 @@ The simplified process for generating an LDA model across \(m\) documents is as 
 {\hspace*{15mm} \(b)\, Choose\, a\, word\, w_{m,n} \sim Multinomial(\phi_{z_{m,n}}) \)}\\
 
 \begin{figure}[h]
-  \caption{LDA Plate Notation\label{fig:lda_plate_notation}}}
+  \caption{LDA Plate Notation\label{fig:lda_plate_notation}}
 \end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 
@@ -208,7 +216,7 @@ Perplexity can be calculated by subsampling a corpus into training and testing s
 For LDA, the perplexity is defined as:
 
 \[
-  perplexity(D_{test}) = exp({-{{\sum^{M}_{d=1} log(p(w_d))}\over{\sum^{M}_{d=1} N_d}})
+  perplexity(D_{test}) = exp\{-{{\sum^{M}_{d=1} log(p(w_d))}\over{\sum^{M}_{d=1} N_d}}\}
 \]
 
 \renewcommand{\baselinestretch}{2.0}\normalsize
@@ -307,8 +315,11 @@ Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_
 \section{Entity Topic Model}
 By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document.
 
+\subsection{Evaluating ETMs}
+The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods would be made even more visible if used on Entity Topic Models. The intruding word test 
 \section{Analysis Pipeline}
 
+\section{Topic Model Explorer}
 
 
 %
@@ -318,6 +329,14 @@ By using a GETM prior to deriving topic models words are already associated with
 %
 \chapter{Prototyping}
 \section{Introduction}
+Prototyping for this project involves the development of system level architecture capable of processing a corpus of documents utilising methods outlined in Chapter 3.
+\section{Architecture Overview}
+
+\section{Corpus Pre-Processing}
+
+\section{Processing GETM}
+
+\section{Processing LDA}
 
 %
 %
