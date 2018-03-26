@@ -30,12 +30,13 @@
 \contentsline {subsection}{\numberline {3.4.1}Evaluating ETMs}{25}
 \contentsline {section}{\numberline {3.5}Analysis Pipeline}{26}
 \contentsline {section}{\numberline {3.6}Topic Model Explorer}{26}
-\contentsline {chapter}{\numberline {4}Prototyping}{27}
+\contentsline {chapter}{\numberline {4}Implentation}{27}
 \contentsline {section}{\numberline {4.1}Introduction}{27}
 \contentsline {section}{\numberline {4.2}Architecture Overview}{27}
 \contentsline {section}{\numberline {4.3}Corpus Pre-Processing}{27}
-\contentsline {section}{\numberline {4.4}Processing GETM}{27}
-\contentsline {section}{\numberline {4.5}Processing LDA}{27}
+\contentsline {section}{\numberline {4.4}GETM Derivation}{27}
+\contentsline {section}{\numberline {4.5}Entity-Topic Derivation}{27}
+\contentsline {section}{\numberline {4.6}Latent Entity Clustering }{27}
 \contentsline {chapter}{\numberline {5}Results and Evaluation}{28}
 \contentsline {section}{\numberline {5.1}Introduction}{28}
 \contentsline {chapter}{\numberline {6}Conclusion}{29}
