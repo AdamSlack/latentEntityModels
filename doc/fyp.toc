@@ -34,7 +34,8 @@
 \contentsline {section}{\numberline {4.1}Introduction}{28}
 \contentsline {section}{\numberline {4.2}Architecture Overview}{28}
 \contentsline {section}{\numberline {4.3}NLP Toolkit}{29}
-\contentsline {section}{\numberline {4.4}Corpus Pre-Processing}{30}
+\contentsline {section}{\numberline {4.4}Corpus Pre-Processing}{29}
+\contentsline {subsection}{\numberline {4.4.1}HMM POS Tagger}{30}
 \contentsline {section}{\numberline {4.5}GETM Derivation}{30}
 \contentsline {section}{\numberline {4.6}Entity-Topic Derivation}{30}
 \contentsline {section}{\numberline {4.7}Latent Entity Clustering }{30}
