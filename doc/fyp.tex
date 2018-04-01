@@ -23,6 +23,22 @@
 \setlength{\parskip}{1em}
 
 
+%
+% Diagrams tool.
+%
+\usepackage{tikz}
+\usetikzlibrary{matrix,shapes.multipart,shapes.geometric,fit,scopes}
+\tikzset{
+  >= latex,
+  el/.style={ellipse, draw, text width=8em, align=center},
+  rs/.style={rectangle split, draw, rectangle split parts=#1},
+  ou/.style={draw, inner xsep=1em, inner ysep=1ex, fit=#1},
+  cy/.style={cylinder, shape border rotate=90, draw,minimum height=3cm,minimum width=2cm}
+}
+%
+% End Tikz Did
+%
+
 \usepackage{chngcntr}
 \counterwithout{figure}{chapter}
 
@@ -375,6 +391,8 @@ As each latent entity remains a probability distribution of entity topics, it is
   \caption{Example entity-Topic distributions for entities in Figure~\ref{fig:example_entity_term_associations} and the associated Latent Entity. \label{fig:example_entity_topic_distribution}}
 \end{figure}
 
+Given a set of entities (like Harry, Ron, and Hermione), a Latent Entity for this set could be derived by computing the average entity topic model. Conceptually this latent entity could describe entities that can be classified as 'wizards' or 'students'. The exact interpretion of what the latent entity represents is up for debate, in a similar way to how the topic expressed in a topic model is open to interpretation.
+
 
 
 \section{Entity Topic Model}
@@ -386,9 +404,23 @@ The evaluation of topic models is a challenging task, many techniques commonly u
 The intruding entity test involves taking an individual topic entities that are most strongly associated with that topic, and then introducing an entity not all associated with that topic. Should the topics 
 
 \section{Analysis Pipeline}
+The Analysis Pipeline is a series of steps necessary for the task of extracting Latent Entities from a Corpus. Each step can be viewed as a transformation which can be applied to the results of the previous step.
 
+The pipeline is essential to the implementation of a system which can be used to extract Latent Entity information. Without consideration of what the steps would be, the value of any developed system could be severely diminished.
+
+Starting with raw documents, the start of the process is the tokenization of each document in the corpus. The extraction of POS tag information and Entities within the corpus can be carried out in parallel, it is necessary that both tasks are performed prior to the calculation of the Gaussian Entity-Term Matrix. From the GETM, Entity-Topics and subsequently Latent Entities can be extracted.
+
+\begin{figure}[h!]
+
+  \centering Tokenization - NER \& POS - GETM - Entity Topics - Latent Entity Clustering  
+  \caption{Analysis Pipeline for the Extraction of Latent Entity Information.}
+\end{figure}
 
 \section{Topic Model Explorer}
+
+As machine representations of words most probably related topically, topic models are not always easy to interpret. Presenting only a set of terms within a topic might not provide the best insight into what that topic represents in a corpus. The challenges of intepretation are further compounded as layers of abstractions are added to a topic model. Entity Topic Models and subsequently Latent Entities would be easier to intepret when presented alongside other derived models. As such, a topic model explorer is proposed as a tool allowing the comparison and exploration of topic models, entity topic models, and latent entities.
+
+Humans often try to understand a topic by applying a single word or small phrase as a title of any given topic. Latent Entities are abstractions of multiple Entitiy Topic Models, with each entity topic model being varying distributions of topics and words. In order to accomodate for the human need to label models, the Topic Model Explorer can accomodate for this by demonstrating how different clusters of entity topic models are similar, extracting words most siginificant across members of the cluster. 
 
 
 %
@@ -398,9 +430,66 @@ The intruding entity test involves taking an individual topic entities that are 
 %
 \chapter{Implentation}
 \section{Introduction}
-Prototyping for this project involves the development of system level architecture capable of processing a corpus of documents utilising methods outlined in Chapter 3.
+\renewcommand{\baselinestretch}{0.5}\normalsize
+Implementation for this project involves the development of 3 key elements:
+\begin{itemize}
+\item Analysis Toolkit
+\item Web Server Architecture
+\item Latent Entity Explorer
+\end{itemize}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+
+The Analysis Toolkit involves the derivation and implementation of methods necessary to process and analyse corpora. Web Server Architecture involves the design and implementation of a database, Server, and API capable of allowing access to processed data and results from analysis. The Latent Entity Explorer entails the creation of a set of visualisations and tools allowing for the exploration of Entity-Topic models and Latent Entities
 \section{Architecture Overview}
-Development begins with the implementation of a NLP toolkit as well as a Web-Server architecture capable of fascilitating the investigation going forward. Initial toolkit methods orient themselves around the task of proccesing a corpus of narratives into a computationally convenient format. The Web-Server architecture 
+The system principally follows a standard 3 layer approach to web-server architecture, requiring a database (DB), web server and API, and a client application. This implementation uses PostgreSQL as its DB of choice, as well as following RESTful practices in the API design. The web server is implemented in python, with a DB repository layer accompanying the server and API implementation. The client application (Latent Entity Explorer) is implemented using TypeScript and the Angular 5 framework.
+
+\begin{figure}[h!]
+
+  \begin{tikzpicture}>=latex,shorten >=2pt,shorten <=2pt,shape aspect=1
+
+  \matrix[matrix of nodes, row sep=5ex, column sep=1em] (mx) {
+    Database:& |[cy]| Database \\
+    
+    Server:&
+    |[rs=3]|
+    \nodepart{one}DB Repository
+    \nodepart{two}Application Logic
+    \nodepart{three} REST API &
+    |[rs=3]|
+    \nodepart{one} Repository Layer
+    \nodepart{two} System Logic Layer
+    \nodepart{three} API Layer
+    \\
+    Client:& |[rs=3]|
+    \nodepart{one}DB Repository
+    \nodepart{two}Application Logic
+    \nodepart{three} REST API &
+    |[rs=3]|
+    \nodepart{one} Service Layer
+    \nodepart{two} Component Layer
+    \nodepart{three} User Interface Layer
+    \\
+  };
+  \node[ou=(mx-2-2)] (server) {};
+  \node[ou=(mx-3-2)] (client) {};
+  {[->]
+  \draw (server)edge(mx-1-2) (mx-1-2)edge(server) (client)edge(server) (server)edge(client);
+  }
+\end{tikzpicture}
+  
+  \caption{Architecture overview of the Latent Entity Model Analysis and Exploration System. \label{fig:architeture_overview}}
+\end{figure}
+
+
+Alongside the server is a set of Analysis Tools that were developed as distinct methods with utility in their own right.
+
+\section{NLP Toolkit}
+The NLP Toolkit consists of a series of methods for processing a corpus of text. A Functional approach was used, with each method applying some transformation to a corpus of documents. The Analysis Pipeline defined in chapter 3 involves tasks starting with the Tokenization of plain text, and ending with the use of clustering methods to extract Latent Entities.
+
+Development followed the steps defined in the Analysis Pipeline. Starting with the early stages, before progressing onto the more complex stages.
+
+
+
 \section{Corpus Pre-Processing}
 
 \section{GETM Derivation}
@@ -409,6 +498,7 @@ Development begins with the implementation of a NLP toolkit as well as a Web-Ser
 
 \section{Latent Entity Clustering }
 
+\section{Latent Entity Explorer}
 %
 %
 %
@@ -416,6 +506,22 @@ Development begins with the implementation of a NLP toolkit as well as a Web-Ser
 %
 \chapter{Results and Evaluation}
 \section{Introduction}
+
+\section{Gaussian Entity-Term Matrix}
+Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives.
+
+\subsection{Experiment Setup}
+
+\subsection{Results}
+
+\section{Entity Topic-Models}
+The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach performs.
+
+\subsection{Experiment Setup}
+
+\subsection{Results}
+
+\section{Latent Entities}
 
 %
 %

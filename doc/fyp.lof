@@ -5,6 +5,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3}{\ignorespaces Example entity-term associations between three entities\relax }}{25}
 \contentsline {figure}{\numberline {4}{\ignorespaces Example entity-Topic distributions for entities in Figure\nobreakspace {}3\hbox {} and the associated Latent Entity. \relax }}{25}
+\contentsline {figure}{\numberline {5}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{26}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{29}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
