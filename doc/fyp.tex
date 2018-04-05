@@ -21,6 +21,7 @@
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
+\usepackage{csquotes}
 
 
 %
@@ -211,7 +212,7 @@ The total probability of an LDA model is defined as:
 \]
 
 \renewcommand{\baselinestretch}{2.0}\normalsize
-In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word wnis a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents are known parameters, the first step in the process is redundant leaving only steps 2 and 3.
+In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word \(w_n\) is a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents are known parameters, the first step in the process is redundant leaving only steps 2 and 3.
 
 The versatility of LDA is one of its strongest characteristics. The method has seen use in a range of different settings, from filtering web spam, to the semantic annotation of satellite images. As a bayesian statistical process, it is possible to utilise other methods with relative ease given its modularity.
 
@@ -304,12 +305,15 @@ The Entity-Topic Models suggested are statistically sound, and perform well in p
 %
 \chapter{New Ideas}
 \section{Introduction}
-In chapter 2 many different topic modelling and wider NLP techniques were considered, with only those specific to entity-topic modelling being close to meeting the aims that this project has. The LDA Topic modelling method provides a base statistical method from which this investigation can be launched.
+Many different methods of analysis and topic modelling have been considered, with only those specifically discussing the generation of entity-topic models beginning to progress towards meeting the aims that this project has. Of any methods considered, each Entity-Topic Modelling approach had underlying assumptions that rendered them ineffective unless utlised under specific conditions. Additionally, no method directly addressed a need for, or the concept of, a Latent Entity.
 
-The main drawback with specific entity-topic modelling methods relate to the assumptions made regarding the relationships between entities and topics in a document. Not necessarily applicable to larger documents and written narratives it is clear that some adaptation is required for general LDA based entity-topic modelling methods. Additionally, there is clearly no publically available tools that allow non-technical individuals to explore and investigate entity-topic models, resulting in the field remaining relevant only in literature.
+The primary contribution of this investigation is a pipeline through which Latent Entity models can be explored. Conceptually, Latent Entity models provide a novel means of summarising, relating, and understanding written narratives. The pipeline propsed utilises a combination of new and existing approaches, with the Latent Entities being extracted using simple clustering methods. As an abstraction of underlying layers of entity topic models, it is necessary to ensure that assumptions made in literature are addressed, else flaws in any developed system ma be further apmplified.
 
-An obvious adaptation to entity-topic modelling methods is to incorporate some weighting metric to associated terms and topics, there is potential for this step to be done as a pre-processing method. Further improvements relate to the clustering of similar entity topic models as latent entities. This provides some estimation of different types of entities that may be present within a corpus
+In order to address a fundamental flaw in many aspects of literature on Entity topic models, this investigations proposes the use of a association weighting metric that allows entities to have associations with terms in a document quantified. The Gaussian Entity-Term Matrix outlined in this chapter allows the assumption that entities in a document are equally associated to terms and topics in the same document to be removed.
 
+Evaluating topic modelling methods is a process that requires careful and considerate attention. It has been shown to be possible to evaluate topic models from a variety of perspectives, including the ability to reduce perplexity, as well as their interpretability. As an abstraction from Entity Topic-Models, typical methods for evaluation may not be applicable, alternatives are proposed in this chapter.
+
+It becomes increasingly difficult to visualise and interpret statistical models as their complexity increases, with the meaning of models becoming obsfucated by the variability of data being analysed. Topic models are no exception to the effect that variability has on levels of obsfucation, and as methods increase in complexity, the need for exploratory tools also increases. In addition proposing a pipeline for extracting latent entities, a system for the visualisation and comparison of topic models is proposed.
 
 \section{Gaussian Entity-Term Matrix}
 
@@ -330,6 +334,52 @@ Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_
     w_j && D_{j,0} && D_{j,1} && \hdots && D_{j,i}
   }
 \]
+
+This method makes use of the assumption that the more distance there is between two words, or the more words there are seperating two words, the less associated the two words are with each other. There are benefits and downsides to this simplification of the structure of written language. One down side to the assumption made is that, as associations between terms might exactly follow a gaussian distribution, it is possible that the associations between some terms may be exagerated, whilst others are understated. Additionally, the additive approach to handling terms occuring multple times means that there is potentially a need to normalise strengths off associations, this results in additional processing steps that could mitigated by considering alternative methods of handling multiple occurences.
+
+\begin{figure}[h!]
+
+  \centering
+  \begin{displayquote}
+   Ouch! exclaimed Harry, as ron and hermione began to loosen the tight grasp that plant had on Harry.
+    \end{displayquote}\\
+    \begin{tabular}{c | c c c}
+     &Harry&Hermione&Ron\\
+      \hline
+      ouch & 0.6 & 0.5  & 0.4 \\
+      exclaimed & 0.1 & 0.2  & 0.1 \\
+      Harry & 0.1 & 0.2  & 0.2 \\
+      ron & 0.2 & 0.1  & 0.3 \\  
+    \end{tabular} 
+  \caption{ Example GETM for entities within text \label{fig:getm_example}}
+\end{figure}
+
+As Figure ~\ref{fig:getm_example} demonstrates, there results in associations between terms that are not necessarily meaningful, the association of Harry to other associations of Harry is not of value, similarly, the association of Harry to words such like 'as' and 'on' is also misleading. As the GETM is only preserving the notion of words having previously held structure and meaning, it is possible to remove perticular parts of speech that don't provide useful insights into the relationships entities have with words. Removing an entity's association to itself is not so straight forward, it requires resolving which mentions refer to which entities, and in cases where entities are either refered to by different names, or two entities share the same name, that is a difficult task. One solution is to ignore entity-entity associations in the GETM, this is perhaps the best approach given the purpose of the GETM. By removing entity-entity associations from the GETM, latent entity models will describe classess of entities, and are less likely to orient themselves around the relationships between entities.
+
+By modelling associations using a Gaussian prior, it is then possible to adjust the hyperparameter \(\alpha\) to increase or decrease the rate at which strengths of association decline as the number of seperating words increase.
+
+It is also possible to remove the gaussian aspect of a GETM, instead utilising different weighting functions. In some texts it might be known that words surrounding entities are associated with strengths following different distributions, thus it is possible to substitute the Gaussian for a more representative prior. 
+
+\subsection{GETM Evaluation}
+There is no need for purpose crafted methods of evaluating the performance of a GETM, or the effect that a GETM has on the ability for meaningful latent entities to be derived. By fixing all values of the GETM to 1.0 (using a fixed weighting function), an entity can be associated with each term in a given document, this would encode the assumptions made in literature directly into the GETM. The fixed GETM can then be used as a baseline to compare different GETMs, whether that be adjusting parameters in the function, or utilising alternative weighting function.
+
+As a result of GETMs being specifically formed for the task of Latent Entity extraction, it is necessary to evaluate from that perspective. The suitability of the method to other tasks would require more generalised evaluation methods.
+
+\section{Entity Topic Model}
+By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document. Using GETMs add an additional set of pre-processing steps to the standard LDA algorithm.
+
+When sampling terms during the calculationg of a Topic model, the overall generative model for an ETM with a GETM can be derived by multiplying the probability of an entity being the sampled term, with the probability of the sampled term being associated with a sampled topic.
+
+Essentially this gives the following equation:
+\[
+  P(\underlind{E},\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
+\]
+where \(\underline{E} is the set of all entities, and \)
+
+\subsection{Evaluating ETMs}
+The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods may be made even more pronounced if used to evaluate Entity Topic Models. An adaptation of the intruding word test applicable to ETMs proposed here is the intruding Entity Test.
+
+The intruding entity test involves taking an individual topic entities that are most strongly associated with that topic, and then introducing an entity not all associated with that topic. Should the topics 
 
 \section{Latent Entities}
 A Latent Entity is an abstract statistical model that approximately describes some entities within a corpus. Identifying Latent Entities is possible though clustering entity topic models extracted from a corpus. In the case of k-means clustering, each entity in a GETM matrix is expressed as distributions of entity topics and turned into an Entity-Topic Model. Each Entity-Topic Model can then be clustered in n-dimentional space on topic distributions. The center of each cluster extracted through k-means can then be labelled as a latent entity which abstractly represents entities within that cluster.
@@ -393,15 +443,25 @@ As each latent entity remains a probability distribution of entity topics, it is
 
 Given a set of entities (like Harry, Ron, and Hermione), a Latent Entity for this set could be derived by computing the average entity topic model. Conceptually this latent entity could describe entities that can be classified as 'wizards' or 'students'. The exact interpretion of what the latent entity represents is up for debate, in a similar way to how the topic expressed in a topic model is open to interpretation.
 
+Latent Entities in this form could even be used as a means of assisting in the interpretation of large groups of entity topic models. A summary of ETM clusters can be given allowing for higher level overviews of latent structures within a corpus, or elements of a corpus.
 
+\subsection{Application of K-Means}
+K-Means clustering is just one approach that can be taken with regards to extracting latent entities from a collection of entity topic models. It is entirely appropriate to utilise other clustering methods, including techniques such as Fuzzy C-Means, Gaussian Mixture Models, or heirarchical style clustering. K-Means as a simple method provides a straightforward approach to finding Latent Entities.
 
-\section{Entity Topic Model}
-By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document. Using GETMs add an additional set of pre-processing steps to the standard LDA algorithm.
-
-\subsection{Evaluating ETMs}
-The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods may be made even more visible if used on Entity Topic Models. An adaptation of the intruding word test applicable to ETMs proposed here is the intruding Entity Test.
-
-The intruding entity test involves taking an individual topic entities that are most strongly associated with that topic, and then introducing an entity not all associated with that topic. Should the topics 
+K-Means is a method for minimising variance between clusters and as such can be described as
+\[
+  \underset{S}{argmin} \sum^{k}_{i=1}\sum^{}_{x\in S_i}||x-\mu||^2
+\]
+Given this, the equation for determining a set of latent entities for a given collection of entity topic models can be given as
+\[
+  P(\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
+\]
+\[
+  NOTE:\quad NEED\quad TO\quad INSERT\quad EQUATION\quad FOR\quad K-MEANS\quad USING\quad
+\]
+\[
+  P(\underline{E},\underline{W},\underline{Z}, \underline{\theta},\phi | \alpha, \beta)
+\]
 
 \section{Analysis Pipeline}
 The Analysis Pipeline is a series of steps necessary for the task of extracting Latent Entities from a Corpus. Each step can be viewed as a transformation which can be applied to the results of the previous step.
@@ -516,7 +576,7 @@ A POS tagger was implemented for this project to serve as a benchmark from which
 \section{Introduction}
 
 \section{Gaussian Entity-Term Matrix}
-Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives.
+Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives.
 
 \subsection{Experiment Setup}
 

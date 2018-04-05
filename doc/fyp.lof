@@ -3,10 +3,11 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces LDA Plate Notation\relax }}{15}
 \contentsline {figure}{\numberline {2}{\ignorespaces (Left) Bipartite topic conceptual similarity graph. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods \relax }}{20}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3}{\ignorespaces Example entity-term associations between three entities\relax }}{25}
-\contentsline {figure}{\numberline {4}{\ignorespaces Example entity-Topic distributions for entities in Figure\nobreakspace {}3\hbox {} and the associated Latent Entity. \relax }}{25}
-\contentsline {figure}{\numberline {5}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{26}
+\contentsline {figure}{\numberline {3}{\ignorespaces Example GETM for entities within text \relax }}{25}
+\contentsline {figure}{\numberline {4}{\ignorespaces Example entity-term associations between three entities\relax }}{28}
+\contentsline {figure}{\numberline {5}{\ignorespaces Example entity-Topic distributions for entities in Figure\nobreakspace {}4\hbox {} and the associated Latent Entity. \relax }}{28}
+\contentsline {figure}{\numberline {6}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{30}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{29}
+\contentsline {figure}{\numberline {7}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{32}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
