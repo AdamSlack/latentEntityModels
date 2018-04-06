@@ -351,19 +351,23 @@ Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_
 
 This method makes use of the assumption that the more distance there is between two words, or the more words there are seperating two words, the less associated the two words are with each other. There are benefits and downsides to this simplification of the structure of written language. One down side to the assumption made is that, as associations between terms might exactly follow a gaussian distribution, it is possible that the associations between some terms may be exagerated, whilst others are understated. Additionally, the additive approach to handling terms occuring multple times means that there is potentially a need to normalise strengths off associations, this results in additional processing steps that could mitigated by considering alternative methods of handling multiple occurences.
 
-\begin{figure}[h!]
 
+\begin{figure}[h!]
   \centering
   \begin{displayquote}
-   Ouch! exclaimed Harry, as ron and hermione began to loosen the tight grasp that plant had on Harry.
+ ``Someone standing outside the Great Hall might well have thought some
+sort of explosion had taken place, so loud was the noise that erupted
+from the Gryffindor table. Harry, Ron, and Hermione stood up to yell and
+cheer as Neville, white with shock, disappeared under a pile of people
+hugging him.'' -- J. K. Rowling
     \end{displayquote}\\
-    \begin{tabular}{c | c c c}
-     &Harry&Hermione&Ron\\
+    \begin{tabular}{c | c c c c}
+     &Harry&Hermione&Ron&neville\\
       \hline
-      ouch & 0.6 & 0.5  & 0.4 \\
-      exclaimed & 0.1 & 0.2  & 0.1 \\
-      Harry & 0.1 & 0.2  & 0.2 \\
-      ron & 0.2 & 0.1  & 0.3 \\  
+      loud    & 0.6 & 0.5  & 0.4  & \\
+      white   & 0.1 & 0.2  & 0.1  & \\
+      shock   & 0.1 & 0.2  & 0.2  & \\
+      yell    & 0.2 & 0.1  & 0.3  & \\  
     \end{tabular} 
   \caption{ Example GETM for entities within text \label{fig:getm_example}}
 \end{figure}
@@ -382,19 +386,18 @@ As a result of GETMs being specifically formed for the task of Latent Entity ext
 \section{Entity Topic Model}
 By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document. Using GETMs add an additional set of pre-processing steps to the standard LDA algorithm.
 
-When sampling terms during the calculationg of a Topic model, the overall generative model for an ETM with a GETM can be derived by multiplying the probability of an entity being the sampled term, with the probability of the sampled term being associated with a sampled topic.
-
-
+The proportional topic distributions in an Entity Topic Model using the GETM can be calulated by multiplying the strength of association between an entity and a given word, with the word-topic probabilities calculated in an LDA model.
 \[
-  REWORK \quad
+  T_{k,e} = \sum^w \phi_{k,w} \cdot D_{e,w}
 \]
-This actually wants to be an equation calculating the proportional distributions of topics given the strength of belonging each term has to a topic and the strength of association between the word and entity.
 
-Essentially this gives the following equation:
+Where  \(T_{k,e}\) is the Entity Topic for topic \(k\) and entity \(e\), \(D_{e,w}\) is the strength of assocation between entity \(e\) and word \(w\), and \(\phi_{k,w}\) is the topic-word probability for topic \(k\) and word \(w\).
+
+You may wish to each topic score in an entity topic, bringing values into the \([0,1]\) range. In which case the value for each \(T_{k,e}\) becomes:
 \[
-  P(E,\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
+  T_{k,e} = {\sum^w {(\phi_{k,w} \cdot D_{e,w})} - max(\underline{T}_e)\over{max(\underline{T}_e) - min(\underline{T}_e)}
 \]
-where \(E}\) is an entity in the corpus, and \(P(W_{j_t}|E\) is the probability of entity-term association.
+where \(\underline{T}_e\) is the set of topics for entity \(e\).
 
 \subsection{Evaluating ETMs}
 The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods may be made even more pronounced if used to evaluate Entity Topic Models. An adaptation of the intruding word test applicable to ETMs proposed here is the intruding Entity Test.
@@ -472,16 +475,7 @@ K-Means is a method for minimising variance between clusters and as such can be 
 \[
   \underset{S}{argmin} \sum^{k}_{i=1}\sum^{}_{x\in S_i}||x-\mu||^2
 \]
-Given this, the equation for determining a set of latent entities for a given collection of entity topic models can be given as
-\[
-  P(\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
-\]
-\[
-  NOTE:\quad NEED\quad TO\quad INSERT\quad EQUATION\quad FOR\quad K-MEANS\quad USING\quad
-\]
-\[
-  P(\underline{E},\underline{W},\underline{Z}, \underline{\theta},\phi | \alpha, \beta)
-\]
+Given this, the equation for determining a set of latent entities for a given collection of entity topic models involves the substitution of the equation for an entity topic model \(T_{k,e}\) into the standard formula for k-means.
 
 \section{Analysis Pipeline}
 The Analysis Pipeline is a series of steps necessary for the task of extracting Latent Entities from a Corpus. Each step can be viewed as a transformation which can be applied to the results of the previous step.
@@ -503,6 +497,11 @@ As machine representations of words most probably related topically, topic model
 Humans often try to understand a topic by applying a single word or small phrase as a title of any given topic. Latent Entities are abstractions of multiple Entitiy Topic Models, with each entity topic model being varying distributions of topics and words. In order to accomodate for the human need to label models, the Topic Model Explorer can accomodate for this by demonstrating how different clusters of entity topic models are similar, extracting words most siginificant across members of the cluster.
 
 As well as allowing comparisons of entity topic models, by allowing the explorer to accomodate for the comparison of other levels of topic model extractions, it can allow individuals to evaluate the quality of each model used to describe a corpus.
+
+\subsection{Interface}
+The interface for the Topic Model Explorer is a key aspect in allowing individuals to understand the machine models extracted from a corpus.
+
+\subsection{Visualisations}
 
 %
 %
@@ -581,6 +580,8 @@ Once each document in the corpus has sentences and words tokenized, the next sta
 A POS tagger was implemented for this project to serve as a benchmark from which standard tools could be comapred against. Hidden Markove Models is an effective baysian method of predicting a most likely given sequence of states given a sequence of inputs.
 
 \section{GETM Derivation}
+
+The derivation of the Gaussian Entity-Term Matrix was an iterative process. It arose out of necessity for a computationally convenient means of retaining some notion of structure in the topic modelling process.
 
 \section{Entity-Topic Derivation}
 
