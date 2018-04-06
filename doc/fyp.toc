@@ -15,12 +15,13 @@
 \contentsline {subsection}{\numberline {2.4.1}Latent Semantic Analysis}{14}
 \contentsline {subsection}{\numberline {2.4.2}Probabilistic Latent Semantic Indexing}{14}
 \contentsline {subsection}{\numberline {2.4.3}Latent Dirichlet Allocation}{15}
-\contentsline {section}{\numberline {2.5}Evaluating Topic Models}{17}
-\contentsline {subsection}{\numberline {2.5.1}Perplexity}{17}
-\contentsline {subsection}{\numberline {2.5.2}Interpretability and Coherence}{18}
+\contentsline {subsection}{\numberline {2.4.4}Existing Implementation}{17}
+\contentsline {section}{\numberline {2.5}Evaluating Topic Models}{18}
+\contentsline {subsection}{\numberline {2.5.1}Perplexity}{18}
+\contentsline {subsection}{\numberline {2.5.2}Interpretability and Coherence}{19}
 \contentsline {subsection}{\numberline {2.5.3}Comparing Models}{20}
 \contentsline {section}{\numberline {2.6}Entity Modeling}{21}
-\contentsline {subsection}{\numberline {2.6.1}Entity Linking}{21}
+\contentsline {subsection}{\numberline {2.6.1}Entity Linking}{22}
 \contentsline {subsection}{\numberline {2.6.2}Entity Topic Models}{22}
 \contentsline {chapter}{\numberline {3}New Ideas}{23}
 \contentsline {section}{\numberline {3.1}Introduction}{23}
@@ -28,7 +29,7 @@
 \contentsline {subsection}{\numberline {3.2.1}GETM Evaluation}{26}
 \contentsline {section}{\numberline {3.3}Entity Topic Model}{27}
 \contentsline {subsection}{\numberline {3.3.1}Evaluating ETMs}{27}
-\contentsline {section}{\numberline {3.4}Latent Entities}{27}
+\contentsline {section}{\numberline {3.4}Latent Entities}{28}
 \contentsline {subsection}{\numberline {3.4.1}Application of K-Means}{29}
 \contentsline {section}{\numberline {3.5}Analysis Pipeline}{29}
 \contentsline {section}{\numberline {3.6}Topic Model Explorer}{30}

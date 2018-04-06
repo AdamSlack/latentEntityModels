@@ -171,6 +171,13 @@ Tong Zhang, Zhe-Ming Lu, Kap~Luk Chan, and Zhen Li.
 \newblock {\em IJCSES International Journal of Computer Sciences and
   Engineering Systems}, 5(1), 2011.
 
+\bibitem{rehurek_lrec}
+Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.
+\newblock {Software Framework for Topic Modelling with Large Corpora}.
+\newblock In {\em {Proceedings of the LREC 2010 Workshop on New Challenges for
+  NLP Frameworks}}, pages 45--50, Valletta, Malta, May 2010. ELRA.
+\newblock \url{http://is.muni.cz/publication/884893/en}.
+
 \bibitem{Newton1994-ws}
 Michael~A Newton and Adrian~E Raftery.
 \newblock Approximate bayesian inference with the weighted likelihood

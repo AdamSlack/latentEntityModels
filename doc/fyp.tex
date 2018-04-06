@@ -224,6 +224,20 @@ LDA doesn’t relate words semantically. The meanings of words in a topic are no
 
 As a bag of words method, each unigram is treated as being unrelated to other words. Which is not true in the case of written narratives. Much of the meaning of words and relations between words are lost when used in ‘bag of word’ models. The drawback for this study is that relations between terms and entities are required. If topics were directly derived from the documents which entities were extracted from, then there would be no meaningful way of identifying how these topics apply to entities.
 
+\subsection{Existing Implementation}
+
+LDA is a specialised method of analysis, with only a limited number existing implementations ready and available. The popular python scientific computing library scikit-learn contains an implementation based on open source development coming from Princeton.~\cite{?}. Genism is an alternative python library that focuses only on topic modelling methods, it is quite comprehensive in the supporting tools it provides.~\cite{rehurek_lrec}
+
+The scikit-learn implementation of LDA outputs a set of topics each consisting of a set of word-strength pairs. Figure ~\ref{fig:lda_sklearn_output} shows the general structure of output from the method. Genism provides a more elaborate interface through which the contents of the topics an other information can be retireved. 
+\begin{figure}[h!]
+\[
+  \underline{lda} = \{t_1 = \{(w_1 : s_{1,1}), ..., (w_j : s_{1,j})\}, ..., t_i =\{(w_1 : s_{i,1}), ..., (w_j : s_{i,j})\}\}
+\]
+\caption{Output format of lda implementation in scikit-learn. where \(t_i\) is the topic, \(w_j\) is the word, and \(s_{i,j}\) is the strength of ownership between the topic and the word. \label{fig:lda_sklearn_output}}
+\end{figure}
+
+A key benefit to be had from utilising Genism, is the number of options that are available with the library. As well as a base LDA model there are varying implementations that parallelise the process or utilise proposed heirarchical approaches. Scikit-learn offers a simple method that provides minimal thrills, however, the simple implementation opens it up for extensions and adaptations in ways that Genism does not.
+
 \section{Evaluating Topic Models}
 Topic models are machine representations of word groups that have been deemed to be somehow related. The challenge for evaluating topic models is that it depends on the task which they are being applied to. Directly evaluating the accuracy of topic models is tough, as an unsupervised bayesian method, the probabilities are not interpretable, they are what they are and no ground truth exist. Where produced models can be effectively evaluated is on their efficacy at some secondary task, this could be to predict or estimate topics that might be present in documents not present in the sample used to train models.
 
@@ -370,11 +384,17 @@ By using a GETM prior to deriving topic models words are already associated with
 
 When sampling terms during the calculationg of a Topic model, the overall generative model for an ETM with a GETM can be derived by multiplying the probability of an entity being the sampled term, with the probability of the sampled term being associated with a sampled topic.
 
+
+\[
+  REWORK \quad
+\]
+This actually wants to be an equation calculating the proportional distributions of topics given the strength of belonging each term has to a topic and the strength of association between the word and entity.
+
 Essentially this gives the following equation:
 \[
-  P(\underlind{E},\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
+  P(E,\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
 \]
-where \(\underline{E} is the set of all entities, and \)
+where \(E}\) is an entity in the corpus, and \(P(W_{j_t}|E\) is the probability of entity-term association.
 
 \subsection{Evaluating ETMs}
 The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods may be made even more pronounced if used to evaluate Entity Topic Models. An adaptation of the intruding word test applicable to ETMs proposed here is the intruding Entity Test.
