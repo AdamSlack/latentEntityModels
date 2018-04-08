@@ -73,7 +73,6 @@ class Server(BaseHTTPRequestHandler):
         conn.close()
         return res
 
-
     def fetch_book_titles(self):
         """ """
         conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
@@ -147,7 +146,6 @@ class Server(BaseHTTPRequestHandler):
         self.send_response(400)
         json_obj = json.loads('{"Invalid URL": "Oooh-Weee, Don\'t quite know what you\'re wanting there!"}')
         return  json.dumps(json_obj, indent=2)
-
 
     def process_POST():
         """ processess URL from POST Request """

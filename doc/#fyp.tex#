@@ -608,6 +608,8 @@ Tokenizing, POS Taggin, NER, an other pre-processing tasks are required as defin
 \subsection{GETM Algorithm}
 
 
+
+
 \section{Corpus Pre-Processing}
 
 Corpus Pre-Processign involves applying a set of transformations necessary to begin the analysis and creation of descriptive models. It is assumed that the corpus provided to the system will contain only the text that is to be processed. In many documents there is additional preamble, publishing information, and other elements that can be considered 'noise'. This system will not concern itself with the removal of noise within the corpus.
@@ -615,13 +617,6 @@ Corpus Pre-Processign involves applying a set of transformations necessary to be
 Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the default tokenization methods which use XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
 
 Once each document in the corpus has sentences and words tokenized, the next stage in the processes is the application of POS tagging methods to determine the gramatical structure of each sentence. A Viterbi Decoded Hidden Markov Model (HMM) POS tagger was implemented in python, utilising the NLP tookit developed for this project. POS Tagging this document means that it is possible to apply filters to the corpus before deriving topic models from the GETM. By removing certain words tagged as certain POS (like determiners, or prepositions) it is possible to derive topics using only descriptive words, which may provide more cohesive and interpretable models.
-
-\subsection{HMM POS Tagger}
-A POS tagger was implemented for this project to serve as a benchmark from which standard tools could be comapred against. Hidden Markove Models is an effective baysian method of predicting a most likely given sequence of states given a sequence of inputs.
-
-\section{GETM Derivation}
-
-The derivation of the Gaussian Entity-Term Matrix was an iterative process. It arose out of necessity for a computationally convenient means of retaining some notion of structure in the topic modelling process.
 
 \section{Entity-Topic Derivation}
 
