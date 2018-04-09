@@ -24,12 +24,15 @@
 \setlength{\parskip}{1em}
 \usepackage{csquotes}
 \setcounter{secnumdepth}{3}
+\usepackage[ruled]{algorithm2e}
+\usepackage{algorithmic}
+
 
 %
 % Diagrams tool.
 %
 \usepackage{tikz}
-\usetikzlibrary{matrix,shapes.multipart,shapes.geometric,fit,scopes}
+\usetikzlibrary{mindmap,trees,matrix,shapes.multipart,shapes.geometric,fit,scopes,shapes.misc,shadows}
 \tikzset{
   >= latex,
   el/.style={ellipse, draw, text width=8em, align=center},
@@ -201,7 +204,7 @@ The simplified process for generating an LDA model across \(m\) documents is as 
 {\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_{m,n} \sim Multinomial(\theta_m)  \)}\\
 {\hspace*{15mm} \(b)\, Choose\, a\, word\, w_{m,n} \sim Multinomial(\phi_{z_{m,n}}) \)}\\
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \caption{LDA Plate Notation\label{fig:lda_plate_notation}}
 \end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
@@ -289,7 +292,7 @@ When regarding topics as a \(k-dimensional\) model, visualising the topic space 
 \renewcommand{\baselinestretch}{0.5}\normalsize
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \begin{subfigure}{.33\textwidth}
     \includegraphics[scale=0.20]{lda_lsa_topic_view}
 \end{subfigure}
@@ -383,9 +386,9 @@ By modelling associations using a Gaussian prior, it is then possible to adjust 
 It is also possible to remove the gaussian aspect of a GETM, instead utilising different weighting functions. In some texts it might be known that words surrounding entities are associated with strengths following different distributions, thus it is possible to substitute the Gaussian for a more representative prior. 
 
 \subsection{GETM Evaluation}
-There is no need for purpose crafted methods of evaluating the performance of a GETM, or the effect that a GETM has on the ability for meaningful latent entities to be derived. By fixing all values of the GETM to 1.0 (using a fixed weighting function), an entity can be associated with each term in a given document, this would encode the assumptions made in literature directly into the GETM. The fixed GETM can then be used as a baseline to compare different GETMs, whether that be adjusting parameters in the function, or utilising alternative weighting function.
+There is no need for hand crafted methods of evaluating the performance of a GETM, or the effect that a GETM has on the ability for meaningful latent entities to be derived. By fixing all values of the GETM to 1.0 (using a fixed weighting function), an entity can be associated with each term in a given document, this would encode the assumptions made in literature directly into the GETM. The fixed GETM can then be used as a baseline to compare different GETMs, whether that be adjusting parameters in the function, or utilising alternative weighting function.
 
-As a result of GETMs being specifically formed for the task of Latent Entity extraction, it is necessary to evaluate from that perspective. The suitability of the method to other tasks would require more generalised evaluation methods.
+As a result of GETMs being specifically formed for the task of Latent Entity extraction, it is necessary to evaluate from that perspective, the suitability of the method to other tasks would require more generalised evaluation methods. With the availability of a fixed weighting function when calculating the GETM allows for the comparion of quality between calculated Topic moels and Latent Entities with and without the use of a GETM.
 
 \section{Entity Topic Model}
 By using a GETM prior to deriving topic models words are already associated with entities, this makes extending LDA topic models a more simple task. As LDA is a bag-of-words method, each entity and its associated terms within the GETM could be regarded as a distinct document. Using GETMs add an additional set of pre-processing steps to the standard LDA algorithm.
@@ -404,16 +407,13 @@ You may wish to each topic score in an entity topic, bringing values into the \(
 where \(\underline{T}_e\) is the set of topics for entity \(e\).
 
 \subsection{Evaluating ETMs}
-The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods may be made even more pronounced if used to evaluate Entity Topic Models. An adaptation of the intruding word test applicable to ETMs proposed here is the intruding Entity Test.
-
-The intruding entity test involves taking an individual topic entities that are most strongly associated with that topic, and then introducing an entity not all associated with that topic. Should the topics 
 
 \section{Latent Entities}
 A Latent Entity is an abstract statistical model that approximately describes some entities within a corpus. Identifying Latent Entities is possible though clustering entity topic models extracted from a corpus. In the case of k-means clustering, each entity in a GETM matrix is expressed as distributions of entity topics and turned into an Entity-Topic Model. Each Entity-Topic Model can then be clustered in n-dimentional space on topic distributions. The center of each cluster extracted through k-means can then be labelled as a latent entity which abstractly represents entities within that cluster.
 
 As each latent entity remains a probability distribution of entity topics, it is possible to state how similar a given entity is to a latent entity. Each similarity metric of entity to latent entity can then be used to express the entity in terms of similarities to latent entities.
 
-\begin{table}[h]
+\begin{table}[h!]
   \centering
   \begin{tabular}{*2c}
       \multicolumn{2}{c}{Harry}\\
@@ -480,6 +480,82 @@ K-Means is a method for minimising variance between clusters and as such can be 
   \underset{S}{argmin} \sum^{k}_{i=1}\sum^{}_{x\in S_i}||x-\mu||^2
 \]
 Given this, the equation for determining a set of latent entities for a given collection of entity topic models involves the substitution of the equation for an entity topic model \(T_{k,e}\) into the standard formula for k-means.
+\section{Evaluating Latent Entities}
+The evaluation of topic models is a challenging task, many techniques commonly used are inherently flawed or difficult to carry out. Many of the flaws present in topic modelling evaluation methods may be made even more pronounced if used to evaluate Entity Topic Models, and Latent. An adaptation of the intruding word test applicable to ETMs proposed here is the intruding Entity Test. Some evaluation metrics are proposed as means of evaluating the quality of latent entities.
+
+\subsection{Intruding Entity}
+The intruding entity test involves asking human participants to identify the entity that doesn't belong in a set of entities supposedly represented by a latent entity. The set of entities can be formed by choosing some amount of entities most strongly represente by a Latent Entity, then selcting and adding to the set an entity least likely to be represented by the same latent entity.
+
+Similarly to the intruding word test, the intruding entity test is supposed to performs as a means of evaluating the cohesiveness of the latent entity. Should the set of entities actually be made of those conceptually related, then the odd entity should be identified with a high success rate across all participants.
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}
+  \path[mindmap,concept color=black,text=black, scale=0.5]
+    node[concept,text=white ,scale=0.4, font=\fontsize{28pt}{28pt}\selectfont] {Entities}
+    [clockwise from=0]
+    child[concept color=cyan] {
+      node[concept,  font=\fontsize{20pt}{20pt}\selectfont]
+      {Harry}
+    }  
+    child[concept color=cyan] {
+      node[concept,font=\fontsize{20pt}{20pt}\selectfont]
+      {Ron}
+    }
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{15pt}{18pt}\selectfont]
+      {Hermione}
+    }
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{20pt}{20pt}\selectfont]
+      {Snape}
+    }
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{20pt}{20pt}\selectfont]
+      {Neville}
+    }
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{18pt}{20pt}\selectfont]
+      {Dursley}
+    };
+  \end{tikzpicture}\\
+Select the entity that does not belong the the set: \underline{\quad \quad \quad \quad \quad \quad}
+  \caption{Example Set of Entities for the Intruding Entity Test.\label{fig:intruding_entity}}
+\end{figure}
+
+In Figure~\ref{fig:intruding_entity} you can see an example of how the test may look, the names of entities being presented in some format, with participants requested to select the entity that does not belong. There are a range of influencing factors that could invalidate the results of any test of this format, most notable of which is the familiarity of the participants to the reference material. In cases where individuals are unfamiliar with the narratives from which entities are drawn from, then there would be increased difficulty when selecting the conceptually unrelated entity.
+
+Admittedly, there is a range of investigations that can be carried out to evaluate the efficacy of this method of evaluation. It might be necessary to provide participants with additional information about the set in order to allow them to make informed decisions. As the entities within the set are them selves represented by topic models, it is possible to then provide information regarding the words associated with those entities that resulted in the set of entities represented by the calculated Latent Entity.
+
+\begin{figure}
+  \centering
+
+    \begin{tikzpicture}
+  \path[mindmap,concept color=black,text=white]
+    node[concept] {Entities}
+    [clockwise from=0]
+    child[concept color=green!50!black] {
+      node[concept] {practical}
+      [clockwise from=90]
+      child { node[concept] {algorithms} }
+      child { node[concept] {data structures} }
+      child { node[concept] {pro\-gramming languages} }
+      child { node[concept] {software engineer\-ing} }
+    }  
+    child[concept color=blue] {
+      node[concept] {applied}
+      [clockwise from=-30]
+      child { node[concept] {databases} }
+      child { node[concept] {WWW} }
+    }
+    child[concept color=red] { node[concept] {technical} }
+    child[concept color=orange] { node[concept] {theoretical} };
+\end{tikzpicture}
+  \caption{Example Set of Entities with Set of Associated Terms.\label{fig:intruding_entitiy_terms}}
+\end{figure}
+
+\subsection{Latent Entity Consistency}
+The consistency of the proposed method for calculating latent entities can be determined by comparing the results of the process for two corpora of different documents onthe same subject. The assumptions for this method of evaluation is that the contents of books on the same subject are likely to be similar, whilst this may not be true for narratives, factual books on the same subject should hold true.
 
 \section{Analysis Pipeline}
 The Analysis Pipeline is a series of steps necessary for the task of extracting Latent Entities from a Corpus. Each step can be viewed as a transformation which can be applied to the results of the previous step.
@@ -576,7 +652,7 @@ The focus of the API is to allow clients to interact with data resulting from th
 Given the defined purpose of the API, and the process through which narratives can be analysed, the design of endpoints is a relatively straightforward task. The API will consist of a series of GET request endpoints for book data, as well as a small set of endpoints allowing additional narratives to be added to the system and analysed.
 
 A Subset of the endpoints in the api for requesting data from the system can be seen in Table~\ref{tab:api_endpoints}, each of which are GET requests. There are additional endpoints that allow for other aspects of collected and extracted data to be requested, as well as POST endpoints that allow or additional documents to be added to the system. 
-\begin{table}[h]
+\begin{table}[h!]
 \centering
 \begin{tabular}{r | l}
   Endpoint&URI\\
@@ -596,16 +672,45 @@ Text between guillemots represent variables of the URI.
 
 From Table~\ref{tab:api_endpoints} it is clear how most of the endpoints are oriented around a book title, however, it would not make sense to follow this structure for latent entities. As latent entities are representative of a collection of entities, they are not part of any singular book, and thus are not accessed in the same means as other aspects of the API.
 
+\subsection{Database}
+
+\subsubsection{DB Structure}
+
+\subsubsection{Repository}
+Using a repository style pattern for seperating the responsibility of interfacing with the database means that a clear structure for 
+
+
 \section{NLP Toolkit}
 As any investigation involving the use of data in any form does, pre-processing was carried out on the collections of documents intending to be analysed. As this investigation aims to also serve as a tool from which multiple corpora can be analysed, the pre-processing steps taken need to be reproducible. The NLP Toolkit developed for this system is essentially a collection of tools that allow each document in the corpus to be pre-processed ready for the extraction of topic models and latent entities. A somewhat functional approach was used, with each method applying some transformation to a single document, or a corpus as a whole. The Analysis Pipeline defined in chapter 3 involves tasks starting with the Tokenization of plain text, and ending with the use of clustering methods to extract Latent Entities.
 
 The toolkit can be viewed as a combination of both simple and complex NLP methods, that allow basic NLP tasks like tokenization and POS tagging to be carried out, as well as more complex GETM and topic modelling techniques.
 
 \subsection{General NLP}
-Tokenizing, POS Taggin, NER, an other pre-processing tasks are required as defined in the proposed analysis pipeline. A collection of NLP Utilities allow these tasks to be carried out within the system being developed.
+Tokenizing, POS Taggin, NER, an other pre-processing tasks are required as defined in the proposed analysis pipeline. A collection of NLP Utilities allow these tasks to be carried out within the system being developed. Table~\ref{tab:nlp_utilities} shows some of the methods developed, as well as their purpose within the system
+
+\begin{table}[h!]
+  \begin{tabular}{c | p{0.6\linewidth} }
+    Method & Purpose\\
+    \hline
+    $sent\_tokenize(document)$ & Returns an array of string tokens representing sentences within the provided document  \\
+    $word\_tokenize(sent\_tokens)$& Returns a mapping of sentence tokens to arrays of word tokens \\
+    $tag\_document(word\_tokens)$ & Returns an array of POS tag sequences for each sentence of word tokens\\
+    $tag\_entities(word\_tokes)$ & Returns an array of tagged entity tuples using NER tagger\\
+    $cherry\_entity\_tuples(entities)$ & Returns a mapping of entity names from set of enitity tuples\\
+  \end{tabular}
+  \caption{NLP Ultity Methods\label{tab:nlp_utilities}}
+\end{table}
+
 \subsubsection{POS Tagging}
 
-\subsection{GETM Algorithm}
+
+\subsection{Gaussian Entity-Term Matrix}
+
+\subsubsection{Algorithm}
+
+\subsubsection{GETM Objects}
+
+
 
 
 \section{Corpus Pre-Processing}
@@ -616,12 +721,46 @@ Tokenization is the first transformation to be applied to the corpus. NLTK provi
 
 Once each document in the corpus has sentences and words tokenized, the next stage in the processes is the application of POS tagging methods to determine the gramatical structure of each sentence. A Viterbi Decoded Hidden Markov Model (HMM) POS tagger was implemented in python, utilising the NLP tookit developed for this project. POS Tagging this document means that it is possible to apply filters to the corpus before deriving topic models from the GETM. By removing certain words tagged as certain POS (like determiners, or prepositions) it is possible to derive topics using only descriptive words, which may provide more cohesive and interpretable models.
 
-\subsection{HMM POS Tagger}
-A POS tagger was implemented for this project to serve as a benchmark from which standard tools could be comapred against. Hidden Markove Models is an effective baysian method of predicting a most likely given sequence of states given a sequence of inputs.
+Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. Figure~\ref{fig:corpus_preprocess} denotes the process of assimilating a collection of documents into the system.
 
-\section{GETM Derivation}
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\begin{algorithm}[H]
+  \caption{Document Pre-processing steps\label{fig:document_preprocess}}
+  \begin{algorithmic}
+   
+    \STATE let $S$ be the sequence of sentence tokens, where $S_s$ is a sentence token.
+    \STATE let $W$ be the sequence of word tokenized sentence tokens, where $W_s$ is a set of word tokens for sentence token $S_s$.
+    \STATE let $E$ be the set of entities where $E_e \in W$.
+    \STATE let $P$ be the POS-tagged sequence of word tokenized sentence tokens
+    \STATE let $G$ be the Gaussian Entity-Term Matrix.
+    \STATE
+    \STATE $S\gets sentTokenize(document)$
+    \FOR{$S_s \in S$}
+      \STATE $W_s \gets wordTokenize(S_s)$
+      \ENDFOR
+      \STATE 
+    \STATE $E \gets extractEntities(W)$
+    \STATE $P \gets posTag(W)$
+    \STATE $G \gets calculateGETM(E, G)$
+    \STATE
+    \RETURN $E, P, G$
+    
+  \end{algorithmic}
+\end{algorithm}
+\renewcommand{\baselinestretch}{2.0}\normalsize
 
-The derivation of the Gaussian Entity-Term Matrix was an iterative process. It arose out of necessity for a computationally convenient means of retaining some notion of structure in the topic modelling process.
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\begin{algorithm}[H]
+  \caption{Corpus Pre-processing steps\label{fig:corpus_preprocess}}
+  \begin{algorithmic}
+    \STATE let $T$ be the set of document titles
+    \FOR{$t \in T$}
+      \STATE $D \gets openDocument(T)$
+      $E$
+    \ENDFOR
+  \end{algorithmic}
+\end{algorithm}
+\renewcommand{\baselinestretch}{2.0}\normalsize
 
 \section{Entity-Topic Derivation}
 
