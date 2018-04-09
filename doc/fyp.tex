@@ -529,30 +529,45 @@ Admittedly, there is a range of investigations that can be carried out to evalua
 
 \begin{figure}
   \centering
-
-    \begin{tikzpicture}
-  \path[mindmap,concept color=black,text=white]
-    node[concept] {Entities}
+  \begin{tikzpicture}
+      \path[mindmap,concept color=black,text=black, scale=0.9]
+    node[concept,text=white ,scale=0.8, font=\fontsize{28pt}{28pt}\selectfont] {Entities}
     [clockwise from=0]
-    child[concept color=green!50!black] {
-      node[concept] {practical}
+    child[concept color=cyan] {
+      node[concept,  font=\fontsize{20pt}{20pt}\selectfont]
+      {Harry}
       [clockwise from=90]
-      child { node[concept] {algorithms} }
-      child { node[concept] {data structures} }
-      child { node[concept] {pro\-gramming languages} }
-      child { node[concept] {software engineer\-ing} }
+      child { node[concept, color=orange, text=black] {Wand} }
+      child { node[concept, color=orange, text=black] {Wizard} }
+      child { node[concept, color=orange, text=black] {Determined} }
+      child { node[concept, color=orange, text=black] {Flash} }
     }  
-    child[concept color=blue] {
-      node[concept] {applied}
-      [clockwise from=-30]
-      child { node[concept] {databases} }
-      child { node[concept] {WWW} }
+    child[concept color=cyan] {
+      node[concept,font=\fontsize{20pt}{20pt}\selectfont]
+      {Ron}
     }
-    child[concept color=red] { node[concept] {technical} }
-    child[concept color=orange] { node[concept] {theoretical} };
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{15pt}{18pt}\selectfont]
+      {Hermione}
+    }
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{20pt}{20pt}\selectfont]
+      {Snape}
+    }
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{20pt}{20pt}\selectfont]
+      {Neville}
+    }
+    child[concept color=cyan] {
+      node[concept, font=\fontsize{18pt}{20pt}\selectfont]
+      {Dursley}
+    };
 \end{tikzpicture}
   \caption{Example Set of Entities with Set of Associated Terms.\label{fig:intruding_entitiy_terms}}
 \end{figure}
+
+For participants that are unfamiliar with the matrial from which the entities in the set are from, presenting the terms most strongly associated with the entities might resolve the impact that this could have on their ability to select the correct entitiy. Of course, with the addition of more information the question becomes more complex to answer, there becomes more factors to consider when determining which entity is th unrelated one.
+
 
 \subsection{Latent Entity Consistency}
 The consistency of the proposed method for calculating latent entities can be determined by comparing the results of the process for two corpora of different documents onthe same subject. The assumptions for this method of evaluation is that the contents of books on the same subject are likely to be similar, whilst this may not be true for narratives, factual books on the same subject should hold true.
