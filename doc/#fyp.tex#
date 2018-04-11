@@ -822,7 +822,7 @@ A dynamic programming algorithm, the Viterbi algorithm provides a comparatively 
     \STATE let $O$ be the sequence of observations.
     \STATE let $S$ be the set of possible states 
     \STATE let $V$ be the sequence of sets of state probabilities 
-    \STATE let $P$ be the POS-tagged sequence of word tokenized sentence tokens
+    \STATE let $P$ 
     \STATE let $G$ be the Gaussian Entity-Term Matrix.
     \STATE
     \STATE $S\gets sentTokenize(document)$

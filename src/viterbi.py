@@ -24,7 +24,11 @@ def initialise_start_probabilities(states, start_p, emit_p, obs):
     where the previous state is None, and the probability of
     each state is a product of the start_p and emit_p
     """
-    return { state : {'prob': start_p[state] * emit_p[state][obs[0]], 'prev':None } for state in states }
+    return { 
+        state : {
+                'prob': start_p[state] * emit_p[state][obs[0]], 'prev':None 
+            } for state in states 
+        }
 
 #
 #
@@ -35,33 +39,24 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
     
     for o in range(1, len(obs)):
         V.append({})
-        
         for st in states:
-            # determine where the transition was from.
             max_tr_prob = max_transition(prev_states=V[o-1], states=states, curr=st, trans_p=trans_p)
-
             for prev_st in states:
-                # choose the most likely transition.
                 if V[o-1][prev_st]["prob"] * trans_p[prev_st][st] == max_tr_prob:
-                    # give this route a probability.
                     max_prob = max_tr_prob * emit_p[st][obs[o]]
                     V[o][st] = {"prob": max_prob, "prev": prev_st}
-                    break # Should we really be breaking?...
+                    break 
+    
     opt = []
-    # The highest probability for the final state.
     max_prob = max(value["prob"] for value in V[-1].values())
     previous = None
-    # Get most probable state and its backtrack
     for st, data in V[-1].items():
-        # add the content of the most likely end state
-        # to an array of optimal routes.
         if data["prob"] == max_prob:
             opt.append(st)
             previous = st
             break
-    # Follow the backtrack till the first observation
+
     for t in range(len(V) - 2, -1, -1):
-        # startin with 
         opt.insert(0, V[t + 1][previous]["prev"])
         previous = V[t + 1][previous]["prev"]
     return opt
