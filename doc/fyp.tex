@@ -699,38 +699,39 @@ Once the base framework is in place, implementation turned towards the task of e
 The system principally follows a standard 3 layer approach to web-server architecture, requiring a database (DB), web server and API, and a client application. This implementation uses PostgreSQL as its DB of choice, as well as following RESTful practices in the API design. The web server is implemented in python, with a DB repository layer accompanying the server and API implementation. The client application (Latent Entity Explorer) is implemented using TypeScript and the Angular 5 framework.
 
 \begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{architecture_diagram}
+%   \begin{tikzpicture}>=latex,shorten >=2pt,shorten <=2pt,shape aspect=1
 
-  \begin{tikzpicture}>=latex,shorten >=2pt,shorten <=2pt,shape aspect=1
-
-  \matrix[matrix of nodes, row sep=5ex, column sep=1em] (mx) {
-    Database:& |[cy]| Database \\
+%   \matrix[matrix of nodes, row sep=5ex, column sep=1em] (mx) {
+%     Database:& |[cy]| Database \\
     
-    Server:&
-    |[rs=3]|
-    \nodepart{one}DB Repository
-    \nodepart{two}Application Logic
-    \nodepart{three} REST API &
-    |[rs=3]|
-    \nodepart{one} Repository Layer
-    \nodepart{two} System Logic Layer
-    \nodepart{three} API Layer
-    \\
-    Client:& |[rs=3]|
-    \nodepart{one}DB Repository
-    \nodepart{two}Application Logic
-    \nodepart{three} REST API &
-    |[rs=3]|
-    \nodepart{one} Service Layer
-    \nodepart{two} Component Layer
-    \nodepart{three} User Interface Layer
-    \\
-  };
-  \node[ou=(mx-2-2)] (server) {};
-  \node[ou=(mx-3-2)] (client) {};
-  {[->]
-  \draw (server)edge(mx-1-2) (mx-1-2)edge(server) (client)edge(server) (server)edge(client);
-  }
-\end{tikzpicture}
+%     Server:&
+%     |[rs=3]|
+%     \nodepart{one}DB Repository
+%     \nodepart{two}Application Logic
+%     \nodepart{three} REST API &
+%     |[rs=3]|
+%     \nodepart{one} Repository Layer
+%     \nodepart{two} System Logic Layer
+%     \nodepart{three} API Layer
+%     \\
+%     Client:& |[rs=3]|
+%     \nodepart{one}DB Repository
+%     \nodepart{two}Application Logic
+%     \nodepart{three} REST API &
+%     |[rs=3]|
+%     \nodepart{one} Service Layer
+%     \nodepart{two} Component Layer
+%     \nodepart{three} User Interface Layer
+%     \\
+%   };
+%   \node[ou=(mx-2-2)] (server) {};
+%   \node[ou=(mx-3-2)] (client) {};
+%   {[->]
+%   \draw (server)edge(mx-1-2) (mx-1-2)edge(server) (client)edge(server) (server)edge(client);
+%   }
+% \end{tikzpicture}
   
   \caption{Architecture overview of the Latent Entity Model Analysis and Exploration System. \label{fig:architeture_overview}}
 \end{figure}
@@ -765,6 +766,12 @@ Text between guillemots represent variables of the URI.
 From Table~\ref{tab:api_endpoints} it is clear how most of the endpoints are oriented around a book title, however, it would not make sense to follow this structure for latent entities. As latent entities are representative of a collection of entities, they are not part of any singular book, and thus are not accessed in the same means as other aspects of the API.
 
 \subsection{Database}
+The Database design was to be oriented around two key concepts: Book Entities, and Topics. Structuring the DB around these concepts allows for some reflective structure between the way that data is stored, and the way that users can access it through the API. 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{db_erd}
+  \caption{Entity Relationship Diagram Showing the Structure of the System's Database.\label{fig:db_erd}}
+\end{figure}
 
 \subsubsection{DB Structure}
 
