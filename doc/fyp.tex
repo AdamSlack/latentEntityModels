@@ -660,7 +660,7 @@ Starting with raw documents, the start of the process is the tokenization of eac
 
   \centering
   \includegraphics[scale=0.445]{pipeline_diagram_bold}
-  \caption{Analysis Pipeline for the Extraction of Latent Entity Information.}
+  \caption{Analysis Pipeline for the Extraction of Latent Entity Information.\label{fig:pipeline_diagram}}
 \end{figure}
 
 \section{Topic Model Explorer}
@@ -681,7 +681,7 @@ The interface for the Topic Model Explorer is a key aspect in allowing individua
 %
 %
 %
-\chapter{Implentation}
+\chapter{Implementation}
 \section{Introduction}
 For an investigation to be carried out into the possibility and efficacy of latent entities, it is necessary to begin with the implmentation of a framework through which a study can be carried out. As such implementation for this project involves the development of 3 key elements:
 
@@ -784,9 +784,22 @@ A significant table to the system is the 'Book Entity Terms' table, which is a r
 
 The tables, 'Latent Entities' and 'Latent Entity Entities' are an important pair for the system, they handle the numerical descriptions of Topics forming each Latent Entity, as well as how each entity in the corpus influenced the structure of each latent Entity.
 
-\subsubsection{Repository}
-Using a repository style pattern for separating the responsibility of interfacing with the database means that a clear structure for 
+\subsection{Server}
+The Server for this system holds both the API and various distinct processing units forming the system logic. Implemented in Python, the server intergrates well with existing libraries for processing natural language and interacting with databases, it allows for the fast development of a REST API, as well as having a convenient PostgreSQL Library.
 
+The top layer of the server, as shown in Figure~\ref{fig:architeture_overview} is the repository layer. The Repository layer handles all interactions with the database. Below the Repository layer are two layers of processing units with each providing different elements of functionality to the system, from performing POS tagging, to clustering Entity Topic Models.
+
+Below the system logic layers sit two potential interface elements. The first, being the API allows web clients to query and interface with the system, the second is a command line interface element that allows processing of corpora to be initiated and carried out locally within the server.
+
+\subsubsection{Repository}
+Using a repository style pattern for separating the responsibility of interfacing with the database means that a clear structure for inserting, updating, and retrieving data can be defined. In this system, the repository is utilised by both the API and the various processing units and system logic shown in Figure~\ref{fig:architeture_overview}.
+
+\subsubsection{System Logic Layers}
+The collection of system logic layers consist primarily of methods for carrying out distinct tasks. Many of which satisfy requirements placed on the system by the proposed pipline diagrammed in Figure~\ref{fig:pipeline_diagram}.
+
+Much of the functionality made available to the system is made available at the command line, locally on the server. This is due to the computationally intensive nature of the system, many of the tasks can take days of processing if given a large corpora. A corpus of 7 books could take approximately 3 hours to calculate a GETM for.
+
+Each element of the System Logic Layer explored in further detail when discussing the NLP Toolkit.
 
 \section{NLP Toolkit}
 As any investigation involving the use of data in any form does, pre-processing was carried out on the collections of documents intending to be analysed. As this investigation aims to also serve as a tool from which multiple corpora can be analysed, the pre-processing steps taken need to be reproducible. The NLP Toolkit developed for this system is essentially a collection of tools that allow each document in the corpus to be pre-processed ready for the extraction of topic models and latent entities. A somewhat functional approach was used, with each method applying some transformation to a single document, or a corpus as a whole. The Analysis Pipeline defined in chapter 3 involves tasks starting with the Tokenization of plain text, and ending with the use of clustering methods to extract Latent Entities.

@@ -40,34 +40,36 @@
 \contentsline {section}{\numberline {3.7}Topic Model Explorer}{35}
 \contentsline {subsection}{\numberline {3.7.1}Interface}{35}
 \contentsline {subsection}{\numberline {3.7.2}Visualisations}{35}
-\contentsline {chapter}{\numberline {4}Implentation}{36}
+\contentsline {chapter}{\numberline {4}Implementation}{36}
 \contentsline {section}{\numberline {4.1}Introduction}{36}
 \contentsline {section}{\numberline {4.2}Architecture Overview}{36}
 \contentsline {subsection}{\numberline {4.2.1}API}{37}
 \contentsline {subsection}{\numberline {4.2.2}Database}{38}
 \contentsline {subsubsection}{\numberline {4.2.2.1}DB Structure}{39}
-\contentsline {subsubsection}{\numberline {4.2.2.2}Repository}{40}
-\contentsline {section}{\numberline {4.3}NLP Toolkit}{40}
-\contentsline {subsection}{\numberline {4.3.1}General NLP}{40}
-\contentsline {subsubsection}{\numberline {4.3.1.1}POS Tagging}{41}
-\contentsline {subsection}{\numberline {4.3.2}Gaussian Entity-Term Matrix}{42}
-\contentsline {subsubsection}{\numberline {4.3.2.1}Algorithm}{42}
-\contentsline {subsubsection}{\numberline {4.3.2.2}GETM Objects}{42}
-\contentsline {section}{\numberline {4.4}Corpus Pre-Processing}{42}
-\contentsline {section}{\numberline {4.5}Entity-Topic Model}{44}
-\contentsline {subsection}{\numberline {4.5.1}Algorithm}{44}
-\contentsline {section}{\numberline {4.6}Latent Entity Clustering }{44}
-\contentsline {section}{\numberline {4.7}Latent Entity Explorer}{44}
-\contentsline {chapter}{\numberline {5}Results and Evaluation}{45}
-\contentsline {section}{\numberline {5.1}Introduction}{45}
-\contentsline {section}{\numberline {5.2}POS Tagger}{45}
-\contentsline {subsection}{\numberline {5.2.1}Results}{45}
-\contentsline {section}{\numberline {5.3}Gaussian Entity-Term Matrix}{45}
-\contentsline {subsection}{\numberline {5.3.1}Experiment Setup}{45}
-\contentsline {subsection}{\numberline {5.3.2}Results}{45}
-\contentsline {section}{\numberline {5.4}Entity Topic-Models}{45}
-\contentsline {subsection}{\numberline {5.4.1}Experiment Setup}{46}
-\contentsline {subsection}{\numberline {5.4.2}Results}{46}
-\contentsline {section}{\numberline {5.5}Latent Entities}{46}
-\contentsline {chapter}{\numberline {6}Conclusion}{47}
-\contentsline {section}{\numberline {6.1}Introduction}{47}
+\contentsline {subsection}{\numberline {4.2.3}Server}{40}
+\contentsline {subsubsection}{\numberline {4.2.3.1}Repository}{40}
+\contentsline {subsubsection}{\numberline {4.2.3.2}System Logic Layers}{40}
+\contentsline {section}{\numberline {4.3}NLP Toolkit}{41}
+\contentsline {subsection}{\numberline {4.3.1}General NLP}{41}
+\contentsline {subsubsection}{\numberline {4.3.1.1}POS Tagging}{42}
+\contentsline {subsection}{\numberline {4.3.2}Gaussian Entity-Term Matrix}{43}
+\contentsline {subsubsection}{\numberline {4.3.2.1}Algorithm}{43}
+\contentsline {subsubsection}{\numberline {4.3.2.2}GETM Objects}{43}
+\contentsline {section}{\numberline {4.4}Corpus Pre-Processing}{43}
+\contentsline {section}{\numberline {4.5}Entity-Topic Model}{45}
+\contentsline {subsection}{\numberline {4.5.1}Algorithm}{45}
+\contentsline {section}{\numberline {4.6}Latent Entity Clustering }{45}
+\contentsline {section}{\numberline {4.7}Latent Entity Explorer}{45}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{46}
+\contentsline {section}{\numberline {5.1}Introduction}{46}
+\contentsline {section}{\numberline {5.2}POS Tagger}{46}
+\contentsline {subsection}{\numberline {5.2.1}Results}{46}
+\contentsline {section}{\numberline {5.3}Gaussian Entity-Term Matrix}{46}
+\contentsline {subsection}{\numberline {5.3.1}Experiment Setup}{46}
+\contentsline {subsection}{\numberline {5.3.2}Results}{46}
+\contentsline {section}{\numberline {5.4}Entity Topic-Models}{46}
+\contentsline {subsection}{\numberline {5.4.1}Experiment Setup}{47}
+\contentsline {subsection}{\numberline {5.4.2}Results}{47}
+\contentsline {section}{\numberline {5.5}Latent Entities}{47}
+\contentsline {chapter}{\numberline {6}Conclusion}{48}
+\contentsline {section}{\numberline {6.1}Introduction}{48}
