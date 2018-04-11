@@ -1,4 +1,5 @@
 
+
 \documentclass[10pt]{report}
 
 \usepackage{geometry}
@@ -579,7 +580,73 @@ By using copora that are known to be similar in content would remove the perhaps
 \subsubsection{Latent Entity Consistency}
 For latent entities, it is necessary to consider entities that are present in both corpora that have been clustered differently, and the number of entities absent from one or the other document.
 
+Considering common entities, consistency is calculated using the number of consistencies or true positive (TP), and inconsistencies or false positive (FP) entity pairings within each latent entity clusters. TP is the number of entity pairings in a latent entity cluster present in both sets of latent entities, FP is the opposite of that, the number of entity pairings within clusters not the same across both sets of latent entities.
+
+Where $N$ is the number of Latent entities clusters, and $n_i$ is the number of entities within the latent entity cluster indexed by $i$, consistency is defined as:
+\[
+  Consistency = \frac{TP - FP}{\sum^{N}_{i=1}{n_i\choose2}}
+\]
+
+The defined consistency metric ranges from $-1.0$ to $1.0$. Values approaching $1.0$ mean the two sets are increasingly correllated.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c | c | c}
+    Cluster 1 & Cluster 2 & Cluster 3 \\
+    \hline
+    a & 1 & x \\
+    b & 2 & y \\
+    c & 3 & z \\
+    d & 4 & w \\
+  \end{tabular}
+  \quad
+  \begin{tabular}{c | c | c}
+    Cluster 1 & Cluster 2 & Cluster 3 \\
+    \hline
+    a & d & x \\
+    1 & 2 & b \\
+    c & y & 3 \\
+    2 & 4 & w \\
+  \end{tabular}
+  \caption{Left \& Right: Entities Within Clusters Behind Latent Entities.\label{tab:latent_entity_clusters}}
+\end{table}
+
+An example of the consistencies and inconsistencies between two sets of latent entities seen in Table~\ref{tab:latent_entity_clusters} can be seen in Table~\ref{tab:latent_entity_consistencies}. With the total number of pairings, $\sum^{N}_{i=1}{n_i\choose2} = 16$, a $TP=4$ and $FP=12$ the consistency of these two sets of latent entities is $\frac{4-12}{16} = -0.5$. A negative value implies the latent entiteis are entirely different compositions, and are very inconsistent.
+
+\begin{table}
+  \centering
+  \begin{tabular}{c | c c c c}
+    Constencies
+    & (a, c) 
+    & (1, 2) 
+    & (x, w) 
+    & (4, 2)
+    \\
+    \hline
+    Inconsistencies
+         & (a, 1) 
+         & (a, 2) 
+         & (c, 1)                      
+         & (c, 2)
+         \\
+         & (d, 2) 
+         & (d, 4) 
+         & (y, 2) 
+         & (y, 4)
+         \\
+         & (x, b) 
+         & (x, 3) 
+         & (w, b) 
+         & (w, 3) 
+  \end{tabular}
+  \caption{Consistencies and Inconstencies Between Clusters Forming Latent Entities\label{tab:latent_entity_consistencies}}
+\end{table}
+
+
 \subsubsection{GETM Consistency}
+Calculating the consistency of the GETM method requires numerically evaluating similarity of terms associated with common entities between two GETMs. Additionally, the entities not common to both need to be incorporated into the calculation.
+
+
 
 
 \section{Analysis Pipeline}
