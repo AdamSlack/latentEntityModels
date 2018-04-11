@@ -27,7 +27,7 @@
 \setcounter{secnumdepth}{3}
 \usepackage[ruled]{algorithm2e}
 \usepackage{algorithmic}
-
+\usepackage{array}
 
 %
 % Diagrams tool.
@@ -60,6 +60,7 @@
 \title{Analysing Narratives: Automatic Descriptive Feature Extraction Through Latent Entity modelling}
 \author{Adam Slack}
 \date{}
+
 
 \begin{document}
  
@@ -747,6 +748,9 @@ Given the defined purpose of the API, and the process through which narratives c
 
 A Subset of the endpoints in the api for requesting data from the system can be seen in Table~\ref{tab:api_endpoints}, each of which are GET requests. There are additional endpoints that allow for other aspects of collected and extracted data to be requested, as well as POST endpoints that allow or additional documents to be added to the system.
 
+
+\renewcommand{\arraystretch}{2.0}
+\renewcommand{\baselinestretch}{1.0}\normalsize
 \begin{table}[h!]
 \centering
 \begin{tabular}{r | l}
@@ -756,14 +760,16 @@ A Subset of the endpoints in the api for requesting data from the system can be 
   Book Topics        & /api/books/\guillemotleft book title\guillemotright/topics \\
   Book Entities      & /api/books/\guillemotleft book title\guillemotright/entities \\
   Book Topics terms  & /api/topics/\guillemotleft topic id\guillemotright \\
-  Entity Topics      & /api/books/\guillemotleft book title\guillemotright/entities/\guillemotleft Entity Name\guillemotright/topics \\
+  Entity Topics      & /api/books/\guillemotleft b
+                       ook title\guillemotright/entities/\guillemotleft Entity Name\guillemotright/topics \\
   Entity Topic Terms & /api/books/\guillemotleft book title\guillemotright/entities/\guillemotleft Entity Name\guillemotright/topics/\guillemotleft topic id \guillemotright \\
   Latent Entities    & /api/latent\\
   Latent Entity Topics & /api/latent/\guillemotleft Latent Entity ID\guillemotright
     \end{tabular}
-  \caption{ Selection of API Endpoints.\label{tab:api_endpoints}}
-Text between guillemots represent variables of the URI.
+  \caption{ Selection of API Endpoints. Text between guillemots represent variables of the URI.\label{tab:api_endpoints}}
 \end{table}
+\renewcommand{\arraystretch}{1.0}
+\renewcommand{\baselinestretch}{2.0}\normalsize
 
 From Table~\ref{tab:api_endpoints} it is clear how most of the endpoints are oriented around a book title, however, it would not make sense to follow this structure for latent entities. As latent entities are representative of a collection of entities, they are not part of any singular book, and thus are not accessed in the same means as other aspects of the API.
 
@@ -792,7 +798,29 @@ The top layer of the server, as shown in Figure~\ref{fig:architeture_overview} i
 Below the system logic layers sit two potential interface elements. The first, being the API allows web clients to query and interface with the system, the second is a command line interface element that allows processing of corpora to be initiated and carried out locally within the server.
 
 \subsubsection{Repository}
-Using a repository style pattern for separating the responsibility of interfacing with the database means that a clear structure for inserting, updating, and retrieving data can be defined. In this system, the repository is utilised by both the API and the various processing units and system logic shown in Figure~\ref{fig:architeture_overview}.
+Using a repository pattern approach for separating the responsibility of interfacing with the database means that a clear structure for inserting, updating, and retrieving data can be defined. In this system, the repository is utilised by both the API and the various processing units and system logic shown in Figure~\ref{fig:architeture_overview}.
+
+The methods in the Repository are similar to the endpoints present in the API, meaning that for many of the API endpoints, there is a matching repository method for querying the DB. Table~\ref{tab:repository_methods} shows a selection of the frequently invoked methods.
+
+\renewcommand{\arraystretch}{2.0}
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{>{\raggedright}p{0.34\linewidth} | p{0.63\linewidth}}
+    Method & Purpose\\
+    \hline
+    connect\_to\_db(host, db\_name, usr\_name, pswd) & Allows for a connection to the DB to be formed using the provided user details\\
+    select\_book\_titles(db) & Selects book titles from the database using a given $DB$ connection object.\\
+    select\_book\_entities(db, book\_title, full\_details=false) & Selects entity names in a book specified by book title, selects entity terms if $fullDetails=true$\\
+    insert\_topic\_terms(db, topic\_id, term, strength) & a Term and associated strength for a specified topic, as determined using LDA. \\
+    
+  \end{tabular}
+  \caption{Select Methods from the DB Repository Layer. \label{tab:repository_methods}}
+\end{table}
+\renewcommand{\arraystretch}{1.0}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+
+Aside from a single method allowing connections to the DB to be formed, the remaining methods follow a similar pattern as those specified in Table~\ref{tab:repository_methods}. As a result of the purpose of the system, as well as the design of the API, each method orients itself around Entities and Topics.
 
 \subsubsection{System Logic Layers}
 The collection of system logic layers consist primarily of methods for carrying out distinct tasks. Many of which satisfy requirements placed on the system by the proposed pipline diagrammed in Figure~\ref{fig:pipeline_diagram}.
@@ -809,6 +837,8 @@ The toolkit can be viewed as a combination of both simple and complex NLP method
 \subsection{General NLP}
 Tokenizing, POS Taggin, NER, an other pre-processing tasks are required as defined in the proposed analysis pipeline. A collection of NLP Utilities allow these tasks to be carried out within the system being developed. Table~\ref{tab:nlp_utilities} shows some of the methods developed, as well as their purpose within the system
 
+\renewcommand{\arraystretch}{2.0}
+\renewcommand{\baselinestretch}{1.0}\normalsize
 \begin{table}[h!]
   \begin{tabular}{c | p{0.6\linewidth} }
     Method & Purpose\\
@@ -821,6 +851,8 @@ Tokenizing, POS Taggin, NER, an other pre-processing tasks are required as defin
   \end{tabular}
   \caption{NLP Ultity Methods\label{tab:nlp_utilities}}
 \end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
 \subsubsection{POS Tagging}
 A Viterbi Decoded Hidden-Markov Model was implemented to perform the task of POS Tagging. The Viterbi tagger acted as a baseline from which existing taggers could be compared against. Most notably, the NLTK POS Tagger was selected as a potential POS tagging tool, this was a result of how easy the tagger is to use, and how simply it integrates with other libraries.
@@ -924,7 +956,7 @@ Figure~\ref{fig:document_preprocess} shows the process taken by the system to ap
 
 %
 %
-%
+% Chapter 5
 %
 %
 \chapter{Results and Evaluation}
@@ -953,7 +985,7 @@ The use of a GETM was proposed as a means removing an assumption made in literat
 
 %
 %
-%
+% Chapter 6
 %
 %
 \chapter{Conclusion}
