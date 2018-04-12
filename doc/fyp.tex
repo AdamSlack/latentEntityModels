@@ -847,7 +847,7 @@ Tokenizing, POS Tagging, NER, an other pre-processing tasks are required as defi
     $word\_tokenize(sent\_tokens)$& Returns a mapping of sentence tokens to arrays of word tokens \\
     $tag\_document(word\_tokens)$ & Returns an array of POS tag sequences for each sentence of word tokens\\
     $tag\_entities(word\_tokes)$ & Returns an array of tagged entity tuples using NER tagger\\
-    $cherry\_entity\_tuples(entities)$ & Returns a mapping of entity names from set of entity tuples\\
+    $cherry\_entity\_tuples(entities)$ & Returns a mapping of entity names from set of entity-type tuples\\
   \end{tabular}
   \caption{NLP Ultity Methods\label{tab:nlp_utilities}}
 \end{table}
@@ -885,11 +885,10 @@ The POS Tagging model formed is essentially composed of the probabilities calcul
 \subsection{Gaussian Entity-Term Matrix}
 At the core of the process of calculating a GETM for a document, is the weighting equation applied to determine the association between two terms in the corpus. Calculating the matrix involves going through all instances of an entity in a document, and summing the result of the weighting metric using distance between each entity instance and each term in a document.
 
-The process requires a corpus to be separated into two sets, one set of positions for each mention of an entity, and another set for terms. The structure of data expected for the implemented is shown in Figure~\ref{fig:getm_data}
-
+The process requires a corpus to be separated into two sets, one set of positions for each mention of an entity, and another set for terms. The structure of data expected for the implemented is shown in Figure~\ref{fig:getm_data} methods noted in Table~\ref{tab:getm_methods} require data to be in that structure. 
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
-\begin{figure}
+\begin{figure}[h!]
   Entity Occurrence Set
   \[
     \{e_0 : \{e_{0,0}, ..., e_{0,j}\}, ..., e_i : \{e_{i,0}, ..., e_{i,j}\}\}
@@ -901,6 +900,18 @@ The process requires a corpus to be separated into two sets, one set of position
   \caption{\label{fig:getm_data}}
 \end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
+
+\begin{table}[h!]
+  \begin{tabular}{ c | p{0.55\linewidth}}
+  
+  Method & Purpose\\
+    \hline
+    map\_entity\_idx(entity\_array) & returns a python dict of entity
+    names and associated document index.\\ 
+    map\_word\_idx(document) & returns a python dict of terms in a document and the associated positions in the document.
+  \end{tabular}
+  \caption{\label{tab:getm_methods}}
+\end{table}
 
 \subsubsection{GETM Objects}
 

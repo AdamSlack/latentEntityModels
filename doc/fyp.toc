@@ -53,8 +53,8 @@
 \contentsline {subsection}{\numberline {4.3.1}General NLP}{42}
 \contentsline {subsubsection}{\numberline {4.3.1.1}POS Tagging}{43}
 \contentsline {subsection}{\numberline {4.3.2}Gaussian Entity-Term Matrix}{44}
-\contentsline {subsubsection}{\numberline {4.3.2.1}GETM Objects}{44}
-\contentsline {section}{\numberline {4.4}Corpus Pre-Processing}{44}
+\contentsline {subsubsection}{\numberline {4.3.2.1}GETM Objects}{45}
+\contentsline {section}{\numberline {4.4}Corpus Pre-Processing}{45}
 \contentsline {section}{\numberline {4.5}Entity-Topic Model}{46}
 \contentsline {subsection}{\numberline {4.5.1}Algorithm}{46}
 \contentsline {section}{\numberline {4.6}Latent Entity Clustering }{46}
