@@ -3,10 +3,6 @@ from nltk.tag.mapping import _UNIVERSAL_TAGS as tagset
 from collections import defaultdict
 import argparse
 
-#
-#
-#
-#
 def max_transition(prev_states, states, curr, trans_p):
     """ 
     Calculate with previous stat is most likely be the source of transition
@@ -14,10 +10,6 @@ def max_transition(prev_states, states, curr, trans_p):
     """
     return max(prev_states[prev]['prob'] * trans_p[prev][curr] for prev in states)
 
-#
-#
-#
-#
 def initialise_start_probabilities(states, start_p, emit_p, obs):
     """
     create an initial map of state transition probabilities
@@ -30,10 +22,6 @@ def initialise_start_probabilities(states, start_p, emit_p, obs):
             } for state in states 
         }
 
-#
-#
-#
-#
 def viterbi(obs, states, start_p, trans_p, emit_p):
     V = [initialise_start_probabilities(states, start_p, emit_p, obs)]
     
@@ -61,10 +49,7 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
         previous = V[t + 1][previous]["prev"]
     return opt
 
-#
-#
-#
-#
+
 def calc_start_state_probs(corpus_sents, states):
     """calculate the probability of a sentence starting with a perticular state.""" 
     starts = [sent[0][1] for sent in corpus_sents]
@@ -74,10 +59,6 @@ def calc_start_state_probs(corpus_sents, states):
         counts[state] += 1
     return defaultdict(int,{state: counts[state]/total for state in states})
 
-#
-#
-#
-#
 def calc_trans_probs(corpus_sents, states):
     """ calculate probability of transitioning from one state to the next."""
     trans_counts = {source : { sink : 0 for sink in states} for source in states}
@@ -91,10 +72,6 @@ def calc_trans_probs(corpus_sents, states):
         sink : trans_counts[source][sink] / trans_sums[source] for sink in states
     } for source in states}
 
-#
-#
-#
-#
 def calc_emit_probs(corpus_words, states, obs):
     """ calculate probability of state emitting a given word"""
 
@@ -111,18 +88,10 @@ def calc_emit_probs(corpus_words, states, obs):
         ob.lower() : state_obs_counts[state][ob.lower()] / state_counts[state] for ob in obs
     }) for state in states}
 
-#
-#
-#
-#
 def sum_sentence_lengths(corpus_sents):
     """ sums accross the length of sentences in a corpus """
     return sum(len(sent) for sent in corpus_sents)
 
-#
-#
-#
-#
 def split_Corpus(corpus_sents, corpus_words, pct):
     """ Splits a corpus into training and testing data """
     sent_count = len(corpus_sents)
@@ -140,10 +109,6 @@ def split_Corpus(corpus_sents, corpus_words, pct):
 
     return training_sents, test_sents, training_words, test_words
 
-#
-#
-#
-#
 def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit):
     """ Evaluate a trained HMM model using a provided set of test sentences and words """
     
@@ -153,10 +118,6 @@ def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, po
                     
     return score/len(test_words)
 
-#
-#
-#
-#
 def main():
 
     parser = argparse.ArgumentParser(description="Viterbi Decoded HMM POS tagger.")

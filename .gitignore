@@ -4,7 +4,7 @@
 src/__pycache__/
 books/
 db_dumps/
-stanford-ner-2017-06-09/
+stanford-ner*/
 
 #####
 ## Default Ignores (node js and npm related)

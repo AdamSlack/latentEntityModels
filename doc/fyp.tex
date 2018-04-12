@@ -25,8 +25,8 @@
 \setlength{\parskip}{1em}
 \usepackage{csquotes}
 \setcounter{secnumdepth}{3}
-\usepackage[ruled]{algorithm2e}
-\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{array}
 
 %
@@ -835,7 +835,7 @@ As any investigation involving the use of data in any form does, pre-processing 
 The toolkit can be viewed as a combination of both simple and complex NLP methods, that allow basic NLP tasks like tokenization and POS tagging to be carried out, as well as more complex GETM and topic modelling techniques.
 
 \subsection{General NLP}
-Tokenizing, POS Taggin, NER, an other pre-processing tasks are required as defined in the proposed analysis pipeline. A collection of NLP Utilities allow these tasks to be carried out within the system being developed. Table~\ref{tab:nlp_utilities} shows some of the methods developed, as well as their purpose within the system
+Tokenizing, POS Tagging, NER, an other pre-processing tasks are required as defined in the proposed analysis pipeline. A collection of NLP Utilities allow these tasks to be carried out within the system being developed. Table~\ref{tab:nlp_utilities} shows some of the methods developed, as well as their purpose within the system. 
 
 \renewcommand{\arraystretch}{2.0}
 \renewcommand{\baselinestretch}{1.0}\normalsize
@@ -854,43 +854,53 @@ Tokenizing, POS Taggin, NER, an other pre-processing tasks are required as defin
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
 
+It is clear that some of the methods defined in Table~\ref{tab:nlp_utilities} are relatively straightforward, the method for tokenizing sentences for example, is an important yet relatively self-contained process. In contrast, the methods for applying POS tags and extracting entities  are somewhat more involved, with more going on behind the scenes.
+
+As the process behind POS tagging is to be discussed later, The focus here is going to be on how entities are extracted. The NER tooling is not a process purpose built for this project unlike the POS tagger, the commonly used Stanford NER tagger was used to identify entities within text. As explored in Chapter 2, the difference in performance for top NER taggers are somewhat negligible. With the Stanford Tagger performing well in literature, and NLTK supporting its use in Python, it was an obvious choice of tooling.
+
 \subsubsection{POS Tagging}
 A Viterbi Decoded Hidden-Markov Model was implemented to perform the task of POS Tagging. The Viterbi tagger acted as a baseline from which existing taggers could be compared against. Most notably, the NLTK POS Tagger was selected as a potential POS tagging tool, this was a result of how easy the tagger is to use, and how simply it integrates with other libraries.
 
-A dynamic programming algorithm, the Viterbi algorithm provides a comparatively computationally efficient way of decoding Markov processes, or in this case, find the most probable sequence of POS tags for a given sequence of words. This implementation followed the process described by Algorithm~\ref{alg:viterbi_decoder}
+A dynamic programming algorithm, the Viterbi algorithm provides a comparatively computationally efficient way of decoding Markov processes, or in this case, find the most probable sequence of POS tags for a given sequence of words. This implementation followed the process described by Jurafsky~\cite{Jurafsky2014-yb}. The implemented HMM has methods for building a map of transition probabilities between states, calculating the emission probabilities for a given sequence, and calculating the starting probabilities for each possible starting state. Key methods for the tagger are outlined in Table~\ref{tab:pos_tagging_methods}.
+
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
-\begin{algorithm}[H]
-  \caption{Viterbi Decoding Algorithm\label{alg:viterbi_decoder}}
-  \begin{algorithmic}
-   
-    \STATE let $O$ be the sequence of observations.
-    \STATE let $S$ be the set of possible states 
-    \STATE let $V$ be the sequence of sets of state probabilities 
-    \STATE let $P$ be the POS-tagged sequence of word tokenized sentence tokens
-    \STATE let $G$ be the Gaussian Entity-Term Matrix.
-    \STATE
-    \STATE $S\gets sentTokenize(document)$
-    \FOR{$S_s \in S$}
-      \STATE $W_s \gets wordTokenize(S_s)$
-      \ENDFOR
-      \STATE 
-    \STATE $E \gets extractEntities(W)$
-    \STATE $P \gets posTag(W)$
-    \STATE $G \gets calculateGETM(E, G)$
-    \STATE
-    \RETURN $E, P, G$
-    
-  \end{algorithmic}
-\end{algorithm}
+\renewcommand{\arraystretch}{2.0}
+\begin{table}[h!]
+  \begin{tabular}{>{\raggedright}p{0.3\linewidth} | p{0.63\linewidth}}
+    Method & Purpose\\
+    \hline
+    $calcStartStateProbs$ $(taggedCorpus, states)$& Returns a set of probabilities for the likelihood of a sequence starting with a given state, calculated from a tagged training corpus. \\
+    $calcTransitionProbs$ $(taggedCorpus, states)$ & Returns a set of probabilities for the likelihood of a sequence moving from one state to another, calculated from a tagged training corpus. \\
+    $calcEmssisionProbs$ $(taggedCorpus, states, obs)$ & Returns a set of probabilities for the likelihood of a given state emitting a given observation.\\
+    $viterbi$ $(obs, states, startP,$ $transP, emitP)$ & Given a set of Starting, Transition and Emission probabilities, returns the most likely sequence of states for a given sequence of observations. 
+  \end{tabular}
+  \caption{Key methods Forming the HMM POS tagger.\label{tab:pos_tagging_methods}}
+\end{table}
 \renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
+The POS Tagging model formed is essentially composed of the probabilities calculated from a corpus of pre-tagged data. It is possible to regard the methods for calculating the probabilities as being part of a training stage, where the implemented viterbi decoding is only using the model to calculate an answer. By viewing it in this way, there is potential to reduce the processing done by the system by only calculating starting state probabilities, and transition probabilities once. Unless the corpus used to train the POS tagger changes, then the probabilities behind the system won't change. The only time probabilities will need to be re-calculated, will be when determining the emission probabilities for the model. However this is really due to a flaw in the design of the tagger, instead of calculating emission probabilities for a observation sequence, the emission probabilities for all states across the whole training set could be pre-calculated.
 
 \subsection{Gaussian Entity-Term Matrix}
+At the core of the process of calculating a GETM for a document, is the weighting equation applied to determine the association between two terms in the corpus. Calculating the matrix involves going through all instances of an entity in a document, and summing the result of the weighting metric using distance between each entity instance and each term in a document.
+
+The process requires a corpus to be separated into two sets, one set of positions for each mention of an entity, and another set for terms. The structure of data expected for the implemented is shown in Figure~\ref{fig:getm_data}
 
 
-\subsubsection{Algorithm}
-
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\begin{figure}
+  Entity Occurrence Set
+  \[
+    \{e_0 : \{e_{0,0}, ..., e_{0,j}\}, ..., e_i : \{e_{i,0}, ..., e_{i,j}\}\}
+  \]
+  Term Occurrence Set
+  \[
+    \{w_0 : \{w_{0,0}, ..., w_{0,j}\}, ..., w_i : \{w_{i,0}, ..., w_{i,j}\}\}
+  \]
+  \caption{\label{fig:getm_data}}
+\end{figure}
+\renewcommand{\baselinestretch}{2.0}\normalsize
 
 \subsubsection{GETM Objects}
 
@@ -911,22 +921,22 @@ Figure~\ref{fig:document_preprocess} shows the process taken by the system to ap
   \caption{Document Pre-processing steps\label{fig:document_preprocess}}
   \begin{algorithmic}
    
-    \STATE let $S$ be the sequence of sentence tokens, where $S_s$ is a sentence token.
-    \STATE let $W$ be the sequence of word tokenized sentence tokens, where $W_s$ is a set of word tokens for sentence token $S_s$.
-    \STATE let $E$ be the set of entities where $E_e \in W$.
-    \STATE let $P$ be the POS-tagged sequence of word tokenized sentence tokens
-    \STATE let $G$ be the Gaussian Entity-Term Matrix.
-    \STATE
-    \STATE $S\gets sentTokenize(document)$
-    \FOR{$S_s \in S$}
-      \STATE $W_s \gets wordTokenize(S_s)$
-      \ENDFOR
-      \STATE 
-    \STATE $E \gets extractEntities(W)$
-    \STATE $P \gets posTag(W)$
-    \STATE $G \gets calculateGETM(E, G)$
-    \STATE
-    \RETURN $E, P, G$
+    \State let $S$ be the sequence of sentence tokens, where $S_s$ is a sentence token.
+    \State let $W$ be the sequence of word tokenized sentence tokens, where $W_s$ is a set of word tokens for sentence token $S_s$.
+    \State let $E$ be the set of entities where $E_e \in W$.
+    \State let $P$ be the POS-tagged sequence of word tokenized sentence tokens
+    \State let $G$ be the Gaussian Entity-Term Matrix.
+    \State
+    \State $S\gets sentTokenize(document)$
+    \For{$S_s \in S$}
+      \State $W_s \gets wordTokenize(S_s)$
+      \EndFor
+      \State 
+    \State $E \gets extractEntities(W)$
+    \State $P \gets posTag(W)$
+    \State $G \gets calculateGETM(E, G)$
+    \State
+    \Return $E, P, G$
     
   \end{algorithmic}
 \end{algorithm}
@@ -936,11 +946,10 @@ Figure~\ref{fig:document_preprocess} shows the process taken by the system to ap
 \begin{algorithm}[H]
   \caption{Corpus Pre-processing steps\label{fig:corpus_preprocess}}
   \begin{algorithmic}
-    \STATE let $T$ be the set of document titles
-    \FOR{$t \in T$}
-      \STATE $D \gets openDocument(T)$
-      $E$
-    \ENDFOR
+    \State let $T$ be the set of document titles
+    \For{$t \in T$}
+      \State $D \gets openDocument(T)$
+    \EndFor
   \end{algorithmic}
 \end{algorithm}
 \renewcommand{\baselinestretch}{2.0}\normalsize

@@ -16,48 +16,28 @@ n_features = 1000
 n_topics = 10
 n_top_words = 1000
 
-#
-#
-#
-#
 def store_top_words(model, feature_names, n_top_words):
     conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
     for topic_idx, topic in enumerate(model.components_):
       for i in topic.argsort()[:-n_top_words - 1:-1]:
         db.insert_topic_term(db=conn, topic_id=topic_idx,term=feature_names[i],strength=topic[i])
 
-#
-#
-#
-#
 def read_file(fp):
   with open(fp, encoding='utf-8') as f:
     return f.read()
 
-#
-#
-#
-#
 def read_data_samples(fp, glob_str):
   """ Reads all txt files at a specified location and returns array of data. """
   if(path.isdir(fp)):
     fps = glob.glob(fp + glob_str)
     return list(map(lambda x: read_file(x), fps)), fps
 
-#
-#
-#
-#
 def time_action(action, *args):
   t0 = time()
   res = action(*args)
   print("Action done in: %0.3fs." % (time() - t0))
   return res
 
-#
-#
-#
-#
 def calculate_document_distributions(lda_model, feature_names, n_top_words, data_samples, fps):
   """ Calculates the topic distributions for each document."""
 
@@ -76,10 +56,6 @@ def calculate_document_distributions(lda_model, feature_names, n_top_words, data
 
   return book_distributions
 
-#
-#
-#
-#
 def store_book_proportions(distributions):
   """ """
   conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
@@ -89,10 +65,6 @@ def store_book_proportions(distributions):
     print(distributions[book])
     db.insert_book_topic_distribution(conn, book, distributions[book])
 
-#
-#
-#
-#
 def main():
   print('Loading Books...')
   data_samples, fps = time_action(read_data_samples, '../books/', '*.txt')
