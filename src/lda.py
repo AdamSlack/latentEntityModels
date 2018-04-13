@@ -6,6 +6,7 @@ import db as db
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 
 from fyp_utilities import *
 
@@ -65,14 +66,37 @@ def store_book_proportions(distributions):
     print(distributions[book])
     db.insert_book_topic_distribution(conn, book, distributions[book])
 
+# def filter_entities(data_samples):
+#   """ Filter Entities in the corpus using the calculated GETM """
+#   conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+#   titles = db.select_book_titles(db)
+#   entities = [db.select_book_entities(conn, t) for t in titles]
+
+# def filter_pos_tags(data_samples, pos_tags):
+#   """ Filter terms in the document not matching tags in a given set"""
+
+
+# def filter_missing_entity_terms(data_sameples):
+# """ Filter terms in the document that aren't associated with any entity in the GETM."""
+
+def retrieve_entity_set():
+  """returns a distinct set of entities from the database."""
+  conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+  entities = []
+  titles = db.select_book_titles(conn)
+  for t in titles:
+        entities.append(db.select_book_entities(conn, t[0]))
+  return set(entities)
+
 def main():
   print('Loading Books...')
-  data_samples, fps = time_action(read_data_samples, '../books/', '*.txt')
+  data_samples, fps = time_action(read_data_samples, '../test_data/', '*.txt')
   print(str(len(data_samples)) + ' data samples read from file')
 
   print('Extracting tf features for LDA...')
+  stop_words = ENGLISH_STOP_WORDS.union(retrieve_entity_set())
   tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features=n_features,
-                                  stop_words='english')
+                                  stop_words=stop_words)
   tf = time_action(tf_vectorizer.fit_transform, data_samples)
 
   print('Fitting LDA models with tf features, n_samples=' + str(n_samples) + ' and n_features=' + str(n_features)  +'...')

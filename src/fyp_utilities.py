@@ -119,11 +119,22 @@ def filter_punctuation(document):
     punc.add ('’')
     return filter(lambda w: w not in punc, tokens)
 
+def filter_entities_from_terms(entity_map, term_map):
+    """ removes entity from the term map """
+    new_terms = dict(term_map)
+    for key in term_map.keys():
+        if key in entity_map:
+            del new_terms[key]
+    return new_terms
+
 def calcuate_GETD(entity_map, term_map):
     """ constructs a matrix of entity-term associations. indexable by entity and term"""
     print('Building Gaussion Entity Term Matrix')
+    filtered_term_map = filter_entities_from_terms(entity_map, term_map)
+    
     e_keys = entity_map.keys()
-    t_keys = term_map.keys()
+    t_keys = filtered_term_map.keys()
+    
     e_cnt = len(e_keys)
     t_cnt = len(t_keys)
     print(str(e_cnt) + ' Entity Keys - ' + str(t_cnt) + ' Term Keys' )
@@ -136,7 +147,7 @@ def calcuate_GETD(entity_map, term_map):
         for t_key in t_keys:
             val = 0
             for e in entity_map[e_key]:
-                for t in term_map[t_key]:
+                for t in filtered_term_map[t_key]:
                     diff = e - t
                     dist = math.sqrt(diff*diff)
                     val += gaussian_filter(dist, 0.001)

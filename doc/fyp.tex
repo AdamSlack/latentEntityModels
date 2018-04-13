@@ -57,7 +57,8 @@
 \titlespacing*{\chapter}{0pt}{-50pt}{25pt}
 \titlespacing*{\section}{0pt}{0pt}{0pt}
 \titlespacing*{\subsection}{0pt}{0pt}{0pt}
-\title{Analysing Narratives: Automatic Descriptive Feature Extraction Through Latent Entity modelling}
+% \title{Analysing Narratives: Automatic Descriptive Feature Extraction Through Latent Entity modelling}
+\title{Stereotypical Beings: Exploring Hidden Classes of Entities using Latent Entity Modelling.}
 \author{Adam Slack}
 \date{}
 
@@ -65,11 +66,37 @@
 \begin{document}
  
 \begin{titlepage}
-  \maketitle
+    \begin{center}
+        \vspace*{1cm}
+        
+        \textbf{Stereotypical Beings}
+        
+        \vspace{0.5cm}
+                Exploring Hidden Classes of Entities using Latent Entity Modelling.
+        \vspace{1.5cm}
+        
+        \textbf{Adam Slack}
+        
+        \vfill
+        
+        A thesis presented for the degree of\\
+        Bachelors of Science 
+        
+        \vspace{0.8cm}
+        
+        %\includegraphics[width=0.4\textwidth]{university}
+        
+        Department of Computer Science\\
+        Nottingham Trent University\\
+        United Kingdom\\
+        26-04-2018
+        
+    \end{center}
 \end{titlepage}
 
 \addcontentsline{toc}{section}{Declaration}
 \section*{Declaration}
+
 I declare that this work is my own and not someone elses. May god beat down upon me with hellfire should this declaration be falsly claimed.
 
 
@@ -95,37 +122,39 @@ Latent Entities are approximations of entities found within a corpus allowing fo
 \chapter{Introduction}
 
 \section{Introduction}
-The Web; A seemingly ever-expanding resource, with data being generated and information published at an accelerating rate~\cite{WebServer-lc}. As more gain access to the internet, the rate at which new information is made available will only increase. Whether the origins of data be, social media, news outlets, or e-commerce reviews, much of the resources on the web exist in a natural language format. From this data there exists underlying information that can be extracted and utilised in decision making process. Given the amount of processing required to consume data on this scale, it is necessary to ensure that computational methods exist that can accommodate for individual or business needs to understand data. Many methods for Methods that allow the processing of data to extract surface level information exist, however there is room for further understanding. By relating distinct pieces of information or subsets of data, it is possible to frame or contextualise a solution to a problem within a wider setting. This paper aims to provide a novel method capable of providing succinct summaries of documents in terms of entity topics.
+The Web; A seemingly ever-expanding resource, with data being generated and information published at an accelerating rate~\cite{WebServer-lc}. As more gain access to the internet, the rate at which new information is made available will only increase. Whether the origins of data be, social media, news outlets, or e-commerce reviews, much of the resources on the web exist in a natural language format. From this data there exists underlying information that can be extracted and utilised in decision making process. Given the amount of processing required to consume data on this scale, it is necessary to ensure that there exists computational methods that can accommodate for individual or business needs to understand data. Many methods that allow the extraction surface level information, however there is room for further understanding of hidden structures within datasets. By relating distinct pieces of information or subsets of data, it is possible to frame or contextualise a solution to a problem within a wider setting. This thesis aims to provide a novel method capable of providing succinct summaries of documents in terms of Latent Enties.
 
-Information Retrieval (IR), Machine Learning (ML), and Natural Language Processing (NLP) when considered in conjunction with each other,  concern themselves with the extracting of information from data in a natural language texts. Relating textual data yields information valuable to many different entities, including businesses when marketing products, individuals when choosing what to read, and even researchers considering the current state of a research area. For a business, relating entities extracted from texts, can help identify target groups to aim products at. For an individual, relating entities can assist in decisions on what to read, buy, and watch based on similarities between things that they do and don’t like. For research, the identification of common themes, or prominent authors can be achieved through the relating of entities.
+When considering Information Retrieval (IR), Machine Learning (ML), and Natural Language Processing (NLP) in conjunction with each other, concern themselves with the extracting of information from data in the form of natural language texts. Relating textual data yields information valuable to many different entities, including businesses marketing products, individuals choosing what to read, and even researchers performing analysis on collections of journal papers. For a business, relating entities extracted from texts, can help identify target groups to aim products at. For an individual, relating entities can assist in decisions on what to read, buy, and watch based on similarities between things that they do and don’t like. For research, the identification of common themes, or prominent authors can be achieved through the relating of entities.
 
-A Latent Entity in this investigation is defined as an abstract representation of some entity that can be used to describe one or more concrete entities. Thus the term Latent Entity Modelling is defined as a transformation from a corpus of text to a collection of Latent Entities describing a corpus. Latent Entities represent a layer of abstraction from a corpus,  wherein it is possible to describe the corpus as a whole in terms of the Latent Entities.
+A Latent Entity in this investigation is defined as an abstract representation of some entity that can be used to describe one or more concrete entities. Thus the term Latent Entity Modelling is defined as a process of transforming a corpus of text into a collection of Latent Entities describing the corpus. Latent Entities represent a layer of abstraction from Entity Topic Modelling, wherein it is possible to describe collections of Entity Topic Models in terms of extracted Latent Entities.
 
-Entity models build upon the concept of topic modelling, particularly the kinds of topics derived through Latent Dirichlet Allocation. A Topic in this sense is a probability distribution of words, such that the degree of membership for each word in a topic indicates the probability of that word being an indicator of that topic. By performing clustering on entities expressed interms of entity topic models, this paper investigates if it is possible to 
+Entity Topic build upon the concept of topic modelling, which in turn is built upon more simple language modelling techniques. This is particularly when regaring the types of topics that would be derived through Latent Dirichlet Allocation. A Topic in in this thesis is a probability distribution of words, such that the degree of membership for each word in a topic indicates the probability of that word being an indicator of that topic. By performing clustering on extracted Entity Topic Models, this thesis investigates if it is possible to gain benefits in understanding, visualising, and summarising documents. 
 
+Oriented around Latent Dirichlet Allocation, Entity Topic Modelling methods have limitations resulting from assumptions made, this thesis addressess some of this through an intermediate pre-processing step allowing larger documents to be utilised more effectively. As an abstract technique, the process of calculating topic models is difficult to visualise, it would be an oversimplification to compare LDA to other classic clustering methods, however the resulting topics would not be to disimilar in structure.
 
 \section{Aims and Objectives}
-The aims of this project are two-fold. The first aim is to utilise and extend natural language processing methods to model and extract latent information describing entities within narratives. The second aim is to develop a system within which corpora can be easily and effectively analysed and explored when methods developed for aim one are applied.
+The aims of this project are two-fold. The first aim is to utilise and extend natural language processing methods to model and extract latent information describing entities within narratives. The second aim is to develop a system within which corpora can be easily and effectively analysed and explored when methods developed for the first aim are applied.
 
 Natural Language Processing is a large field with many analytical methods available for modelling purposes, and as such the scope of the first aim is required to be well defined. Objectives for the first aim include:
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \begin{itemize}
-\item To survey the fields of Natural Language Processing and Topic Modelling to identify methods valuable for the task of Entity-Topic Modelling.
-\item To Define a Entity-Topic Modelling method capable of deriving interpret-able topics which describe entities within narratives.
+\item To survey the fields of Natural Language Processing and Topic Modelling to identify methods valuable for the task of Latent Entity Modelling.
+\item To Define a Latent Entity Modelling method capable of providing models that can succinctly describe entities within narratives.
 \end{itemize}
 
 The second aim involves the development of a software environment, the objectives of which include:
 \begin{itemize}
-\item To develop a front-end user interface for the visual exploration of entity-topic models.  
+\item To develop a front-end user interface for the visual exploration of Latent Entities.  
 \item To implement back-end infrastructure allowing for dynamic visualisations in front-end user interfaces.
-  \item To create a software pipeline that extracts entity-topic data from a provided corpus.
+  \item To create a software pipeline that applies preprocessing and extacts Latent Entity data from a provided corpus.
 \end{itemize}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 
 \section{Motivation}
-Motivations for this project include the need for more effective methods and tools capable of analysing data in natural language form. Additionally the development of tools utilising these methods can assist in providing others with means of understanding more about themselves, their habits, and their preferences.
+Within social media it has become a seemingly standard practice to profile and analyse individuals on the platform, analytics companies are profiling and classifying individuals for commercial benefit, all whilst the typical user remains completely oblivious. Users are both unaware of the mass social engineering practices that they are subjected to, as well as where they themselves sit within the models developed from their personal information. As the world becomes more data oriented, it is increasingly important that there are ways in which individuals can remain 'data literate'. That is to say, it is crucial to ensure that platforms exist allowing individuals to be aware of the data that surrounds them in everyday life and understand certain aspects of it.
 
+The prevalence of personal data analytics in everyday life is strong motivator to try and produce tools that could help individuals in anyway, many of the methods considered in this paper have applications outside the scope of written narratives, and are used frequently to summarise, relate, and classify a variety of datasets. It is hoped that the proposed Latent Entity Models in this thesis, and the tools for exploring the these models can both allow and encourage individuals to take an interest in the meta-data of their lives.
 
 %
 %
@@ -135,13 +164,15 @@ Motivations for this project include the need for more effective methods and too
 \chapter{Literature Review}
 
 \section{Introduction}
-Natural Language Processing (NLP) is a vast field of study within Computer Science and Computational Intelligence, the focus of which is the development of intelligent systems capable of handling data in the form of natural language. The task of extracting Latent Entity Models is one that will touch upon many areas of NLP, including Part-of-Speech (POS) tagging, Named Entity Recognition (NER), and Latent Topic Modelling. Given that the focus of this paper is the extraction of descriptive information of narratives, it is necessary to consider the field of Information Retrieval and existing methods of descriptive summarisation as well.
+Natural Language Processing (NLP) is a vast field of study within Computer Science and Computational Intelligence, the focus of which is the development of intelligent systems capable of handling data in the form of natural language. The task of extracting Latent Entity Models is one that will touch upon many areas of NLP, including Part-of-Speech (POS) tagging, Named Entity Recognition (NER), and Latent Topic Modelling. Given that the focus of this paper is the extraction of a descriptive feature, the applications of similar descriptive features will be considered. Considering the applications of similar features can give potential insight into the value of this thesis.
 
-It is possible to divide NLP into two large schools of thought; One involves the processing of natural language such that machine usable resources are available, the other is concerned with the application of information resulting from processed natural language. Whilst many NLP tasks require methods for parsing, understanding, or synthesising spoken words, this paper is only considering written texts. As such, the spoken language aspects of NLP will be overlooked.
+It is possible to divide NLP into two large schools of thought; One involves the processing of natural language to ensure that machine usable resources are available, the other is concerned with the application of information resulting from processed natural language. Even though the applications of similar modelling methods will be considered, the focus of this chapter will be on methods for producing machine usable resource. Additionally, whilst many NLP tasks require methods for parsing, understanding, or synthesising spoken words, this paper is only considering written texts. As such, the spoken language aspects of NLP will be overlooked,.
 
-Parsing written texts begins with tokenization. This is the division of a single string of characters in to strings representing sentences or words. Often text is tokenized into sentences, and each sentence is then tokenized into words. Once a text is expressed with basic sentence and word structure it is possible to apply additional processing steps. POS tagging is the application of tags to sequences of words, each tag and resulting sequence represents the grammatical structure of a sequence of words. NER is the extraction of entities from natural language, entities are tagged depending on their type. NER is performed after tokenization, however it doesn’t necessarily rely on text being POS tagged first.
+Parsing written texts begins with tokenization. This is the division of a single string of characters in to strings representing sentences or words. Often text is tokenized into sentences, and each sentence is then tokenized into words. Once a document is expressed with a basic sentence and word structure it is possible to apply additional processing steps. POS tagging is the application of tags to sequences of words, each tag and resulting sequence represents the grammatical structure of a sequence of words. NER is the extraction of entities from natural language, entities are tagged depending on their type. NER is performed after tokenization, however it doesn’t necessarily rely on text being POS tagged first.
 
-There are a range of NLP tasks involving the applications of natural language parsing. From Customer relation Chatbots, to Document Summarisation and Relation. Whilst many applications involve the use of parsed text features, many also orient themselves around additional features. For example, tools for relating and summarising distinct documents may utilise topic models and topic modelling techniques.
+There are varying degrees of subtleties that need to be considered when a process relies on Tokenization, POS Tagging, and NER Tagging methods, failure to consider some of the challenges associated with each method could result in unexpected results in resulting steps. Tokenization is the most straightforward of the three mention processing steps, so only minimal consideration is given to potential tools. POS and NER Tagging are explored in more depth.
+
+A Variety of NLP tasks involve the application of natural language parsing, from Customer relation Chatbots, to Document summarisation and Relation. Whilst many applications involve the use of parsed text features, many also orient themselves around additional features, For example, tools for relating and summarising distinct documents may utilise topic models and topic modelling techniques.
 
 
 \section{Part-Of-Speech Tagging}
@@ -885,33 +916,39 @@ The POS Tagging model formed is essentially composed of the probabilities calcul
 \subsection{Gaussian Entity-Term Matrix}
 At the core of the process of calculating a GETM for a document, is the weighting equation applied to determine the association between two terms in the corpus. Calculating the matrix involves going through all instances of an entity in a document, and summing the result of the weighting metric using distance between each entity instance and each term in a document.
 
-The process requires a corpus to be separated into two sets, one set of positions for each mention of an entity, and another set for terms. The structure of data expected for the implemented is shown in Figure~\ref{fig:getm_data} methods noted in Table~\ref{tab:getm_methods} require data to be in that structure. 
+The process requires a corpus to be separated into two sets, one set of positions for each mention of an entity, and another set for terms. The structure of data expected for the implemented is shown in Figure~\ref{fig:getm_data} methods noted in Table~\ref{tab:getm_methods} require data to be in that structure. There are additional methods allowing data to be put into this standard format.
 
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\begin{figure}[h!]
-  Entity Occurrence Set
-  \[
-    \{e_0 : \{e_{0,0}, ..., e_{0,j}\}, ..., e_i : \{e_{i,0}, ..., e_{i,j}\}\}
-  \]
-  Term Occurrence Set
-  \[
-    \{w_0 : \{w_{0,0}, ..., w_{0,j}\}, ..., w_i : \{w_{i,0}, ..., w_{i,j}\}\}
-  \]
-  \caption{\label{fig:getm_data}}
-\end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 
+\begin{table}[h!]
+\centering
+  \begin{tabular}{c | c}
+  Entity Occurrence Set & \( \{e_0 : \{e_{0,0}, ..., e_{0,j}\}, ..., e_i : \{e_{i,0}, ..., e_{i,j}\}\}\)\\
+  \hline
+  Term Occurrence Set & \( \{w_0 : \{w_{0,0}, ..., w_{0,j}\}, ..., w_i : \{w_{i,0}, ..., w_{i,j}\}\}\)
+  \end{tabular}
+  \caption{Expected Format for Entity and Term Data for calculating GETM.\label{fig:getm_data}}
+\end{table}
+\renewcommand{\baselinestretch}{1.0}\normalsize
+
+
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{2.0}
 \begin{table}[h!]
   \begin{tabular}{ c | p{0.55\linewidth}}
   
   Method & Purpose\\
     \hline
-    map\_entity\_idx(entity\_array) & returns a python dict of entity
-    names and associated document index.\\ 
+    map\_entity\_idx(entity\_array) & returns a python dict of entity names and associated position in a document.\\ 
     map\_word\_idx(document) & returns a python dict of terms in a document and the associated positions in the document.
   \end{tabular}
-  \caption{\label{tab:getm_methods}}
+  \caption{Methods used in the formatting of data and calculation of GETM.\label{tab:getm_methods}}
 \end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+It is worth noting the format which the collection of entities are in once extracted from a document using the NER Tagger. Stanford's NER tagger produces an array of entities, where each entity consists of three elements, The Name of the entity in plain text, the type of entity that was extracted (person, location, or organisation), and the position of that entity in the document. 
 
 \subsubsection{GETM Objects}
 
