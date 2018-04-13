@@ -81,7 +81,7 @@ class Server(BaseHTTPRequestHandler):
     def process_GET(self, url):
         """ parse an incoming url """
             
-        components = url.lower().strip('/').strip('api/').split('/')
+        components = url.lower().strip('/').replace('api/','').split('/')
         print(components)
         comp_len = len(components)
         if comp_len == 0 or comp_len > 4:
