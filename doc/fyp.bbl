@@ -48,6 +48,16 @@ G~Malecha and I~Smith.
 \newblock Maximum entropy part-of-speech tagging in {NLTK}.
 \newblock {\em unpublished course-related report}, 2010.
 
+\bibitem{DBLP:journals/corr/abs-1104-2086}
+Slav Petrov, Dipanjan Das, and Ryan~T. McDonald.
+\newblock A universal part-of-speech tagset.
+\newblock {\em CoRR}, abs/1104.2086, 2011.
+
+\bibitem{Dabrowska2015-qm}
+Ewa D{\k a}browska.
+\newblock What exactly is universal grammar, and has anyone seen it?
+\newblock {\em Front. Psychol.}, 6:852, June 2015.
+
 \bibitem{Nadeau2007-tp}
 David Nadeau and Satoshi Sekine.
 \newblock A survey of named entity recognition and classification.

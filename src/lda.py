@@ -16,6 +16,7 @@ n_samples = 2000
 n_features = 1000
 n_topics = 10
 n_top_words = 1000
+book_dir = '../test_data/'
 
 def store_top_words(model, feature_names, n_top_words):
     conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
@@ -42,7 +43,7 @@ def time_action(action, *args):
 def calculate_document_distributions(lda_model, feature_names, n_top_words, data_samples, fps):
   """ Calculates the topic distributions for each document."""
 
-  titles = [fp[len('../books/'): (len(fp) - len('*.txt') + 1) ] for idx, fp in enumerate(fps) ]
+  titles = [fp[len(book_dir): (len(fp) - len('*.txt') + 1) ] for idx, fp in enumerate(fps) ]
   book_distributions = {title: defaultdict(int) for title in titles}
 
   for idx, sample in enumerate(data_samples):
@@ -90,7 +91,7 @@ def retrieve_entity_set():
 
 def main():
   print('Loading Books...')
-  data_samples, fps = time_action(read_data_samples, '../test_data/', '*.txt')
+  data_samples, fps = time_action(read_data_samples, book_dir, '*.txt')
   print(str(len(data_samples)) + ' data samples read from file')
 
   print('Extracting tf features for LDA...')
