@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BookExplorerComponent } from './book-explorer/book-explorer.component';
 import { ExplorerApiService } from './services/explorer-api.service';
 import { BannerComponent } from './banner/banner.component';
-import { BannegstrComponent } from './bannegstr/bannegstr.component';
 import { TopicModelsComponent } from './topic-models/topic-models.component';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { TopicModelsComponent } from './topic-models/topic-models.component';
     AppComponent,
     BookExplorerComponent,
     BannerComponent,
-    BannegstrComponent,
     TopicModelsComponent
   ],
   imports: [

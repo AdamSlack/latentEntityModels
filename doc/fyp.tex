@@ -1110,8 +1110,34 @@ Figure~\ref{fig:document_preprocess} shows the process taken by the system to ap
 \section{Latent Entity Clustering }
 
 \section{Latent Entity Explorer}
-The interface for the exploring Latent Entities was designed from a personal perspective, used to support the development of other aspects of the system. Implemented using TypeScript and the Angular 5 web framework, the application allows for system to be designed in terms of components, which translate effectively to the stages seen during the development of the analysis pipeline.
+The interface for the exploring Latent Entities was designed from a personal perspective as a result of its use in supporting the development of other aspects of the system. Implemented using TypeScript and the Angular 5 web framework, the application allows for system to be designed in terms of components, which correspond effectively to the stages seen during the development of the analysis pipeline.
+
+The implemented structure of the application can be seen in Figure~\ref{fig:web_app_structure}, the application interacts with the server entirely through a simple Angular 5 service. The Explorer API Service is essentially a singleton class which each other component has access to, it makes available methods necessary for issuing requests and receiving responses and does so using an Observer/Subscriber approach. 
+
+There are 4 main components for the application, three of which are controllers involved in allowing users to explore books, topics, and entities. The fourth Controller is a higher level component that co-ordinates across all elements of the application. In addition to each controller is an equivalent view that allows the user to interact with that aspect of the system. The Explorer View is composed of the other views of the application, when users interact with UI elements, it is through the Explorer View.
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{web_app_structure}
+
+  \caption{Structure of the Web Application. \label{fig:web_app_structure}}
+\end{figure}
+
 \subsection{UI and Navigation Design }
+In order to provide a succinct and mobile friendly interface, each element of the system is thought of in terms of components and panels. Each panel provides access to a distinct feature, be it a visualisation of topic distributions in the corpus, or the comparison of entity topic models. Each panel is associated with a component that acts as a controller for that UI element. Though this thesis is not a study of effective UI design, having a usable interface assists in communicating the results of analyses.
+
+Figure~\ref{fig:ui_layout_sketchup} shows initial layout and structure intended to guide the UI of the application. Each panel is of a fixed size, and shows information about a specific aspect of the corpus. Listings of book titles, entities, and topic terms will all be held within separate components. 
+
+\begin{figure}[h!]
+\includegraphics[scale=0.4]{ui_layout_drawing}
+\caption{\label{fig:ui_layout_sketchup}}
+\end{figure}
+
+\subsection{Book Explorer}
+The Book explorer provides an interface for searching and selecting books analysed in the system, so that data and extracted information resulting from the analysis pipeline can be viewed. Split into two elements, the controller for this part of the application allows users to search for books that have been analysed, as initiate requests through the API Service when users select a book. The view the follows the panelled style outlined when discussing the UI and Navigation Design.
+
+Visualising information at a book level is not of particular interest to this investigation, as such the only visualisations associated with each book is actually of the topic distributions and is handled in the Topic Model Explorer component. It is however through the book explorer component that user can signal to other components which entity and topic information it is they wish to view.
 
 \begin{figure}[h!]
   \centering
@@ -1119,7 +1145,11 @@ The interface for the exploring Latent Entities was designed from a personal per
   \caption{Book Selection Component for Navigating the Explorer.\label{fig:book_selection}}
 \end{figure}
 
-\subsection{Exploration Components}
+\subsection{Topic Explorer}
+
+
+\subsection{Entity Explorer}
+
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{topic_dist_pct}
