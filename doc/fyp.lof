@@ -2,15 +2,15 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1}{\ignorespaces LDA Plate Notation\relax }}{20}
 \contentsline {figure}{\numberline {2}{\ignorespaces Output format of lda implementation in scikit-learn. where \(t_i\) is the topic, \(w_j\) is the word, and \(s_{i,j}\) is the strength of ownership between the topic and the word. \relax }}{22}
-\contentsline {figure}{\numberline {3}{\ignorespaces (Left) Bipartite topic conceptual similarity graph. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods \relax }}{25}
+\contentsline {figure}{\numberline {3}{\ignorespaces (Left) Bipartite topic conceptual similarity graph. (Middle, Right) Document relationships formed by LSA and LDA topic modelling methods \relax }}{26}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4}{\ignorespaces Example Set of Entities for the Intruding Entity Test.\relax }}{34}
-\contentsline {figure}{\numberline {5}{\ignorespaces Example Set of Entities with Set of Associated Terms.\relax }}{35}
-\contentsline {figure}{\numberline {6}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{37}
+\contentsline {figure}{\numberline {4}{\ignorespaces Example Set of Entities for the Intruding Entity Test.\relax }}{35}
+\contentsline {figure}{\numberline {5}{\ignorespaces Example Set of Entities with Set of Associated Terms.\relax }}{36}
+\contentsline {figure}{\numberline {6}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{38}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{40}
-\contentsline {figure}{\numberline {8}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{42}
-\contentsline {figure}{\numberline {9}{\ignorespaces Book Selection Component for Navigating the Explrorer\relax }}{51}
-\contentsline {figure}{\numberline {10}{\ignorespaces Entity Topic Distributions for Entity Topic Model\relax }}{51}
+\contentsline {figure}{\numberline {7}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{41}
+\contentsline {figure}{\numberline {8}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{43}
+\contentsline {figure}{\numberline {9}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{52}
+\contentsline {figure}{\numberline {10}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{52}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -222,14 +222,15 @@ X & other: foreign words, typos, abbreviations\\
 \renewcommand{\arraystretch}{1.0}
 
 Larger tag sets include that of the Penn-Treebank, and Brown Corpus tag sets, with 36 and 82 tags respectively. Even larger still is are those building upon the Brown Corpus, the London-Lund Corpus
-of Spoken English uses 197 distinct tags. The larger tag sets are formed with the belief that each distinct tag captures a specific mechanism that can be employed within language. ~\cite{that paper comparing tagsets.}
+of Spoken English uses 197 distinct tags. The larger tag sets are formed with the belief that each distinct tag captures a specific mechanism that can be employed within language. ~\cite{garside1988computational}
 
+The Penn-Treebank tag is is by no means a large tag set and by reducing the scope of the tag set, it provides fewer opportunities for inconsistencies to arise. a discussion was held around the validity of the brown corpus given that syntactic context is overlooked, with words tagged independently of their syntactic function.~\cite{Marcus1993-tw} When evaluating which tag set to choose, the corpus being used during the training and application of models is an important factor to consider. Often tag sets are built for the purpose of effectively tagging a corpus resulting in effective tagging of that corpus and related corpora, the tag set used with the brown corpus is a prime example of this.
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
 \begin{table}[h!]
   \centering
-  \begin{tabular}{c | l}
+  \begin{tabular}{c | p{0.3\linewidth}}
        Tag & Description
        \\\hline
           CC	&Coordinating conjunction
@@ -237,7 +238,6 @@ of Spoken English uses 197 distinct tags. The larger tag sets are formed with th
 	\\DT	&Determiner
 	\\EX	&Existential there
 	\\FW	&Foreign word
-        \\IN	&Preposition or subordinating conjunction
 	\\JJ	&Adjective
 	\\JJR	&Adjective, comparative
         \\JJS	&Adjective, superlative
@@ -250,8 +250,13 @@ of Spoken English uses 197 distinct tags. The larger tag sets are formed with th
 	\\PDT	&Predeterminer
 	\\POS	&Possessive ending
 	\\PRP	&Personal pronoun
-	\\PRP\$	&Possessive pronoun
-	\\RB	&Adverb
+        \\PRP\$	&Possessive pronoun
+        \\IN	&Preposition or subordinating conjunction
+  \end{tabular}\quad \quad
+  \begin{tabular}{c | p{0.3\linewidth}}
+           Tag & Description
+    \\\hline
+    	RB	&Adverb
 	\\RBR	&Adverb, comparative
 	\\RBS	&Adverb, superlative
 	\\RP	&Particle
@@ -275,7 +280,7 @@ of Spoken English uses 197 distinct tags. The larger tag sets are formed with th
 \renewcommand{\arraystretch}{1.0}
 
 \section{Named Entity Recognition}
-The task of extracting a list of entities from text is a similar task to that of POS tagging. It involves parsing natural language and applying entity labels to entity words. A recent survey of the field summarised that Named Entity Recognition (NER) - the task of identifying entities and labelling them as ‘Person’, ‘Organisation’, or ‘Location’ - as being essential to many tasks of computational linguistics~\cite{Nadeau2007-tp}. Similarly to POS tagging, ambiguity prevents NER from having a simple solution. It is not always clear which entity some text may be referring to, especially in situations where an entity is not referred to directly, or when entities are named in unusual ways.~\cite{Ratinov2009-gw} Its application in this study is to provide a set of entities from which topic models can be derived from and applied too. 
+The task of extracting a list of entities from text is a similar task to that of POS tagging. It involves parsing natural language and applying entity labels to entity words. A recent survey of the field summarised that Named Entity Recognition (NER) - the task of identifying entities and labelling them as ‘Person’, ‘Organisation’, or ‘Location’ - as being essential to many tasks of computational linguistics~\cite{Nadeau2007-tp}. The ambiguity of natural language impacts NER in the same way as POS tagging, meaning that solutions to the problems investigated in NER don't necessarily have a simple solution. A key ambiguity relating to entities is that it is not always clear which entity some text may be referring to, especially in situations where an entity is referred to indirectly, or when entities are named in unusual ways.~\cite{Ratinov2009-gw} NER techniques are considered for this study as a means of extracting a set of entities from which topic models can be derived and explored. 
 
 \subsection{NER Techniques}
 NER can be carried out using a range of different statistical methods. HHMs can be used to classify entities as either a name (person, organisation, or location), time, or numerical quantity. HMM-based Chunk Taggers have a reported accuracy ranging from 87\% to 94\% depending on the size of the training set~\cite{Zhou2002-st}.
@@ -284,26 +289,31 @@ Similarly to POS Tagging, statistical methods based on Maximum Entropy can be ap
 
 CRFs are a form of statistical model that is particularly useful for applying labels to sequence data, when applied to POS tagging or NER, CRF systems can attain error rates as low as 5.55\% and 15.96\% respectively~\cite{Lafferty2001-ab,McCallum2003-yu}.
 
- It is worth noting that the drawbacks that applied to publications regarding POS tagging, also apply to studies on NER. Notably, NER methods typically only concern themselves with labelling words in text, and provide no means of extracting additional information about a recognised named entity. Drawbacks common though many of the techniques revolve around the resolution of which entities are actually the same. Entities within books can be referred to directly, or indirectly, and even be addressed with different names. 
+ It is worth noting that the drawbacks that applied to publications regarding POS tagging, also apply to studies on NER. Notably, NER methods typically only concern themselves with labelling words in text, and provide no means of extracting additional information about a recognised named entity. Drawbacks common though many of the techniques revolve around the resolution of which entities are actually the same. Entities within books can be referred to directly, or indirectly, and even be addressed with different names. Statistical models also lead way to strange inconsistencies particularly in cases where elements of text are labelled as something that to a human is clearly wrong. In text not strictly following the grammatical rules of the language, or creative texts exploring the language, statistical NER techniques alone may prove inadequate, similarly, rule based NER would fall short.   
 
  \subsection{NER Tools}
- Many free NER tools exist on the web, including Stanford NER, Illinois NER, OpenCalais NER, and Alias-i LingPipe. In a comparison between the relative performances of these tools to classify entity types (Person, Location, Organisation) the Stanford NER achieved the second highest precision and the highest recall rates.~\cite{Atdag2013-qo}. In separate comparison of NER tagging tools, more mixed results were received for the stanford NER tool. It performed comparably generalised NER tools found in the NLTK and apache OpenNLP toolkits. On specialised datasets, specialised NER taggers tuned to the task at hand predictably outperformed an untuned implementations of the Stanford NER.
+ Many free NER tools exist on the web, including Stanford NER, Illinois NER, OpenCalais NER, and Alias-i LingPipe. In a comparison between the relative performances of these tools to classify entity types (Person, Location, Organisation) the Stanford NER performed strongly overall, achieving the second highest precision and the highest recall rates.~\cite{Atdag2013-qo}. In separate comparison of NER tagging tools, more mixed results were received for the stanford NER tool. It performed comparably generalised to NER tools found in the NLTK and apache OpenNLP toolkits. On specialised datasets, purpose specific NER taggers tuned to the task at hand predictably outperformed un-tuned implementations of the Stanford NER.
  
-Focusing on the Stanford NER~\cite{Finkel2005-uz} an NER tool that utilises conditional random fields (CRF). A Java implementation, the tool exists as part of a larger CoreNLP toolkit created at Stanford University. The self-reported performance of the tool ranges from 92.15\% to 85.6\% and 92.39\% to 85.53\% for precision and recall respectively. The upper bounds for possible precision and recall relied on additional processing for handling specific features of text.~\cite{noauthor_undated-ik}. Additionally, these results are from tests occuring in 2006. Recent advances in CRFs have been utilised in subsequent versions of the Stanford NER.
+The Stanford NER tagger has been shown to be a robust and effective tool, frequently outperforming other freely available tools. The Stanford NER Tagger is an NER tool that utilises conditional random fields (CRF) to identify and classify entities, a Java implementation, the tool exists as part of a larger CoreNLP toolkit created at Stanford University  ~\cite{Finkel2005-uz}. The self-reported performance of the tool ranges from 92.15\% to 85.6\% and 92.39\% to 85.53\% for precision and recall respectively. The upper bounds for possible precision and recall relied on additional processing for handling specific features of text.~\cite{noauthor_undated-ik}. Additionally, these results are from tests occuring in 2006. Recent advances in CRFs have been utilised in subsequent versions of the Stanford NER.
 
 \section{Topic Models}
-Topic models are a way of representing a corpus of text in terms of latent or abstract topics. A topic is defined as the degrees of membership each term in a collection has to a topic. In methods like Latent Dirichlet Allocation, a corpus is expressed as a probability distribution of topics, which in turn are expressed as a probability distribution of words. Describing a specific element of a corpus in terms of topic models requires matching terms in the text to terms in the various topics, after the derivation of a set of models. 
+Topic models are a way of representing a corpus of text in terms of latent or abstract topics. A topic is defined as the degrees of membership each term in a collection has to a topic. In methods like Latent Dirichlet Allocation, a corpus is expressed as a probability distribution of topics, which in turn are expressed as a probability distribution of words. Describing a specific element of a corpus in terms of topic models requires matching terms in the text to terms in the various topics, after the derivation of a set of models. It is possible to conceptually regard Topic Modelling as a clustering method, where terms are grouped into clusters or topics by considering the statistical likelihoods of specific topics generating the terms present in a document.
 
-Deriving topics from a corpus is commonly done through statistical techniques such as  Latent Dirichlet Allocation (LDA), Hierarchical LDA, Latent Semantic Indexing (LSI), or Probabilistic LSI (pLSI). However, many existing methods are in fact built upon the ideas used in LSA, for example, the valuable LDA method arose out of the shortcomings of the comparatively simple LSI ~\cite{Blei2003-dj}.
+Deriving topics from a corpus is commonly done through statistical techniques such as Latent Dirichlet Allocation (LDA), Hierarchical LDA, Latent Semantic Indexing (LSI), or Probabilistic LSI (pLSI). However, many existing methods are in fact built upon the ideas used in LSA, for example, the valuable LDA method arose out of the shortcomings of the comparatively simple LSI ~\cite{Blei2003-dj}. Many of the challenges around Topic modelling now relate to the human interpretation of developed models. Ensuring that topics are cohesive and interpret able is hard, it often involves restricting data going into the model so that variability within topics can be reduced. Additionally, ensuring models are interpretable is made more difficult by the fact they are not inherently intended for human use, as machine interpretable models, the reasoning behind why topics are structured in such a way is not necessarily clear as a result of their abstract nature. 
 
 
 \subsection{Latent Semantic Analysis}
-Sometimes referred to as LSI, Latent Semantic Analysis (LSA) is a technique that provides vector representations of documents in a corpus. These vector representations allow for quantitative comparisons of different documents. The implementation of the technique is oriented around Single Value Decomposition (SVD), and attempts to model terms in a document as being averages of the document passages which in which it occurs~\cite{Deerwester1989-yl}. Additionally, for NLP tasks It is possible to view LSA as an extension of the term frequency-inverse document frequency (tf-idf) method, this is due to the method producing a subset of the reduction carried out by tf-idf such that term occurrences with the most variation between documents are retained~\cite{Landauer1998-kx}.
-The obvious shortcoming of LSA is focused purely on documents at a word level. It bears no notion of topics or themes through which documents can be related. It is possible to apply additional post processing on the output of LDA. Additionally, for this study the method is totally inadequate for the analysis of entities within the documents. The possible use of the method with regards to the automatic extraction of Latent Entity Models could relate to the extraction of entity-term associations. It has been reported that the method performs well with highly dimensional data, and comparably better than standard vector space models like tf-idf.~\cite{Kumar2004-da} As such, LSA would likely be useful as nothing more Principal Component Analysis style reduction.
+Sometimes referred to as Latent Semantic Indexing (LSI), Latent Semantic Analysis (LSA) is a technique that provides vector representations of documents in a corpus. These vector representations allow for quantitative comparisons of different documents. The implementation of the technique is oriented around Single Value Decomposition (SVD), and attempts to model terms in a document as being averages of the document passages which in which it occurs~\cite{Deerwester1989-yl}. Additionally, for NLP tasks It is possible to view LSA as an extension of the term frequency-inverse document frequency (tf-idf) method, this is due to the method producing a reduced set of the same reduction carried out by tf-idf such that term occurrences with the most variation between documents are retained~\cite{Landauer1998-kx}.
+
+The obvious shortcoming of LSA is focused purely on documents at a word level, it bears no notion of topics, themes, or higher level concepts through which documents can be related. The assumption made for the results of LSA is that terms occurring in a document are topically related, and that documents containing the same terms must also topically similar.
+
+LSA is wholly insufficient for the analysis of entities within the documents. There is potential for he method to be used as an intermediate step, or perhaps expanded to take into consideration entities with a document and their entity-term associations. A feature of LSA rendering it suitable for this task is the methods ability to perform well with highly dimensional data, and comparably better than standard vector space models like tf-idf.~\cite{Kumar2004-da} Given its limited nature, LSA would likely be useful as nothing more Principal Component Analysis style reduction.
 
 \subsection{Probabilistic Latent Semantic Indexing}
-Probabilistic LSA (pLSA) is derived as an effort to mathematically formalise the the ideas patented by Deerwester et. al. The formal statistical nature of the method means that the method can be used in conjunction with other models in a more predictable manner. The probabilistic approach changes the meaning of output produced by pLSA, resulting in models which numerically relate terms to some latent variable. 
-When used in tasks of prediction, pLSA models outperformed models produced by LSA. pLSA, reducing the perplexity of any produced models. Notably, there is a greater difference in performance on more general purpose information retrieval tasks, than on restricted corpora.~\cite{Hofmann1999-qb}. This is likely due to the effect that sparsity has on the ability of each method. Whilst still worse than pLSA, LSA actually performed better as the sparsity of training data reduced whereas pLSA’s performance decreased. This suggests that the mixture models used in pLSA perhaps overfit as the sparsity of data decreases.
+Probabilistic LSA (pLSA) is derived as an effort to mathematically formalise the the ideas patented by Deerwester et. al. and the proposed LSA method. The formal statistical nature of the method means that the method can be used in conjunction with other models in a more predictable manner. The probabilistic approach changes the meaning of output produced by pLSA, resulting in models which numerically relate terms to some latent variable. 
+
+When used in tasks of prediction, pLSA models outperformed models produced by LSA, at the task of reducing perplexity. Notably, there is a greater difference in performance on more general purpose information retrieval tasks, than on restricted corpora.~\cite{Hofmann1999-qb}. This is likely due to the effect that sparsity has on the ability of each method. Whilst still worse than pLSA, LSA actually performed better as the sparsity of training data reduced whereas pLSA’s performance decreased. This suggests that the mixture models used in pLSA perhaps overfit as the sparsity of data decreases.
+
 As this study is focused on written narratives, any corpora used will be diverse and intrinsically sparse. As such the overfitting problem potentially reducing the effectiveness of pLSA might not be so much of an issue. However, whilst it does begin to numerically relate variables, there is still no explicit relation between documents expressed within the models meaning that adding additional documents to the corpus would mean the algorithm needs to be re-run, Additionally, there remains no direct means of relating entities or expressing entities in terms of elements within a corpus.
 
 \subsection{Latent Dirichlet Allocation}
@@ -336,7 +346,7 @@ The total probability of an LDA model is defined as:
 \]
 
 \renewcommand{\baselinestretch}{2.0}\normalsize
-In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word \(w_n\) is a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents are known parameters, the first step in the process is redundant leaving only steps 2 and 3.
+In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word \(w_n\) is a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents are known parameters, the first step in the process is redundant leaving only steps 2 and 3 of the original process.
 
 The versatility of LDA is one of its strongest characteristics. The method has seen use in a range of different settings, from filtering web spam, to the semantic annotation of satellite images. As a bayesian statistical process, it is possible to utilise other methods with relative ease given its modularity.
 
@@ -344,7 +354,7 @@ In web spam filtering, LDA has been combined with tf-idf and expanded to take in
 
 For automatic image annotation, additional machine learning and computer vision methods can be applied to images in order transform images into collections of image features. Topics derived from a corpus of these images can be used to annotate new images introduced. Attempts at using LDA in image annotation have seen some success, whilst not all annotations from topics were correct, they were often at least conceptually related.~\cite{Feng2010-dp, Zhang2011-dn}
 
-LDA doesn’t relate words semantically. The meanings of words in a topic are not necessarily relate in any way, which is demonstrated in studies using LDA to annotate images. This means that derived topics might not provide any meaningful grouping of words. The intuition is that words in books and documents about a specific subject will somewhat relate to other words in the document. LDA might not produce thematically related topics if the documents used to derive topic distributions are varied in content. For this investigation, the potential for thematically unrelated topics is potentially a major drawback. Entities within narratives might be present throughout a whole series of books. Meaning that they may be associated with a wide range of topics. It is unclear at this stage what effect this may have on the quality of derived topics. It might be necessary to regard the same entity across two books to actually be distinct.
+LDA doesn’t relate words semantically. The meanings of words in a topic are not necessarily related in any way, which is demonstrated in studies using LDA to annotate images. This means that derived topics might not provide any meaningful grouping of words. The intuition is that words in books and documents about a specific subject will somewhat relate to other words in the document. LDA might not produce thematically related topics if the documents used to derive topic distributions are varied in content. For this investigation, the potential for thematically unrelated topics is potentially a major drawback. Entities within narratives might be present throughout a whole series of books. Meaning that they may be associated with a wide range of topics. It is unclear at this stage what effect this may have on the quality of derived topics. It might be necessary to regard the same entity across two books to actually be distinct.
 
 As a bag of words method, each unigram is treated as being unrelated to other words. Which is not true in the case of written narratives. Much of the meaning of words and relations between words are lost when used in ‘bag of word’ models. The drawback for this study is that relations between terms and entities are required. If topics were directly derived from the documents which entities were extracted from, then there would be no meaningful way of identifying how these topics apply to entities.
 
@@ -1022,12 +1032,14 @@ The process requires a corpus to be separated into two sets, one set of position
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{2.0}
 \begin{table}[h!]
-  \begin{tabular}{ c | p{0.55\linewidth}}
+  \begin{tabular}{ r | p{0.15\linewidth} | p{0.5\linewidth}}
   
-  Method & Purpose\\
+  Method & Parameters &Purpose\\
     \hline
-    map\_entity\_idx(entity\_array) & returns a python dict of entity names and associated position in a document.\\ 
-    map\_word\_idx(document) & returns a python dict of terms in a document and the associated positions in the document.
+    Map Entity Occurrence & Entity Array & returns a python dict of entity names and associated position in a document.\\ 
+    Map Word Occurrence & Document & returns a python dict of terms in a document and the associated positions in the document.\\
+    Calculate GETM &Entity Map, Term Map, Weighting Function & returns a GETM object calculated from the Entity and Term maps, using the gaussian function as the default weighting function.\\
+    
   \end{tabular}
   \caption{Methods used in the formatting of data and calculation of GETM.\label{tab:getm_methods}}
 \end{table}
@@ -1037,8 +1049,9 @@ The process requires a corpus to be separated into two sets, one set of position
 It is worth noting the format which the collection of entities are in once extracted from a document using the NER Tagger. Stanford's NER tagger produces an array of entities, where each entity consists of three elements, The Name of the entity in plain text, the type of entity that was extracted (person, location, or organisation), and the position of that entity in the document. 
 
 \subsubsection{GETM Objects}
+A titled-matrix class was implemented allowing matrix calculations to be performed at row or column level using column and row headings. Many of the calculations that would be performed with the GETM occur on a per-row or per-column level on values for terms and entities, and instead of keeping track of the indexes for each entity and term in the matrix this structure allows entity names and terms to be used as keys for each column and row. The ordered map and numpy matrix data structures underpin the structure of this class, with column and row keys in the ordered map linking operations to rows and columns in the matrix.
 
-
+The index operator for the class allows for cells to be selected by passing either passing the index for the desired entity and term or by passing the string values of both. Additional get and set methods are implemented to accompany the index operator.
 
 \section{Corpus Pre-Processing}
 
@@ -1047,6 +1060,8 @@ Corpus Pre-Processign involves applying a set of transformations necessary to be
 Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the default tokenization methods which use XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
 
 Once each document in the corpus has sentences and words tokenized, the next stage in the processes is the application of POS tagging methods to determine the gramatical structure of each sentence. A Viterbi Decoded Hidden Markov Model (HMM) POS tagger was implemented in python, utilising the NLP tookit developed for this project. POS Tagging this document means that it is possible to apply filters to the corpus before deriving topic models from the GETM. By removing certain words tagged as certain POS (like determiners, or prepositions) it is possible to derive topics using only descriptive words, which may provide more cohesive and interpretable models.
+
+The defined pre-processing process forms a large section of the overall pipeline, each aspect of the pipeline and preprocessing is implemented in its own distinct elements, each of which have been discussed. In order to tie each separate element into a coherent process, two scripts were developed. One to apply pre-processing at a per-document level, and one at a corpus level.
 
 Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. Figure~\ref{fig:corpus_preprocess} denotes the process of assimilating a collection of documents into the system.
 
@@ -1095,18 +1110,20 @@ Figure~\ref{fig:document_preprocess} shows the process taken by the system to ap
 \section{Latent Entity Clustering }
 
 \section{Latent Entity Explorer}
+The interface for the exploring Latent Entities was designed from a personal perspective, used to support the development of other aspects of the system. Implemented using TypeScript and the Angular 5 web framework, the application allows for system to be designed in terms of components, which translate effectively to the stages seen during the development of the analysis pipeline.
 \subsection{UI and Navigation Design }
-\begin{figure}[B!]
+
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{book_list}
-\caption{Book Selection Component for Navigating the Explrorer\label{fig:book_selection}}
+  \caption{Book Selection Component for Navigating the Explorer.\label{fig:book_selection}}
 \end{figure}
 
 \subsection{Exploration Components}
-\begin{figure}[B!]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{topic_dist_pct}
-\caption{Entity Topic Distributions for Entity Topic Model\label{fig:entity_topic_pct}}
+  \caption{Entity Topic Distributions for Entity Topic Model. \label{fig:entity_topic_pct}}
 \end{figure}
 
 

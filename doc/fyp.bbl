@@ -58,6 +58,17 @@ Ewa D{\k a}browska.
 \newblock What exactly is universal grammar, and has anyone seen it?
 \newblock {\em Front. Psychol.}, 6:852, June 2015.
 
+\bibitem{garside1988computational}
+Roger Garside.
+\newblock {\em The computational analysis of English: A corpus-based approach},
+  volume~57.
+\newblock 1988.
+
+\bibitem{Marcus1993-tw}
+Mitchell~P Marcus, Mary~Ann Marcinkiewicz, and Beatrice Santorini.
+\newblock Building a large annotated corpus of english: The penn treebank.
+\newblock {\em Comput. Linguist.}, 19(2):313--330, June 1993.
+
 \bibitem{Nadeau2007-tp}
 David Nadeau and Satoshi Sekine.
 \newblock A survey of named entity recognition and classification.
