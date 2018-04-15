@@ -28,7 +28,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{array}
-
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 %
 % Diagrams tool.
 %
@@ -1179,11 +1179,54 @@ One possible explanation of the missclassification is a result of the basic natu
 \renewcommand{\arraystretch}{1.0}
 
 \section{Gaussian Entity-Term Matrix}
-Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives.
+Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent
+Entity Models will never be able to accurately capture entity structures within narratives. Whilst the reason for evaluating the GETM is similar to the rational behind evaluating the POS tagger used, the method for doing so is very different.
 
-\subsection{Experiment Setup}
+Without a pre-existing model or any testing dataset, evaluating the GETM can be done by considering the impact that using the GETM has on the performance of Entity Topic Models, or Latent Entities. Additionally, the consistency of the model across similar corpora can give insight into potential benefits and drawbacks of the method.
+
+A consistency Metric was defined in chapter 3 for comparing two GETM calculated on different corpora, 3 different corpus pairs were used to evaluate the consistency of the method. The corpora in the first pair consist of books that are completely unrelated to books in the opposing corpus, the intuition behind this is to allow the method to have a baseline metric which the other corpora pairs can be compared to. The second pairing is constructed by splitting a novel series in half to form each corpus in the pair, whilst there will be distinct differences in the entities present across the documents, many of the entities in a series remain the same throughout meaning that there should be some consistency seen across the GETM models. The final pairing consists of factual documents on the same topics, the consistency of the models trained on documents should result in some consistency. Table~\ref{tab:getm_copora} shows the corpora used in evaluating the consistency of the GETM model.
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
+    \multicolumn{2}{c}{Different}\\
+    Corpus A & Corpus B \\\hline
+    Philosophers Stone & Hunger Games \\
+    Chamber of Secrets & Catching Fire \\
+    Prisoner of Azkaban& Mockingjay
+  \end{tabular}\\
+  \vspace{0.5cm}
+  \renewcommand{\baselinestretch}{1.0}\normalsize
+  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
+    \multicolumn{2}{c}{Same Series}\\
+    Corpus A & Corpus B
+    \\\hline
+    Philosophers Stone  & Goblet of Fire     \\
+    Order of Phoenix    & Chamber of Secrets \\
+    Prisoner of Azkaban & Half Blood Prince
+  \end{tabular}\quad\\
+  \vspace{0.5cm}
+  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
+    \multicolumn{2}{c}{Same Topic}\\
+    Corpus A & Corpus B
+    \\\hline
+    Henry VIII            & Philosophers Stone \\
+    Henry VIII: wives     & Philosophers Stone \\
+    The Tudors: Henry VIII& Philosophers Stone
+  \end{tabular}
+  \caption{Documents Forming the Corpora Used in Evaluating GETM Consistency. (Book titles have been shortened for conciseness) \label{tab:getm_copora}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
 \subsection{Results}
+
+\begin{table}
+
+\caption{Books used\label{tab:getm_copora}}
+\end{table}
 
 \section{Entity Topic-Models}
 The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach performs.

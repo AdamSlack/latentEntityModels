@@ -48,7 +48,6 @@ def request_book_titles():
     res = db.select_book_titles(db_conn())
     return [title[0] for title in res]
 
-
 def main():
     the_db = db_conn()
     """ Main Process Flow """

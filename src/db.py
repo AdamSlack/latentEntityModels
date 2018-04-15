@@ -77,6 +77,11 @@ def select_topic_ids(db):
     cursor.execute("""select distinct book_title from books""")
     return cursor
 
+def select_book_entity_topics(db):
+    cursor = db.cursor()
+    cursor.execute("""select * from book_entity_topics""")
+    return cursor
+
 #
 #
 #
