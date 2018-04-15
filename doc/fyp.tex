@@ -1107,6 +1107,8 @@ The Book explorer provides an interface for searching and selecting books analys
 
 Visualising information at a book level is not of particular interest to this investigation, as such the only visualisations associated with each book is actually of the topic distributions and is handled in the Topic Model Explorer component. It is however through the book explorer component that user can signal to other components which entity and topic information it is they wish to view.
 
+Figure~\ref{fig:book_selection} shows the panel for selecting books, onnce the user selects a book, a collection of entities and the topic distribution for the selected book.
+
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{book_list}
@@ -1135,10 +1137,41 @@ Visualising information at a book level is not of particular interest to this in
 \section{Introduction}
 
 \section{POS Tagger}
-Being a key part of the pre-
+Being a key part of the pre-processing aspect of this investigation, it is necessary to consider the impact that the choice of POS tagger may have on the system. If the implemented POS tagger was not as performant as seen in literature, then it could be used to explain drawbacks within the system.
+
+Unlike Topic Modelling, evaluating the performance of a POS tagger is a more straightforward task. The implemented tagger was evaluated on the Brown corpus, using an 80:20 division of the corpus into training and test samples. Accross both subsets, the corpus contained a total of $57,340$ sentences and $1,161,192$ words, forming a sizable dataset from which a model can be trained.
+
+An overall accuracy of 0.73 was achieved for the method, which is a significantly higher score than randomly applying tags would score.
 
 \subsection{Results}
 
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c | c | c | c || c | c }
+  POS &	Correct &	Wrong &	Actual&	 Correct Class&Misclassified\\
+  Tag & (n)&(n)&(n)&(\%)&(\%)  
+  \\\hline
+    NUM  &364   &	2087&	487&	0.75&	0.85
+  \\ADV  &3747  &	442&	5357&	0.70&	0.11
+  \\PRON &6097  &	185&	7353&	0.83&	0.03
+  \\ADP  &6337  &	420&	9630&	0.66&	0.06
+  \\DET  &7191  &	53&	10113&	0.71&	0.01
+  \\X    &5     &	6&	124&	0.04&	0.55
+  \\NOUN &10606 &	365&	17692&	0.60&	0.03
+  \\ADJ  &3378  &	301&	5492&	0.62&	0.08
+  \\PRT  &2438  &	282&	3446&	0.71&	0.10
+  \\.    &10870 &	0&	15505&	0.70&	0.00
+  \\CONJ &2258  &	16&	3326&	0.68&	0.01
+  \\VERB &16585 &	21409&	16917&	0.98&	0.56
+  \\\hline
+  Total &69876&	25566&	95442&	0.73&	0.27
+\end{tabular}
+\caption{ Table of POS Tagging Results\label{tab:pos_results}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
 \section{Gaussian Entity-Term Matrix}
 Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives.

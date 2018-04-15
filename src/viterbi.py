@@ -115,7 +115,28 @@ def evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, po
     tags = [viterbi([ob[0].lower() for ob in sent], pos_states, pos_starts, pos_trans, pos_emit) for sent in test_sents ]
 
     score = sum(sum(1 if tag == test_sents[s_idx][t_idx][1] else 0 for t_idx, tag in enumerate(sent) ) for s_idx, sent in enumerate(tags))
-                    
+    
+    tag_correct = defaultdict(int)
+    tag_wrong = defaultdict(int)
+    actual_count = defaultdict(int)
+
+    for s_idx, sent in enumerate(tags):
+        for t_idx, tag in enumerate(sent):
+            if tag == test_sents[s_idx][t_idx][1]:
+                tag_correct[tag] += 1
+            else:
+                tag_wrong[tag] += 1
+            actual_count[test_sents[s_idx][t_idx][1]] += 1
+
+    print('CORRECT:')
+    print(tag_correct)
+
+    print('WRONG:')
+    print(tag_wrong)
+
+    print('ACTUALS')
+    print(actual_count)
+
     return score/len(test_words)
 
 def main():
@@ -146,23 +167,23 @@ def main():
     ##
     ## General Model Evaluation.
     ##
-    #print('Calculating Training Set Starting probabilities')
-    #pos_starts = calc_start_state_probs(training_sents, pos_states)
-    #print('Training Set Starting Probabilities calculated')
+    print('Calculating Training Set Starting probabilities')
+    pos_starts = calc_start_state_probs(training_sents, pos_states)
+    print('Training Set Starting Probabilities calculated')
 
-    #print('Calculating Training Set Transition Probabilities')
-    #pos_trans = calc_trans_probs(training_sents, pos_states)
-    #print('Training set Transition probabilities calcualted')
+    print('Calculating Training Set Transition Probabilities')
+    pos_trans = calc_trans_probs(training_sents, pos_states)
+    print('Training set Transition probabilities calcualted')
 
-    #print('Calculating Training set Emission Probabilities')
-    #pos_emit = calc_emit_probs(training_words, pos_states, [ob[0] for ob in test_words])
-    #print('Training Set Emission Probabilities Calculated')
+    print('Calculating Training set Emission Probabilities')
+    pos_emit = calc_emit_probs(training_words, pos_states, [ob[0] for ob in test_words])
+    print('Training Set Emission Probabilities Calculated')
 
-    #print('Evaluating Viterbi Decoded HMM')
-    #score = evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit)
-    #print('Viterbi Decoded HMM Evaluated')
+    print('Evaluating Viterbi Decoded HMM')
+    score = evaluate_model(test_sents, test_words, pos_states, pos_starts, pos_trans, pos_emit)
+    print('Viterbi Decoded HMM Evaluated')
 
-    #print('Model Score:', str(score))
+    print('Model Score:', str(score))
 
     ##
     ## Sentence Evaluation.

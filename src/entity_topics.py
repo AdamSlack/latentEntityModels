@@ -81,8 +81,10 @@ def main():
 
     for e in entity_terms:
         e['topics'] = {}
+        
         total = 0
         new_total = 0
+        
         for idx, topic in enumerate(topics):
             e['topics'][idx] = 0
             for term in e['term_array']:
@@ -91,15 +93,13 @@ def main():
                 if e_term in topics[idx]:
                     e['topics'][idx] += e_str*topics[idx][e_term]
             total += e['topics'][idx]
-            #
-        print(total)
+        
         for t in e['topics'].keys():
             if total > 0: 
                 e['topics'][t] = (e['topics'][t]/total)*100
             new_total += e['topics'][t]
-        print(new_total)
-        #print(e['topics'])
-        db.insert_book_entity_term(db,e['book_title'], e['entity'], e['topics'])
+
+        db.insert_book_entity_term(db,e['book'], e['entity'], e['topics'])
     
 if __name__ == '__main__':
     main()
