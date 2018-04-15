@@ -50,6 +50,7 @@ def request_book_titles():
 
 
 def main():
+    the_db = db_conn()
     """ Main Process Flow """
     topic_ids = request_topic_ids()
     topic_terms = [request_topic_terms(t_id) for t_id in topic_ids]
@@ -99,7 +100,7 @@ def main():
                 e['topics'][t] = (e['topics'][t]/total)*100
             new_total += e['topics'][t]
 
-        db.insert_book_entity_term(db,e['book'], e['entity'], e['topics'])
+        db.insert_entity_topic_model(the_db,e['book'], e['entity'], e['topics'])
     
 if __name__ == '__main__':
     main()

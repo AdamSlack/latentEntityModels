@@ -39,16 +39,24 @@ def insert_book_entity_term(db, book_title, entity, term, strength):
 
 def insert_entity_topic_model(db,book,entity,topics):
     """ insert a entity topic value for a topic of an entity in a book. """
-    cursor = db.cursor()
     for t in topics.keys():
-        print (book, entity, t, topics[t])
-        cursor.execute(
-            """
-                insert into book_entity_topics (book_title, entity, topic, strength)
-                values(%s, %s, %s, %s)
-            """,
-            (book, entity, t, topics[t])
-        )
+        cursor = db.cursor()
+        print ('Inserting into book_entity_topics:', book, entity, t, topics[t])
+        try:
+            cursor.execute(
+                """
+                    insert into book_entity_topics (book_title, entity, topic_id, strength)
+                    values(%s, %s, %s, %s)
+                """,
+                (book, entity, t, topics[t])
+            )
+        except:
+            db.rollback()
+            return False
+            cursor.close()
+        cursor.close()
+        db.commit()
+    return True
 #
 #
 #
