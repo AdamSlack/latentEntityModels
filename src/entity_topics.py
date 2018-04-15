@@ -99,5 +99,7 @@ def main():
             new_total += e['topics'][t]
         print(new_total)
         #print(e['topics'])
+        db.insert_book_entity_term(db,e['book_title'], e['entity'], e['topics'])
+    
 if __name__ == '__main__':
     main()
