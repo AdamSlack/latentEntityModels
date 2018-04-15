@@ -1126,8 +1126,6 @@ Figure~\ref{fig:book_selection} shows the panel for selecting books, onnce the u
   \caption{Entity Topic Distributions for Entity Topic Model. \label{fig:entity_topic_pct}}
 \end{figure}
 
-
-
 %
 %
 % Chapter 5
@@ -1141,9 +1139,16 @@ Being a key part of the pre-processing aspect of this investigation, it is neces
 
 Unlike Topic Modelling, evaluating the performance of a POS tagger is a more straightforward task. The implemented tagger was evaluated on the Brown corpus, using an 80:20 division of the corpus into training and test samples. Accross both subsets, the corpus contained a total of $57,340$ sentences and $1,161,192$ words, forming a sizable dataset from which a model can be trained.
 
-An overall accuracy of 0.73 was achieved for the method, which is a significantly higher score than randomly applying tags would score.
 
 \subsection{Results}
+
+An overall accuracy of 0.73 was achieved for the method, which is a significantly higher score than randomly applying tags would score, however it is still noticibly lower than scores seen in literature. As the purpose of POS tagging in this thesis is for the filtering of specific types of tags, it is necessary to consider the effectiveness of the tagger on different POS tags.
+
+The tagger classified almost all Verbs in the test set, however when it missclassified parts of speech, they were often missclassified as verbs, which natrually increases the number of successful tags. Notably, the tagger never tagged something that wasn't punctuation, as punctuation, however it failed to correctly label all punctuation in the test set, missing approximately 30\%. Table~\ref{tab:pos_results} shows a breakdown of the performance of the POS tagger for each posible POS class, it shows the number of times a tag was correctly, and incorrectly applied to a word, as well as the actual number of words with that class in the test set. Finally, Table~\ref{tab:pos_results} also shows the percentage of correctly classified words for each pos tag, as well as the percentage of words that were incorrectly labled as that tag.
+
+It is concerning to see that 85\% of the terms tagged as 'NUM' were actually something else as it is one of the classes that would be filtered from the GETM. For almost all casses of misclassification, terms were incorrectly labelled as being a Verb.
+
+One possible explanation of the missclassification is a result of the basic nature of the tagger, when the system has not encountered a word before, it is unsure of what to tag it as. It turns out that in the implementation, the tagger's default classification is a Verb. An interesting feature of the brown corpus is that roughly half of the vocabulary are hapax legomena, leading to a high liklihood that the test set would contain terms unseen to the model. 
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
