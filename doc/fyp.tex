@@ -317,35 +317,37 @@ When used in tasks of prediction, pLSA models outperformed models produced by LS
 As this study is focused on written narratives, any corpora used will be diverse and intrinsically sparse. As such the overfitting problem potentially reducing the effectiveness of pLSA might not be so much of an issue. However, whilst it does begin to numerically relate variables, there is still no explicit relation between documents expressed within the models meaning that adding additional documents to the corpus would mean the algorithm needs to be re-run, Additionally, there remains no direct means of relating entities or expressing entities in terms of elements within a corpus.
 
 \subsection{Latent Dirichlet Allocation}
-Latent Dirichlet Allocation (LDA) uses mixture models to generate a collection of topics which can be used to describe individual documents within a corpus. By representing individual topics as probability distributions of words found within the corpus, additional documents can be expressed as distributions of the topics already derived. This approach overcomes some of the drawbacks of the pLSA method, whilst providing a somewhat human-interpretable representation of the corpus.~\cite{Blei2003-dj}
+Latent Dirichlet Allocation (LDA) uses mixture models to generate a collection of topics which can be used to describe individual documents within a corpus. Each document is viewed not as a collection of words, but as different proportions of topics, with each topic able generate different terms that would produce the document. By representing individual topics as probability distributions of words found within the corpus, additional documents can be expressed as distributions of the topics already derived. This approach overcomes some of the drawbacks of the pLSA method, whilst providing a somewhat human-interpretable representation of the corpus.~\cite{Blei2003-dj}
 
-{\hspace*{40mm}Needs reworking...}
+A Plate Notation representation of the method can be seen in Figure~\ref{fig:lda_plate}. The variables $\alpha$ and $\beta$ outside of the plates, represent the document-topic, and word-topic Dirichlet priors respectively. The outer plate represents the document selection across $M$ documents, whilst the inner plate represents the word-topic and word selection across a vocabulary of $N$ words. In the outer plate, $\theta_m$ represents the topic distribution for document m. $\phi_k$ represents the word distribution for topic $k$, whilst $z_{m,n}$ is the topic for word $w_{m,n}$.
 
-For each document win a corpus \(D\), LDA produces a mixture model representing  \(k\) topics for \(w\). Where each word \(w_n\) of length \(N\), has a set denoting the probability of \(w_n\) belonging to each of \(k\) topics. Collections of models could be compared conceptually to weighted groups produced by some clustering method.
+\begin {figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{lda_plate}
+  \caption{Plate Notation for the LDA Method~\cite{Bkkbrad2018-yt}.
+    \label{fig:lda_plate}}
+\end{figure}
 
-\renewcommand{\baselinestretch}{1.5}\normalsize
-The simplified process for generating an LDA model across \(m\) documents is as follows:
+\renewcommand{\baselinestretch}{2.0}\normalsize
+In a non-plate notation form, the simplified process for generating an LDA model across \(M\) documents is as follows:
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \(1. Choose\, N \sim Poisson(\xi)\)\\
 \(2. Choose\, \theta_m \sim Dirichlet(\alpha)\)\\
 \(3. For\, each\, of\, the\, N_m\, words\, w_{m,n}:\)\\
 {\hspace*{15mm} \(a)\, Choose\, a\, topic\, z_{m,n} \sim Multinomial(\theta_m)  \)}\\
-{\hspace*{15mm} \(b)\, Choose\, a\, word\, w_{m,n} \sim Multinomial(\phi_{z_{m,n}}) \)}\\
+{\hspace*{15mm} \(b)\, Choose\, a\, word\, w_{m,n} \sim Multinomial(\phi_{z_{m,n}}) \)}
 
-\begin{figure}[h!]
-  \caption{LDA Plate Notation\label{fig:lda_plate_notation}}
-\end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
+where $\underline{W}$ vectors denoting the set of $N$ words across $M$ documents, $\underline{Z}$, is the topic assignment for a word in a document, $\underline{\theta}$, is the topic distributions of each document, and $\underline{\phi}$ is the set of word distributions for each topic.
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 The total probability of an LDA model is defined as:
-
 \[
-  P(\underline{W},\underline{Z},\underline{\theta},\phi|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
+  P(\underline{W},\underline{Z},\underline{\theta},\underline{\phi}|\alpha,\beta) = \prod^{K}_{i=1} P(\phi_i|\beta) \prod^{M}_{j=1} P(\theta_j|\alpha)\prod^{N}_{t=1} P(Z_{j,t} | \theta_j)P(W_{j,t} | \phi_{z_{j,t}})
 \]
-
 \renewcommand{\baselinestretch}{2.0}\normalsize
+
 In LDA, the lengths of documents are said to be Poisson distributed, and that the set of probabilities  generated for each word \(w_n\) is a random multinomial dirichlet distribution. There is little reasoning for these assumptions. The use of Poisson distributions in literature seems to be a standard distribution for estimating document lengths. However, given that the lengths of documents are known parameters, the first step in the process is redundant leaving only steps 2 and 3 of the original process.
 
 The versatility of LDA is one of its strongest characteristics. The method has seen use in a range of different settings, from filtering web spam, to the semantic annotation of satellite images. As a bayesian statistical process, it is possible to utilise other methods with relative ease given its modularity.
@@ -360,16 +362,15 @@ As a bag of words method, each unigram is treated as being unrelated to other wo
 
 \subsection{Existing Implementation}
 
-LDA is a specialised method of analysis, with only a limited number existing implementations ready and available. The popular python scientific computing library scikit-learn contains an implementation based on open source development coming from Princeton.~\cite{?}. Genism is an alternative python library that focuses only on topic modelling methods, it is quite comprehensive in the supporting tools it provides.~\cite{rehurek_lrec}
+LDA is a specialised method of analysis, with only a limited number existing implementations ready and available. The popular python scientific computing library scikit-learn contains an implementation based on open source development coming from Princeton.~\cite{scikit-learn, Hoffman_undated-nx}. Genism is an alternative python library that focuses only on topic modelling methods, it is quite comprehensive in the supporting tools it provides.~\cite{rehurek_lrec}
 
-The scikit-learn implementation of LDA outputs a set of topics each consisting of a set of word-strength pairs. Figure ~\ref{fig:lda_sklearn_output} shows the general structure of output from the method. Genism provides a more elaborate interface through which the contents of the topics an other information can be retireved. 
+The scikit-learn implementation of LDA outputs a set of topics each consisting of a set of word-strength pairs. Figure ~\ref{fig:lda_sklearn_output} shows the general structure of output from the method, which is the set of word distributions for the set of topics $\underline\phi$. Genism provides a more elaborate interface through which the contents of the topics an other information can be retrieved. 
 \begin{figure}[h!]
 \[
   \underline{lda} = \{t_1 = \{(w_1 : s_{1,1}), ..., (w_j : s_{1,j})\}, ..., t_i =\{(w_1 : s_{i,1}), ..., (w_j : s_{i,j})\}\}
 \]
 \caption{Output format of lda implementation in scikit-learn. where \(t_i\) is the topic, \(w_j\) is the word, and \(s_{i,j}\) is the strength of ownership between the topic and the word. \label{fig:lda_sklearn_output}}
 \end{figure}
-
 A key benefit to be had from utilising Genism, is the number of options that are available with the library. As well as a base LDA model there are varying implementations that parallelise the process or utilise proposed heirarchical approaches. Scikit-learn offers a simple method that provides minimal thrills, however, the simple implementation opens it up for extensions and adaptations in ways that Genism does not.
 
 \section{Evaluating Topic Models}
@@ -715,7 +716,7 @@ Where $N$ is the number of Latent entities clusters, and $n_i$ is the number of 
   Consistency = \frac{TP - FP}{\sum^{N}_{i=1}{n_i\choose2}}
 \]
 
-The defined consistency metric ranges from $-1.0$ to $1.0$. Values approaching $1.0$ mean the two sets are increasingly correllated.
+The defined consistency metric ranges from $-1.0$ to $1.0$. Values approaching $1.0$ mean the two sets are increasingly correlated.
 
 \begin{table}[h!]
   \centering
@@ -956,6 +957,20 @@ Much of the functionality made available to the system is made available at the 
 
 Each element of the System Logic Layer explored in further detail when discussing the NLP Toolkit.
 
+
+\section{Corpus Pre-Processing}
+
+Corpus Pre-Processign involves applying a set of transformations necessary to begin the analysis and creation of descriptive models. It is assumed that the corpus provided to the system will contain only the text that is to be processed. In many documents there is additional preamble, publishing information, and other elements that can be considered 'noise'. This system will not concern itself with the removal of noise within the corpus.
+
+Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the default tokenization methods which use XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
+
+Once each document in the corpus has sentences and words tokenized, the next stage in the processes is the application of POS tagging methods to determine the gramatical structure of each sentence. A Viterbi Decoded Hidden Markov Model (HMM) POS tagger was implemented in python, utilising the NLP tookit developed for this project. POS Tagging this document means that it is possible to apply filters to the corpus before deriving topic models from the GETM. By removing certain words tagged as certain POS (like determiners, or prepositions) it is possible to derive topics using only descriptive words, which may provide more cohesive and interpretable models.
+
+The defined pre-processing process forms a large section of the overall pipeline, each aspect of the pipeline and preprocessing is implemented in its own distinct elements, each of which have been discussed. In order to tie each separate element into a coherent process, two scripts were developed. One to apply pre-processing at a per-document level, and one at a corpus level.
+
+Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. Figure~\ref{fig:corpus_preprocess} denotes the process of assimilating a collection of documents into the system.
+
+
 \section{NLP Toolkit}
 As any investigation involving the use of data in any form does, pre-processing was carried out on the collections of documents intending to be analysed. As this investigation aims to also serve as a tool from which multiple corpora can be analysed, the pre-processing steps taken need to be reproducible. The NLP Toolkit developed for this system is essentially a collection of tools that allow each document in the corpus to be pre-processed ready for the extraction of topic models and latent entities. A somewhat functional approach was used, with each method applying some transformation to a single document, or a corpus as a whole. The Analysis Pipeline defined in chapter 3 involves tasks starting with the Tokenization of plain text, and ending with the use of clustering methods to extract Latent Entities.
 
@@ -1053,60 +1068,11 @@ A titled-matrix class was implemented allowing matrix calculations to be perform
 
 The index operator for the class allows for cells to be selected by passing either passing the index for the desired entity and term or by passing the string values of both. Additional get and set methods are implemented to accompany the index operator.
 
-\section{Corpus Pre-Processing}
-
-Corpus Pre-Processign involves applying a set of transformations necessary to begin the analysis and creation of descriptive models. It is assumed that the corpus provided to the system will contain only the text that is to be processed. In many documents there is additional preamble, publishing information, and other elements that can be considered 'noise'. This system will not concern itself with the removal of noise within the corpus.
-
-Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the default tokenization methods which use XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
-
-Once each document in the corpus has sentences and words tokenized, the next stage in the processes is the application of POS tagging methods to determine the gramatical structure of each sentence. A Viterbi Decoded Hidden Markov Model (HMM) POS tagger was implemented in python, utilising the NLP tookit developed for this project. POS Tagging this document means that it is possible to apply filters to the corpus before deriving topic models from the GETM. By removing certain words tagged as certain POS (like determiners, or prepositions) it is possible to derive topics using only descriptive words, which may provide more cohesive and interpretable models.
-
-The defined pre-processing process forms a large section of the overall pipeline, each aspect of the pipeline and preprocessing is implemented in its own distinct elements, each of which have been discussed. In order to tie each separate element into a coherent process, two scripts were developed. One to apply pre-processing at a per-document level, and one at a corpus level.
-
-Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. Figure~\ref{fig:corpus_preprocess} denotes the process of assimilating a collection of documents into the system.
-
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\begin{algorithm}[H]
-  \caption{Document Pre-processing steps\label{fig:document_preprocess}}
-  \begin{algorithmic}
-   
-    \State let $S$ be the sequence of sentence tokens, where $S_s$ is a sentence token.
-    \State let $W$ be the sequence of word tokenized sentence tokens, where $W_s$ is a set of word tokens for sentence token $S_s$.
-    \State let $E$ be the set of entities where $E_e \in W$.
-    \State let $P$ be the POS-tagged sequence of word tokenized sentence tokens
-    \State let $G$ be the Gaussian Entity-Term Matrix.
-    \State
-    \State $S\gets sentTokenize(document)$
-    \For{$S_s \in S$}
-      \State $W_s \gets wordTokenize(S_s)$
-      \EndFor
-      \State 
-    \State $E \gets extractEntities(W)$
-    \State $P \gets posTag(W)$
-    \State $G \gets calculateGETM(E, G)$
-    \State
-    \Return $E, P, G$
-    
-  \end{algorithmic}
-\end{algorithm}
-\renewcommand{\baselinestretch}{2.0}\normalsize
-
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\begin{algorithm}[H]
-  \caption{Corpus Pre-processing steps\label{fig:corpus_preprocess}}
-  \begin{algorithmic}
-    \State let $T$ be the set of document titles
-    \For{$t \in T$}
-      \State $D \gets openDocument(T)$
-    \EndFor
-  \end{algorithmic}
-\end{algorithm}
-\renewcommand{\baselinestretch}{2.0}\normalsize
 
 \section{Entity-Topic Model}
+Entity Topic models are calculated after the calculation of the GETM. The process is similar to that of calculating topic models for a corpus of documents. Each collection of entity terms is treated as a document which is then fed into the scikit learn implemented LDA algorithm. Like other aspects of the pipeline, this element is also developed in python.
 
-\subsection{Algorithm}
-
+The scikit learn implementation produces word distributions for each topic, in this implementation, the resulting topics can be used to produce entity topic models by looking at the proportional distributions of terms in the GETM for an entitiy, and the score associated with that word across the topics. Topic scores for an entity are normalised in order allow consistent comparisons across entities.
 \section{Latent Entity Clustering }
 
 \section{Latent Entity Explorer}
@@ -1127,11 +1093,13 @@ There are 4 main components for the application, three of which are controllers 
 \subsection{UI and Navigation Design }
 In order to provide a succinct and mobile friendly interface, each element of the system is thought of in terms of components and panels. Each panel provides access to a distinct feature, be it a visualisation of topic distributions in the corpus, or the comparison of entity topic models. Each panel is associated with a component that acts as a controller for that UI element. Though this thesis is not a study of effective UI design, having a usable interface assists in communicating the results of analyses.
 
-Figure~\ref{fig:ui_layout_sketchup} shows initial layout and structure intended to guide the UI of the application. Each panel is of a fixed size, and shows information about a specific aspect of the corpus. Listings of book titles, entities, and topic terms will all be held within separate components. 
+Figure~\ref{fig:ui_layout_sketchup} shows initial layout and structure intended to guide the UI of the application. Each panel is of a fixed size, and shows information about a specific aspect of the corpus. Listings of book titles, entities, and topic terms will all be held within separate components. The interface read from left to right, top to bottom, and as progressing though the application, different elements are required to be selected so that more information can be displayed.
+
+Latent Entities are models describing the entire corpus, so wouldn't require the user to specify any information. In order to view Topic Models and information about individual entities in a book, the user would be required to first select a book, and then select an entitiy to view information about that entity.
 
 \begin{figure}[h!]
 \includegraphics[scale=0.4]{ui_layout_drawing}
-\caption{\label{fig:ui_layout_sketchup}}
+\caption{UI mockup layout. \label{fig:ui_layout_sketchup}}
 \end{figure}
 
 \subsection{Book Explorer}
@@ -1167,6 +1135,7 @@ Visualising information at a book level is not of particular interest to this in
 \section{Introduction}
 
 \section{POS Tagger}
+Being a key part of the pre-
 
 \subsection{Results}
 

@@ -1,5 +1,13 @@
 \begin{thebibliography}{10}
 
+\bibitem{Bkkbrad2018-yt}
+{bkkbrad} and {Wikipedia contributors}.
+\newblock Latent dirichlet allocation.
+\newblock
+  \url{https://en.wikipedia.org/w/index.php?title=Latent_Dirichlet_allocation&oldid=835569966},
+  April 2018.
+\newblock Accessed: 2018-4-15.
+
 \bibitem{WebServer-lc}
 Web server survey | netcraft.
 \newblock \url{https://news.netcraft.com/archives/category/web-server-survey/}.
@@ -191,6 +199,17 @@ Tong Zhang, Zhe-Ming Lu, Kap~Luk Chan, and Zhen Li.
   allocation model.
 \newblock {\em IJCSES International Journal of Computer Sciences and
   Engineering Systems}, 5(1), 2011.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{Hoffman_undated-nx}
+Matthew~D Hoffman.
+\newblock Online {LDA}.
 
 \bibitem{rehurek_lrec}
 Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.

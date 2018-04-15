@@ -3,17 +3,17 @@
 \contentsline {table}{\numberline {1}{\ignorespaces The 12 Tags Forming the Universal Tag Set.\relax }}{15}
 \contentsline {table}{\numberline {2}{\ignorespaces The 36 Tags Forming the Penn-Treebank Tag Set\relax }}{15}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3}{\ignorespaces Example GETM for entities within text \relax }}{30}
-\contentsline {table}{\numberline {4}{\ignorespaces Example entity-term associations between three entities\relax }}{33}
-\contentsline {table}{\numberline {5}{\ignorespaces Example entity-Topic distributions for entities in Table\nobreakspace {}4\hbox {} and the associated Latent Entity. \relax }}{33}
-\contentsline {table}{\numberline {6}{\ignorespaces Left \& Right: Entities Within Clusters Behind Latent Entities.\relax }}{37}
-\contentsline {table}{\numberline {7}{\ignorespaces Consistencies and Inconstencies Between Clusters Forming Latent Entities\relax }}{38}
+\contentsline {table}{\numberline {3}{\ignorespaces Example GETM for entities within text \relax }}{31}
+\contentsline {table}{\numberline {4}{\ignorespaces Example entity-term associations between three entities\relax }}{34}
+\contentsline {table}{\numberline {5}{\ignorespaces Example entity-Topic distributions for entities in Table\nobreakspace {}4\hbox {} and the associated Latent Entity. \relax }}{34}
+\contentsline {table}{\numberline {6}{\ignorespaces Left \& Right: Entities Within Clusters Behind Latent Entities.\relax }}{38}
+\contentsline {table}{\numberline {7}{\ignorespaces Consistencies and Inconstencies Between Clusters Forming Latent Entities\relax }}{39}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8}{\ignorespaces Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{42}
-\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{45}
-\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{46}
-\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{47}
-\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{48}
-\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{49}
+\contentsline {table}{\numberline {8}{\ignorespaces Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{43}
+\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{46}
+\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{48}
+\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{50}
+\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{50}
+\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{51}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
