@@ -14,7 +14,7 @@ def main():
     getd = getd_tf_idf(getd)
     rows = getd.row_headings
     cols = getd.col_headings
-
+    
     #document_array = filter_punctuation(document)
     #word_occurences = map_word_occurences(document_array)
 
@@ -22,8 +22,8 @@ def main():
     #entity_names = cherry_entity_tuple(entities, 1)
     
     plt.matshow(getd.data, fignum=100, aspect='auto')
-    plt.xticks(np.arange(len(cols)), cols, rotation=45)
-    plt.yticks(np.arange(len(rows)), rows, rotation=-45)
+    plt.xticks(np.arange(len(cols)), cols, rotation=90)
+    plt.yticks(np.arange(len(rows)), rows)
     plt.show()
 
 

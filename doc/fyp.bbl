@@ -148,6 +148,41 @@ The stanford natural language processing group.
 \newblock \url{https://nlp.stanford.edu/projects/project-ner.shtml}.
 \newblock Accessed: 2018-1-10.
 
+\bibitem{Hofmann1999-qb}
+Thomas Hofmann.
+\newblock Probabilistic latent semantic indexing.
+\newblock In {\em Proceedings of the 22Nd Annual International {ACM} {SIGIR}
+  Conference on Research and Development in Information Retrieval}, SIGIR '99,
+  pages 50--57, New York, NY, USA, 1999. ACM.
+
+\bibitem{Lin2008-ss}
+Jimmy Lin.
+\newblock Scalable language processing algorithms for the masses: A case study
+  in computing word co-occurrence matrices with {MapReduce}.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, EMNLP '08, pages 419--428, Stroudsburg, PA, USA, 2008.
+  Association for Computational Linguistics.
+
+\bibitem{Biemann2006-ke}
+Chris Biemann.
+\newblock Chinese whispers: An efficient graph clustering algorithm and its
+  application to natural language processing problems.
+\newblock In {\em Proceedings of the First Workshop on Graph Based Methods for
+  Natural Language Processing}, TextGraphs-1, pages 73--80, Stroudsburg, PA,
+  USA, 2006. Association for Computational Linguistics.
+
+\bibitem{Maji2008-xe}
+Pradipta Maji, Malay~K Kundu, and Bhabatosh Chanda.
+\newblock Second order fuzzy measure and weighted co-occurrence matrix for
+  segmentation of brain {MR} images.
+\newblock {\em Fund. Inform.}, 88(1-2):161--176, 2008.
+
+\bibitem{Munklang2013-aq}
+Yutthana Munklang, Sansanee Auephanwiriyakul, and Nipon Theera-Umpon.
+\newblock A novel fuzzy co-occurrence matrix for texture feature extraction.
+\newblock In {\em Computational Science and Its Applications -- {ICCSA} 2013},
+  pages 246--257. Springer Berlin Heidelberg, 2013.
+
 \bibitem{Blei2003-dj}
 David~M Blei, Andrew~Y Ng, and Michael~I Jordan.
 \newblock Latent dirichlet allocation.
@@ -170,13 +205,6 @@ Cherukuri~Aswani Kumar and Suripeddi Srinivas.
   retrieval.
 \newblock {\em CIT. Journal of Computing and Information Technology},
   17(3):259--264, October 2004.
-
-\bibitem{Hofmann1999-qb}
-Thomas Hofmann.
-\newblock Probabilistic latent semantic indexing.
-\newblock In {\em Proceedings of the 22Nd Annual International {ACM} {SIGIR}
-  Conference on Research and Development in Information Retrieval}, SIGIR '99,
-  pages 50--57, New York, NY, USA, 1999. ACM.
 
 \bibitem{Biro2008-ld}
 Istv{\'a}n B{\'\i}r{\'o}, J{\'a}cint Szab{\'o}, and Andr{\'a}s~A Bencz{\'u}r.

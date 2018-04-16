@@ -4,51 +4,51 @@ The top-level auxiliary file: fyp.aux
 The style file: unsrt.bst
 Database file #1: ./biblio.bib
 Warning--entry type for "Deerwester1989-yl" isn't style-file defined
---line 725 of file ./biblio.bib
+--line 777 of file ./biblio.bib
 Warning--empty publisher in garside1988computational
 Warning--empty journal in Borthwick1999-tg
 Warning--empty journal in Tjong_Kim2003-ym
 Warning--empty journal in Atdag2013-qo
 Warning--empty journal in Jurafsky2014-yb
-You've used 48 entries,
+You've used 52 entries,
             1791 wiz_defined-function locations,
-            779 strings with 13150 characters,
-and the built_in function-call counts, 13122 in all, are:
-= -- 1290
-> -- 477
-< -- 24
-+ -- 178
-- -- 130
-* -- 790
-:= -- 1883
-add.period$ -- 160
-call.type$ -- 48
-change.case$ -- 46
+            810 strings with 14143 characters,
+and the built_in function-call counts, 14436 in all, are:
+= -- 1434
+> -- 507
+< -- 27
++ -- 190
+- -- 138
+* -- 867
+:= -- 2059
+add.period$ -- 175
+call.type$ -- 52
+change.case$ -- 50
 chr.to.int$ -- 0
-cite$ -- 53
-duplicate$ -- 653
-empty$ -- 1273
-format.name$ -- 130
-if$ -- 3101
+cite$ -- 57
+duplicate$ -- 723
+empty$ -- 1404
+format.name$ -- 138
+if$ -- 3424
 int.to.chr$ -- 0
-int.to.str$ -- 48
-missing$ -- 42
-newline$ -- 242
-num.names$ -- 48
-pop$ -- 173
+int.to.str$ -- 52
+missing$ -- 46
+newline$ -- 262
+num.names$ -- 52
+pop$ -- 185
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 423
+skip$ -- 468
 stack$ -- 0
-substring$ -- 903
-swap$ -- 242
-text.length$ -- 24
+substring$ -- 1016
+swap$ -- 272
+text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 5
-while$ -- 132
-width$ -- 50
-write$ -- 553
+while$ -- 147
+width$ -- 54
+write$ -- 604
 (There were 6 warnings)

@@ -12,66 +12,69 @@
 \contentsline {section}{\numberline {2.3}Named Entity Recognition}{16}
 \contentsline {subsection}{\numberline {2.3.1}NER Techniques}{16}
 \contentsline {subsection}{\numberline {2.3.2}NER Tools}{17}
-\contentsline {section}{\numberline {2.4}Topic Models}{18}
-\contentsline {subsection}{\numberline {2.4.1}Latent Semantic Analysis}{18}
-\contentsline {subsection}{\numberline {2.4.2}Probabilistic Latent Semantic Indexing}{19}
-\contentsline {subsection}{\numberline {2.4.3}Latent Dirichlet Allocation}{20}
-\contentsline {subsection}{\numberline {2.4.4}Existing Implementation}{22}
-\contentsline {section}{\numberline {2.5}Evaluating Topic Models}{23}
-\contentsline {subsection}{\numberline {2.5.1}Perplexity}{23}
-\contentsline {subsection}{\numberline {2.5.2}Interpretability and Coherence}{24}
-\contentsline {subsection}{\numberline {2.5.3}Comparing Models}{26}
-\contentsline {section}{\numberline {2.6}Entity Modeling}{27}
-\contentsline {subsection}{\numberline {2.6.1}Entity Linking}{27}
-\contentsline {subsection}{\numberline {2.6.2}Entity Topic Models}{28}
-\contentsline {chapter}{\numberline {3}New Ideas}{29}
-\contentsline {section}{\numberline {3.1}Introduction}{29}
-\contentsline {section}{\numberline {3.2}Gaussian Entity-Term Matrix}{30}
-\contentsline {subsection}{\numberline {3.2.1}GETM Evaluation}{32}
-\contentsline {section}{\numberline {3.3}Entity Topic Model}{33}
-\contentsline {subsection}{\numberline {3.3.1}Evaluating ETMs}{33}
-\contentsline {section}{\numberline {3.4}Latent Entities}{33}
-\contentsline {subsection}{\numberline {3.4.1}Application of K-Means}{35}
-\contentsline {section}{\numberline {3.5}Evaluating Latent Entities}{35}
-\contentsline {subsection}{\numberline {3.5.1}Intruding Entity}{35}
-\contentsline {subsection}{\numberline {3.5.2}Evaluating Consistency}{37}
-\contentsline {subsubsection}{\numberline {3.5.2.1}Latent Entity Consistency}{38}
-\contentsline {subsubsection}{\numberline {3.5.2.2}GETM Consistency}{39}
-\contentsline {section}{\numberline {3.6}Analysis Pipeline}{39}
-\contentsline {section}{\numberline {3.7}Topic Model Explorer}{40}
-\contentsline {subsection}{\numberline {3.7.1}Interface}{40}
-\contentsline {subsection}{\numberline {3.7.2}Visualisations}{40}
-\contentsline {chapter}{\numberline {4}Implementation}{41}
-\contentsline {section}{\numberline {4.1}Introduction}{41}
-\contentsline {section}{\numberline {4.2}Architecture Overview}{41}
-\contentsline {subsection}{\numberline {4.2.1}API}{42}
-\contentsline {subsection}{\numberline {4.2.2}Database}{43}
-\contentsline {subsubsection}{\numberline {4.2.2.1}DB Structure}{44}
-\contentsline {subsection}{\numberline {4.2.3}Server}{45}
-\contentsline {subsubsection}{\numberline {4.2.3.1}Repository}{45}
-\contentsline {subsubsection}{\numberline {4.2.3.2}System Logic Layers}{46}
-\contentsline {section}{\numberline {4.3}Corpus Pre-Processing}{46}
-\contentsline {section}{\numberline {4.4}NLP Toolkit}{47}
-\contentsline {subsection}{\numberline {4.4.1}General NLP}{48}
-\contentsline {subsubsection}{\numberline {4.4.1.1}POS Tagging}{49}
-\contentsline {subsection}{\numberline {4.4.2}Gaussian Entity-Term Matrix}{50}
-\contentsline {subsubsection}{\numberline {4.4.2.1}GETM Objects}{51}
-\contentsline {section}{\numberline {4.5}Entity-Topic Model}{51}
-\contentsline {section}{\numberline {4.6}Latent Entity Clustering }{52}
-\contentsline {section}{\numberline {4.7}Latent Entity Explorer}{52}
-\contentsline {subsection}{\numberline {4.7.1}UI and Navigation Design }{53}
-\contentsline {subsection}{\numberline {4.7.2}Book Explorer}{54}
-\contentsline {subsection}{\numberline {4.7.3}Topic Explorer}{55}
-\contentsline {subsection}{\numberline {4.7.4}Entity Explorer}{55}
-\contentsline {chapter}{\numberline {5}Results and Evaluation}{56}
-\contentsline {section}{\numberline {5.1}Introduction}{56}
-\contentsline {section}{\numberline {5.2}POS Tagger}{56}
-\contentsline {subsection}{\numberline {5.2.1}Results}{56}
-\contentsline {section}{\numberline {5.3}Gaussian Entity-Term Matrix}{57}
-\contentsline {subsection}{\numberline {5.3.1}Results}{58}
-\contentsline {section}{\numberline {5.4}Entity Topic-Models}{58}
-\contentsline {subsection}{\numberline {5.4.1}Experiment Setup}{59}
-\contentsline {subsection}{\numberline {5.4.2}Results}{59}
-\contentsline {section}{\numberline {5.5}Latent Entities}{59}
-\contentsline {chapter}{\numberline {6}Conclusion}{60}
-\contentsline {section}{\numberline {6.1}Introduction}{60}
+\contentsline {section}{\numberline {2.4}Co-Occurrence Matrix}{18}
+\contentsline {section}{\numberline {2.5}Topic Models}{18}
+\contentsline {subsection}{\numberline {2.5.1}Latent Semantic Analysis}{19}
+\contentsline {subsection}{\numberline {2.5.2}Probabilistic Latent Semantic Indexing}{20}
+\contentsline {subsection}{\numberline {2.5.3}Latent Dirichlet Allocation}{20}
+\contentsline {subsection}{\numberline {2.5.4}Existing Implementation}{23}
+\contentsline {section}{\numberline {2.6}Evaluating Topic Models}{24}
+\contentsline {subsection}{\numberline {2.6.1}Perplexity}{24}
+\contentsline {subsection}{\numberline {2.6.2}Interpretability and Coherence}{25}
+\contentsline {subsection}{\numberline {2.6.3}Comparing Models}{26}
+\contentsline {section}{\numberline {2.7}Entity Modeling}{27}
+\contentsline {subsection}{\numberline {2.7.1}Entity Linking}{28}
+\contentsline {subsection}{\numberline {2.7.2}Entity Topic Models}{29}
+\contentsline {chapter}{\numberline {3}New Ideas}{30}
+\contentsline {section}{\numberline {3.1}Introduction}{30}
+\contentsline {section}{\numberline {3.2}Gaussian Entity-Term Matrix}{31}
+\contentsline {subsection}{\numberline {3.2.1}GETM Evaluation}{33}
+\contentsline {section}{\numberline {3.3}Entity Topic Model}{34}
+\contentsline {subsection}{\numberline {3.3.1}Evaluating ETMs}{34}
+\contentsline {section}{\numberline {3.4}Latent Entities}{34}
+\contentsline {subsection}{\numberline {3.4.1}Application of K-Means}{36}
+\contentsline {section}{\numberline {3.5}Evaluating Latent Entities}{36}
+\contentsline {subsection}{\numberline {3.5.1}Intruding Entity}{36}
+\contentsline {subsection}{\numberline {3.5.2}Evaluating Consistency}{38}
+\contentsline {subsubsection}{\numberline {3.5.2.1}Latent Entity Consistency}{39}
+\contentsline {subsubsection}{\numberline {3.5.2.2}GETM Consistency}{40}
+\contentsline {section}{\numberline {3.6}Analysis Pipeline}{40}
+\contentsline {section}{\numberline {3.7}Topic Model Explorer}{41}
+\contentsline {subsection}{\numberline {3.7.1}Interface}{41}
+\contentsline {subsection}{\numberline {3.7.2}Visualisations}{41}
+\contentsline {chapter}{\numberline {4}Implementation}{42}
+\contentsline {section}{\numberline {4.1}Introduction}{42}
+\contentsline {section}{\numberline {4.2}Architecture Overview}{42}
+\contentsline {subsection}{\numberline {4.2.1}API}{43}
+\contentsline {subsection}{\numberline {4.2.2}Database}{44}
+\contentsline {subsubsection}{\numberline {4.2.2.1}DB Structure}{45}
+\contentsline {subsection}{\numberline {4.2.3}Server}{46}
+\contentsline {subsubsection}{\numberline {4.2.3.1}Repository}{46}
+\contentsline {subsubsection}{\numberline {4.2.3.2}System Logic Layers}{47}
+\contentsline {section}{\numberline {4.3}Corpus Pre-Processing}{47}
+\contentsline {section}{\numberline {4.4}NLP Toolkit}{48}
+\contentsline {subsection}{\numberline {4.4.1}General NLP}{49}
+\contentsline {subsection}{\numberline {4.4.2}POS Tagging}{50}
+\contentsline {subsection}{\numberline {4.4.3}Gaussian Entity-Term Matrix}{51}
+\contentsline {subsubsection}{\numberline {4.4.3.1}GETM Objects}{52}
+\contentsline {subsubsection}{\numberline {4.4.3.2}GETM Visualisation}{52}
+\contentsline {section}{\numberline {4.5}Entity-Topic Model}{54}
+\contentsline {section}{\numberline {4.6}Latent Entity Clustering }{54}
+\contentsline {section}{\numberline {4.7}Latent Entity Explorer}{54}
+\contentsline {subsection}{\numberline {4.7.1}UI and Navigation Design }{55}
+\contentsline {subsection}{\numberline {4.7.2}Book Explorer}{56}
+\contentsline {subsection}{\numberline {4.7.3}Topic Explorer}{57}
+\contentsline {subsection}{\numberline {4.7.4}Entity Explorer}{58}
+\contentsline {chapter}{\numberline {5}Results and Evaluation}{61}
+\contentsline {section}{\numberline {5.1}Introduction}{61}
+\contentsline {section}{\numberline {5.2}POS Tagger}{61}
+\contentsline {subsection}{\numberline {5.2.1}Results}{61}
+\contentsline {section}{\numberline {5.3}Gaussian Entity-Term Matrix}{63}
+\contentsline {subsection}{\numberline {5.3.1}Results}{64}
+\contentsline {subsection}{\numberline {5.3.2}GETM Interpretation}{64}
+\contentsline {section}{\numberline {5.4}Entity Topic-Models}{64}
+\contentsline {subsection}{\numberline {5.4.1}Experiment Setup}{65}
+\contentsline {subsection}{\numberline {5.4.2}Results}{65}
+\contentsline {section}{\numberline {5.5}Latent Entities}{65}
+\contentsline {chapter}{\numberline {6}Conclusion}{66}
+\contentsline {section}{\numberline {6.1}Introduction}{66}
