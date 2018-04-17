@@ -10,18 +10,18 @@
 \contentsline {figure}{\numberline {7}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{40}
 \contentsline {figure}{\numberline {8}{\ignorespaces Adapted PXP Process for the development of this Project and Thesis\relax }}{42}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{45}
-\contentsline {figure}{\numberline {10}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{47}
-\contentsline {figure}{\numberline {11}{\ignorespaces Full Zoomed-out View of the GETM Heat Map for the Alice's Adventures In Wonderland Novel.\relax }}{55}
-\contentsline {figure}{\numberline {12}{\ignorespaces Restricted View of the GETM Visualisation for the Alice's Adventures in Wonderland Novel.\relax }}{55}
-\contentsline {figure}{\numberline {13}{\ignorespaces Structure of the Web Application. \relax }}{57}
-\contentsline {figure}{\numberline {14}{\ignorespaces UI mockup layout. \relax }}{58}
-\contentsline {figure}{\numberline {15}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{59}
-\contentsline {figure}{\numberline {16}{\ignorespaces Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \relax }}{60}
-\contentsline {figure}{\numberline {17}{\ignorespaces Book-Topic distributions for a Selected Book. \relax }}{61}
-\contentsline {figure}{\numberline {18}{\ignorespaces Entity Listings for the Selected book (Alice's Adventures In Wonderland)\relax }}{62}
-\contentsline {figure}{\numberline {19}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{63}
-\contentsline {figure}{\numberline {20}{\ignorespaces Top Terms Associated with Entity resulting from GETM. \relax }}{63}
-\contentsline {figure}{\numberline {21}{\ignorespaces Entity Comparison Panel for inspecting Entity Topic Distributions\relax }}{64}
+\contentsline {figure}{\numberline {9}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{46}
+\contentsline {figure}{\numberline {10}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{48}
+\contentsline {figure}{\numberline {11}{\ignorespaces Full Zoomed-out View of the GETM Heat Map for the Alice's Adventures In Wonderland Novel.\relax }}{56}
+\contentsline {figure}{\numberline {12}{\ignorespaces Restricted View of the GETM Visualisation for the Alice's Adventures in Wonderland Novel.\relax }}{56}
+\contentsline {figure}{\numberline {13}{\ignorespaces Structure of the Web Application. \relax }}{58}
+\contentsline {figure}{\numberline {14}{\ignorespaces UI mockup layout. \relax }}{59}
+\contentsline {figure}{\numberline {15}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{60}
+\contentsline {figure}{\numberline {16}{\ignorespaces Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \relax }}{61}
+\contentsline {figure}{\numberline {17}{\ignorespaces Book-Topic distributions for a Selected Book. \relax }}{62}
+\contentsline {figure}{\numberline {18}{\ignorespaces Entity Listings for the Selected book (Alice's Adventures In Wonderland)\relax }}{63}
+\contentsline {figure}{\numberline {19}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{64}
+\contentsline {figure}{\numberline {20}{\ignorespaces Top Terms Associated with Entity resulting from GETM. \relax }}{64}
+\contentsline {figure}{\numberline {21}{\ignorespaces Entity Comparison Panel for inspecting Entity Topic Distributions\relax }}{65}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
