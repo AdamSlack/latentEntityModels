@@ -9,13 +9,13 @@
 \contentsline {table}{\numberline {6}{\ignorespaces Left \& Right: Entities Within Clusters Behind Latent Entities.\relax }}{39}
 \contentsline {table}{\numberline {7}{\ignorespaces Consistencies and Inconstencies Between Clusters Forming Latent Entities\relax }}{40}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8}{\ignorespaces Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{44}
-\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{47}
-\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{49}
-\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{50}
-\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{51}
-\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{52}
+\contentsline {table}{\numberline {8}{\ignorespaces Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{46}
+\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{49}
+\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{51}
+\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{52}
+\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{53}
+\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{54}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {14}{\ignorespaces Table of POS Tagging Results\relax }}{63}
-\contentsline {table}{\numberline {15}{\ignorespaces Documents Forming the Corpora Used in Evaluating GETM Consistency. (Book titles have been shortened for conciseness) \relax }}{64}
+\contentsline {table}{\numberline {14}{\ignorespaces Table of POS Tagging Results\relax }}{66}
+\contentsline {table}{\numberline {15}{\ignorespaces Documents Forming the Corpora Used in Evaluating GETM Consistency. (Book titles have been shortened for conciseness) \relax }}{67}
 \addvspace {10\p@ }

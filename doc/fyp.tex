@@ -812,6 +812,40 @@ The interface for the Topic Model Explorer is a key aspect in allowing individua
 
 \subsection{Visualisations}
 
+\section{Project Management}
+The project began with a highlevel research area, from which an iterative refinement process took place. From the idea of 'Analysing Narratives' general NLP topics were considered, with a focus on understanding the general state of the field. From looking at automatic scene generation, to understanding that even the most fundamental task of NLP (POS and NER Tagging) are still open topics of research, the project was able to focus on one active aspect of the field.
+
+After narrowing the field down to current topics in research, the iterative process underpinned the remaining investigation and development process of the project. Agile development methodologies typically denote how small teams should conduct themselves throughout a software development life cycle, however many of the standard operating procedures of approaches like Scrum or Extreme Programming can be applied to an individual project.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{pxp_process}
+  \caption{Adapted PXP Process for the development of this Project and Thesis\label{fig:pxp_process}}
+\end{figure}
+
+In a form of personal autonomy, it is necessary to structure development in such a way that focus and direction is not lost, Personal Extreme Programming (PXP) is one such approach. First and foremost, PXP requires discipline and a willingness to learn and adapt, the principals of the methodology are oriented around these two points. ~\cite{Dzhurov2009-sr}
+
+The approach can be adapted to suite a research project of this kind, where requirements and planning are bolstered with an additional 'research' process that accommodates for the investigation into research areas around the topic of the thesis. Additionally, where the methodology contains a continuous process of logging, this investigation instead substitutes logging for documenting. By documenting throughout the development process, the production of the actual thesis is a more attainable task.
+
+
+\section{Professional, Social, Ethical, and Legal Issues}
+
+With the proposal of methods and tools for the analysis and exploration of data, it is necessary to consider the professional, social, ethical, and legal issues that may be associated with the project as it comes to fruition. Ethical and legal issues are perhaps the most relevant to this project, with potential questions orienting themselves around the morality of encouraging individuals to analyse data, and copyright.
+
+\subsection{Professional}
+The development of software aiming to assist an individual in performing a task could have some unintended professional side effects. By reducing the skills required for an individual to carry out analytics task, the barriers to entering certain jobs and industries are also reduced. In critical scenarios like healthcare and security, having skilled and trained individuals is necessary to ensure that recipients of care and those under the protection of others are not harmed in any way, the reduction in workforce quality could impact businesses in this way.
+
+An alternative view of the reduction of required entry levels to positions is that it enables others to perform better generally, either a result of more time being made available, or through the availablity of provided tools.
+
+\subsection{Social}
+The social implications of the project relate to those raised in the professional secetion. By providing means by which an individual can effectively analyse and understand a literary landscape
+
+\subsection{Ethical}
+
+
+\subsection{Legal}
+
+
 %
 %
 %
@@ -1130,11 +1164,11 @@ Latent Entities are models describing the entire corpus, so wouldn't require the
 \subsection{Book Explorer}
 The Book explorer provides an interface for searching and selecting books analysed in the system, so that data and extracted information resulting from the analysis pipeline can be viewed. Split into two elements, the controller for this part of the application allows users to search for books that have been analysed, as well as initiate requests for book information through the API Service when users select a book. The view elements of the Book Explorer the follows the panelled style outlined when discussing the UI and Navigation Design.
 
-The delving into the details of the corpus begins with the Book Explorer, for users to view entities and thus information about entities, they must first select a book from 
+Delving into details of the corpus begins with the Book Explorer, for users to view entities and thus information about entities, they must first select a book from the listing of analysed books. Upon selection, the component emit's the book selection, which is recieved handled by the acompanying Topic and Entity Explorer components. In addition to emitting events to other component, the Book Explorer invokes method of the API Service for making requests to the server.
 
 Visualising information at a book level is not of particular interest to this investigation, as such the only visualisations associated with each book is actually of the topic distributions and is handled in the Topic Model Explorer component. It is however through the book explorer component that user can signal to other components which entity and topic information it is they wish to view.
 
-Figure~\ref{fig:book_selection} shows the panel for selecting books, once the user selects a book, a collection of entities and the numerical topic distribution for the selected book is requested from the server.
+Figure~\ref{fig:book_selection} shows the panel for selecting books, once the user selects a book, a collection of entities and the numerical topic distribution for the selected book is requested from the server. The search operates by making a request through the API Service for book titles containing the entered string.
 
 \begin{figure}[h!]
   \centering
@@ -1145,11 +1179,9 @@ Figure~\ref{fig:book_selection} shows the panel for selecting books, once the us
 \subsection{Topic Explorer}
 The Topic explorer is a key component of the application as it provides book level topic information extracted from a corpus, some information about the topics extracted using LDA, as well as the topic distributions for a document selected in the book explorer. Additionally, there is an exploratory visualisation for comparing the topic distributions of each document in the corpus.
 
-The Book-Topic Distributions are presented in the form of a stacked bar chart, where each block on the stack represents the proportion of the document that a topic represents the document. Each colour in the stack represents a different topic, with the same colour representing the same topic across each stack for each document, the panel in the application for this visualisation is shown in Figure~\ref{fig:book_topic_compare}.
+The Book-Topic Distributions are presented in the form of a stacked bar chart, where each block on the stack represents the proportion of the document that a topic represents the document. Each colour in the stack represents a different topic, with the same colour representing the same topic across each stack for each document, the panel in the application for this visualisation is shown in Figure~\ref{fig:book_topic_compare}. The construction of the chart is done dynamically, making a request for the topic distributions of analysed books in the system. For larger copora, the application would issuing requests and producing the figure for 100,000's of documents, however for this prototype and with complete control over the size of the corpus that is not an issue that would be encountered 
 
-As the visualisation is data-driven using the d3.js library, it is possible to interact and inspect elements of the figure. Users can sort the graph from highest to lowest on topic distribution. Meaning that users can see which book is most represented by each topic.
-
-Presenting topics in this way allows for quick visual comparison of documents, as well as providing insight into how a documents topic structure may have an effect on the Entity Topic Models topical make up. 
+As the visualisation is data-driven using the d3.js library, it is possible to interact and inspect elements of the figure. Users can sort the graph from highest to lowest on topic distribution. Meaning that users can see which book is most represented by each topic. Presenting topics in this way allows for quick visual comparison of documents and topics, as well as providing insight into how a documents topic structure may have an effect on the Entity Topic Models topical make up. 
 
 
 \begin{figure}[h!]
@@ -1157,6 +1189,8 @@ Presenting topics in this way allows for quick visual comparison of documents, a
   \includegraphics[scale=0.6]{topic_distr}
   \caption{Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \label{fig:book_topic_compare}}
 \end{figure}
+
+When a document is selected from the Book Explorer, this component uses the emitted book title and the API Service to make a request for the numerical topic distribution of the chosen book. The percentage proportions of topics in the document are shown in a panel in a listings format, and allow individuals to compare Entity Topic proportions to the Document the entity resides in.
 
 \begin{figure}
   \centering
@@ -1167,11 +1201,10 @@ Presenting topics in this way allows for quick visual comparison of documents, a
 \subsection{Entity Explorer}
 The Entity Explorer Component handles each panel associated with Entity information. Including the selection of entities for further inspection and comparison with other entities, as well as any visualisations for an entity.
 
-When an entity is selected in the Book Explorer component, the Entity Explorer component is signalled that the user has made a request for more information, the component then makes a request through the API Service to the server, requesting entity information for the selected book. Figure~\ref{fig:entity_listing} shows a view of all entities extracted from the selected book, users can click on an entity to view the Entity Topic Model of that entity, or press the green addition box to add it to to a entity comparison panel. Similarly to the book listing panel in the Book Explorer component, users can search for entities using names.
+When an entity is selected in the Book Explorer component, the Entity Explorer component is signalled that the user has made a request for more information, the component then makes a request through the API Service to the server, requesting entity information for the selected book. Figure~\ref{fig:entity_listing} shows a view of all entities extracted from the selected book, users can click on an entity to view the Entity Topic Model of that entity, or press the green addition box to add it to to a entity comparison panel. Similarly to the book listing panel in the Book Explorer component, users can search for entities using text to filter entities not containing the query string.
 
-When selecting an entity to be added to the comparison view, the entity is not removed from the listing, and can still be selected for a more detailed inspection if desired. The entity cannot however, be added to the entity comparison panel if it is already present. 
-
-\begin{figure}[h!]
+When selecting an entity to be added to the comparison view, the entity is not removed from the listing, and can still be selected for a more detailed inspection if desired. The entity cannot however, be added to the entity comparison panel if it is already present. The Entity Explorer component maintains an array of Entity JSON Objects to allow the tracking of inspected entities.
+\begin{figure}
   \centering
   \includegraphics[scale=0.6]{entity_listing}
   \caption{Entity Listings for the Selected book (Alice's Adventures In Wonderland)\label{fig:entity_listing}}
