@@ -6,6 +6,7 @@ books/
 db_dumps/
 stanford-ner*/
 data/
+
 #####
 ## Default Ignores (node js and npm related)
 #####
