@@ -1343,7 +1343,7 @@ One possible explanation of the missclassification is a result of the basic natu
   \\X    &5     &	6&	124&	0.04&	0.55
   \\NOUN &10606 &	365&	17692&	0.60&	0.03
   \\ADJ  &3378  &	301&	5492&	0.62&	0.08
-  \\PRT  &2438  &	282&	3446&	0.71&	0.10
+  \\PRT  &2438  &	282&	3446&	0.71&	0.102
   \\.    &10870 &	0&	15505&	0.70&	0.00
   \\CONJ &2258  &	16&	3326&	0.68&	0.01
   \\VERB &16585 &	21409&	16917&	0.98&	0.56
@@ -1366,10 +1366,14 @@ A consistency Metric was defined in chapter 3 for comparing two GETM calculated 
 
 \subsection{Results}
 
+
+
+
 \subsection{GETM Interpretation}
 The GETM visualisation could provide an additional utility through which narratives could be analysed. When applying the method to Alice's Adventures in Wonderland, associations between terms and entities produced some interesting results for interpreting narratives latent meanings in narratives.
 
 Considering the novel Alice's Adventures in Wonderland, Figure~\ref{fig:entity_top_terms} highlights the top terms associated with the entity 'Wonderland'. Whilst requiring human interpretation (and some degree of artistic license), the GETM could be interpreted as describing 'Wonderland' as being nothing more than a 'Believed wonderland' and is in reality a 'suppressed misery'. Whilst interpretations such as these are subjective and often personal reflections, it is notable to consider that it was a numerical device that assisted in the task.
+
 
 \section{Entity Topic-Models}
 The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach performs.
@@ -1379,6 +1383,18 @@ The use of a GETM was proposed as a means removing an assumption made in literat
 \subsection{Results}
 
 \section{Latent Entities}
+The evaluation of Latent Entities is a challenging task for two reasons. The first challenge is the lack of labelled data sets which a models performance can be evaluated on, the second difficulty is the subjective nature of the context which the methods have been developed for. Given that narratives and fictional stories are often debated and discussed, with meanings and interpretations varying from individual to individual, it raises the question of whether there ever could be a data set through which Latent Entity Models can be effectively evaluated.
+
+There have been two metrics for Latent Entities that this thesis proposed as a means of evaluating the quality and value of produced models. Consistency is a proposed metric for evaluating the similarity of models trained on different corpora, and is of value for both Latent Entity models, as well as the previously discussed GETM. The second metric is a measure how well an individual can interpret a model which indicates how cohesive a latent entity model is.
+
+The corpus pairings defined in this chapter will form the basis for evaluating the consistency of the models as well as the cohesiveness.
+
+\subsection{Consistency}
+
+
+\subsection{Cohesion}
+
+
 
 %
 %
@@ -1386,6 +1402,7 @@ The use of a GETM was proposed as a means removing an assumption made in literat
 %
 %
 \chapter{Conclusion}
+
 \section{Introduction}
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
