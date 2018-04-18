@@ -9,7 +9,7 @@
   left=40mm,
   right=25mm,
   top=25mm,
-  bottom=25mm,
+  bottom=30mm,
   }
 \usepackage[utf8]{inputenc}
 \usepackage{cite}
@@ -478,11 +478,9 @@ It becomes increasingly difficult to visualise and interpret statistical models 
 The Gaussian Entity-term matrix (GETM) is a means of segmenting a given document into entities and associated terms. The matrix for a given document consists of strengths of associactions between a entity-word pairing. It functions under an assumption that the more seperation there is between two words in a document, the weaker the association is between those two  words. By modelling documents not as a bag of words, but as sequences it is possible to capture some of the relationships between different words prior to applying additional statistical methods.
 
 Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_i\}\) where \(\underline{e}_i = \{e_{i,0}, ..., e_{i,m}\}\), and a set of words \(\underline{W}=\{\underline{w}_0, ..., \underline{w}_j\}\), then a matrix \(D\) when indexed by \(i,j\) can be defined as:
-
 \[
   D_{i,j}= \sum^{|\underline{e}_i|}_{m=0}\sum^{|\underline{w}_j|}_{n=0}\sqrt{a\over{\pi}}\cdot e^{-a\cdot(e_{i,m} - w_{j,n})}
 \]
-
 \[
   D =
   \bordermatrix{&&e_0 && e_1 &&\hdots && e_i\cr
@@ -498,13 +496,6 @@ This method makes use of the assumption that the more distance there is between 
 
 \begin{table}[h!]
   \centering
-  \begin{displayquote}
- ``Someone standing outside the Great Hall might well have thought some
-sort of explosion had taken place, so loud was the noise that erupted
-from the Gryffindor table. Harry, Ron, and Hermione stood up to yell and
-cheer as Neville, white with shock, disappeared under a pile of people
-hugging him.'' -- J. K. Rowling
-    \end{displayquote}
     \begin{tabular}{c | c c c c}
      &Harry&Hermione&Ron&neville\\
       \hline
@@ -512,7 +503,14 @@ hugging him.'' -- J. K. Rowling
       white   & 0.1 & 0.2  & 0.1  & \\
       shock   & 0.1 & 0.2  & 0.2  & \\
       yell    & 0.2 & 0.1  & 0.3  & \\  
-    \end{tabular} 
+    \end{tabular}
+  \begin{displayquote}
+ ``Someone standing outside the Great Hall might well have thought some
+sort of explosion had taken place, so loud was the noise that erupted
+from the Gryffindor table. Harry, Ron, and Hermione stood up to yell and
+cheer as Neville, white with shock, disappeared under a pile of people
+hugging him.'' -- J. K. Rowling
+    \end{displayquote}
   \caption{ Example GETM for entities within text \label{fig:getm_example}}
 \end{table}
 
@@ -539,7 +537,7 @@ Where  \(T_{k,e}\) is the Entity Topic for topic \(k\) and entity \(e\), \(D_{e,
 
 You may wish to each topic score in an entity topic, bringing values into the \([0,1]\) range. In which case the value for each \(T_{k,e}\) becomes:
 \[
-  T_{k,e} = {\sum^w {(\phi_{k,w} \cdot D_{e,w})} - max(\underline{T}_e)}\over{ max(\underline{T}_e) - min(\underline{T}_e)}
+  T_{k,e} = \frac{\sum^w {(\phi_{k,w} \cdot D_{e,w})} - max(\underline{T}_e)}{ max(\underline{T}_e) - min(\underline{T}_e)}
 \]
 where \(\underline{T}_e\) is the set of topics for entity \(e\).
 
@@ -812,6 +810,42 @@ The interface for the Topic Model Explorer is a key aspect in allowing individua
 
 \subsection{Visualisations}
 
+\section{Project Management}
+The project began with a highlevel research area, from which an iterative refinement process took place. From the idea of 'Analysing Narratives' general NLP topics were considered, with a focus on understanding the general state of the field. From looking at automatic scene generation, to understanding that even the most fundamental task of NLP (POS and NER Tagging) are still open topics of research, the project was able to focus on one active aspect of the field.
+
+After narrowing the field down to current topics in research, the iterative process underpinned the remaining investigation and development process of the project. Agile development methodologies typically denote how small teams should conduct themselves throughout a software development life cycle, however many of the standard operating procedures of approaches like Scrum or Extreme Programming can be applied to an individual project.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{pxp_process}
+  \caption{Adapted PXP Process for the development of this Project and Thesis\label{fig:pxp_process}}
+\end{figure}
+
+In a form of personal autonomy, it is necessary to structure development in such a way that focus and direction is not lost, Personal Extreme Programming (PXP) is one such approach. First and foremost, PXP requires discipline and a willingness to learn and adapt, the principals of the methodology are oriented around these two points. ~\cite{Dzhurov2009-sr}
+
+The approach can be adapted to suite a research project of this kind, where requirements and planning are bolstered with an additional 'research' process that accommodates for the investigation into research areas around the topic of the thesis. Additionally, where the methodology contains a continuous process of logging, this investigation instead substitutes logging for documenting. By documenting throughout the development process, the production of the actual thesis is a more attainable task.
+
+
+\section{Professional, Social, Ethical, and Legal Issues}
+
+With the proposal of methods and tools for the analysis and exploration of data, it is necessary to consider the professional, social, ethical, and legal issues that may be associated with the project as it comes to fruition. Ethical and legal issues are perhaps the most relevant to this project, with potential questions orienting themselves around the morality of encouraging individuals to analyse data, and copyright.
+
+\subsection{Professional}
+The development of software aiming to assist an individual in performing a task could have some unintended professional side effects. By reducing the skills required for an individual to carry out analytics task, the barriers to entering certain jobs and industries are also reduced. In critical scenarios like healthcare and security, having skilled and trained individuals is necessary to ensure that recipients of care and those under the protection of others are not harmed in any way, the reduction in workforce quality could impact businesses in this way.
+
+An alternative view of the reduction of required entry levels to positions is that it enables others to perform better generally, either a result of more time being made available, or through the availablity of provided tools.
+
+\subsection{Social}
+The social implications of the project relate to those raised in the professional secetion. By providing means by which an individual can effectively analyse and understand a literary landscape, it allows a wider population to engage in writing with an understanding of what others enjoy and find interesting. Opening the doors to new writers of literature could bring numerous benefits to society.
+
+The potential flaw with increasing the rate at which literature is produced is that it becomes more challenging for individuals to find literature that they want and enjoy. It potentially 
+
+\subsection{Ethical}
+
+
+\subsection{Legal}
+
+
 %
 %
 %
@@ -969,14 +1003,19 @@ Each element of the System Logic Layer explored in further detail when discussin
 
 Corpus Pre-Processign involves applying a set of transformations necessary to begin the analysis and creation of descriptive models. It is assumed that the corpus provided to the system will contain only the text that is to be processed. In many documents there is additional preamble, publishing information, and other elements that can be considered 'noise'. This system will not concern itself with the removal of noise within the corpus.
 
-Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the default tokenization methods which use XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
+Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the 'PunktSentenceTokenizer' methods of NLTK, which is an implementation of an highly effective tokenization method.\cite{Kiss2006-cm} It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
 
 Once each document in the corpus has sentences and words tokenized, the next stage in the processes is the application of POS tagging methods to determine the gramatical structure of each sentence. A Viterbi Decoded Hidden Markov Model (HMM) POS tagger was implemented in python, utilising the NLP tookit developed for this project. POS Tagging this document means that it is possible to apply filters to the corpus before deriving topic models from the GETM. By removing certain words tagged as certain POS (like determiners, or prepositions) it is possible to derive topics using only descriptive words, which may provide more cohesive and interpretable models.
 
 The defined pre-processing process forms a large section of the overall pipeline, each aspect of the pipeline and preprocessing is implemented in its own distinct elements, each of which have been discussed. In order to tie each separate element into a coherent process, two scripts were developed. One to apply pre-processing at a per-document level, and one at a corpus level.
 
-Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. Figure~\ref{fig:corpus_preprocess} denotes the process of assimilating a collection of documents into the system.
+Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. The process of assimilating an entire corpus of documents involves repeating the steps for including one document for a corpus provided to the document. The methods developed for the purpose of implementing this process form part of the NLP Toolkit which will be discussed in more depth.
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{per_document_process}
+  \caption{Process taken to pre-process a single document in the corpus.\label{fig:document_preprocess}}
+\end{figure}
 
 \section{NLP Toolkit}
 As any investigation involving the use of data in any form does, pre-processing was carried out on the collections of documents intending to be analysed. As this investigation aims to also serve as a tool from which multiple corpora can be analysed, the pre-processing steps taken need to be reproducible. The NLP Toolkit developed for this system is essentially a collection of tools that allow each document in the corpus to be pre-processed ready for the extraction of topic models and latent entities. A somewhat functional approach was used, with each method applying some transformation to a single document, or a corpus as a whole. The Analysis Pipeline defined in chapter 3 involves tasks starting with the Tokenization of plain text, and ending with the use of clustering methods to extract Latent Entities.
@@ -1098,7 +1137,11 @@ An example of the visualisation can be seen in Figure~\ref{fig:getm_visualisatio
 Entity Topic models are calculated after the calculation of the GETM. The process is similar to that of calculating topic models for a corpus of documents. Each collection of entity terms is treated as a document which is then fed into the scikit learn implemented LDA algorithm. Like other aspects of the pipeline, this element is also developed in python.
 
 The scikit learn implementation produces word distributions for each topic, in this implementation, the resulting topics can be used to produce entity topic models by looking at the proportional distributions of terms in the GETM for an entitiy, and the score associated with that word across the topics. Topic scores for an entity are normalised in order allow consistent comparisons across entities.
-\section{Latent Entity Clustering }
+
+\section{Latent Entity Clustering}
+Clustering was proposed as a potential means of extracting Latent Entities from a collection of Entity Topic Models, specifically the k-means method. The scikit-learn library contains a range of clustering implementations, including a simple k-means algorithm that produces a k-means classifier object.
+
+
 
 \section{Latent Entity Explorer}
 The interface for the exploring Latent Entities was designed from a personal perspective as a result of its use in supporting the development of other aspects of the system. Implemented using TypeScript and the Angular 5 web framework, the application allows for system to be designed in terms of components, which correspond effectively to the stages seen during the development of the analysis pipeline.
@@ -1128,48 +1171,51 @@ Latent Entities are models describing the entire corpus, so wouldn't require the
 \end{figure}
 
 \subsection{Book Explorer}
-The Book explorer provides an interface for searching and selecting books analysed in the system, so that data and extracted information resulting from the analysis pipeline can be viewed. Split into two elements, the controller for this part of the application allows users to search for books that have been analysed, as initiate requests through the API Service when users select a book. The view the follows the panelled style outlined when discussing the UI and Navigation Design.
+The Book explorer provides an interface for searching and selecting books analysed in the system, so that data and extracted information resulting from the analysis pipeline can be viewed. Split into two elements, the controller for this part of the application allows users to search for books that have been analysed, as well as initiate requests for book information through the API Service when users select a book. The view elements of the Book Explorer the follows the panelled style outlined when discussing the UI and Navigation Design.
+
+Delving into details of the corpus begins with the Book Explorer, for users to view entities and thus information about entities, they must first select a book from the listing of analysed books. Upon selection, the component emit's the book selection, which is recieved handled by the acompanying Topic and Entity Explorer components. In addition to emitting events to other component, the Book Explorer invokes method of the API Service for making requests to the server.
 
 Visualising information at a book level is not of particular interest to this investigation, as such the only visualisations associated with each book is actually of the topic distributions and is handled in the Topic Model Explorer component. It is however through the book explorer component that user can signal to other components which entity and topic information it is they wish to view.
 
-Figure~\ref{fig:book_selection} shows the panel for selecting books, onnce the user selects a book, a collection of entities and the topic distribution for the selected book.
+Figure~\ref{fig:book_selection} shows the panel for selecting books, once the user selects a book, a collection of entities and the numerical topic distribution for the selected book is requested from the server. The search operates by making a request through the API Service for book titles containing the entered string.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.5]{book_list}
+  \includegraphics[scale=0.6]{book_list}
   \caption{Book Selection Component for Navigating the Explorer.\label{fig:book_selection}}
 \end{figure}
 
 \subsection{Topic Explorer}
 The Topic explorer is a key component of the application as it provides book level topic information extracted from a corpus, some information about the topics extracted using LDA, as well as the topic distributions for a document selected in the book explorer. Additionally, there is an exploratory visualisation for comparing the topic distributions of each document in the corpus.
 
-The Book-Topic Distributions are presented in the form of a stacked bar chart, where each block on the stack represents the proportion of the document that a topic represents the document. Each colour in the stack represents a different topic, with the same colour representing the same topic across each stack for each document, the panel in the application for this visualisation is shown in Figure~\ref{fig:book_topic_compare}
+The Book-Topic Distributions are presented in the form of a stacked bar chart, where each block on the stack represents the proportion of the document that a topic represents the document. Each colour in the stack represents a different topic, with the same colour representing the same topic across each stack for each document, the panel in the application for this visualisation is shown in Figure~\ref{fig:book_topic_compare}. The construction of the chart is done dynamically, making a request for the topic distributions of analysed books in the system. For larger copora, the application would issuing requests and producing the figure for 100,000's of documents, however for this prototype and with complete control over the size of the corpus that is not an issue that would be encountered 
 
-As the visualisation is data-driven using the d3.js library, it is possible to interact and inspect elements of the figure. Users can sort the graph from highest to lowest on topic distribution. Meaning that users can see which book is most represented by each topic.
-
-Presenting topics in this way allows for quick visual comparison of documents, as well as providing insight into how a documents topic structure may have an effect on the Entity Topic Models topical make up. 
+As the visualisation is data-driven using the d3.js library, it is possible to interact and inspect elements of the figure. Users can sort the graph from highest to lowest on topic distribution. Meaning that users can see which book is most represented by each topic. Presenting topics in this way allows for quick visual comparison of documents and topics, as well as providing insight into how a documents topic structure may have an effect on the Entity Topic Models topical make up. 
 
 
-\begin{figure}
-
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{topic_distr}
   \caption{Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \label{fig:book_topic_compare}}
 \end{figure}
 
+When a document is selected from the Book Explorer, this component uses the emitted book title and the API Service to make a request for the numerical topic distribution of the chosen book. The percentage proportions of topics in the document are shown in a panel in a listings format, and allow individuals to compare Entity Topic proportions to the Document the entity resides in.
+
 \begin{figure}
+  \centering
+  \includegraphics[scale=0.6]{book_topic_distr}
   \caption{Book-Topic distributions for a Selected Book. \label{fig:book_topic_inspect}}
 \end{figure}
 
 \subsection{Entity Explorer}
-The Entity Explorer Component handles each panel associated with Entity information. Including the selection of entities for further inspection and comparison with other entities.
+The Entity Explorer Component handles each panel associated with Entity information. Including the selection of entities for further inspection and comparison with other entities, as well as any visualisations for an entity.
 
-Figure~\ref{fig:entity_listing} shows a view of all entities extracted from the selected book, users can click on an entity to view the Entity Topic Model of that entity, or press the green addition box to add it to to a entity comparison panel. Similarly to the book listing panel in the Book Explorer component, users can search for entities using names.
+When an entity is selected in the Book Explorer component, the Entity Explorer component is signalled that the user has made a request for more information, the component then makes a request through the API Service to the server, requesting entity information for the selected book. Figure~\ref{fig:entity_listing} shows a view of all entities extracted from the selected book, users can click on an entity to view the Entity Topic Model of that entity, or press the green addition box to add it to to a entity comparison panel. Similarly to the book listing panel in the Book Explorer component, users can search for entities using text to filter entities not containing the query string.
 
-When selecting an entity to be added to the comparison view, the entity is not removed from the listing, and can still be selected for a more detailed inspection if desired. The entity cannot however, be added to the entity comparison panel if it is already present. 
-
-\begin{figure}[h!]
+When selecting an entity to be added to the comparison view, the entity is not removed from the listing, and can still be selected for a more detailed inspection if desired. The entity cannot however, be added to the entity comparison panel if it is already present. The Entity Explorer component maintains an array of Entity JSON Objects to allow the tracking of inspected entities.
+\begin{figure}
   \centering
-  \includegraphics[scale=0.55
-  ]{entity_listing}
+  \includegraphics[scale=0.6]{entity_listing}
   \caption{Entity Listings for the Selected book (Alice's Adventures In Wonderland)\label{fig:entity_listing}}
 \end{figure}
 
@@ -1177,7 +1223,7 @@ When an entity is selected for further inspection, users are presented with a br
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.5]{topic_dist_pct}
+  \includegraphics[scale=0.6]{topic_dist_pct}
   \caption{Entity Topic Distributions for Entity Topic Model. \label{fig:entity_topic_pct}}
 \end{figure}
 
@@ -1190,6 +1236,12 @@ In order to provide some user insight into terms associated with an entity that 
 \end{figure}
 
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.55]{entity_compare.png}
+  \caption{Entity Comparison Panel for inspecting Entity Topic Distributions\label{fig:entity_compare}}
+\end{figure}
+
 %
 %
 % Chapter 5
@@ -1197,6 +1249,74 @@ In order to provide some user insight into terms associated with an entity that 
 %
 \chapter{Results and Evaluation}
 \section{Introduction}
+Evaluation of the implmented system is oriented around the key features discussed in previous chapters. Numerical evaluation methods are applied to the implemented POS Tagger, GETM, and Latent Entity methods using a combination of purpose built and some standard approaches seen in literature. Additionally, an evaluation of the project from the perspective of professional, social, ethical, and legal issues outlined previously will be given.
+
+\section{Evaluation Corpora}
+The corpora used in the evaluation of the GETM is the same as the corpora used to evaluate the Latent Entities. For the purpose of evaluating consistency between models, a selection of 3 corpus pairs have been constructed.
+
+The first corpus pair consists of books that are different to each other in subject matter. The first corpus being fiction, and the second being non-fiction. The assumption is that a model trained on one corpus will be entirely different to models trained on the opposing corpus. The books for ~\ref{tab:different_books}.
+
+For the fiction corpus of this pairing, books were only considered candidates if they were both part of the same series and by the same author. Additionally, books were required to be familiar to author of the project, this ensured that there could be some interpretation of results in context of the documents used. The non-fiction corpus was constructed by consulting an online resource for finding books discussing similar subjects. 
+
+Six documents were used in each of the corpus pairings, ensuring that a variety of entities would be present from which models could be trained. It is unknown to what effect the corpus sizes would have, and is an aspect of potential future research. By keeping the number of documents relatively low, the processing time required to compute models is also kept to a minimum, allowing for evaluation of various configurations of documents.
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
+    \multicolumn{2}{c}{Different}       \\
+    Corpus A            & Corpus B      \\ \hline
+    Philosophers Stone  & Hunger Games  \\
+    Chamber of Secrets  & Catching Fire \\
+    Prisoner of Azkaban & Mockingjay    \\                     
+  \end{tabular}
+  \caption{Two Corpora Consisting of Documents on Different Subject Matter.\label{tab:different_books}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+In novels from the same series written by the same author, it is frequent that there are re-occurring characters present throughout the documents. A corpus pair constructed from a these documents may lend themselves well for evaluating the consistency of trained models. Whilst it is expected that there will be major differences, the consistency score should be higher than completely unrelated corpora.
+
+The same series corpus pairing was constructed by taking a series of documents, and splitting it into two alternating between corpora on selection. A series of novels was selected that are familiar to the author, for the same reasons as the novels selected in the previous corpus pairing.
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{P{0.42\linewidth} | P{0.4\linewidth}}
+    \multicolumn{2}{c}{Same Series}\\
+    Corpus A & Corpus B
+    \\\hline
+    Philosophers Stone  & Goblet of Fire     \\
+    Order of Phoenix    & Chamber of Secrets \\
+    Prisoner of Azkaban & Half Blood Prince
+  \end{tabular}\quad\\
+  \vspace{0.5cm}
+  \caption{Corpora of Novels from the Same Series. \label{tab:same_series}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+Whilst the corpora of novels from the same series are expected to show some similarities, there is an expectation that a corpora consisting of different books on the same topics should produce even more similar models. Documents were selected by consulting an online resource in a similar fashion to the non-fiction corpus of the differing corpus pairing.
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
+    \multicolumn{2}{c}{Same Topic}\\
+    Corpus A & Corpus B
+    \\\hline
+    Henry VIII            & Philosophers Stone \\
+    Henry VIII: wives     & Philosophers Stone \\
+    The Tudors: Henry VIII& Philosophers Stone
+  \end{tabular}
+  \caption{Corpus of Distinct Novels on the Same Subject Matter. \label{tab:getm_copora}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
 
 \section{POS Tagger}
 Being a key part of the pre-processing aspect of this investigation, it is necessary to consider the impact that the choice of POS tagger may have on the system. If the implemented POS tagger was not as performant as seen in literature, then it could be used to explain drawbacks within the system.
@@ -1230,7 +1350,7 @@ One possible explanation of the missclassification is a result of the basic natu
   \\X    &5     &	6&	124&	0.04&	0.55
   \\NOUN &10606 &	365&	17692&	0.60&	0.03
   \\ADJ  &3378  &	301&	5492&	0.62&	0.08
-  \\PRT  &2438  &	282&	3446&	0.71&	0.10
+  \\PRT  &2438  &	282&	3446&	0.71&	0.102
   \\.    &10870 &	0&	15505&	0.70&	0.00
   \\CONJ &2258  &	16&	3326&	0.68&	0.01
   \\VERB &16585 &	21409&	16917&	0.98&	0.56
@@ -1245,54 +1365,22 @@ One possible explanation of the missclassification is a result of the basic natu
 \renewcommand{\arraystretch}{1.0}
 
 \section{Gaussian Entity-Term Matrix}
-Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent
-Entity Models will never be able to accurately capture entity structures within narratives. Whilst the reason for evaluating the GETM is similar to the rational behind evaluating the POS tagger used, the method for doing so is very different.
+Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives. Whilst the reason for evaluating the GETM is similar to the rational behind evaluating the POS tagger used, the method for doing so is very different.
 
 Without a pre-existing model or any testing dataset, evaluating the GETM can be done by considering the impact that using the GETM has on the performance of Entity Topic Models, or Latent Entities. Additionally, the consistency of the model across similar corpora can give insight into potential benefits and drawbacks of the method.
-
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\renewcommand{\arraystretch}{1.2}
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
-    \multicolumn{2}{c}{Different}\\
-    Corpus A & Corpus B \\\hline
-    Philosophers Stone & Hunger Games \\
-    Chamber of Secrets & Catching Fire \\
-    Prisoner of Azkaban& Mockingjay
-  \end{tabular}\\
-  \vspace{0.5cm}
-  \renewcommand{\baselinestretch}{1.0}\normalsize
-  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
-    \multicolumn{2}{c}{Same Series}\\
-    Corpus A & Corpus B
-    \\\hline
-    Philosophers Stone  & Goblet of Fire     \\
-    Order of Phoenix    & Chamber of Secrets \\
-    Prisoner of Azkaban & Half Blood Prince
-  \end{tabular}\quad\\
-  \vspace{0.5cm}
-  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
-    \multicolumn{2}{c}{Same Topic}\\
-    Corpus A & Corpus B
-    \\\hline
-    Henry VIII            & Philosophers Stone \\
-    Henry VIII: wives     & Philosophers Stone \\
-    The Tudors: Henry VIII& Philosophers Stone
-  \end{tabular}
-  \caption{Documents Forming the Corpora Used in Evaluating GETM Consistency. (Book titles have been shortened for conciseness) \label{tab:getm_copora}}
-\end{table}
-\renewcommand{\baselinestretch}{2.0}\normalsize
-\renewcommand{\arraystretch}{1.0}
 
 A consistency Metric was defined in chapter 3 for comparing two GETM calculated on different corpora, 3 different corpus pairs were used to evaluate the consistency of the method. The corpora in the first pair consist of books that are completely unrelated to books in the opposing corpus, the intuition behind this is to allow the method to have a baseline metric which the other corpora pairs can be compared to. The second pairing is constructed by splitting a novel series in half to form each corpus in the pair, whilst there will be distinct differences in the entities present across the documents, many of the entities in a series remain the same throughout meaning that there should be some consistency seen across the GETM models. The final pairing consists of factual documents on the same topics, the consistency of the models trained on documents should result in some consistency. Table~\ref{tab:getm_copora} shows the corpora used in evaluating the consistency of the GETM model.
 
 \subsection{Results}
 
+
+
+
 \subsection{GETM Interpretation}
 The GETM visualisation could provide an additional utility through which narratives could be analysed. When applying the method to Alice's Adventures in Wonderland, associations between terms and entities produced some interesting results for interpreting narratives latent meanings in narratives.
 
 Considering the novel Alice's Adventures in Wonderland, Figure~\ref{fig:entity_top_terms} highlights the top terms associated with the entity 'Wonderland'. Whilst requiring human interpretation (and some degree of artistic license), the GETM could be interpreted as describing 'Wonderland' as being nothing more than a 'Believed wonderland' and is in reality a 'suppressed misery'. Whilst interpretations such as these are subjective and often personal reflections, it is notable to consider that it was a numerical device that assisted in the task.
+
 
 \section{Entity Topic-Models}
 The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach performs.
@@ -1302,6 +1390,20 @@ The use of a GETM was proposed as a means removing an assumption made in literat
 \subsection{Results}
 
 \section{Latent Entities}
+The evaluation of Latent Entities is a challenging task for two reasons. The first challenge is the lack of labelled data sets which a models performance can be evaluated on, the second difficulty is the subjective nature of the context which the methods have been developed for. Given that narratives and fictional stories are often debated and discussed, with meanings and interpretations varying from individual to individual, it raises the question of whether there ever could be a data set through which Latent Entity Models can be effectively evaluated.
+
+There have been two metrics for Latent Entities that this thesis proposed as a means of evaluating the quality and value of produced models. Consistency is a proposed metric for evaluating the similarity of models trained on different corpora, and is of value for both Latent Entity models, as well as the previously discussed GETM. The second metric is a measure how well an individual can interpret a model which indicates how cohesive a latent entity model is.
+
+The corpus pairings defined in this chapter will form the basis for evaluating the consistency of the models as well as the cohesiveness.
+
+\subsection{Consistency}
+
+
+\subsection{Cohesion}
+
+\section{Explorer Evaluation}
+Evaluating the implemented Explorer web application and associated system requires consideration of the functional and non functional requirements placed on the system prior to development. The quality of the implemented system can be assessed aside from any strengths or weaknesses of the models the system supports
+
 
 %
 %
@@ -1309,6 +1411,7 @@ The use of a GETM was proposed as a means removing an assumption made in literat
 %
 %
 \chapter{Conclusion}
+
 \section{Introduction}
 
 \renewcommand{\baselinestretch}{1.0}\normalsize

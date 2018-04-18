@@ -1,21 +1,23 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1}{\ignorespaces The 12 Tags Forming the Universal Tag Set.\relax }}{15}
-\contentsline {table}{\numberline {2}{\ignorespaces The 36 Tags Forming the Penn-Treebank Tag Set\relax }}{15}
+\contentsline {table}{\numberline {1}{\ignorespaces The 12 Tags Forming the Universal Tag Set.\relax }}{16}
+\contentsline {table}{\numberline {2}{\ignorespaces The 36 Tags Forming the Penn-Treebank Tag Set\relax }}{17}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3}{\ignorespaces Example GETM for entities within text \relax }}{32}
-\contentsline {table}{\numberline {4}{\ignorespaces Example entity-term associations between three entities\relax }}{35}
-\contentsline {table}{\numberline {5}{\ignorespaces Example entity-Topic distributions for entities in Table\nobreakspace {}4\hbox {} and the associated Latent Entity. \relax }}{35}
-\contentsline {table}{\numberline {6}{\ignorespaces Left \& Right: Entities Within Clusters Behind Latent Entities.\relax }}{39}
-\contentsline {table}{\numberline {7}{\ignorespaces Consistencies and Inconstencies Between Clusters Forming Latent Entities\relax }}{40}
+\contentsline {table}{\numberline {3}{\ignorespaces Example GETM for entities within text \relax }}{33}
+\contentsline {table}{\numberline {4}{\ignorespaces Example entity-term associations between three entities\relax }}{36}
+\contentsline {table}{\numberline {5}{\ignorespaces Example entity-Topic distributions for entities in Table\nobreakspace {}4\hbox {} and the associated Latent Entity. \relax }}{36}
+\contentsline {table}{\numberline {6}{\ignorespaces Left \& Right: Entities Within Clusters Behind Latent Entities.\relax }}{40}
+\contentsline {table}{\numberline {7}{\ignorespaces Consistencies and Inconstencies Between Clusters Forming Latent Entities\relax }}{41}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8}{\ignorespaces Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{44}
-\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{47}
-\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{49}
-\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{50}
-\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{51}
-\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{52}
+\contentsline {table}{\numberline {8}{\ignorespaces Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{48}
+\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{51}
+\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{54}
+\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{55}
+\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{56}
+\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{56}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {14}{\ignorespaces Table of POS Tagging Results\relax }}{62}
-\contentsline {table}{\numberline {15}{\ignorespaces Documents Forming the Corpora Used in Evaluating GETM Consistency. (Book titles have been shortened for conciseness) \relax }}{63}
+\contentsline {table}{\numberline {14}{\ignorespaces Two Corpora Consisting of Documents on Different Subject Matter.\relax }}{69}
+\contentsline {table}{\numberline {15}{\ignorespaces Corpora of Novels from the Same Series. \relax }}{69}
+\contentsline {table}{\numberline {16}{\ignorespaces Corpus of Distinct Novels on the Same Subject Matter. \relax }}{70}
+\contentsline {table}{\numberline {17}{\ignorespaces Table of POS Tagging Results\relax }}{71}
 \addvspace {10\p@ }
