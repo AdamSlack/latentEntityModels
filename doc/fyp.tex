@@ -9,7 +9,7 @@
   left=40mm,
   right=25mm,
   top=25mm,
-  bottom=25mm,
+  bottom=30mm,
   }
 \usepackage[utf8]{inputenc}
 \usepackage{cite}
@@ -478,11 +478,9 @@ It becomes increasingly difficult to visualise and interpret statistical models 
 The Gaussian Entity-term matrix (GETM) is a means of segmenting a given document into entities and associated terms. The matrix for a given document consists of strengths of associactions between a entity-word pairing. It functions under an assumption that the more seperation there is between two words in a document, the weaker the association is between those two  words. By modelling documents not as a bag of words, but as sequences it is possible to capture some of the relationships between different words prior to applying additional statistical methods.
 
 Given a set of entities \(\underline{E} = \{\underline{e}_0, ..., \underline{e}_i\}\) where \(\underline{e}_i = \{e_{i,0}, ..., e_{i,m}\}\), and a set of words \(\underline{W}=\{\underline{w}_0, ..., \underline{w}_j\}\), then a matrix \(D\) when indexed by \(i,j\) can be defined as:
-
 \[
   D_{i,j}= \sum^{|\underline{e}_i|}_{m=0}\sum^{|\underline{w}_j|}_{n=0}\sqrt{a\over{\pi}}\cdot e^{-a\cdot(e_{i,m} - w_{j,n})}
 \]
-
 \[
   D =
   \bordermatrix{&&e_0 && e_1 &&\hdots && e_i\cr
@@ -498,13 +496,6 @@ This method makes use of the assumption that the more distance there is between 
 
 \begin{table}[h!]
   \centering
-  \begin{displayquote}
- ``Someone standing outside the Great Hall might well have thought some
-sort of explosion had taken place, so loud was the noise that erupted
-from the Gryffindor table. Harry, Ron, and Hermione stood up to yell and
-cheer as Neville, white with shock, disappeared under a pile of people
-hugging him.'' -- J. K. Rowling
-    \end{displayquote}
     \begin{tabular}{c | c c c c}
      &Harry&Hermione&Ron&neville\\
       \hline
@@ -512,7 +503,14 @@ hugging him.'' -- J. K. Rowling
       white   & 0.1 & 0.2  & 0.1  & \\
       shock   & 0.1 & 0.2  & 0.2  & \\
       yell    & 0.2 & 0.1  & 0.3  & \\  
-    \end{tabular} 
+    \end{tabular}
+  \begin{displayquote}
+ ``Someone standing outside the Great Hall might well have thought some
+sort of explosion had taken place, so loud was the noise that erupted
+from the Gryffindor table. Harry, Ron, and Hermione stood up to yell and
+cheer as Neville, white with shock, disappeared under a pile of people
+hugging him.'' -- J. K. Rowling
+    \end{displayquote}
   \caption{ Example GETM for entities within text \label{fig:getm_example}}
 \end{table}
 
@@ -1005,14 +1003,19 @@ Each element of the System Logic Layer explored in further detail when discussin
 
 Corpus Pre-Processign involves applying a set of transformations necessary to begin the analysis and creation of descriptive models. It is assumed that the corpus provided to the system will contain only the text that is to be processed. In many documents there is additional preamble, publishing information, and other elements that can be considered 'noise'. This system will not concern itself with the removal of noise within the corpus.
 
-Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the default tokenization methods which use XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX. It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
+Tokenization is the first transformation to be applied to the corpus. NLTK provides a suite of tools capable of kickstarting any NLP project, including methods for tokenizing documents. With the option to tokenize a document into sentences, and then words, there are different approaches that can be taken to tokenization. This project uses the 'PunktSentenceTokenizer' methods of NLTK, which is an implementation of an highly effective tokenization method.\cite{Kiss2006-cm} It is important that the documents are tokenized into sentences, and then each sentence is tokenized into words, as this structure allows for more effective POS tagging.
 
 Once each document in the corpus has sentences and words tokenized, the next stage in the processes is the application of POS tagging methods to determine the gramatical structure of each sentence. A Viterbi Decoded Hidden Markov Model (HMM) POS tagger was implemented in python, utilising the NLP tookit developed for this project. POS Tagging this document means that it is possible to apply filters to the corpus before deriving topic models from the GETM. By removing certain words tagged as certain POS (like determiners, or prepositions) it is possible to derive topics using only descriptive words, which may provide more cohesive and interpretable models.
 
 The defined pre-processing process forms a large section of the overall pipeline, each aspect of the pipeline and preprocessing is implemented in its own distinct elements, each of which have been discussed. In order to tie each separate element into a coherent process, two scripts were developed. One to apply pre-processing at a per-document level, and one at a corpus level.
 
-Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. Figure~\ref{fig:corpus_preprocess} denotes the process of assimilating a collection of documents into the system.
+Figure~\ref{fig:document_preprocess} shows the process taken by the system to apply pre-processing methods to an individual document in the corpus. beginning with tokenization, and ending with the calculation of a GETM for that document. The process of assimilating an entire corpus of documents involves repeating the steps for including one document for a corpus provided to the document. The methods developed for the purpose of implementing this process form part of the NLP Toolkit which will be discussed in more depth.
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{per_document_process}
+  \caption{Process taken to pre-process a single document in the corpus.\label{fig:document_preprocess}}
+\end{figure}
 
 \section{NLP Toolkit}
 As any investigation involving the use of data in any form does, pre-processing was carried out on the collections of documents intending to be analysed. As this investigation aims to also serve as a tool from which multiple corpora can be analysed, the pre-processing steps taken need to be reproducible. The NLP Toolkit developed for this system is essentially a collection of tools that allow each document in the corpus to be pre-processed ready for the extraction of topic models and latent entities. A somewhat functional approach was used, with each method applying some transformation to a single document, or a corpus as a whole. The Analysis Pipeline defined in chapter 3 involves tasks starting with the Tokenization of plain text, and ending with the use of clustering methods to extract Latent Entities.
@@ -1134,7 +1137,12 @@ An example of the visualisation can be seen in Figure~\ref{fig:getm_visualisatio
 Entity Topic models are calculated after the calculation of the GETM. The process is similar to that of calculating topic models for a corpus of documents. Each collection of entity terms is treated as a document which is then fed into the scikit learn implemented LDA algorithm. Like other aspects of the pipeline, this element is also developed in python.
 
 The scikit learn implementation produces word distributions for each topic, in this implementation, the resulting topics can be used to produce entity topic models by looking at the proportional distributions of terms in the GETM for an entitiy, and the score associated with that word across the topics. Topic scores for an entity are normalised in order allow consistent comparisons across entities.
-\section{Latent Entity Clustering }
+
+\section{Latent Entity Clustering}
+Clustering was proposed as a potential means of extracting Latent Entities from a collection of Entity Topic Models, specifically the k-means method. The scikit-learn library contains a range of clustering implementations, including a simple k-means algorithm that produces a k-means classifier object.
+
+
+
 
 \section{Latent Entity Explorer}
 The interface for the exploring Latent Entities was designed from a personal perspective as a result of its use in supporting the development of other aspects of the system. Implemented using TypeScript and the Angular 5 web framework, the application allows for system to be designed in terms of components, which correspond effectively to the stages seen during the development of the analysis pipeline.
