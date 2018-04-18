@@ -27,7 +27,7 @@ def main():
     """ Main """
     conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
 
-    dir_path = '../test_data/'
+    dir_path = '../test_data/harry_potter/'
     glob_str = '*.txt'
     print('Begginging Process of assimilation')
     for fp in glob.glob(dir_path + glob_str):
