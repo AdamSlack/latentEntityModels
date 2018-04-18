@@ -63,7 +63,7 @@
 \title{Stereotypical Beings: Exploring Hidden Classes of Entities using Latent Entity Modelling.}
 \author{Adam Slack}
 \date{}
-
+2
 
 \begin{document}
  
@@ -104,7 +104,9 @@
 \section*{Declaration}
 
 I declare that this work is my own and not someone elses. May god beat down upon me with hellfire should this declaration be falsly claimed.
-
+\newpage
+\section*{Acknowledgement}
+This thesis would not have been possible without the support of  
 
 \newpage
 \addcontentsline{toc}{section}{Abstract}
@@ -1156,12 +1158,26 @@ An example of the visualisation can be seen in Figure~\ref{fig:getm_visualisatio
 \section{Entity-Topic Model}
 Entity Topic models are calculated after the calculation of the GETM. The process is similar to that of calculating topic models for a corpus of documents. Each collection of entity terms is treated as a document which is then fed into the scikit learn implemented LDA algorithm. Like other aspects of the pipeline, this element is also developed in python.
 
-The scikit learn implementation produces word distributions for each topic, in this implementation, the resulting topics can be used to produce entity topic models by looking at the proportional distributions of terms in the GETM for an entitiy, and the score associated with that word across the topics. Topic scores for an entity are normalised in order allow consistent comparisons across entities.
+The scikit learn implementation produces word distributions for each topic, in this implementation, the resulting topics can be used to produce entity topic models by looking at the proportional distributions of terms in the GETM for an entitiy, and the score associated with that word across the topics. Topic scores for an entity are normalised in order allow consistent comparisons across entities. Large numbers of Entity Topic Models can be produced in this approach, from which Latent Entities can be calculated.
+
+
 
 \section{Latent Entity Clustering}
-Clustering was proposed as a potential means of extracting Latent Entities from a collection of Entity Topic Models, specifically the k-means method. The scikit-learn library contains a range of clustering implementations, including a simple k-means algorithm that produces a k-means classifier object.
+Clustering was proposed as a potential means of extracting Latent Entities from a collection of Entity Topic Models, specifically the k-means method. The scikit-learn library contains a range of clustering implementations, including a simple k-means algorithm that produces a k-means classifier object. 
 
+With Entity Topic Models stored in the system's DB, the process of calculating Latent Entities begins by querying for the model of each entity. After formatting the results of the query using the Numpy library the K-Means clustering process can take place.
 
+The result of the clustering process is a set of center clusters, each of which represent a Latent Entity Model in a format mirroring the structure of the input. Once the Latent Entity Topic Proportions are determined through clustering, a mapping of Entity Topic Models to Latent entities can begin. The euclidean distance in Topic Space between an Entity Topic Model and Latent Entity Model indicate the degree to which an entity is represented by a Latent Entity.
+
+Figure~\ref{fig:etm_plot} shows a scatter plots for 648 Entity Topic Models. When presented in this format it is somewhat visibile that there are some potential clusters or underlying structures. Significant topics in this form for entities extracted from 3 narratives are Topics 3, 4, and 8.
+
+With only 3 narratives there is the potential for the diversity of topics derived from the GETM to be too low to be of practical use, the lack of diversity manifests itself in the similarity of each Entity Topic Model in Topics 0, 1, 2, 5, 6, 7, and 9. An alternative intepretation is that there is going to be some degree of similarity between entities, and there could concievebly be a minumim set of similarities that exist between all entities in a corpus. The consequences of this in the implementation is seen when selecting numbers of Latent Entities as well as the number of topics to calculate in other stages.    
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.55]{entity_topic_models}
+  \caption{Pairwise Matrix of Scatter Plots for Topic of a Collection of Entity Topic Models.\label{fig:etm_plot}}
+\end{figure}
 
 \section{Latent Entity Explorer}
 The interface for the exploring Latent Entities was designed from a personal perspective as a result of its use in supporting the development of other aspects of the system. Implemented using TypeScript and the Angular 5 web framework, the application allows for system to be designed in terms of components, which correspond effectively to the stages seen during the development of the analysis pipeline.
@@ -1170,10 +1186,9 @@ The implemented structure of the application can be seen in Figure~\ref{fig:web_
 
 There are 4 main components for the application, three of which are controllers involved in allowing users to explore books, topics, and entities. The fourth Controller is a higher level component that co-ordinates across all elements of the application. In addition to each controller is an equivalent view that allows the user to interact with that aspect of the system. The Explorer View is composed of the other views of the application, when users interact with UI elements, it is through the Explorer View.
 
-
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.5]{web_app_structure}
+  \includegraphics[scale=0.65]{web_app_structure}
 
   \caption{Structure of the Web Application. \label{fig:web_app_structure}}
 \end{figure}

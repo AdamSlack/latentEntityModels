@@ -1,28 +1,29 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Plate Notation for the LDA Method\nobreakspace {}\cite {Bkkbrad2018-yt}. \relax }}{23}
-\contentsline {figure}{\numberline {2}{\ignorespaces Output format of lda implementation in scikit-learn. where \(t_i\) is the topic, \(w_j\) is the word, and \(s_{i,j}\) is the strength of ownership between the topic and the word. \relax }}{25}
-\contentsline {figure}{\numberline {3}{\ignorespaces Bipartite topic conceptual similarity graph. (Middle, Right) \relax }}{29}
-\contentsline {figure}{\numberline {4}{\ignorespaces Document relationships formed by LSA and LDA topic modelling methods\relax }}{30}
+\contentsline {figure}{\numberline {1}{\ignorespaces Plate Notation for the LDA Method\nobreakspace {}\cite {Bkkbrad2018-yt}. \relax }}{24}
+\contentsline {figure}{\numberline {2}{\ignorespaces Output format of lda implementation in scikit-learn. where \(t_i\) is the topic, \(w_j\) is the word, and \(s_{i,j}\) is the strength of ownership between the topic and the word. \relax }}{26}
+\contentsline {figure}{\numberline {3}{\ignorespaces Bipartite topic conceptual similarity graph. (Middle, Right) \relax }}{30}
+\contentsline {figure}{\numberline {4}{\ignorespaces Document relationships formed by LSA and LDA topic modelling methods\relax }}{31}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5}{\ignorespaces Example Set of Entities for the Intruding Entity Test.\relax }}{39}
-\contentsline {figure}{\numberline {6}{\ignorespaces Example Set of Entities with Set of Associated Terms.\relax }}{40}
-\contentsline {figure}{\numberline {7}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{43}
-\contentsline {figure}{\numberline {8}{\ignorespaces Adapted PXP Process for the development of this Project and Thesis\relax }}{45}
+\contentsline {figure}{\numberline {5}{\ignorespaces Example Set of Entities for the Intruding Entity Test.\relax }}{40}
+\contentsline {figure}{\numberline {6}{\ignorespaces Example Set of Entities with Set of Associated Terms.\relax }}{41}
+\contentsline {figure}{\numberline {7}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{44}
+\contentsline {figure}{\numberline {8}{\ignorespaces Adapted PXP Process for the development of this Project and Thesis\relax }}{46}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{49}
-\contentsline {figure}{\numberline {10}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{51}
-\contentsline {figure}{\numberline {11}{\ignorespaces Process taken to pre-process a single document in the corpus.\relax }}{55}
-\contentsline {figure}{\numberline {12}{\ignorespaces Full Zoomed-out View of the GETM Heat Map for the Alice's Adventures In Wonderland Novel.\relax }}{60}
-\contentsline {figure}{\numberline {13}{\ignorespaces Restricted View of the GETM Visualisation for the Alice's Adventures in Wonderland Novel.\relax }}{60}
-\contentsline {figure}{\numberline {14}{\ignorespaces Structure of the Web Application. \relax }}{62}
-\contentsline {figure}{\numberline {15}{\ignorespaces UI mockup layout. \relax }}{63}
-\contentsline {figure}{\numberline {16}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{64}
-\contentsline {figure}{\numberline {17}{\ignorespaces Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \relax }}{66}
-\contentsline {figure}{\numberline {18}{\ignorespaces Book-Topic distributions for a Selected Book. \relax }}{67}
-\contentsline {figure}{\numberline {19}{\ignorespaces Entity Listings for the Selected book (Alice's Adventures In Wonderland)\relax }}{67}
-\contentsline {figure}{\numberline {20}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{68}
-\contentsline {figure}{\numberline {21}{\ignorespaces Top Terms Associated with Entity resulting from GETM. \relax }}{69}
-\contentsline {figure}{\numberline {22}{\ignorespaces Entity Comparison Panel for inspecting Entity Topic Distributions\relax }}{69}
+\contentsline {figure}{\numberline {9}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{50}
+\contentsline {figure}{\numberline {10}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{52}
+\contentsline {figure}{\numberline {11}{\ignorespaces Process taken to pre-process a single document in the corpus.\relax }}{56}
+\contentsline {figure}{\numberline {12}{\ignorespaces Full Zoomed-out View of the GETM Heat Map for the Alice's Adventures In Wonderland Novel.\relax }}{61}
+\contentsline {figure}{\numberline {13}{\ignorespaces Restricted View of the GETM Visualisation for the Alice's Adventures in Wonderland Novel.\relax }}{61}
+\contentsline {figure}{\numberline {14}{\ignorespaces Pairwise Matrix of Scatter Plots for Topic of a Collection of Entity Topic Models.\relax }}{63}
+\contentsline {figure}{\numberline {15}{\ignorespaces Structure of the Web Application. \relax }}{64}
+\contentsline {figure}{\numberline {16}{\ignorespaces UI mockup layout. \relax }}{65}
+\contentsline {figure}{\numberline {17}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{67}
+\contentsline {figure}{\numberline {18}{\ignorespaces Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \relax }}{68}
+\contentsline {figure}{\numberline {19}{\ignorespaces Book-Topic distributions for a Selected Book. \relax }}{69}
+\contentsline {figure}{\numberline {20}{\ignorespaces Entity Listings for the Selected book (Alice's Adventures In Wonderland)\relax }}{70}
+\contentsline {figure}{\numberline {21}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{70}
+\contentsline {figure}{\numberline {22}{\ignorespaces Top Terms Associated with Entity resulting from GETM. \relax }}{71}
+\contentsline {figure}{\numberline {23}{\ignorespaces Entity Comparison Panel for inspecting Entity Topic Distributions\relax }}{71}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
