@@ -18,8 +18,13 @@ def db_conn():
 def request_entities(book_title):
     """ request a list of entities from the database """
     print('Requesting Entity for the book:', book_title)    
-    res = db.select_book_entities(db_conn(),book_title)
-    return [row[0] for row in res]
+    res = db.select_book_entities(db_conn(),book_title, True)
+    return [{
+        'book': row[1],
+        'entity': row[2],
+        'term' : row[3],
+        'strength' : row[4]
+    } for row in res]
     
 
 def request_entity_terms(book_title, entity):
@@ -64,20 +69,40 @@ def main():
     entities = [request_entities(title) for title in book_titles]
     entity_terms = []
 
+    entity_map = {}
     for idx, t in enumerate(book_titles):
-        book_entities = []
         for e in entities[idx]:
-            terms = request_entity_terms(book_titles[idx], e)
-            term_map = {}
-            for term in terms:
-                term_map[term['term']] = term['strength']
+            entity_map[t + '---' + e['entity']] = {
+                'entity' : e['entity'],
+                'book' : e['book'],
+                'terms' : {},
+                'term_array' : []
+            }
+        
+    for idx, t in enumerate(book_titles):
+        for e in entities[idx]:
+            entity_map[t+'---'+ e['entity']]['terms'][e['term']] = e['strength']
+            entity_map[t+'---'+ e['entity']]['term_array'].append({
+                'term':e['term'],
+                'strength':e['strength']})
 
-            entity_terms.append({
-                'entity': e,
-                'book' : book_titles[idx],
-                'terms' : term_map,
-                'term_array' : terms
-            })
+    for e in entity_map:
+        entity_terms.append(entity_map[e])
+
+    # for idx, t in enumerate(book_titles):
+    #     book_entities = []
+    #     for e in entities[idx]:
+    #         terms = request_entity_terms(book_titles[idx], e)
+    #         term_map = {}
+    #         for term in terms:
+    #             term_map[term['term']] = term['strength']
+
+    #         entity_terms.append({
+    #             'entity': e,
+    #             'book' : book_titles[idx],
+    #             'terms' : term_map,
+    #             'term_array' : terms
+    #         })
 
     for e in entity_terms:
         e['topics'] = {}

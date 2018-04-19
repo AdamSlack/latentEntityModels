@@ -16,7 +16,7 @@ n_samples = 2000
 n_features = 1000
 n_topics = 10
 n_top_words = 1000
-book_dir = '../test_data/'
+book_dir = '../test_data/harry_potter/'
 
 def store_top_words(model, feature_names, n_top_words):
     conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
@@ -116,3 +116,5 @@ def main():
 
 if __name__ == '__main__':
   main()
+
+

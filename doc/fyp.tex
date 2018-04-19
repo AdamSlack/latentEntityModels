@@ -1316,6 +1316,40 @@ A third corpus will be considered to provide additional insight into  the abilit
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
 
+
+The corpus contains 1,414,420 words ($\bar{x} = 202060$), with a total of 3275 entities extracted from all documements. Topic distributions of the Harry Potter novels are shown in ~\ref{tab:hp_topics}, knowing these distributions will show if there is potential for differences in entity topic models about entities common through the series. Figure~\ref{fig:hp_topics} visually shows some of the differences between the documents in the corpus.
+
+Notably, there is only significant variance in 3 out of the ten topics accross the novels.
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c || c | c | c | c | c | c | c | c | c | c }
+    &     \multicolumn{10}{c}{Topic (\%)}\\
+    Book & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+    \hline
+    Philosophers Stone  & 4.75 & 3.87 & 4.63 & 3.78 & 3.90 & 4.59 & 16.78 & 27.79 & 23.76 & 6.15 \\
+    Chamber of Secrets  & 3.02 & 2.56 & 3.03 & 2.92 & 2.52 & 4.44 & 53.19 & 18.83 & 3.80 & 5.69 \\
+    Prisoner of Azkaban & 2.60 & 1.75 & 4.06 & 1.47 & 2.24 & 1.94 & 15.01 & 62.62 & 2.73 & 5.58 \\
+    Goblet of Fire      & 2.71 & 2.28 & 3.31 & 1.78 & 2.14 & 3.46 & 47.59 & 28.00 & 3.84 & 4.90 \\
+    Order of Pheonix    & 2.29 & 1.91 & 3.99 & 1.50 & 1.95 & 2.04 & 20.45 & 54.01 & 2.78 & 9.08 \\
+    Half Blood Prince   & 2.99 & 2.71 & 3.44 & 2.12 & 2.77 & 2.76 & 39.92 & 34.69 & 3.53 & 5.08 \\
+    Deathly Hallows     & 3.42 & 2.52 & 3.85 & 2.16 & 2.65 & 2.74 & 22.07 & 50.73 & 3.76 & 6.11 \\
+    \hline\hline
+    $\over{x}$ & 3.11 & 2.51 & 3.76 & 2.25 & 2.60 & 3.14 & 30.72 & 39.52 & 6.31 & 6.08 \\
+    $\sigma$ & 0.81 & 0.69 & 0.54 & 0.84 & 0.64 & 1.07 & 15.79 & 16.28 & 7.71 & 1.40 \\
+  \end{tabular}
+  \caption{Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{tab:hp_topics}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\begin{figure}[h!]
+  \includegraphics[scale=0.6]{hp_topics}
+  \caption{Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{fig:hp_topics}}
+\end{figure}
+
 \section{POS Tagger}
 Being a key part of the pre-processing aspect of this investigation, it is necessary to consider the impact that the choice of POS tagger may have on the system. If the implemented POS tagger was not as performant as seen in literature, then it could be used to explain drawbacks within the system.
 
@@ -1340,22 +1374,22 @@ One possible explanation of the missclassification is a result of the basic natu
   POS &	Correct &	Wrong &	Actual&	 Correct Class&Misclassified\\
   Tag & (n)&(n)&(n)&(\%)&(\%)  
   \\\hline
-    NUM  &364   &	2087&	487&	0.75&	0.85
-  \\ADV  &3747  &	442&	5357&	0.70&	0.11
-  \\PRON &6097  &	185&	7353&	0.83&	0.03
-  \\ADP  &6337  &	420&	9630&	0.66&	0.06
-  \\DET  &7191  &	53&	10113&	0.71&	0.01
-  \\X    &5     &	6&	124&	0.04&	0.55
-  \\NOUN &10606 &	365&	17692&	0.60&	0.03
-  \\ADJ  &3378  &	301&	5492&	0.62&	0.08
-  \\PRT  &2438  &	282&	3446&	0.71&	0.102
-  \\.    &10870 &	0&	15505&	0.70&	0.00
-  \\CONJ &2258  &	16&	3326&	0.68&	0.01
-  \\VERB &16585 &	21409&	16917&	0.98&	0.56
+    NUM    &364   &	2087&	487&	0.75&	0.85
+    \\ADV  &3747  &	442&	5357&	0.70&	0.11
+    \\PRON &6097  &	185&	7353&	0.83&	0.03
+    \\ADP  &6337  &	420&	9630&	0.66&	0.06
+    \\DET  &7191  &	53&	10113&	0.71&	0.01
+    \\X    &5     &	6&	124&	0.04&	0.55
+    \\NOUN &10606 &	365&	17692&	0.60&	0.03
+    \\ADJ  &3378  &	301&	5492&	0.62&	0.08
+    \\PRT  &2438  &	282&	3446&	0.71&	0.102
+    \\.    &10870 &	0&	15505&	0.70&	0.00
+    \\CONJ &2258  &	16&	3326&	0.68&	0.01
+    \\VERB &16585 &	21409&	16917&	0.98&	0.56
   \\\hline\hline
-    Total &69876&	25566&	95442&	0.73&	0.27
-  \\$\over{x}$	&5823.00	&2130.50	&7953.50	&0.66	&0.20
-  \\$\sigma$	&4903.48	&6097.28	&6117.22	&0.22	&0.29
+    Total &69876 &	25566   &95442&	0.73&	0.27
+  \\$\over{x}$	 &      5823.00	&2130.50	&7953.50	&0.66	&0.20
+  \\$\sigma$	 &      4903.48	&6097.28	&6117.22	&0.22	&0.29
 \end{tabular}
 \caption{ Table of POS Tagging Results\label{tab:pos_results}}
 \end{table}
@@ -1381,7 +1415,21 @@ Considering the novel Alice's Adventures in Wonderland, Figure~\ref{fig:entity_t
 
 
 \section{Entity Topic-Models}
-The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach performs.
+The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach affects the production of ETMS.
+
+When examining the pairwise scatter matrix for the topics of each entity in the model, you can begin to see some of the differences that the GETM has on the produced ETMs. Figure ~\ref{fig:hp_etm} shows the distributions for the Harry Poter corpus when using a Gaussian Entity Term Matrix configured to use a Gaussian weighting function. There is clearly a spread in structure of Entity Topic Models, though it is acknowledged that interpreting the figure in this form is difficulat, visually identifying any potential any groups of ETMS is not necessarily clear.. The pairwise plots for topics 1, 2, 3, 6, 7, and 8 are shown at a larger scale in figure~\ref{fig:etm_closeup}, from which you can begin to get a sense for some variability in entities and their topical make up. For many of the topic pairs, there is a high density areas, where entities are topically realted to each other, however there is a distict shape to these clouds that could be intereted as distinct groupings. Plots of Entity topics 5 against 1, and 5 against 3, there is an almost triagular shape to the distribution, which may indicate some latent structure amongst the Entity topic models.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{hp_etms}
+  \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel.\label{fig:hp_etm}}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \includegraphics[scale=0.14]{etm_closeup}
+  \caption{ETM Pairwise Expanded View. \label{fig:etm_closeup}}
+\end{figure}
 
 \subsection{Experiment Setup}
 
@@ -1392,15 +1440,30 @@ The evaluation of Latent Entities is a challenging task for two reasons. The fir
 
 There have been two metrics for Latent Entities that this thesis proposed as a means of evaluating the quality and value of produced models. Consistency is a proposed metric for evaluating the similarity of models trained on different corpora, and is of value for both Latent Entity models, as well as the previously discussed GETM. The second metric is a measure how well an individual can interpret a model which indicates how cohesive a latent entity model is.
 
-The corpus pairings defined in this chapter will form the basis for evaluating the consistency of the models as well as the cohesiveness.
+The corpus pairings defined in this chapter will form the basis for evaluating the consistency of the models as well as the cohesiveness. 
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.55]{hp_le_clusters}
+\caption{\label{fig:hp_le_clusters}}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.14]{hp_le_cluster_zoom}
+\caption{\label{fig:hp_le_cluster_zoom}}
+\end{figure}
+
 
 \subsection{Consistency}
+Consistency is evaluated using 3 pairs of copora, the first set of results consider the performance of the model when comparing a corpus of novels to a corpus to summarieis of those novels. 
 
 
 \subsection{Cohesion}
 
 \section{Explorer Evaluation}
-Evaluating the implemented Explorer web application and associated system requires consideration of the functional and non functional requirements placed on the system prior to development. The quality of the implemented system can be assessed aside from any strengths or weaknesses of the models the system supports
+Evaluating the implemented Explorer web application and associated system requires consideration of the functional and non functional requirements placed on the system prior to development. The quality of the implemented system can be assessed a side from any strengths or weaknesses of the models the system supports
 
 
 %

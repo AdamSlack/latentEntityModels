@@ -49,7 +49,7 @@ def main():
 
     res = kmeans.predict(data)
     entity_frame['class'] = res
-    entity_frame.to_csv('../results/entity_classification.csv')
+    entity_frame.to_csv('../results/hp_classification.csv')
 
 
     #now plot using pandas 

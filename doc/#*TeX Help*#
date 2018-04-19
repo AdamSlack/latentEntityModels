@@ -1,0 +1,17 @@
+ERROR: LaTeX Error: File `hp_le_clusters_zoom' not found.
+
+--- TeX said ---
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1452 ...graphics[scale=0.6]{hp_le_clusters_zoom}
+                                                  
+--- HELP ---
+From the .log file...
+
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
