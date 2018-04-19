@@ -28,7 +28,10 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{array}
+\usepackage[toc, page]{appendix}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usepackage{pdfpages}
 
 %
 % Diagrams tool.
@@ -103,9 +106,10 @@
 \section*{Declaration}
 
 I declare that this work is my own and not someone elses. May god beat down upon me with hellfire should this declaration be falsly claimed.
+
 \newpage
-\section*{Acknowledgement}
-This thesis would not have been possible without the support of  
+\section*{Acknowledgements}
+This thesis would not have been possible without the abundance of support I recieved from family and friends. 
 
 \newpage
 \addcontentsline{toc}{section}{Abstract}
@@ -251,7 +255,8 @@ X & other: foreign words, typos, abbreviations\\
 Larger tag sets include that of the Penn-Treebank, and Brown Corpus tag sets, with 36 and 82 tags respectively. Even larger still is are those building upon the Brown Corpus, the London-Lund Corpus
 of Spoken English uses 197 distinct tags. The larger tag sets are formed with the belief that each distinct tag captures a specific mechanism that can be employed within language. ~\cite{garside1988computational}
 
-The Penn-Treebank tag is is by no means a large tag set and by reducing the scope of the tag set, it provides fewer opportunities for inconsistencies to arise. a discussion was held around the validity of the brown corpus given that syntactic context is overlooked, with words tagged independently of their syntactic function.~\cite{Marcus1993-tw} When evaluating which tag set to choose, the corpus being used during the training and application of models is an important factor to consider. Often tag sets are built for the purpose of effectively tagging a corpus resulting in effective tagging of that corpus and related corpora, the tag set used with the brown corpus is a prime example of this.
+The Penn-Treebank tag is is by no means a large tag set and by reducing the scope of the tag set, it provides fewer opportunities for inconsistencies to arise. a discussion was held around the validity of the brown corpus given that syntactic context is overlooked, with words tagged independently of their syntactic function.~\cite{Marcus1993-tw} When evaluating which tag set to choose, the corpus being used during the training and application of models is an important factor to consider. Often tag sets are built fo
+r the purpose of effectively tagging a corpus resulting in effective tagging of that corpus and related corpora, the tag set used with the brown corpus is a prime example of this.
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
@@ -1317,10 +1322,12 @@ A third corpus will be considered to provide additional insight into  the abilit
 \renewcommand{\arraystretch}{1.0}
 
 
+\subsection{Corpus Makeup}
+
 The corpus contains 1,414,420 words ($\bar{x} = 202060$), with a total of 3275 entities extracted from all documements. Topic distributions of the Harry Potter novels are shown in ~\ref{tab:hp_topics}, knowing these distributions will show if there is potential for differences in entity topic models about entities common through the series. Figure~\ref{fig:hp_topics} visually shows some of the differences between the documents in the corpus.
 
-Notably, there is only significant variance in 3 out of the ten topics accross the novels.
-
+Notably, there is only significant variance in 3 out of the ten topics accross the novels. which manifests itself through the changing distributions shown accross the stacked bar chart. whilst the other topics do see noticable changes in proportions, none are quite as significant as topics 6, 7, and 8.
+ 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
 \begin{table}[h!]
@@ -1350,6 +1357,7 @@ Notably, there is only significant variance in 3 out of the ten topics accross t
   \caption{Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{fig:hp_topics}}
 \end{figure}
 
+\clearpage
 \section{POS Tagger}
 Being a key part of the pre-processing aspect of this investigation, it is necessary to consider the impact that the choice of POS tagger may have on the system. If the implemented POS tagger was not as performant as seen in literature, then it could be used to explain drawbacks within the system.
 
@@ -1396,6 +1404,7 @@ One possible explanation of the missclassification is a result of the basic natu
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
 
+\clearpage
 \section{Gaussian Entity-Term Matrix}
 Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives. Whilst the reason for evaluating the GETM is similar to the rational behind evaluating the POS tagger used, the method for doing so is very different.
 
@@ -1413,28 +1422,37 @@ The GETM visualisation could provide an additional utility through which narrati
 
 Considering the novel Alice's Adventures in Wonderland, Figure~\ref{fig:entity_top_terms} highlights the top terms associated with the entity 'Wonderland'. Whilst requiring human interpretation (and some degree of artistic license), the GETM could be interpreted as describing 'Wonderland' as being nothing more than a 'Believed wonderland' and is in reality a 'suppressed misery'. Whilst interpretations such as these are subjective and often personal reflections, it is notable to consider that it was a numerical device that assisted in the task.
 
-
+\clearpage
 \section{Entity Topic-Models}
 The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach affects the production of ETMS.
 
 When examining the pairwise scatter matrix for the topics of each entity in the model, you can begin to see some of the differences that the GETM has on the produced ETMs. Figure ~\ref{fig:hp_etm} shows the distributions for the Harry Poter corpus when using a Gaussian Entity Term Matrix configured to use a Gaussian weighting function. There is clearly a spread in structure of Entity Topic Models, though it is acknowledged that interpreting the figure in this form is difficulat, visually identifying any potential any groups of ETMS is not necessarily clear.. The pairwise plots for topics 1, 2, 3, 6, 7, and 8 are shown at a larger scale in figure~\ref{fig:etm_closeup}, from which you can begin to get a sense for some variability in entities and their topical make up. For many of the topic pairs, there is a high density areas, where entities are topically realted to each other, however there is a distict shape to these clouds that could be intereted as distinct groupings. Plots of Entity topics 5 against 1, and 5 against 3, there is an almost triagular shape to the distribution, which may indicate some latent structure amongst the Entity topic models.
 
+Figure ~\ref{fig:hp_summary_etm} visually shows the Entity Topic Models extracted from document summaries, it is clear that they are different to those of the full narratives. Principally, there is a large reduction in the numbers of entities within each document of the corpus, which allows clusters within the collection of Entity Topic Models to be visually identified a little easier. When considering the plotting of Topics 6, and 2, there are three potential clusters , with the most significant being entites strongly represented by only one of the two topics.
+
+It is important to note, that Topics of one set of Entity Topic Models do not directly match up to the Topics of the other set of Topic Models. With the corpora containing different distributions of terms, the term distributions within the topics will also vary greatly. For example, Topic 5 of Figure~\ref{fig:hp_etm} forms similar patterns to Topic 0 of Figure~\ref{fig:hp_summary_etm}. Without numerically evaluating the similarities of each entity topic model, visually comparing is by no means a valid evaluation of consistency between the sets of Entity topic models.
+
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.6]{hp_etms}
-  \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel.\label{fig:hp_etm}}
+  \includegraphics[scale=0.5]{hp_etms}
+  \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\label{fig:hp_etm}}
 \end{figure}
-
-
+\vfill
 \begin{figure}[h!]
-  \includegraphics[scale=0.14]{etm_closeup}
-  \caption{ETM Pairwise Expanded View. \label{fig:etm_closeup}}
+  \centering
+  \includegraphics[scale=0.5]{hp_etms_summary}
+  \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\label{fig:hp_summary_etm}}
 \end{figure}
 
-\subsection{Experiment Setup}
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.10]{etm_closeup}
+  \caption{ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \label{fig:etm_closeup}}
+\end{figure}
 
-\subsection{Results}
 
+
+\clearpage
 \section{Latent Entities}
 The evaluation of Latent Entities is a challenging task for two reasons. The first challenge is the lack of labelled data sets which a models performance can be evaluated on, the second difficulty is the subjective nature of the context which the methods have been developed for. Given that narratives and fictional stories are often debated and discussed, with meanings and interpretations varying from individual to individual, it raises the question of whether there ever could be a data set through which Latent Entity Models can be effectively evaluated.
 
@@ -1454,14 +1472,78 @@ The corpus pairings defined in this chapter will form the basis for evaluating t
   \includegraphics[scale=0.14]{hp_le_cluster_zoom}
 \caption{\label{fig:hp_le_cluster_zoom}}
 \end{figure}
-
-
 \subsection{Consistency}
 Consistency is evaluated using 3 pairs of copora, the first set of results consider the performance of the model when comparing a corpus of novels to a corpus to summarieis of those novels. 
 
-
+\clearpage
 \subsection{Cohesion}
 
+\begin{table}[h!]
+  \centering
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 0}\\
+    Entity    & Distance & Origins\\
+    \hline
+    hermione  & $0.41$   & Half Blood Prince\\
+    snape     & $0.49$   & Half Blood Prince\\
+    hogwarts  & $0.61$   & Half Blood Prince\\
+    voldemort & $0.65$   & Half Blood Prince\\
+    dumbledore& $0.66$   & Half Blood Prince
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 1}\\
+    Entity    & Distance & Origins\\
+    \hline
+    sirius  & $0.48$   & Order of the Phoenix \\
+    hermione& $0.49$   & Order of the Phoenix \\
+    ron     & $0.54$   & Order of the Phoenix \\
+    harry   & $0.59$   & Order of the Phoenix \\
+    umbridge& $0.60$   & Order of the Phoenix 
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 2}\\
+    Entity    & Distance & Origins\\
+    \hline
+    hall      &	$ 0.59 $ & Prisoner of Azkaban \\
+    great     &	$ 0.59 $ & Prisoner of Azkaban \\
+    hogsmeade &	$ 0.60 $ & Prisoner of Azkaban \\
+    scabbers  &	$ 0.66 $ & Prisoner of Azkaban \\
+    hagrid    & $ 0.73 $ & Prisoner of Azkaban 
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+\begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 3}\\
+    Entity    & Distance & Origins\\
+    \hline
+    flamel      & $ 0.50 $ & Philosopher's Stone \\
+    mcgonagal   & $ 0.67 $ & Philosopher's Stone \\
+    dursleys    & $ 0.74 $ & Philosopher's Stone \\
+    dumbledore  & $ 0.75 $ & Philosopher's Stone \\
+    hermione    & $ 0.76 $ & Philosopher's Stone 
+  \end{tabular}}
+    \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 4}\\
+    Entity   & Distance & Origins\\
+    \hline
+    ron      & $ 0.30 $ & Chamber of Secrets \\
+    hermione & $ 0.37 $ & Chamber of Secrets \\
+    hogwarts & $ 0.45 $ & Chamber of Secrets \\
+    harry    & $ 0.48 $ & Chamber of Secrets \\
+    tom      & $ 0.60 $ & Chamber of Secrets  
+  \end{tabular}}
+  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_summs}}
+\end{table}
+
+Prominent Latent Entities that influence the calculation of Latent Entities can be seen in ~\ref{tab:hp_le_summs}, the significance of an entity to the Latent Entity was determined by calculating the euclidean distance between the all Entity Topic Models and Latent Entitie. The most notable aspect of the Latent entities derived from the Harry potter summaries is that the top five for each Latent Entity originate from the same document. There is some degree of variation in the origin document for Entity Topic Models for Entities in the top 10 and top 20. 
+
+
+
+
+\clearpage
 \section{Explorer Evaluation}
 Evaluating the implemented Explorer web application and associated system requires consideration of the functional and non functional requirements placed on the system prior to development. The quality of the implemented system can be assessed a side from any strengths or weaknesses of the models the system supports
 
@@ -1478,4 +1560,17 @@ Evaluating the implemented Explorer web application and associated system requir
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \bibliographystyle{unsrt}
 \bibliography{./biblio}
+
+\renewcommand{\thesubsection}{\Alph{section}}
+
+\begin{appendices}
+  \chapter{Project Planning Document}
+  The following pages form the project planning document that initiated the investigation for this thesis. It outlines preliminary aims and objectives whilst also evaluating some of the risks that may be associated with the project going forward.
+  \includepdf[pages={1-}]{appendix/ppd.pdf}
+
+  \chapter{Some Other Appendix Item.}
+
+\end{appendices}
+
+
 \end{document}

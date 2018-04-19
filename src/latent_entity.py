@@ -49,7 +49,19 @@ def main():
 
     res = kmeans.predict(data)
     entity_frame['class'] = res
-    entity_frame.to_csv('../results/hp_classification.csv')
+    #entity_frame.to_csv('../results/hp_summary_classification.csv')
+
+    for idx, e in enumerate(entities):
+        entities[e]['closest_cluster'] = res[idx]
+        for idx, l in enumerate(kmeans.cluster_centers_):
+            entities[e]['latent_' + str(idx)] = np.linalg.norm(l - entities[e]['topic_str'])
+            if entities[e]['latent_' + str(idx)] < 1 and entities[e]['latent_' + str(idx)] > -1:
+                out_line = [entities[e]['entity'],'latent_' , str(idx), entities[e]['latent_' + str(idx)], entities[e]['book'] , '\n']
+                values = ','.join(str(v) for v in out_line)
+                fp = '../results/entity_' + str(idx) + '.csv'
+                with open(fp, 'a+') as f:
+                    f.write(' '.join(values))
+    
 
 
     #now plot using pandas 

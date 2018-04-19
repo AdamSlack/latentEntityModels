@@ -1,17 +1,11 @@
-ERROR: LaTeX Error: File `hp_le_clusters_zoom' not found.
+ERROR: Misplaced \omit.
 
 --- TeX said ---
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1452 ...graphics[scale=0.6]{hp_le_clusters_zoom}
-                                                  
+\@cline #1-#2\@nil ->\omit 
+                           \@multicnt #1\advance \@multispan \m@ne \ifnum \@...l.1486     \cline{1-3}\quad\cline{3-6}
+                                      
 --- HELP ---
 From the .log file...
 
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.

@@ -2,11 +2,11 @@ library(readr)
 library(lattice)
 library(ggplot2)
 library(GGally)
-e_class = read_csv("~/github/latententitymodels/results/hp_classification.csv")
+e_class = read_csv("~/github/latententitymodels/results/hp_summary_classification.csv")
 e_class[1] = NULL
 
 e_class[c("class")] <- lapply(e_class[c("class")], function(x) x+1)
 
-pairs(e_class[1:10], pch=4, cex.labels=2, col=e_class$class)
+pairs(e_class[1:10], pch=4, cex.labels=2)#, col=e_class$class)
 
 
