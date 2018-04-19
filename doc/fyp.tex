@@ -63,7 +63,6 @@
 \title{Stereotypical Beings: Exploring Hidden Classes of Entities using Latent Entity Modelling.}
 \author{Adam Slack}
 \date{}
-2
 
 \begin{document}
  
@@ -1289,33 +1288,15 @@ The panel for comparing entity topics is shown in figure~\ref{fig:entity_compare
 Evaluation of the implmented system is oriented around the key features discussed in previous chapters. Numerical evaluation methods are applied to the implemented POS Tagger, GETM, and Latent Entity methods using a combination of purpose built and some standard approaches seen in literature. Additionally, an evaluation of the project from the perspective of professional, social, ethical, and legal issues outlined previously will be given.
 
 \section{Evaluation Corpora}
-The corpora used in the evaluation of the GETM is the same as the corpora used to evaluate the Latent Entities. For the purpose of evaluating consistency between models, a selection of 4 corpus pairs have been constructed.
+The corpora used in the evaluation of the GETM is the same as the corpora used to evaluate the Latent Entities. For the purpose of evaluating consistency between models, a selection of novels from the same series were used as the basis for each corpus pairing. In order to comply with UK Copyright law, books could only be considered as candidates if they were legally available to the author of this thesis.
 
-The first corpus pair consists of books that are different to each other in subject matter. The first corpus being fiction, and the second being non-fiction. The assumption is that a model trained on one corpus will be entirely different to models trained on the opposing corpus. The books for ~\ref{tab:different_books}.
+Whilst only forming a relatively small corpus, the Harry Potter series by J. K. Rowling were selected as the narratives through which the evaluation of the thesis could be carried out. This is for numerous reasons, firstly, it is known that there are characters present throughout the series, as well as some that arent. By having entites that aren't ubiquitous it is possible to gain insight into why there may be differences in any consistency tests. Another important factor in the use of these documents, is that they are familiar to the author, and thus a qualitative insight can be provided when evaluating the interpretability and cohesion of the models.
 
-For the fiction corpus of this pairing, books were only considered candidates if they were both part of the same series and by the same author. Additionally, books were required to be familiar to author of the project, this ensured that there could be some interpretation of results in context of the documents used. The non-fiction corpus was constructed by consulting an online resource for finding books discussing similar subjects. 
+The first Corpus pairing is essentially a sanity check. Many of the probabilistic methods involved in this investigation can produce subtle differences each time the process is performed. As such to at least allow stability to be confirmed, the corpus of Harry Potter narratives will be used be used to train and compare two models.
 
-Six documents were used in each of the corpus pairings, ensuring that a variety of entities would be present from which models could be trained. It is unknown to what effect the corpus sizes would have, and is an aspect of potential future research. By keeping the number of documents relatively low, the processing time required to compute models is also kept to a minimum, allowing for evaluation of various configurations of documents.
+The second Corpus will consist of The seven Harry potter novels in one corpus, and a collection of summaries for each book in the second corpus. Frequently in academic studies in literature, there are short succinct summaries of novels, with key characters, events, and conversations being produced. This corpus pairing aims to allow quantitative insight to be given as to whether trained models are of any potential use in assisting with the process of summarising novels.
 
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\renewcommand{\arraystretch}{1.2}
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
-    \multicolumn{2}{c}{Different}       \\
-    Corpus A            & Corpus B      \\ \hline
-    Philosophers Stone  & Hunger Games  \\
-    Chamber of Secrets  & Catching Fire \\
-    Prisoner of Azkaban & Mockingjay    \\                     
-  \end{tabular}
-  \caption{Two Corpora Consisting of Documents on Different Subject Matter.\label{tab:different_books}}
-\end{table}
-\renewcommand{\baselinestretch}{2.0}\normalsize
-\renewcommand{\arraystretch}{1.0}
-
-In novels from the same series written by the same author, it is frequent that there are re-occurring characters present throughout the documents. A corpus pair constructed from a these documents may lend themselves well for evaluating the consistency of trained models. Whilst it is expected that there will be major differences, the consistency score should be higher than completely unrelated corpora.
-
-The same series corpus pairing was constructed by taking a series of documents, and splitting it into two alternating between corpora on selection. A series of novels was selected that are familiar to the author, for the same reasons as the novels selected in the previous corpus pairing.
+A third corpus will be considered to provide additional insight into  the ability of the models to be used in document and/or corpus summaries. A small corpus paring of factual documents will be used to assess consistency of the models. If documents in the corpora are on the same subject matter, then there is expected to be some similarity in the entities that are expressed within. Table~\ref{tab:factual_documents} shows the corpora of different documents being used.
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
@@ -1330,33 +1311,10 @@ The same series corpus pairing was constructed by taking a series of documents, 
     Prisoner of Azkaban & Half Blood Prince
   \end{tabular}\quad\\
   \vspace{0.5cm}
-  \caption{Corpora of Novels from the Same Series. \label{tab:same_series}}
+  \caption{Corpora of Novels from the Same Series. \label{tab:factual_documents}}
 \end{table}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
-
-Whilst the corpora of novels from the same series are expected to show some similarities, there is an expectation that a corpora consisting of different books on the same topics should produce even more similar models. Documents were selected by consulting an online resource in a similar fashion to the non-fiction corpus of the differing corpus pairing.
-
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\renewcommand{\arraystretch}{1.2}
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{P{0.4\linewidth} | P{0.4\linewidth}}
-    \multicolumn{2}{c}{Same Topic}\\
-    Corpus A & Corpus B
-    \\\hline
-    Henry VIII            & Philosophers Stone \\
-    Henry VIII: wives     & Philosophers Stone \\
-    The Tudors: Henry VIII& Philosophers Stone
-  \end{tabular}
-  \caption{Corpus of Distinct Novels on the Same Subject Matter. \label{tab:getm_copora}}
-\end{table}
-\renewcommand{\baselinestretch}{2.0}\normalsize
-\renewcommand{\arraystretch}{1.0}
-
-A final pairing of corpus is proposed as an additional means of providing insight into the consistency of the model. Frequently narratives have summaries written for them, with key characters, descriptions, and information in the book being condensed into a reference format. This corpus could potentially serve as the greatest indicator of how useful developed models are. Should the implemented methods produce somewhat similar results on a corpus of novels and a corpus of novel summaries, then there a discussion can be held with regards to models reduction of perplexity in source materials.
-
-This is the largest of the proposed corpus pairings, it consists of the full series of Harry Potter novels in one corpus, and a full set of Harry Potter novel summaries in the other.
 
 \section{POS Tagger}
 Being a key part of the pre-processing aspect of this investigation, it is necessary to consider the impact that the choice of POS tagger may have on the system. If the implemented POS tagger was not as performant as seen in literature, then it could be used to explain drawbacks within the system.
