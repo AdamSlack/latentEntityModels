@@ -68,7 +68,7 @@
 \contentsline {section}{\numberline {4.7}Latent Entity Explorer}{63}
 \contentsline {subsection}{\numberline {4.7.1}UI and Navigation Design }{64}
 \contentsline {subsection}{\numberline {4.7.2}Book Explorer}{65}
-\contentsline {subsection}{\numberline {4.7.3}Topic Explorer}{66}
+\contentsline {subsection}{\numberline {4.7.3}Topic Explorer}{67}
 \contentsline {subsection}{\numberline {4.7.4}Entity Explorer}{68}
 \contentsline {chapter}{\numberline {5}Results and Evaluation}{72}
 \contentsline {section}{\numberline {5.1}Introduction}{72}
