@@ -134,9 +134,9 @@ Latent Entities are approximations of entities found within a corpus allowing fo
 \chapter{Introduction}
 
 \section{Introduction}
-The Web; A seemingly ever-expanding resource, with data being generated and information published at an accelerating rate~\cite{WebServer-lc}. As more gain access to the internet, the rate at which new information is made available will only increase. Whether the origins of data be, social media, news outlets, or e-commerce reviews, much of the resources on the web exist in a natural language format. From this data there exists underlying information that can be extracted and utilised in the decision making processes of everyday life. Given the amount of processing required to consume data on this scale, it is necessary to ensure that there exists computational methods that can accommodate for an individual's or business' needs to understand data. Many methods that allow the extraction surface level information, however there is room for further understanding of hidden structures within datasets. By relating distinct pieces of information or subsets of data, it is possible to frame or contextualise a solution to a problem within a wider setting. This thesis aims to provide a novel method capable of providing succinct summaries of documents in terms of Latent Entities.
+The Web forms a seemingly ever-expanding resource, with data being generated and information being published at an accelerating rate~\cite{WebServer-lc}. As more gain access to the internet, the rate at which new information is made available will only increase. Whether the origins of data be from, social media, news outlets, or e-commerce reviews, much large proportions of the resources on the web exist in a natural language format. From this data in a natural language format there exists underlying information that can be extracted and utilised in the decision making processes of everyday life. Given the amount of processing required to consume data on an international scale, it is necessary to ensure that there exists computational methods that can accommodate for an individual's or a business' needs to understand data. There exist many methods that are effective at extracting surface level information, however there is room for further understanding of hidden structures within datasets, it is by relating distinct pieces of information or subsets of data, that systems can begin to frame or contextualise a solution to a problem within a wider setting. This thesis aims to provide a novel method capable of providing succinct summaries of a set of documents by framing the corpus in terms of Latent Entities.
 
-When considering Information Retrieval (IR), Machine Learning (ML), and Natural Language Processing (NLP) in conjunction with each other, the principal concern is with the extraction of information from data in the form of natural language texts. Relating textual data yields information valuable to many different entities, including businesses marketing products, individuals choosing what to read, and even researchers performing analysis on collections of journal papers. For a business, relating entities extracted from texts, can help identify target groups to aim products at. For an individual, relating entities can assist in decisions on what to read, buy, and watch based on similarities between things that they do and don’t like. For researchers, the identification of common themes or prominent authors can be achieved through the relating of entities.
+When considering Information Retrieval (IR), Machine Learning (ML), and Natural Language Processing (NLP) in conjunction with each other, their principal concerns are with the extraction of information from data in the form of natural language texts. Relating textual data yields information valuable to many different entities, including businesses marketing products, individuals choosing what to read, and even researchers performing analysis on collections of journal papers. For a business, relating entities extracted from texts, can help identify target groups to aim products at. For an individual, relating entities can assist in decisions on what to read, buy, and watch based on similarities between things that they do and don’t like. For researchers, the identification of common themes or prominent authors can be achieved through the relating of entities.
 
 A Latent Entity in this investigation is defined as an abstract representation of some entity that can be used to describe one or more concrete entities. Thus the term Latent Entity Modelling is defined as a process of transforming a corpus of text into a collection of Latent Entities describing said corpus. Latent Entities represent a layer of abstraction from Entity Topic Modelling, wherein it is possible to describe collections of Entity Topic Models in terms of extracted Latent Entities.
 
@@ -1290,44 +1290,20 @@ The panel for comparing entity topics is shown in figure~\ref{fig:entity_compare
 %
 \chapter{Results and Evaluation}
 \section{Introduction}
-Evaluation of the implmented system is oriented around the key features discussed in previous chapters. Numerical evaluation methods are applied to the implemented POS Tagger, GETM, and Latent Entity methods using a combination of purpose built and some standard approaches seen in literature. Additionally, an evaluation of the project from the perspective of professional, social, ethical, and legal issues outlined previously will be given.
+This evalation the implmented system is oriented around the key features discussed in previous chapters. Numerical evaluation methods are applied to the implemented POS Tagger, GETM, and Latent Entity methods using a combination of new and some standard approaches seen in literature, whilst a qualitative assessment of the developed interface and system as a whole will be given. Additionally, an evaluation of the project from the perspective of professional, social, ethical, and legal issues outlined previously will be given. As the motivation of the study was on providing individuals with interpretable means of assessing the 'meta-data of their lives', much of the evaluation will be on the interpretability of the developed models. 
+
 
 \section{Evaluation Corpora}
-The corpora used in the evaluation of the GETM is the same as the corpora used to evaluate the Latent Entities. For the purpose of evaluating consistency between models, a selection of novels from the same series were used as the basis for each corpus pairing. In order to comply with UK Copyright law, books could only be considered as candidates if they were legally available to the author of this thesis.
+Before starting any evaluation involving natrual language text, it is important to consider corpora that may be suitable for use in analysis. This thesis considers a pairing of copora where one consists of a series of novels, and the other consists of summaries of the opposing novels. The same corpora will be used in the evaluation of both the GETM, and Latent Entity models. By comparing summaries of novels to the full books, there is potential for insight to be gained regarding the consistency and ability of the models when used in a document summary context. In order to comply with UK Copyright law, books could only be considered as candidates if they were legally available to the author of this thesis.
 
 Whilst only forming a relatively small corpus, the Harry Potter series by J. K. Rowling were selected as the narratives through which the evaluation of the thesis could be carried out. This is for numerous reasons, firstly, it is known that there are characters present throughout the series, as well as some that arent. By having entites that aren't ubiquitous it is possible to gain insight into why there may be differences in any consistency tests. Another important factor in the use of these documents, is that they are familiar to the author, and thus a qualitative insight can be provided when evaluating the interpretability and cohesion of the models.
 
-The first Corpus pairing is essentially a sanity check. Many of the probabilistic methods involved in this investigation can produce subtle differences each time the process is performed. As such to at least allow stability to be confirmed, the corpus of Harry Potter narratives will be used be used to train and compare two models.
+\subsection{Harry Potter Corpus Statistics}
 
-The second Corpus will consist of The seven Harry potter novels in one corpus, and a collection of summaries for each book in the second corpus. Frequently in academic studies in literature, there are short succinct summaries of novels, with key characters, events, and conversations being produced. This corpus pairing aims to allow quantitative insight to be given as to whether trained models are of any potential use in assisting with the process of summarising novels.
+The Harry Potter corpus contains 1,414,420 words ($\bar{x} = 202060$), with a total of 3275 entities extracted from all documements. Topic distributions of the Harry Potter novels are shown in ~\ref{tab:hp_topics}, knowing these distributions will show if there is potential for differences in entity topic models about entities common through the series. Figure~\ref{fig:hp_topics} visually shows some of the differences between the documents in the corpus.
 
-A third corpus will be considered to provide additional insight into  the ability of the models to be used in document and/or corpus summaries. A small corpus paring of factual documents will be used to assess consistency of the models. If documents in the corpora are on the same subject matter, then there is expected to be some similarity in the entities that are expressed within. Table~\ref{tab:factual_documents} shows the corpora of different documents being used.
+Notably, there is only significant variance in 3 out of the ten topics accross the novels. which manifests itself through the changing distributions shown accross the stacked bar chart. whilst the other topics do see noticable changes in proportions, none are quite as significant as topics 6, 7, and 8. Which on a corpus of related documents, should not be overly suprising. For comparison, figure~\ref{fig:book_topics_large} shows topic distributions for a corpus of over 300 narratives, including the harry potter novels which are highlighted by the black rectangle. The variation between the novels is actually significantly less when viewed in the context of a wider corpus.
 
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\renewcommand{\arraystretch}{1.2}
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{P{0.42\linewidth} | P{0.4\linewidth}}
-    \multicolumn{2}{c}{Same Series}\\
-    Corpus A & Corpus B
-    \\\hline
-    Philosophers Stone  & Goblet of Fire     \\
-    Order of Phoenix    & Chamber of Secrets \\
-    Prisoner of Azkaban & Half Blood Prince
-  \end{tabular}\quad\\
-  \vspace{0.5cm}
-  \caption{Corpora of Novels from the Same Series. \label{tab:factual_documents}}
-\end{table}
-\renewcommand{\baselinestretch}{2.0}\normalsize
-\renewcommand{\arraystretch}{1.0}
-
-
-\subsection{Corpus Makeup}
-
-The corpus contains 1,414,420 words ($\bar{x} = 202060$), with a total of 3275 entities extracted from all documements. Topic distributions of the Harry Potter novels are shown in ~\ref{tab:hp_topics}, knowing these distributions will show if there is potential for differences in entity topic models about entities common through the series. Figure~\ref{fig:hp_topics} visually shows some of the differences between the documents in the corpus.
-
-Notably, there is only significant variance in 3 out of the ten topics accross the novels. which manifests itself through the changing distributions shown accross the stacked bar chart. whilst the other topics do see noticable changes in proportions, none are quite as significant as topics 6, 7, and 8.
- 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
 \begin{table}[h!]
@@ -1352,10 +1328,30 @@ Notably, there is only significant variance in 3 out of the ten topics accross t
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
 
+Key terms in the Topic-word distributions can be seen in table
+\begin{table}
+  \begin{tabular}{c | c c c c c c c c c c}
+
+  \end{tabular}
+  \caption{Top Ten Words in the Topic-Word Distributionsof Calculated Topics for the Harry Potter Corpus.\label{}}
+\end{table}
+
 \begin{figure}[h!]
   \includegraphics[scale=0.6]{hp_topics}
   \caption{Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{fig:hp_topics}}
 \end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.15]{book_topics_large}
+  \caption{Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \label{fig:book_topics_large}}
+\end{figure}
+
+
+\clearpage
+\subsection{Harry Potter Summary Corpus Statistics}
+
+
 
 \clearpage
 \section{POS Tagger}
@@ -1412,8 +1408,23 @@ Without a pre-existing model or any testing dataset, evaluating the GETM can be 
 
 A consistency Metric was defined in chapter 3 for comparing two GETM calculated on different corpora, 3 different corpus pairs were used to evaluate the consistency of the method. The corpora in the first pair consist of books that are completely unrelated to books in the opposing corpus, the intuition behind this is to allow the method to have a baseline metric which the other corpora pairs can be compared to. The second pairing is constructed by splitting a novel series in half to form each corpus in the pair, whilst there will be distinct differences in the entities present across the documents, many of the entities in a series remain the same throughout meaning that there should be some consistency seen across the GETM models. The final pairing consists of factual documents on the same topics, the consistency of the models trained on documents should result in some consistency. Table~\ref{tab:getm_copora} shows the corpora used in evaluating the consistency of the GETM model.
 
-\subsection{Results}
+\clearpage
+\subsection{Harry Potter Corpus GETM}
 
+\clearpage
+\subsection{Harry Potter Summary Corpus GETM}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.35]{hp_getm_summ_vis}
+\caption{\label{fig:hp_summ_getm}}
+\end{figure}
+
+Accross all of the Harry Potter GETMS, the major entities are Hermione, Ron, and Harry, which are highlighted by the first 3 yellow box from the left to the right of figure~\ref{fig:hp_summ_getm}, these entities have strong associations with all with almost all terms in the document as well as with terms accross the corpus, for this GETM describing the summary document for Harry Potter and the Philosophers Stone, Hagrid is also a significant Entity. Additional interesting quicks of the model are that the entities  Quirrel and Harry strongly associate to common terms that other entities do not, perhaps suggesting a someform of underlying relationship between those entities.
+
+
+\clearpage
+\subsection{GETM Comparison}
 
 
 
@@ -1432,25 +1443,33 @@ Figure ~\ref{fig:hp_summary_etm} visually shows the Entity Topic Models extracte
 
 It is important to note, that Topics of one set of Entity Topic Models do not directly match up to the Topics of the other set of Topic Models. With the corpora containing different distributions of terms, the term distributions within the topics will also vary greatly. For example, Topic 5 of Figure~\ref{fig:hp_etm} forms similar patterns to Topic 0 of Figure~\ref{fig:hp_summary_etm}. Without numerically evaluating the similarities of each entity topic model, visually comparing is by no means a valid evaluation of consistency between the sets of Entity topic models.
 
+\clearpage
+\subsection{Harry Potter Corpus ETMs}
+
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{hp_etms}
   \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\label{fig:hp_etm}}
 \end{figure}
-\vfill
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.5]{hp_etms_summary}
-  \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\label{fig:hp_summary_etm}}
-\end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.10]{etm_closeup}
   \caption{ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \label{fig:etm_closeup}}
 \end{figure}
 
 
+\clearpage
+\subsection{Harry Potter Summary Corpus ETMs}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{hp_etms_summary}
+  \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\label{fig:hp_summary_etm}}
+\end{figure}
+
+\clearpage
+\subsection{ETM Comparison}
 
 \clearpage
 \section{Latent Entities}
@@ -1460,6 +1479,8 @@ There have been two metrics for Latent Entities that this thesis proposed as a m
 
 The corpus pairings defined in this chapter will form the basis for evaluating the consistency of the models as well as the cohesiveness. 
 
+\clearpage
+\subsection{Harry Potter Corpus Latent Entities}
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.55]{hp_le_clusters}
@@ -1472,12 +1493,16 @@ The corpus pairings defined in this chapter will form the basis for evaluating t
   \includegraphics[scale=0.14]{hp_le_cluster_zoom}
 \caption{\label{fig:hp_le_cluster_zoom}}
 \end{figure}
-\subsection{Consistency}
-Consistency is evaluated using 3 pairs of copora, the first set of results consider the performance of the model when comparing a corpus of novels to a corpus to summarieis of those novels. 
+
+
 
 \clearpage
-\subsection{Cohesion}
+\subsection{Harry Potter Summary Corpus Latent Entities}
 
+
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
 \begin{table}[h!]
   \centering
   \resizebox{0.32\textwidth}{!}{%
@@ -1538,6 +1563,16 @@ Consistency is evaluated using 3 pairs of copora, the first set of results consi
   \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_summs}}
 \end{table}
 
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\clearpage
+\subsection{Consistency}
+Consistency is evaluated using 3 pairs of copora, the first set of results consider the performance of the model when comparing a corpus of novels to a corpus to summarieis of those novels. 
+
+\clearpage
+\subsection{Cohesion and Interpretation}
+
 Prominent Latent Entities that influence the calculation of Latent Entities can be seen in ~\ref{tab:hp_le_summs}, the significance of an entity to the Latent Entity was determined by calculating the euclidean distance between the all Entity Topic Models and Latent Entitie. The most notable aspect of the Latent entities derived from the Harry potter summaries is that the top five for each Latent Entity originate from the same document. There is some degree of variation in the origin document for Entity Topic Models for Entities in the top 10 and top 20. 
 
 
@@ -1546,6 +1581,7 @@ Prominent Latent Entities that influence the calculation of Latent Entities can 
 \clearpage
 \section{Explorer Evaluation}
 Evaluating the implemented Explorer web application and associated system requires consideration of the functional and non functional requirements placed on the system prior to development. The quality of the implemented system can be assessed a side from any strengths or weaknesses of the models the system supports
+
 
 
 %
@@ -1568,8 +1604,16 @@ Evaluating the implemented Explorer web application and associated system requir
   The following pages form the project planning document that initiated the investigation for this thesis. It outlines preliminary aims and objectives whilst also evaluating some of the risks that may be associated with the project going forward.
   \includepdf[pages={1-}]{appendix/ppd.pdf}
 
-  \chapter{Some Other Appendix Item.}
+  \chapter{Gaussian Entity Term Matrix.}
+  The follwoing pages show listings of the most strongly associated terms in the GETM for entities common to both corpora used within results and analysis.
 
+  \chapter{Entity Topic Models.}
+  The following pages show listings of the topic distributions for Entities common to both copora used within results and analysis.
+
+  
+  \chapter{Latent Entitity Models.}
+  The following pages show listings of the Entities forming each Latent Entity within the corpora used within results and analysis.
+  
 \end{appendices}
 
 

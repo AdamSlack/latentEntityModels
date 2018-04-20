@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def main():
-    fp = "../test_data/harry_potter/Harry Potter and the Sorcerer's Stone - J. K. Rowling.txt"
+    fp = "../test_data/harry_potter_summaries/Harry Potter and the Sorcerer's Stone - J. K. Rowling.txt"
     #fp = '../books/Hitchhiker\'s Guide to the Galaxy - Douglas Adams.txt'
     #fp = '../books/Dirk Gently\'s Holistic Detective Agency - Douglas Adams.txt'
     #fp = '../books/Harry Potter and the Sorcerer\'s Stone - J. K. Rowling.txt'
