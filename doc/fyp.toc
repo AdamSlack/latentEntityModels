@@ -74,28 +74,23 @@
 \contentsline {section}{\numberline {5.1}Introduction}{73}
 \contentsline {section}{\numberline {5.2}Evaluation Corpora}{73}
 \contentsline {subsection}{\numberline {5.2.1}Harry Potter Corpus Statistics}{74}
-\contentsline {subsection}{\numberline {5.2.2}Harry Potter Summary Corpus Statistics}{76}
-\contentsline {section}{\numberline {5.3}POS Tagger}{77}
-\contentsline {subsection}{\numberline {5.3.1}Results}{77}
-\contentsline {section}{\numberline {5.4}Gaussian Entity-Term Matrix}{79}
-\contentsline {subsection}{\numberline {5.4.1}Harry Potter Corpus GETM}{80}
-\contentsline {subsection}{\numberline {5.4.2}Harry Potter Summary Corpus GETM}{81}
-\contentsline {subsection}{\numberline {5.4.3}GETM Comparison}{82}
-\contentsline {subsection}{\numberline {5.4.4}GETM Interpretation}{82}
-\contentsline {section}{\numberline {5.5}Entity Topic-Models}{83}
-\contentsline {subsection}{\numberline {5.5.1}Harry Potter Corpus ETMs}{85}
-\contentsline {subsection}{\numberline {5.5.2}Harry Potter Summary Corpus ETMs}{86}
-\contentsline {subsection}{\numberline {5.5.3}ETM Comparison}{87}
-\contentsline {section}{\numberline {5.6}Latent Entities}{88}
-\contentsline {subsection}{\numberline {5.6.1}Harry Potter Corpus Latent Entities}{89}
-\contentsline {subsection}{\numberline {5.6.2}Harry Potter Summary Corpus Latent Entities}{90}
-\contentsline {subsection}{\numberline {5.6.3}Consistency}{91}
-\contentsline {subsection}{\numberline {5.6.4}Cohesion and Interpretation}{92}
-\contentsline {section}{\numberline {5.7}Explorer Evaluation}{93}
-\contentsline {chapter}{\numberline {6}Conclusion}{94}
-\contentsline {section}{\numberline {6.1}Introduction}{94}
-\contentsline {chapter}{Appendices}{99}
-\contentsline {chapter}{\numberline {A}Project Planning Document}{100}
-\contentsline {chapter}{\numberline {B}Gaussian Entity Term Matrix.}{113}
-\contentsline {chapter}{\numberline {C}Entity Topic Models.}{114}
-\contentsline {chapter}{\numberline {D}Latent Entitity Models.}{115}
+\contentsline {subsection}{\numberline {5.2.2}Harry Potter Summary Corpus Statistics}{78}
+\contentsline {section}{\numberline {5.3}POS Tagger}{79}
+\contentsline {subsection}{\numberline {5.3.1}Results}{79}
+\contentsline {section}{\numberline {5.4}Gaussian Entity-Term Matrix}{81}
+\contentsline {subsection}{\numberline {5.4.1}Harry Potter Corpus GETM}{82}
+\contentsline {subsection}{\numberline {5.4.2}Harry Potter Summary Corpus GETM}{83}
+\contentsline {subsection}{\numberline {5.4.3}GETM Comparison}{84}
+\contentsline {subsection}{\numberline {5.4.4}GETM Interpretation}{84}
+\contentsline {section}{\numberline {5.5}Entity Topic-Models}{85}
+\contentsline {subsection}{\numberline {5.5.1}Harry Potter Corpus ETMs}{87}
+\contentsline {subsection}{\numberline {5.5.2}Harry Potter Summary Corpus ETMs}{88}
+\contentsline {subsection}{\numberline {5.5.3}ETM Comparison}{89}
+\contentsline {section}{\numberline {5.6}Latent Entities}{90}
+\contentsline {subsection}{\numberline {5.6.1}Harry Potter Corpus Latent Entities}{91}
+\contentsline {subsection}{\numberline {5.6.2}Harry Potter Summary Corpus Latent Entities}{92}
+\contentsline {subsection}{\numberline {5.6.3}Consistency}{93}
+\contentsline {subsection}{\numberline {5.6.4}Cohesion and Interpretation}{94}
+\contentsline {section}{\numberline {5.7}Explorer Evaluation}{95}
+\contentsline {chapter}{\numberline {6}Conclusion}{96}
+\contentsline {section}{\numberline {6.1}Introduction}{96}

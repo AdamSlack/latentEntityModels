@@ -32,6 +32,8 @@
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
 \usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{caption}
 
 %
 % Diagrams tool.
@@ -1333,7 +1335,7 @@ Key terms in the Topic-word distributions can be seen in table
   \begin{tabular}{c | c c c c c c c c c c}
 
   \end{tabular}
-  \caption{Top Ten Words in the Topic-Word Distributionsof Calculated Topics for the Harry Potter Corpus.\label{}}
+  \caption{Top Ten Words in the Topic-Word Distributionsof Calculated Topics for the Harry Potter Corpus.\label{tab:hp_topics_terms}}
 \end{table}
 
 \begin{figure}[h!]
@@ -1341,11 +1343,32 @@ Key terms in the Topic-word distributions can be seen in table
   \caption{Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{fig:hp_topics}}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.15]{book_topics_large}
-  \caption{Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \label{fig:book_topics_large}}
-\end{figure}
+\clearpage
+
+\begin{multicols}{2}
+  \includegraphics[ width=0.9\linewidth, height=0.9\textheight]{book_topics_large}
+  \captionof{figure}{Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \label{fig:book_topics_large}}
+  
+  \columnbreak
+  
+  When you consider the topical structures of large corpus of documents, you can see how there are  groups of documents have distinctly similar topic distributions, perticularly when ordered by the contribution that a topic makes to a documents distributions. Three document groupings are highlighted in figure~\ref{fig:book_topics_large}, where each colour represents a topic and each line represents a document. Larger blocks of colour indicated a larger contribution that a topic has to a given document distributions.
+
+  The set of rows indicated by the red block are books written by the author G. R. R. Martin, and include the novels behind the popular TV show 'A Game of Thrones', The the rows indicated by blue are the Harry Potter Novels that are used to evaluate other aspects of the project, the rows indicated by the green tag are narratives written by Agatha Christie.
+
+It turns out that for this large and diverse corpus, the topics that have been extracted are oriented around narratives that exist as part of a larger series, or books that are similar in subject matter. Whilst Topics 5 (pink), 6 (grey), and 8 (cyan), are essentially topics describing books written by G. R. R. Martin, Agatha Christie, and J. K. Rowling respectively, other are strongly indicative of other author's writings.
+\end{multicols}
+
+Topic 3 (red) is a relatively small portion of all narratives, however the books that this topic represents the most are all novels by Dan Brown. In contrast, topic 0 (orange), which represents a large proportion of many narratives, are largely factual or phyics related documents, with the books most represented by the topic being authored by Richard Feynmann.
+
+Whilst not the focus of this investigation, is not necessarily on the topic models of narratives, it is interesting to see how topic models can represent differences in an authors writing. It suggests that thare are distinct differences between some authors, whilst there remain major similarities between others.
+
+One concern is that in large series of narratives entities are often present throughout each document, perhaps resulting in any given topic's word distribution consisting primarily of entities from a series. When looking closer at the terms that form the topics, there are some topics that almost entirely consist of entities, whilst others are general terms relating to a specific subject.
+
+The top terms for topic 8 are: 'Harry', 'Ron', 'Hermione', 'Percy', and 'Annabeth'. With 'Harry' being scored as twice as representative as 'Ron', labelled as the second most prominent entity. When considering the makeup of Topic 8, it is then clear why the Harry Potter novels feature such a high proportion of the topic.
+
+The top terms for topic 0 are: 'Energy', 'Field', 'Example', 'Species', and 'data'. When looking at these terms, it is unsuprising to see that non-fictional and scientific documents recieve a high proportion of the topic.
+
+Agatha Christie novels are strongly represented by topic 6, the top terms of which are: 'Poirot', 'Mr', 'Miss', 'Mrs', and 'Sir'. When looking in one Agatha Christie novel, 'The Mysterious Affair at Styles' There are 419, 180, 125, 234, and 113 mentions of each term respectively.  
 
 
 \clearpage
@@ -1596,25 +1619,4 @@ Evaluating the implemented Explorer web application and associated system requir
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \bibliographystyle{unsrt}
 \bibliography{./biblio}
-
-\renewcommand{\thesubsection}{\Alph{section}}
-
-\begin{appendices}
-  \chapter{Project Planning Document}
-  The following pages form the project planning document that initiated the investigation for this thesis. It outlines preliminary aims and objectives whilst also evaluating some of the risks that may be associated with the project going forward.
-  \includepdf[pages={1-}]{appendix/ppd.pdf}
-
-  \chapter{Gaussian Entity Term Matrix.}
-  The follwoing pages show listings of the most strongly associated terms in the GETM for entities common to both corpora used within results and analysis.
-
-  \chapter{Entity Topic Models.}
-  The following pages show listings of the topic distributions for Entities common to both copora used within results and analysis.
-
-  
-  \chapter{Latent Entitity Models.}
-  The following pages show listings of the Entities forming each Latent Entity within the corpora used within results and analysis.
-  
-\end{appendices}
-
-
 \end{document}

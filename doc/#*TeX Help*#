@@ -1,6 +1,12 @@
-ERROR: File ended while scanning use of \caption@xdblarg.
+ERROR: LaTeX Error: \begin{multicols} on input line 1348 ended by \end{mullticols}.
 
 --- TeX said ---
-! File ended while scanning use of \caption@xdblarg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1356 \end{mullticols}
+                       
 --- HELP ---
 No help available
