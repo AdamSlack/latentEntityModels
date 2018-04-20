@@ -16,13 +16,17 @@ n_samples = 2000
 n_features = 1000
 n_topics = 10
 n_top_words = 1000
-book_dir = '../test_data/harry_potter_summaries/'
+book_dir = '../test_data/harry_potter/'
 
 def store_top_words(model, feature_names, n_top_words):
-    conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+    conn = db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
     for topic_idx, topic in enumerate(model.components_):
+      count = 0
       for i in topic.argsort()[:-n_top_words - 1:-1]:
-        db.insert_topic_term(db=conn, topic_id=topic_idx,term=feature_names[i],strength=topic[i])
+        db.insert_topic_term(db=conn, topic_id=topic_idx,term=feature_names[i],strength=topic[i])        
+        if count < 10:
+          print(topic_idx, feature_names[i],topic[i ])
+          count += 1
 
 def read_file(fp):
   with open(fp, encoding='utf-8') as f:
@@ -60,7 +64,7 @@ def calculate_document_distributions(lda_model, feature_names, n_top_words, data
 
 def store_book_proportions(distributions):
   """ """
-  conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+  conn = db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
 
   for book in distributions.keys():
     print(book)
@@ -82,11 +86,12 @@ def store_book_proportions(distributions):
 
 def retrieve_entity_set():
   """returns a distinct set of entities from the database."""
-  conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+  conn = db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
   entities = []
   titles = db.select_book_titles(conn)
   for t in titles:
-        entities.append(db.select_book_entities(conn, t[0]))
+        for e in db.select_book_entities(conn, t[0]):
+          entities.append(e[0])
   return set(entities)
 
 def main():
@@ -94,8 +99,10 @@ def main():
   data_samples, fps = time_action(read_data_samples, book_dir, '*.txt')
   print(str(len(data_samples)) + ' data samples read from file')
 
+  es = retrieve_entity_set()
+  print(es)
   print('Extracting tf features for LDA...')
-  stop_words = ENGLISH_STOP_WORDS.union(retrieve_entity_set())
+  stop_words = ENGLISH_STOP_WORDS.union(es)
   tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features=n_features,
                                   stop_words=stop_words)
   tf = time_action(tf_vectorizer.fit_transform, data_samples)

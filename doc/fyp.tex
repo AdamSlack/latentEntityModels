@@ -1304,7 +1304,7 @@ Whilst only forming a relatively small corpus, the Harry Potter series by J. K. 
 
 The Harry Potter corpus contains 1,414,420 words ($\bar{x} = 202060$), with a total of 3275 entities extracted from all documements. Topic distributions of the Harry Potter novels are shown in ~\ref{tab:hp_topics}, knowing these distributions will show if there is potential for differences in entity topic models about entities common through the series. Figure~\ref{fig:hp_topics} visually shows some of the differences between the documents in the corpus.
 
-Notably, there is only significant variance in 3 out of the ten topics accross the novels. which manifests itself through the changing distributions shown accross the stacked bar chart. whilst the other topics do see noticable changes in proportions, none are quite as significant as topics 6, 7, and 8. Which on a corpus of related documents, should not be overly suprising. For comparison, figure~\ref{fig:book_topics_large} shows topic distributions for a corpus of over 300 narratives, including the harry potter novels which are highlighted by the black rectangle. The variation between the novels is actually significantly less when viewed in the context of a wider corpus.
+Notably, there is only significant variance in 3 out of the ten topics accross the novels. which manifests itself through the changing distributions shown accross the stacked bar chart. whilst the other topics do see noticable changes in proportions, none are quite as significant as topics 1, 3, and 8. Which on a corpus of related documents, should not be overly suprising. For comparison, figure~\ref{fig:book_topics_large} shows topic distributions for a corpus of over 300 narratives, including the harry potter novels which are highlighted by the black rectangle. The variation between the novels is even less when viewed in the context of a wider corpus.
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
@@ -1312,36 +1312,59 @@ Notably, there is only significant variance in 3 out of the ten topics accross t
   \centering
   \begin{tabular}{c || c | c | c | c | c | c | c | c | c | c }
     &     \multicolumn{10}{c}{Topic (\%)}\\
-    Book & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+    Book                 & 0     & 1    & 2     & 3      & 4    & 5     & 6    & 7     & 8     & 9 \\
     \hline
-    Philosophers Stone  & 4.75 & 3.87 & 4.63 & 3.78 & 3.90 & 4.59 & 16.78 & 27.79 & 23.76 & 6.15 \\
-    Chamber of Secrets  & 3.02 & 2.56 & 3.03 & 2.92 & 2.52 & 4.44 & 53.19 & 18.83 & 3.80 & 5.69 \\
-    Prisoner of Azkaban & 2.60 & 1.75 & 4.06 & 1.47 & 2.24 & 1.94 & 15.01 & 62.62 & 2.73 & 5.58 \\
-    Goblet of Fire      & 2.71 & 2.28 & 3.31 & 1.78 & 2.14 & 3.46 & 47.59 & 28.00 & 3.84 & 4.90 \\
-    Order of Pheonix    & 2.29 & 1.91 & 3.99 & 1.50 & 1.95 & 2.04 & 20.45 & 54.01 & 2.78 & 9.08 \\
-    Half Blood Prince   & 2.99 & 2.71 & 3.44 & 2.12 & 2.77 & 2.76 & 39.92 & 34.69 & 3.53 & 5.08 \\
-    Deathly Hallows     & 3.42 & 2.52 & 3.85 & 2.16 & 2.65 & 2.74 & 22.07 & 50.73 & 3.76 & 6.11 \\
-    \hline\hline
-    $\over{x}$ & 3.11 & 2.51 & 3.76 & 2.25 & 2.60 & 3.14 & 30.72 & 39.52 & 6.31 & 6.08 \\
-    $\sigma$ & 0.81 & 0.69 & 0.54 & 0.84 & 0.64 & 1.07 & 15.79 & 16.28 & 7.71 & 1.40 \\
+Philosopher's Stone	&5.16&	19.62&	5.45&	22.29&	4.94&	5.09&	7.04&	5.31&	20.15&	4.96\\
+Chamber of Secrets	&4.77&	19.73&	4.83&	15.51&	4.54&	4.91&	10.80&	5.02&	25.06&	4.82\\
+Prisoner of Azkaban	&4.33&	33.30&	4.27&	14.21&	4.01&	4.40&	5.50&	4.22&	21.61&	4.16\\
+Goblet of Fire	        &4.68&	19.82&	4.67&	16.09&	4.31&	4.69&	5.94&	4.71&	30.60&	4.48\\
+Order of the Phoenix    &4.66&	25.97&	4.54&	16.07&	4.40&	4.68&	6.22&	4.72&	24.08&	4.67\\
+Half-Blood Prince	&4.77&	20.05&	4.58&	17.20&	4.35&	4.69&	6.04&	4.78&	28.92&	4.62\\
+    Deathly Hallows	&4.88&	18.61&	4.58&	23.68&	4.47&	4.82&	6.27&	4.80&	23.27&	4.62\\
+    \hline
+    $\over{x}$          &4.75&	22.44&	4.70&	17.86&	4.43&	4.75&	6.83&	4.79&	24.81&	4.62\\
+    $\sigma$            &0.25&	5.37&	0.37&	3.63&	0.28&	0.22&	1.81&	0.33&	3.77&	0.25
   \end{tabular}
   \caption{Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{tab:hp_topics}}
 \end{table}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
 
-Key terms in the Topic-word distributions can be seen in table
-\begin{table}
-  \begin{tabular}{c | c c c c c c c c c c}
-
-  \end{tabular}
-  \caption{Top Ten Words in the Topic-Word Distributionsof Calculated Topics for the Harry Potter Corpus.\label{tab:hp_topics_terms}}
-\end{table}
-
 \begin{figure}[h!]
-  \includegraphics[scale=0.6]{hp_topics}
+  \includegraphics[scale=0.65]{hp_topics}
   \caption{Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{fig:hp_topics}}
 \end{figure}
+
+One of the factors influencing the distinct similarity between narratives in the larger corpus is the inclusion of entities as terms when calculating the LDA topic models, for the reduced corpus of harry potter novels, the entities have been removed. When entities were left in as terms for calculating topics, the method distinguished between novels based on the characters, as opposed to any differences in writing style. With entities left within the calculations, Harry Potter and The Prisoner of Azkaban as well as Harry Potter and the Order of the Phoenix were indicated as being very similar documents. When inspecting the topic word distributions, the topics most strongly representing these documents were made up of terms like 'sirius' and 'black', which are referring to an entity prominent in both documents.
+
+Without considering entities within the documents, the distributions are much more similar, however there are still differences between them. Some degree of similarity within documents is expected, given that they are from the same series, and oriented around the same sort of stories.
+
+Key terms in the Topic-word distributions can be seen in table~\ref{tab:hp_topics_terms}, considering the terms that form the topics might provide some insight into why some documents in the corpus deemed so topically similar. However with topics-word of 1000 terms, viewing a small portion might not provide accurate insights.
+
+\begin{table}[h!]
+  \centering
+  \resizebox{1.0\textwidth}{!}{%
+  \begin{tabular}{c | c | c | c | c | c | c | c | c | c}
+    0&	1&	2&	3&	4&	5&	6&	7&	8&	9\\
+    \hline
+diary&	elf&	tent&	dementors&	elf&	elf&	tent&	elf&	elf&	dementors\\
+heir&	apparently&	elf&	elf&	tournament&	map&	dementors&	lesson&	task&	firebolt\\
+elf&	dementors&	locket&	remained&	map&	remained&	elf&	surface&	tournament&	lesson\\
+prefect&	homework&	goblins&	hastily&	task&	tent&	ought&	task&	prime&	dementor\\
+attacks&	ought&	horcruxes&	apparently&	dementors&	task&	lesson&	ought&	lesson&	homework\\
+clicking&	position&	ought&	triwizard&	apparently&	locket&	prime&	gazing&	apparently&	map\\
+toilet&	lesson&	dementors&	highly&	ought&	ought&	task&	elves&	hastily&	gazing\\
+petrified&	tone&	vault&	tent&	triwizard&	dementors&	apparently&	map&	map&	elf\\
+camera&	thoughts&	apparently&	thoughts&	troll&	lesson&	locket&	dementors&	triwizard&	ought\\
+wife&	ropes&	remained&	ought&	lesson&	conversation&	thoughts&	prime&	remained&	rat
+  \end{tabular}}
+  \caption{Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Corpus\label{tab:hp_topics_terms}}
+\end{table}
+
+Many of the topics are actually very similar with regards to the terms which they contain. The term 'elf' is ranked within the top ten for all topics. Whilst the term 'Ought' occurs as a top ten in eight topics.  This not only highlights the significance of many of the terms, but also suggests a lack of diversity in the vocabulary for each document. Some terms however are not present through each novel, but still remain present across multiple topics, including 'triwizard' which is prominent only in 'Goblet of Fire'.
+
+With regards to the coherence of the topics, there is little semantic relations between the terms of topics, however within the context of the novels, some relationships can be identified for example, the terms 'goblins', 'vault', 'locket', and 'horcruxes' are all related within the novels. Within the Harry Potter universe, the banking vaults are managed and guarded by goblins, whilst a significant item often simply referred to as the 'locket' was a horcrux. Additionally, a horcrux was also stored within a vault guarded by goblins. 
+
 
 \clearpage
 
@@ -1358,7 +1381,7 @@ Key terms in the Topic-word distributions can be seen in table
 It turns out that for this large and diverse corpus, the topics that have been extracted are oriented around narratives that exist as part of a larger series, or books that are similar in subject matter. Whilst Topics 5 (pink), 6 (grey), and 8 (cyan), are essentially topics describing books written by G. R. R. Martin, Agatha Christie, and J. K. Rowling respectively, other are strongly indicative of other author's writings.
 \end{multicols}
 
-Topic 3 (red) is a relatively small portion of all narratives, however the books that this topic represents the most are all novels by Dan Brown. In contrast, topic 0 (orange), which represents a large proportion of many narratives, are largely factual or phyics related documents, with the books most represented by the topic being authored by Richard Feynmann.
+Topic 3 (red) is a relatively small portion2 of all narratives, however the books that this topic represents the most are all novels by Dan Brown. In contrast, topic 0 (orange), which represents a large proportion of many narratives, are largely factual or phyics related documents, with the books most represented by the topic being authored by Richard Feynmann.
 
 Whilst not the focus of this investigation, is not necessarily on the topic models of narratives, it is interesting to see how topic models can represent differences in an authors writing. It suggests that thare are distinct differences between some authors, whilst there remain major similarities between others.
 
@@ -1368,7 +1391,9 @@ The top terms for topic 8 are: 'Harry', 'Ron', 'Hermione', 'Percy', and 'Annabet
 
 The top terms for topic 0 are: 'Energy', 'Field', 'Example', 'Species', and 'data'. When looking at these terms, it is unsuprising to see that non-fictional and scientific documents recieve a high proportion of the topic.
 
-Agatha Christie novels are strongly represented by topic 6, the top terms of which are: 'Poirot', 'Mr', 'Miss', 'Mrs', and 'Sir'. When looking in one Agatha Christie novel, 'The Mysterious Affair at Styles' There are 419, 180, 125, 234, and 113 mentions of each term respectively.  
+Agatha Christie novels are strongly represented by topic 6, the top terms of which are: 'Poirot', 'Mr', 'Miss', 'Mrs', and 'Sir'. When looking in one Agatha Christie novel, 'The Mysterious Affair at Styles' There are 419, 180, 125, 234, and 113 mentions of each term respectively.
+
+The primary take away from this figure, is that the topic modelling applied to the whole corpus has been able to produce groupings of related documents without any information other than the terms within them. Whilst this is not a new finding when considering other literature, it serves as indication that the use of novels as a basis for corpora does allow topic modelling methods to perform effectively.
 
 
 \clearpage
@@ -1506,7 +1531,7 @@ The corpus pairings defined in this chapter will form the basis for evaluating t
 \subsection{Harry Potter Corpus Latent Entities}
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.55]{hp_le_clusters}
+  \includegraphics[scale=0.55]{hp_full_latent_entity_scatter}
 \caption{\label{fig:hp_le_clusters}}
 \end{figure}
 
@@ -1603,7 +1628,10 @@ Prominent Latent Entities that influence the calculation of Latent Entities can 
 
 \clearpage
 \section{Explorer Evaluation}
-Evaluating the implemented Explorer web application and associated system requires consideration of the functional and non functional requirements placed on the system prior to development. The quality of the implemented system can be assessed a side from any strengths or weaknesses of the models the system supports
+Evaluating the implemented Explorer web application and associated system requires consideration of the rational behind why the system was required. The quality of the implemented system can be assessed a side from any strengths or weaknesses of the models that the system supports.
+
+With regards to usability of the system, there are two aspects to the system, the command line interface, and the web application interface. The command line interface is simple and requires providing the directory of the corpus files which are to be analysed, there are no other settings for configuration. The limited interface somewhat reduces the flexibility of the analysis pipeline, built within the NLP toolkit is flexibility with regards to some of the hyper parameters within implemented models, including the choice of weighting function, as the number of topics, the number of terms to include within each topic, and the number of latent entities which the system should derive. As a result of excluding these parameters from command line arguments, the pipeline requires manually configuring from within the code base, reducing the accessibility and usability as a whole. 
+
 
 
 

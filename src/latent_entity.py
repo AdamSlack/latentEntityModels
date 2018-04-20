@@ -8,7 +8,7 @@ from pandas.plotting import radviz
 import seaborn as sns
 
 def db_conn():
-    return db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+    return db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
 
 
 def request_book_entity_topics():
@@ -31,11 +31,18 @@ def main():
     entities = {e:{'topic_ids' : [], 'topic_str' : []} for e in e_keys}
 
     for e in entity_topics:
-        key = e['entity']+'-$-'+e['book']
-        entities[key]['entity'] = e['entity']
-        entities[key]['book'] = e['book']
-        entities[key]['topic_ids'].append(e['topic'])
-        entities[key]['topic_str'].append(e['strength'])
+        if e['strength'] > 0:
+            key = e['entity']+'-$-'+e['book']
+            entities[key]['entity'] = e['entity']
+            entities[key]['book'] = e['book']
+            entities[key]['topic_ids'].append(e['topic'])
+            entities[key]['topic_str'].append(e['strength'])
+
+    es = [e for e in entities.keys()]
+    for e in es:
+        t_num = len(entities[e]['topic_str'])
+        if entities[e]['topic_str'] == [0]*t_num:
+            del entities[e]
 
     entity_topics = [entities[e]['topic_str'] for e in entities]
 
@@ -49,18 +56,18 @@ def main():
 
     res = kmeans.predict(data)
     entity_frame['class'] = res
-    #entity_frame.to_csv('../results/hp_summary_classification.csv')
+    entity_frame = entity_frame[(entity_frame.T != 0).any()]
+    entity_frame.to_csv('../results/hp_full_latent_entity_classification.csv')
 
     for idx, e in enumerate(entities):
         entities[e]['closest_cluster'] = res[idx]
         for idx, l in enumerate(kmeans.cluster_centers_):
             entities[e]['latent_' + str(idx)] = np.linalg.norm(l - entities[e]['topic_str'])
-            if entities[e]['latent_' + str(idx)] < 1 and entities[e]['latent_' + str(idx)] > -1:
-                out_line = [entities[e]['entity'],'latent_' , str(idx), entities[e]['latent_' + str(idx)], entities[e]['book'] , '\n']
-                values = ','.join(str(v) for v in out_line)
-                fp = '../results/entity_' + str(idx) + '.csv'
-                with open(fp, 'a+') as f:
-                    f.write(' '.join(values))
+            out_line = [entities[e]['entity'],'latent_' , str(idx), entities[e]['latent_' + str(idx)], entities[e]['book'] , '\n']
+            values = ','.join(str(v) for v in out_line)
+            fp = '../results/hp_full_entity_' + str(idx) + '.csv'
+            with open(fp, 'a+') as f:
+                f.write(' '.join(values))
     
 
 
