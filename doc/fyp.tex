@@ -1532,12 +1532,26 @@ Notably, the GETM has not resulted in entities entirely dissimilar to book-level
 
 \clearpage
 \subsection{Harry Potter Corpus ETMs}
+\begin{multicols}{2}
+  {\centering
+  \includegraphics[scale=0.65]{hp_full_etm_stacked}
+  \captionof{figure}{Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \label{fig:hp_full_etm_stacked}}}
+  
+\columnbreak
+The proportional distributions for all entity Topic models for the Corpus of Harry Potter novels are shown in figure~\ref{fig:hp_full_etm_stacked}. Entity Topic models are grouped according to the origins of the entity that the Entity Topic Model describes, distinct divisions are left out of the figure for clarity.
+
+The general structure across Entity Topic Models is that topics 1, 3, and 7 are the most significant to all characters. This is somewhat different to the significant topics at a corpus level, which saw Topic 8 being one of the most significant. There are Entity Topic Models that are strongly represented by topic 8, however they do contrast the larger population.
+
+As well as being significant proportions of all entity topic models, topics 1, 3, and 7 also see the largest amount of variation amongst, with topic 8 being the next most varying topic. By observing the variability of specific topics, some predictions can be made regarding which topics will influence the calculation of latent entities. When using K-Means clustering for calculating Latent Entities, it is likely that the topics of variance will form the basis for latent entities.
+\end{multicols}
+\clearpage
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.5]{hp_full_etms}
+  \includegraphics[angle=-90, scale=0.8]{hp_full_etms}
   \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\label{fig:hp_etm}}
 \end{figure}
+\clearpage
 
 \begin{figure}[h!]
   \centering
@@ -1546,12 +1560,16 @@ Notably, the GETM has not resulted in entities entirely dissimilar to book-level
 \end{figure}
 
 
+
+
+
+
 \clearpage
 \subsection{Harry Potter Summary Corpus ETMs}
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.5]{hp_etms_summary}
+  \includegraphics[scale=0.4]{hp_etms_summary}
   \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\label{fig:hp_summary_etm}}
 \end{figure}
 
