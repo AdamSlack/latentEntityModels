@@ -1468,11 +1468,47 @@ The corpus consists of 7 documents, with a total of 11,621 words $(\bar{x}=1660)
   \caption{Topic Distributions for Summaries of Each Harry Potter Novel.\label{fig:hp_summary_topic_dist}}
 \end{figure}
 
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+\begin{table}[h!]
+  \begin{tabular}{c || c | c | c | c | c | c | c | c | c | c}
+     & \multicolumn{10}{c}{Topic (\%)}\\
+    Books&                      0&	    1&	    2&	    3&	    4&	    5&	    6&  	7&	    8&	  9\\
+    \hline
+    Sorcerer's Stone	    &12.38&	8.35&	12.56&	8.39&	8.18&	8.70&	8.43&	8.08&	16.42&	8.51\\
+    Chamber of Secrets	    &9.54&	8.52&	10.80&	9.25&	8.27&	8.64&	8.89&	8.30&	19.34&	8.44\\
+    Prisoner of Azkaban	    &9.60&	8.03&	15.71&	8.35&	8.06&	8.50&	8.48&	8.02&	16.77&	8.48\\
+    Goblet of Fire	        &9.27&	8.15&	11.94&	8.58&	8.20&	8.78&	8.31&	8.23&	20.14&	8.41\\
+    Order of the Phoenix	&9.35&	8.15&	10.84&	8.51&	8.23&	8.75&	8.47&	8.43&	20.69&	8.60\\
+    Half-Blood Prince	    &9.17&	8.15&	10.51&	8.42&	8.25&	9.75&	8.41&	8.23&	20.79&	8.33\\
+    Deathly Hallows	        &9.28&	8.03&	10.59&	8.38&	8.01&	8.68&	8.07&	7.90&	22.91&	8.15\\
+    \hline
+    $\bar{x}$	            &9.80&	8.20&	11.85&	8.55&	8.17&	8.83&	8.44&	8.17&	19.58&	8.42\\
+    $\sigma$	            &1.15&	0.18&	1.87&	0.32&	0.10&	0.42&	0.24&	0.18&	2.31&	0.15                                                                                         
+  \end{tabular}
+  \caption{Proportional Distributions of Topic Models for the Harry Potter Novel Summaries.}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
 \begin{table}[h!]
   \centering
   \resizebox{1.0\textwidth}{!}{
   \begin{tabular}{c | c | c | c | c | c | c | c | c | c}
-  
+    
+    0&	1&	2&	3&	4&	5&	6&	7&	8&	9\\
+    \hline
+professor&	turns&	flying&	known&	locket&	locket&	stone&	outside&	stone&	elf\\
+dog&	winning&	including&	information&	teaching&	wand&	sleep&	forbidden&	face&	boys\\
+dementors&	realizes&	wands&	meet&	way&	night&	following&	takes&	later&	girl\\
+night&	ability&	says&	news&	tower&	friends&	takes&	day&	tells&	giant\\
+large&	soul&	demanding&	members&	mr&	mr&	frustrated&	announces&	sees&	left\\
+later&	magical&	triwizard&	teaches&	named&	eaters&	hospital&	informs&	gets&	cat\\
+broomstick&	mysterious&	giant&	knows&	room&	killed&	moving&	hoping&	train&	awful\\
+game&	away&	padfoot&	forest&	wand&	horcrux&	brings&	arrives&	wizardry&	night\\
+parents&	attack&	divided&	wakes&	horcruxes&	order&	bathroom&	godfather&	dog&	killed\\
+time&	game&	voice&	heart&	members&	new&	street&	corridor&	named&	return
  \end{tabular}}
   \caption{Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Summary Corpus\label{tab:hp_summ_topics_terms}}
 \end{table}
@@ -1530,11 +1566,6 @@ The top band in figure~\ref{fig:hp_full_ps_sig_getm} shows the entity-term assoc
 The corpus of Harry Potter summaries results in GETMs that are visually less sparse, each entity within it has a set of terms which they are associated with, with extensive overlap between many of the entities. Across each GETMS for the summary corpus, the major entities are 'Hermione', 'Ron', and 'Harry', which are highlighted by the first 3 yellow box from the left to the right of figure~\ref{fig:hp_summ_getm}, these entities have strong associations with all with almost all terms in the document as well as with terms accross the corpus, for this GETM describing the summary document for Harry Potter and the Philosophers Stone, Hagrid is also a significant Entity.
 
 A notable quirk of the model is that the entities 'Quirrel' and 'Harry' strongly associate to common terms that other entities do not, perhaps suggesting an  underlying relationship between those entities. Additionally, despite the relatively short length of the document there still remains terms that remain significant to some entities whilst remaining disassociated with others, this suggests that even accross shorter documents, assumptions made in literature regarding the relationships that entities have to terms are fundamentally flawed.
-
-\clearpage
-\subsection{GETM Comparison}
-
-
 
 \subsection{GETM Interpretation}
 The GETM visualisation could provide an additional utility through which narratives could be analysed. When applying the method to Alice's Adventures in Wonderland, associations between terms and entities produced some interesting results for interpreting narratives latent meanings in narratives.
@@ -1599,20 +1630,18 @@ Some subtle groupings can be identified in topics 3 against 7, in which there is
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.4]{hp_etms_summary}
+  \includegraphics[scale=0.5]{hp_etms_summary}
   \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\label{fig:hp_summary_etm}}
 \end{figure}
 
-\clearpage
-\subsection{ETM Comparison}
 
 \clearpage
 \section{Latent Entities}
-The evaluation of Latent Entities is a challenging task for two reasons. The first challenge is the lack of labelled data sets which a models performance can be evaluated on, the second difficulty is the subjective nature of the context which the methods have been developed for. Given that narratives and fictional stories are often debated and discussed, with meanings and interpretations varying from individual to individual, it raises the question of whether there ever could be a data set through which Latent Entity Models can be effectively evaluated.
+The evaluation of Latent Entities is a challenging task for two reasons. The first challenge is the lack of labelled data sets which a models performance can be evaluated on, the second difficulty is the subjective nature of the context for which the methods have been developed. Given meanings and interpretations of  narratives and literary works are frequently debated and discussed within an academic setting, with interpretations varying from individual to individual, it raises the question of whether there ever could be a data set through which Latent Entity Models can be effectively evaluated.
 
-There have been two metrics for Latent Entities that this thesis proposed as a means of evaluating the quality and value of produced models. Consistency is a proposed metric for evaluating the similarity of models trained on different corpora, and is of value for both Latent Entity models, as well as the previously discussed GETM. The second metric is a measure how well an individual can interpret a model which indicates how cohesive a latent entity model is.
+There have been two metrics for Latent Entities that this thesis proposed as a means of evaluating the quality and value of produced models. Consistency is a proposed metric for evaluating the similarity of models trained on different corpora, and is of value for both Latent Entity models, as well as the previously discussed GETM. The second metric is a measure how well an individual can interpret a model which indicates how cohesive a latent entity model is. With no scope in the project for conducting meaningful surveys with a large sample size, a more general evaluation and interpretation of the topic models will be provided.
 
-The corpus pairings defined in this chapter will form the basis for evaluating the consistency of the models as well as the cohesiveness. 
+The full set of Harry Potter Novels will be explored before moving onto the corpus of summary documents. Exploration of the summary documents will be carried out by comparing and contrasting the calculated models to the full corpus of novels. The comparison aims to provide insight into any strengths and limitations that may be observed.
 
 \clearpage
 \subsection{Harry Potter Corpus Latent Entities}
@@ -1724,69 +1753,21 @@ There is only one novel not contributing to the top 5 entity topic models for an
 \clearpage
 \subsection{Comparison to Summary Corpus Latent Entities.}
 
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\renewcommand{\arraystretch}{1.2}
-\begin{table}[h!]
+
+\clearpage
+\begin{figure}[h!]
   \centering
-  \resizebox{0.32\textwidth}{!}{%
-  \begin{tabular}{c | c | c }
-    \multicolumn{3}{c}{Latent Entity 0}\\
-    Entity    & Distance & Origins\\
-    \hline
-    hermione  & $0.41$   & Half Blood Prince\\
-    snape     & $0.49$   & Half Blood Prince\\
-    hogwarts  & $0.61$   & Half Blood Prince\\
-    voldemort & $0.65$   & Half Blood Prince\\
-    dumbledore& $0.66$   & Half Blood Prince
-2  \end{tabular}}
-  \resizebox{0.32\textwidth}{!}{%
-  \begin{tabular}{c | c | c }
-    \multicolumn{3}{c}{Latent Entity 1}\\
-    Entity    & Distance & Origins\\
-    \hline
-    sirius  & $0.48$   & Order of the Phoenix \\
-    hermione& $0.49$   & Order of the Phoenix \\
-    ron     & $0.54$   & Order of the Phoenix \\
-    harry   & $0.59$   & Order of the Phoenix \\
-    umbridge& $0.60$   & Order of the Phoenix 
-  \end{tabular}}
-  \resizebox{0.32\textwidth}{!}{%
-  \begin{tabular}{c | c | c }
-    \multicolumn{3}{c}{Latent Entity 2}\\
-    Entity    & Distance & Origins\\
-    \hline
-    hall      &	$ 0.59 $ & Prisoner of Azkaban \\
-    great     &	$ 0.59 $ & Prisoner of Azkaban \\
-    hogsmeade &	$ 0.60 $ & Prisoner of Azkaban \\
-    scabbers  &	$ 0.66 $ & Prisoner of Azkaban \\
-    hagrid    & $ 0.73 $ & Prisoner of Azkaban 
-  \end{tabular}}
-  \resizebox{0.32\textwidth}{!}{%
-\begin{tabular}{c | c | c }
-    \multicolumn{3}{c}{Latent Entity 3}\\
-    Entity    & Distance & Origins\\
-    \hline
-    flamel      & $ 0.50 $ & Philosopher's Stone \\
-    mcgonagal   & $ 0.67 $ & Philosopher's Stone \\
-    dursleys    & $ 0.74 $ & Philosopher's Stone \\
-    dumbledore  & $ 0.75 $ & Philosopher's Stone \\
-    hermione    & $ 0.76 $ & Philosopher's Stone 
-  \end{tabular}}
-    \resizebox{0.32\textwidth}{!}{%
-  \begin{tabular}{c | c | c }
-    \multicolumn{3}{c}{Latent Entity 4}\\
-    Entity   & Distance & Origins\\
-    \hline
-    ron      & $ 0.30 $ & Chamber of Secrets \\
-    hermione & $ 0.37 $ & Chamber of Secrets \\
-    hogwarts & $ 0.45 $ & Chamber of Secrets \\
-    harry    & $ 0.48 $ & Chamber of Secrets \\
-    tom      & $ 0.60 $ & Chamber of Secrets  
-  \end{tabular}}
-  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_fulls}}
-\end{table}
-\renewcommand{\baselinestretch}{2.0}\normalsize
-\renewcommand{\arraystretch}{1.0}
+\includegraphics[angle=-90,scale=0.65]{hp_summary_latent_clusters}
+\caption{Pairwise Scatter Plot Matrix for Entity Topic Models Coloured According to their Latent Entity Classification\label{hp_summ_le_pairs}}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+\includegraphics[scale=0.15]{hp_summ_le_large}
+\caption{Magnified View of Pairwise Scatter Plot Matrix for Entity Topic Models Coloured According to their Latent Entity Classification\label{hp_summ_le_large}}
+\end{figure}
+
 
 
 \clearpage

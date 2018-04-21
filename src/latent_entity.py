@@ -8,7 +8,7 @@ from pandas.plotting import radviz
 import seaborn as sns
 
 def db_conn():
-    return db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
+    return db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
 
 
 def request_book_entity_topics():
@@ -57,7 +57,7 @@ def main():
     res = kmeans.predict(data)
     entity_frame['class'] = res
     entity_frame = entity_frame[(entity_frame.T != 0).any()]
-    entity_frame.to_csv('../results/hp_full_latent_entity_classification.csv')
+    entity_frame.to_csv('../results/hp_summary_latent_entity_classification.csv')
 
     for idx, e in enumerate(entities):
         entities[e]['closest_cluster'] = res[idx]
@@ -65,7 +65,7 @@ def main():
             entities[e]['latent_' + str(idx)] = np.linalg.norm(l - entities[e]['topic_str'])
             out_line = [entities[e]['entity'],'latent_' , str(idx), entities[e]['latent_' + str(idx)], entities[e]['book'] , '\n']
             values = ','.join(str(v) for v in out_line)
-            fp = '../results/hp_full_entity_' + str(idx) + '.csv'
+            fp = '../results/hp_summary_entity_' + str(idx) + '.csv'
             with open(fp, 'a+') as f:
                 f.write(' '.join(values))
     
