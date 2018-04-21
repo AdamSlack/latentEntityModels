@@ -730,7 +730,7 @@ For participants that are unfamiliar with the matrial from which the entities in
 \subsection{Evaluating Consistency}
 The consistency of the proposed method for calculating latent entities can be determined by comparing the results of the process for two corpora of different documents onthe same subject. The assumptions for this method of evaluation is that the contents of books on the same subject are likely to be similar, whilst this may not be true for narratives, factual books on the same subject should hold true.
 
-The consistency check can be used to evaluate different stages of the analysis pipeline. The GETM aspect of the system is a prime candidate for this form of evaluation. Similarly, entities within the GETM should be associated with the same or synonymous terms if assumptions regarding the similarity of two copora are true.
+The consistency check can be used to evaluate different stages of the analysis pipeline. The GETM aspect of the system is a prime candidate for this form of evaluation. Similarly, entities within the GETM should be associated with the same or synonymous terms if assumptions regarding the similarity of two copora are true. 
 
 By using copora that are known to be similar in content would remove the perhaps dangerous assumption. However, the corpora are not the same, and thus there still remains the chance that any difference in compared models would be a result of the differences in documents between each corpora.
 
@@ -800,10 +800,8 @@ An example of the consistencies and inconsistencies between two sets of latent e
 \end{table}
 
 
-\subsubsection{GETM Consistency}
-Calculating the consistency of the GETM method requires numerically evaluating similarity of terms associated with common entities between two GETMs. Additionally, the entities not common to both need to be incorporated into the calculation.
-
-
+% \subsubsection{GETM Consistency}
+% Calculating the consistency of the GETM method requires numerically evaluating similarity of terms associated with common entities between two GETMs. Additionally, the entities not common to both need to be incorporated into the calculation.
 
 
 \section{Analysis Pipeline}
@@ -1292,8 +1290,59 @@ The panel for comparing entity topics is shown in figure~\ref{fig:entity_compare
 %
 \chapter{Results and Evaluation}
 \section{Introduction}
-This evalation the implmented system is oriented around the key features discussed in previous chapters. Numerical evaluation methods are applied to the implemented POS Tagger, GETM, and Latent Entity methods using a combination of new and some standard approaches seen in literature, whilst a qualitative assessment of the developed interface and system as a whole will be given. Additionally, an evaluation of the project from the perspective of professional, social, ethical, and legal issues outlined previously will be given. As the motivation of the study was on providing individuals with interpretable means of assessing the 'meta-data of their lives', much of the evaluation will be on the interpretability of the developed models. 
+This chapter serves as an opportunity to numerically explore and evaluate the methods and models that have been implemented and discussed in previous chapters. Each aspect of the system is to be evaluated from the perspective of their effectiveness at extracting meaningful information from a corpus. Four key aspects to the system will be quantitatively and qualitatively assessed, including the implemented POS tagger, Gaussian Entity-Term Matrix, GETM Entity Topic Models, and Latent Entity Models.
 
+In order to evaluate many of the defined methods, a corpus must be constructed. As such, this evaluation also explores the structure of the corpora intending to be used to evaluate the whole pipeline. The selected corpus will be also be compared to a larger corpus of documents, this will provide an estimate as to whether the chosen corpus is an appropriate for the task of evaluating the system.
+
+By exploring the results of the implemented methods on the chosen corpus, it is possible to gain insight into the value and worth that the models may have to individuals looking to understand corpora of data that surrounds them. 
+
+
+\clearpage
+\section{POS Tagger}
+Being a key part of the pre-processing aspect of this investigation, it is necessary to consider the impact that the choice of POS tagger may have on the system. If the implemented POS tagger was not as performant as seen in literature, then it could be used to explain drawbacks within the system.
+
+Unlike Topic Modelling, evaluating the performance of a POS tagger is a more straightforward task. The implemented tagger was evaluated on the Brown corpus, using an 80:20 division of the corpus into training and test samples. Accross both subsets, the corpus contained a total of $57,340$ sentences and $1,161,192$ words, forming a sizable dataset from which a model can be trained.
+
+
+\subsection{Results}
+
+An overall accuracy of 0.73 was achieved for the method, which is a significantly higher score than randomly applying tags would score, however it is still noticibly lower than scores seen in literature. As the purpose of POS tagging in this thesis is for the filtering of specific types of tags, it is necessary to consider the effectiveness of the tagger on different POS tags.
+
+The tagger classified almost all Verbs in the test set, however when it missclassified parts of speech, they were often missclassified as verbs, which natrually increases the number of successful tags. Notably, the tagger never tagged something that wasn't punctuation, as punctuation, however it failed to correctly label all punctuation in the test set, missing approximately 30\%. Table~\ref{tab:pos_results} shows a breakdown of the performance of the POS tagger for each posible POS class, it shows the number of times a tag was correctly, and incorrectly applied to a word, as well as the actual number of words with that class in the test set. Finally, Table~\ref{tab:pos_results} also shows the percentage of correctly classified words for each pos tag, as well as the percentage of words that were incorrectly labled as that tag.
+
+It is concerning to see that 85\% of the terms tagged as 'NUM' were actually something else as it is one of the classes that would be filtered from the GETM. For almost all casses of misclassification, terms were incorrectly labelled as being a Verb.
+
+One possible explanation of the missclassification is a result of the basic nature of the tagger, when the system has not encountered a word before, it is unsure of what to tag it as. It turns out that in the implementation, the tagger's default classification is a Verb. An interesting feature of the brown corpus is that roughly half of the vocabulary are hapax legomena, leading to a high liklihood that the test set would contain terms unseen to the model. 
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c | c | c | c || c | c }
+  POS &	Correct &	Wrong &	Actual&	 Correct Class&Misclassified\\
+  Tag & (n)&(n)&(n)&(\%)&(\%)  
+  \\\hline
+    NUM    &364   &	2087&	487&	0.75&	0.85
+    \\ADV  &3747  &	442&	5357&	0.70&	0.11
+    \\PRON &6097  &	185&	7353&	0.83&	0.03
+    \\ADP  &6337  &	420&	9630&	0.66&	0.06
+    \\DET  &7191  &	53&	10113&	0.71&	0.01
+    \\X    &5     &	6&	124&	0.04&	0.55
+    \\NOUN &10606 &	365&	17692&	0.60&	0.03
+    \\ADJ  &3378  &	301&	5492&	0.62&	0.08
+    \\PRT  &2438  &	282&	3446&	0.71&	0.102
+    \\.    &10870 &	0&	15505&	0.70&	0.00
+    \\CONJ &2258  &	16&	3326&	0.68&	0.01
+    \\VERB &16585 &	21409&	16917&	0.98&	0.56
+  \\\hline\hline
+    Total &69876 &	25566   &95442&	0.73&	0.27
+  \\$\over{x}$	 &      5823.00	&2130.50	&7953.50	&0.66	&0.20
+  \\$\sigma$	 &      4903.48	&6097.28	&6117.22	&0.22	&0.29
+\end{tabular}
+\caption{ Table of POS Tagging Results\label{tab:pos_results}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
 \section{Evaluation Corpora}
 Before starting any evaluation involving natrual language text, it is important to consider corpora that may be suitable for use in analysis. This thesis considers a pairing of copora where one consists of a series of novels, and the other consists of summaries of the opposing novels. The same corpora will be used in the evaluation of both the GETM, and Latent Entity models. By comparing summaries of novels to the full books, there is potential for insight to be gained regarding the consistency and ability of the models when used in a document summary context. In order to comply with UK Copyright law, books could only be considered as candidates if they were legally available to the author of this thesis.
@@ -1308,7 +1357,9 @@ Notably, there is only significant variance in 3 out of the ten topics accross t
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
+
 \begin{table}[h!]
+\resizebox{1.0\textwidth}{!}{%
   \centering
   \begin{tabular}{c || c | c | c | c | c | c | c | c | c | c }
     &     \multicolumn{10}{c}{Topic (\%)}\\
@@ -1324,13 +1375,14 @@ Half-Blood Prince	&4.77&	20.05&	4.58&	17.20&	4.35&	4.69&	6.04&	4.78&	28.92&	4.62
     \hline
     $\over{x}$          &4.75&	22.44&	4.70&	17.86&	4.43&	4.75&	6.83&	4.79&	24.81&	4.62\\
     $\sigma$            &0.25&	5.37&	0.37&	3.63&	0.28&	0.22&	1.81&	0.33&	3.77&	0.25
-  \end{tabular}
+  \end{tabular}}
   \caption{Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{tab:hp_topics}}
 \end{table}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
 
 \begin{figure}[h!]
+  \centering
   \includegraphics[scale=0.65]{hp_topics}
   \caption{Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \label{fig:hp_topics}}
 \end{figure}
@@ -1399,54 +1451,6 @@ The primary take away from this figure, is that the topic modelling applied to t
 \subsection{Harry Potter Summary Corpus Statistics}
 
 
-
-\clearpage
-\section{POS Tagger}
-Being a key part of the pre-processing aspect of this investigation, it is necessary to consider the impact that the choice of POS tagger may have on the system. If the implemented POS tagger was not as performant as seen in literature, then it could be used to explain drawbacks within the system.
-
-Unlike Topic Modelling, evaluating the performance of a POS tagger is a more straightforward task. The implemented tagger was evaluated on the Brown corpus, using an 80:20 division of the corpus into training and test samples. Accross both subsets, the corpus contained a total of $57,340$ sentences and $1,161,192$ words, forming a sizable dataset from which a model can be trained.
-
-
-\subsection{Results}
-
-An overall accuracy of 0.73 was achieved for the method, which is a significantly higher score than randomly applying tags would score, however it is still noticibly lower than scores seen in literature. As the purpose of POS tagging in this thesis is for the filtering of specific types of tags, it is necessary to consider the effectiveness of the tagger on different POS tags.
-
-The tagger classified almost all Verbs in the test set, however when it missclassified parts of speech, they were often missclassified as verbs, which natrually increases the number of successful tags. Notably, the tagger never tagged something that wasn't punctuation, as punctuation, however it failed to correctly label all punctuation in the test set, missing approximately 30\%. Table~\ref{tab:pos_results} shows a breakdown of the performance of the POS tagger for each posible POS class, it shows the number of times a tag was correctly, and incorrectly applied to a word, as well as the actual number of words with that class in the test set. Finally, Table~\ref{tab:pos_results} also shows the percentage of correctly classified words for each pos tag, as well as the percentage of words that were incorrectly labled as that tag.
-
-It is concerning to see that 85\% of the terms tagged as 'NUM' were actually something else as it is one of the classes that would be filtered from the GETM. For almost all casses of misclassification, terms were incorrectly labelled as being a Verb.
-
-One possible explanation of the missclassification is a result of the basic nature of the tagger, when the system has not encountered a word before, it is unsure of what to tag it as. It turns out that in the implementation, the tagger's default classification is a Verb. An interesting feature of the brown corpus is that roughly half of the vocabulary are hapax legomena, leading to a high liklihood that the test set would contain terms unseen to the model. 
-
-\renewcommand{\baselinestretch}{1.0}\normalsize
-\renewcommand{\arraystretch}{1.2}
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{c | c | c | c || c | c }
-  POS &	Correct &	Wrong &	Actual&	 Correct Class&Misclassified\\
-  Tag & (n)&(n)&(n)&(\%)&(\%)  
-  \\\hline
-    NUM    &364   &	2087&	487&	0.75&	0.85
-    \\ADV  &3747  &	442&	5357&	0.70&	0.11
-    \\PRON &6097  &	185&	7353&	0.83&	0.03
-    \\ADP  &6337  &	420&	9630&	0.66&	0.06
-    \\DET  &7191  &	53&	10113&	0.71&	0.01
-    \\X    &5     &	6&	124&	0.04&	0.55
-    \\NOUN &10606 &	365&	17692&	0.60&	0.03
-    \\ADJ  &3378  &	301&	5492&	0.62&	0.08
-    \\PRT  &2438  &	282&	3446&	0.71&	0.102
-    \\.    &10870 &	0&	15505&	0.70&	0.00
-    \\CONJ &2258  &	16&	3326&	0.68&	0.01
-    \\VERB &16585 &	21409&	16917&	0.98&	0.56
-  \\\hline\hline
-    Total &69876 &	25566   &95442&	0.73&	0.27
-  \\$\over{x}$	 &      5823.00	&2130.50	&7953.50	&0.66	&0.20
-  \\$\sigma$	 &      4903.48	&6097.28	&6117.22	&0.22	&0.29
-\end{tabular}
-\caption{ Table of POS Tagging Results\label{tab:pos_results}}
-\end{table}
-\renewcommand{\baselinestretch}{2.0}\normalsize
-\renewcommand{\arraystretch}{1.0}
-
 \clearpage
 \section{Gaussian Entity-Term Matrix}
 Whilst the Gaussian Entity-Term Matrix (GETM) was defined only as a means overcome particular prior assumptions in literature it is necessary to evaluate the quality of associations formed within the matrix. Should the quality of underlying associations be poor, then the Entity-Topic models and Latent Entity Models will never be able to accurately capture entity structures within narratives. Whilst the reason for evaluating the GETM is similar to the rational behind evaluating the POS tagger used, the method for doing so is very different.
@@ -1458,17 +1462,53 @@ A consistency Metric was defined in chapter 3 for comparing two GETM calculated 
 \clearpage
 \subsection{Harry Potter Corpus GETM}
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.35]{phil_stone_getm}
+  \caption{Gaussian Entity Term Matrix for the full document of Harry Potter and the Philosopher's Stone\label{fig:hp_full_ps_getm}} 
+\end{figure}
+
+
+
+Displaying the GETM for a novel in a heat map form as shown in figure~\ref{fig:hp_full_ps_getm} really highlights the sparsity of associations between entities and terms. Only a select few entities really have some form of association with most terms throughout the corpus, with the majority of entities only having some degree of association with snippets of terms. When viewed in the context of a novel, this is a seemingly obvious observation, characters are frequently only present for specific scenes and portions of a book. The Harry Potter novels distinctly follow this structure, with entities like 'Katie Bell' being present in numerous books of the series, but mainly occurs in scenes oriented around the fictional sport of 'Quidditch'.
+
+The significant Entities visible from the GETM are those forming light coloured bands across the darker purple, the most distinct bands are highlighted for clarity by the yellow boxes. The highlighted bands incidentally relate to the entities 'Harry', 'Ron','Hermione' and 'Hagrid', each being characters of great significance to the story.
+
+With respect to the rationale behind development of the method, the GETM does successfully apply a limit to the degree of a association between entities and terms. Further exploration is required to evaluate the effects of the GETM on the calculation of entity topic models and latent entities.
+
+\clearpage
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.8]{phil_stone_significant_getm}
+  \caption{Significant Entities seen in the GETM for Harry Potter and the Philosopher's Stone.\label{fig:hp_full_ps_sig_getm}} 
+\end{figure}
+
+The most significant entities in the philosophers stone according to the GETM are showed together in figure~\ref{fig:hp_full_ps_sig_getm}. The Term Matrix also encodes the significance that a term has to one entity in relation to its significance to other entities. Whilst there are light bands that show association between entities and terms, there are only a limited number of terms that are significant to that entity whilst being insignificant to most others.
+
+Scaling from purple to yellow, as a term reaches the yellow end of the spectrum, the stronger the association there is between the entity and the term, in order for terms to reach the yellow end of the spectrum they must be associated strongly with an entity, whilst not being associated with other entities.
+
+The top band in figure~\ref{fig:hp_full_ps_sig_getm} shows the entity-term associations or the entity of 'Harry', some of the most significant terms include 'bloodcurdling', 'interesting-looking', and 'unbroken'.  The consequences of these term associations would be seen when deriving Entity Topic Models, when calculating the topic models any word distributions for topics that place emphasis on these terms will form larger proportions of the Entity Topic Model for that entity, this will then have a knock on effect when calculating Latent Entities. 
+
 \clearpage
 \subsection{Harry Potter Summary Corpus GETM}
 
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.35]{hp_getm_summ_vis}
-\caption{\label{fig:hp_summ_getm}}
+\caption{Gaussian Entity-Term Matrix for the Summary document of Harry Potter and the Philosopher's Stone.\label{fig:hp_summ_getm}}
 \end{figure}
+\begin{figure}[h!]
+  \centering
+\includegraphics[scale=1.0]{harry_quirrel_compare}
+\caption{Magnification of GETM for 'Harry' and 'Quirrel' in the Summary of Harry Potter and the Philosopher's Stone \label{fig:harry_quirrel_compare}}
+\end{figure}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+The corpus of Harry Potter summaries results in GETMs that are visually less sparse, each entity within it has a set of terms which they are associated with, with extensive overlap between many of the entities. Across each GETMS for the summary corpus, the major entities are 'Hermione', 'Ron', and 'Harry', which are highlighted by the first 3 yellow box from the left to the right of figure~\ref{fig:hp_summ_getm}, these entities have strong associations with all with almost all terms in the document as well as with terms accross the corpus, for this GETM describing the summary document for Harry Potter and the Philosophers Stone, Hagrid is also a significant Entity.
 
-Accross all of the Harry Potter GETMS, the major entities are Hermione, Ron, and Harry, which are highlighted by the first 3 yellow box from the left to the right of figure~\ref{fig:hp_summ_getm}, these entities have strong associations with all with almost all terms in the document as well as with terms accross the corpus, for this GETM describing the summary document for Harry Potter and the Philosophers Stone, Hagrid is also a significant Entity. Additional interesting quicks of the model are that the entities  Quirrel and Harry strongly associate to common terms that other entities do not, perhaps suggesting a someform of underlying relationship between those entities.
-
+A notable quirk of the model is that the entities 'Quirrel' and 'Harry' strongly associate to common terms that other entities do not, perhaps suggesting an  underlying relationship between those entities. Additionally, despite the relatively short length of the document there still remains terms that remain significant to some entities whilst remaining disassociated with others, this suggests that even accross shorter documents, assumptions made in literature regarding the relationships that entities have to terms are fundamentally flawed.
 
 \clearpage
 \subsection{GETM Comparison}
@@ -1482,13 +1522,13 @@ Considering the novel Alice's Adventures in Wonderland, Figure~\ref{fig:entity_t
 
 \clearpage
 \section{Entity Topic-Models}
-The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefor necessary to evaluate how the adapted approach affects the production of ETMS.
+The use of a GETM was proposed as a means removing an assumption made in literature regarding the relationships which entities have with the topics within a document. It is therefore necessary to evaluate how the adapted approach affects the production of ETMs.
 
-When examining the pairwise scatter matrix for the topics of each entity in the model, you can begin to see some of the differences that the GETM has on the produced ETMs. Figure ~\ref{fig:hp_etm} shows the distributions for the Harry Poter corpus when using a Gaussian Entity Term Matrix configured to use a Gaussian weighting function. There is clearly a spread in structure of Entity Topic Models, though it is acknowledged that interpreting the figure in this form is difficulat, visually identifying any potential any groups of ETMS is not necessarily clear.. The pairwise plots for topics 1, 2, 3, 6, 7, and 8 are shown at a larger scale in figure~\ref{fig:etm_closeup}, from which you can begin to get a sense for some variability in entities and their topical make up. For many of the topic pairs, there is a high density areas, where entities are topically realted to each other, however there is a distict shape to these clouds that could be intereted as distinct groupings. Plots of Entity topics 5 against 1, and 5 against 3, there is an almost triagular shape to the distribution, which may indicate some latent structure amongst the Entity topic models.
+Replicating the assumption than an entity is related to all topics in a document can be attained by substituting the GETM weighting function with a function returning a constant value. This constant value places equal equal importance to terms in a document, as well as equal associations between entities and terms.
 
-Figure ~\ref{fig:hp_summary_etm} visually shows the Entity Topic Models extracted from document summaries, it is clear that they are different to those of the full narratives. Principally, there is a large reduction in the numbers of entities within each document of the corpus, which allows clusters within the collection of Entity Topic Models to be visually identified a little easier. When considering the plotting of Topics 6, and 2, there are three potential clusters , with the most significant being entites strongly represented by only one of the two topics.
+The resulting structure of Entity Topic Models would then be representative of topic distributions for the whole document, which is an acceptable structure when considering inter-document structures alone, however it does not consider the influence of latent intra-document structures on the relations across the corpora.
 
-It is important to note, that Topics of one set of Entity Topic Models do not directly match up to the Topics of the other set of Topic Models. With the corpora containing different distributions of terms, the term distributions within the topics will also vary greatly. For example, Topic 5 of Figure~\ref{fig:hp_etm} forms similar patterns to Topic 0 of Figure~\ref{fig:hp_summary_etm}. Without numerically evaluating the similarities of each entity topic model, visually comparing is by no means a valid evaluation of consistency between the sets of Entity topic models.
+Notably, the GETM has not resulted in entities entirely dissimilar to book-level topic distributions, but it does allow for variability between entities. The results of the entity topic modelling method implemented are explored in the corpus of full harry potter narratives as well as the summary documents.
 
 \clearpage
 \subsection{Harry Potter Corpus ETMs}

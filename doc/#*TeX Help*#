@@ -1,15 +1,13 @@
-ERROR: Missing $ inserted.
+ERROR: LaTeX Error: Not in outer par mode.
 
 --- TeX said ---
-<inserted text> 
-                $
-l.1632 ...atent Entity is shown in ~\table{tab:hp_
-                                                  le_fulls}
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1379 \end{table}}
+                   
 --- HELP ---
-TeX probably found a command that can be used only in math mode when
-it wasn't in math mode.  Remember that unless stated otherwise, all
-all the commands of Section 3.3 in LaTeX Book (Lamport) can be used
-only in math mode. TeX is not in math mode when it begins processing
-the argument of a box-making command, even if that command is inside a
-math environment. This error also occurs if TeX encounters a blank
-line when it is in math mode.
+You had a figure or table environment or a \marginpar command in math
+mode or inside a parbox.
