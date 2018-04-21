@@ -1,13 +1,16 @@
-ERROR: LaTeX Error: Not in outer par mode.
+ERROR: Package graphics Error: Division by 0.
 
 --- TeX said ---
 
-See the LaTeX manual or LaTeX Companion for explanation.
+See the graphics package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1379 \end{table}}
-                   
+l.1476   \end{tabular}}
+                       
 --- HELP ---
-You had a figure or table environment or a \marginpar command in math
-mode or inside a parbox.
+From the .log file...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.

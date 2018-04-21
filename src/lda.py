@@ -16,10 +16,10 @@ n_samples = 2000
 n_features = 1000
 n_topics = 10
 n_top_words = 1000
-book_dir = '../test_data/harry_potter/'
+book_dir = '../test_data/harry_potter_summaries/'
 
 def store_top_words(model, feature_names, n_top_words):
-    conn = db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
+    conn = db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
     for topic_idx, topic in enumerate(model.components_):
       count = 0
       for i in topic.argsort()[:-n_top_words - 1:-1]:
@@ -64,7 +64,7 @@ def calculate_document_distributions(lda_model, feature_names, n_top_words, data
 
 def store_book_proportions(distributions):
   """ """
-  conn = db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
+  conn = db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
 
   for book in distributions.keys():
     print(book)
@@ -86,7 +86,7 @@ def store_book_proportions(distributions):
 
 def retrieve_entity_set():
   """returns a distinct set of entities from the database."""
-  conn = db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
+  conn = db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
   entities = []
   titles = db.select_book_titles(conn)
   for t in titles:

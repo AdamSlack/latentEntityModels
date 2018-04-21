@@ -14,7 +14,7 @@ def read_data_samples(fp, glob_str):
     return list(map(lambda x: read_file(x), fps)), fps
 
 def main():
-    docs = read_data_samples('../test_data/harry_potter/', '*.txt')
+    docs = read_data_samples('../test_data/harry_potter_summaries/', '*.txt')
     text = ''
 
     lengths = [len(word_tokenize(book)) for book in docs[0]]

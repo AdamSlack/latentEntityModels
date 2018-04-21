@@ -129,141 +129,147 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.9.2}Social}{48}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.9.3}Ethical}{49}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.9.4}Legal}{49}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation}{50}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation}{51}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{50}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Architecture Overview}{50}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{51}}
-\newlabel{fig:architeture_overview}{{9}{51}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}API}{51}}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces  Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{52}}
-\newlabel{tab:api_endpoints}{{8}{52}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Database}{52}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2.1}DB Structure}{53}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{53}}
-\newlabel{fig:db_erd}{{10}{53}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Server}{54}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3.1}Repository}{54}}
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{55}}
-\newlabel{tab:repository_methods}{{9}{55}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3.2}System Logic Layers}{55}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Corpus Pre-Processing}{55}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{51}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Architecture Overview}{51}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{52}}
+\newlabel{fig:architeture_overview}{{9}{52}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}API}{52}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces  Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{53}}
+\newlabel{tab:api_endpoints}{{8}{53}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Database}{53}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2.1}DB Structure}{54}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{54}}
+\newlabel{fig:db_erd}{{10}{54}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Server}{55}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3.1}Repository}{55}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{56}}
+\newlabel{tab:repository_methods}{{9}{56}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3.2}System Logic Layers}{56}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Corpus Pre-Processing}{56}}
 \citation{Kiss2006-cm}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Process taken to pre-process a single document in the corpus.\relax }}{57}}
-\newlabel{fig:document_preprocess}{{11}{57}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}NLP Toolkit}{57}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}General NLP}{57}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Process taken to pre-process a single document in the corpus.\relax }}{58}}
+\newlabel{fig:document_preprocess}{{11}{58}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}NLP Toolkit}{58}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}General NLP}{58}}
 \citation{Jurafsky2014-yb}
-\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{58}}
-\newlabel{tab:nlp_utilities}{{10}{58}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}POS Tagging}{58}}
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{59}}
-\newlabel{tab:pos_tagging_methods}{{11}{59}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Gaussian Entity-Term Matrix}{60}}
-\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{60}}
-\newlabel{fig:getm_data}{{12}{60}}
-\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{60}}
-\newlabel{tab:getm_methods}{{13}{60}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3.1}GETM Objects}{61}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3.2}GETM Visualisation}{61}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Full Zoomed-out View of the GETM Heat Map for the Alice's Adventures In Wonderland Novel.\relax }}{62}}
-\newlabel{fig:getm_visualisation}{{12}{62}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Restricted View of the GETM Visualisation for the Alice's Adventures in Wonderland Novel.\relax }}{62}}
-\newlabel{fig:getm_vis_reduced}{{13}{62}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Entity-Topic Model}{62}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Latent Entity Clustering}{63}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Pairwise Matrix of Scatter Plots for Topic of a Collection of Entity Topic Models.\relax }}{64}}
-\newlabel{fig:etm_plot}{{14}{64}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Latent Entity Explorer}{64}}
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Structure of the Web Application. \relax }}{65}}
-\newlabel{fig:web_app_structure}{{15}{65}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}UI and Navigation Design }{65}}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces UI mockup layout. \relax }}{66}}
-\newlabel{fig:ui_layout_sketchup}{{16}{66}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Book Explorer}{66}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{67}}
-\newlabel{fig:book_selection}{{17}{67}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Topic Explorer}{68}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \relax }}{68}}
-\newlabel{fig:book_topic_compare}{{18}{68}}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Book-Topic distributions for a Selected Book. \relax }}{69}}
-\newlabel{fig:book_topic_inspect}{{19}{69}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.4}Entity Explorer}{69}}
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Entity Listings for the Selected book (Alice's Adventures In Wonderland)\relax }}{70}}
-\newlabel{fig:entity_listing}{{20}{70}}
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{71}}
-\newlabel{fig:entity_topic_pct}{{21}{71}}
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Top Terms Associated with Entity resulting from GETM. \relax }}{72}}
-\newlabel{fig:entity_top_terms}{{22}{72}}
-\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Entity Comparison Panel for inspecting Entity Topic Distributions\relax }}{72}}
-\newlabel{fig:entity_compare}{{23}{72}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Results and Evaluation}{73}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{59}}
+\newlabel{tab:nlp_utilities}{{10}{59}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}POS Tagging}{59}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Key methods Forming the HMM POS tagger.\relax }}{60}}
+\newlabel{tab:pos_tagging_methods}{{11}{60}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Gaussian Entity-Term Matrix}{61}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{61}}
+\newlabel{fig:getm_data}{{12}{61}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{61}}
+\newlabel{tab:getm_methods}{{13}{61}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3.1}GETM Objects}{62}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3.2}GETM Visualisation}{62}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Full Zoomed-out View of the GETM Heat Map for the Alice's Adventures In Wonderland Novel.\relax }}{63}}
+\newlabel{fig:getm_visualisation}{{12}{63}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Restricted View of the GETM Visualisation for the Alice's Adventures in Wonderland Novel.\relax }}{63}}
+\newlabel{fig:getm_vis_reduced}{{13}{63}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Entity-Topic Model}{63}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Latent Entity Clustering}{64}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Pairwise Matrix of Scatter Plots for Topic of a Collection of Entity Topic Models.\relax }}{65}}
+\newlabel{fig:etm_plot}{{14}{65}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Latent Entity Explorer}{65}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Structure of the Web Application. \relax }}{66}}
+\newlabel{fig:web_app_structure}{{15}{66}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}UI and Navigation Design }{66}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces UI mockup layout. \relax }}{67}}
+\newlabel{fig:ui_layout_sketchup}{{16}{67}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Book Explorer}{67}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{68}}
+\newlabel{fig:book_selection}{{17}{68}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Topic Explorer}{69}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \relax }}{69}}
+\newlabel{fig:book_topic_compare}{{18}{69}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Book-Topic distributions for a Selected Book. \relax }}{70}}
+\newlabel{fig:book_topic_inspect}{{19}{70}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.4}Entity Explorer}{70}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Entity Listings for the Selected book (Alice's Adventures In Wonderland)\relax }}{71}}
+\newlabel{fig:entity_listing}{{20}{71}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{72}}
+\newlabel{fig:entity_topic_pct}{{21}{72}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Top Terms Associated with Entity resulting from GETM. \relax }}{73}}
+\newlabel{fig:entity_top_terms}{{22}{73}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Entity Comparison Panel for inspecting Entity Topic Distributions\relax }}{73}}
+\newlabel{fig:entity_compare}{{23}{73}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Results and Evaluation}{74}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{73}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}POS Tagger}{74}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Results}{74}}
-\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces  Table of POS Tagging Results\relax }}{75}}
-\newlabel{tab:pos_results}{{14}{75}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Evaluation Corpora}{75}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Harry Potter Corpus Statistics}{76}}
-\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Topic Distributions for the Harry Potter Novels by J. K. Rowling \relax }}{77}}
-\newlabel{tab:hp_topics}{{15}{77}}
-\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \relax }}{77}}
-\newlabel{fig:hp_topics}{{24}{77}}
-\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Corpus\relax }}{78}}
-\newlabel{tab:hp_topics_terms}{{16}{78}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1.1}Large Corpus Topic Distributions}{79}}
-\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \relax }}{79}}
-\newlabel{fig:book_topics_large}{{25}{79}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Harry Potter Summary Corpus Statistics}{81}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Gaussian Entity-Term Matrix}{82}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Harry Potter Corpus GETM}{83}}
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Gaussian Entity Term Matrix for the full document of Harry Potter and the Philosopher's Stone\relax }}{83}}
-\newlabel{fig:hp_full_ps_getm}{{26}{83}}
-\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Significant Entities seen in the GETM for Harry Potter and the Philosopher's Stone.\relax }}{84}}
-\newlabel{fig:hp_full_ps_sig_getm}{{27}{84}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Harry Potter Summary Corpus GETM}{85}}
-\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Gaussian Entity-Term Matrix for the Summary document of Harry Potter and the Philosopher's Stone.\relax }}{85}}
-\newlabel{fig:hp_summ_getm}{{28}{85}}
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Magnification of GETM for 'Harry' and 'Quirrel' in the Summary of Harry Potter and the Philosopher's Stone \relax }}{85}}
-\newlabel{fig:harry_quirrel_compare}{{29}{85}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}GETM Comparison}{86}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}GETM Interpretation}{86}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Entity Topic-Models}{87}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Harry Potter Corpus ETMs}{88}}
-\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \relax }}{88}}
-\newlabel{fig:hp_full_etm_stacked}{{30}{88}}
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\relax }}{89}}
-\newlabel{fig:hp_etm}{{31}{89}}
-\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \relax }}{90}}
-\newlabel{fig:etm_closeup}{{32}{90}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Harry Potter Summary Corpus ETMs}{91}}
-\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\relax }}{91}}
-\newlabel{fig:hp_summary_etm}{{33}{91}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}ETM Comparison}{92}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Latent Entities}{93}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.1}Harry Potter Corpus Latent Entities}{94}}
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces  Pairwise Scatter Matrix of Entity Topic Model Topic Distributions Coloured According to Latent Entity they are Most Closely Associated With.\relax }}{95}}
-\newlabel{fig:hp_le_clusters}{{34}{95}}
-\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Magnification of Pairwise Scatter Matrix of Entity Topic Model Topic Distributions for Topics 1,2 and 3, against topics 6, 7 and 8.\relax }}{96}}
-\newlabel{fig:hp_le_cluster_zoom}{{35}{96}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.1.1}Latent Entity Composition.}{97}}
-\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Entity Topic Models most strongly represented by each Entity Topic Model.\relax }}{97}}
-\newlabel{tab:hp_le_summs}{{17}{97}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.2}Harry Potter Summary Corpus Latent Entities}{98}}
-\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Entity Topic Models most strongly represented by each Entity Topic Model.\relax }}{98}}
-\newlabel{tab:hp_le_fulls}{{18}{98}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.3}Consistency}{99}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.4}Cohesion and Interpretation}{100}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.7}Explorer Evaluation}{101}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{74}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}POS Tagger}{75}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Results}{75}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces  Table of POS Tagging Results\relax }}{76}}
+\newlabel{tab:pos_results}{{14}{76}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Evaluation Corpora}{76}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Harry Potter Corpus Statistics}{77}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Topic Distributions for the Harry Potter Novels by J. K. Rowling \relax }}{78}}
+\newlabel{tab:hp_topics}{{15}{78}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \relax }}{78}}
+\newlabel{fig:hp_topics}{{24}{78}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Corpus\relax }}{79}}
+\newlabel{tab:hp_topics_terms}{{16}{79}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1.1}Large Corpus Topic Distributions}{80}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \relax }}{80}}
+\newlabel{fig:book_topics_large}{{25}{80}}
+\citation{noauthor_undated-kh}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Harry Potter Summary Corpus Statistics}{82}}
+\newlabel{fig:hp_summary_topic_dist}{{5.3.2}{82}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Topic Distributions for Summaries of Each Harry Potter Novel.\relax }}{82}}
+\newlabel{fig:hp_summary_topic_dist}{{26}{82}}
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Summary Corpus\relax }}{83}}
+\newlabel{tab:hp_summ_topics_terms}{{17}{83}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Gaussian Entity-Term Matrix}{84}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Harry Potter Corpus GETM}{85}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Portion of the Gaussian Entity Term Matrix for the full document of Harry Potter and the Philosopher's Stone\relax }}{85}}
+\newlabel{fig:hp_full_ps_getm}{{27}{85}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Significant Entities seen in the GETM for Harry Potter and the Philosopher's Stone.\relax }}{86}}
+\newlabel{fig:hp_full_ps_sig_getm}{{28}{86}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Comparison To Summary Corpus GETM.}{87}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Gaussian Entity-Term Matrix for the Summary document of Harry Potter and the Philosopher's Stone.\relax }}{87}}
+\newlabel{fig:hp_summ_getm}{{29}{87}}
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Magnification of GETM for 'Harry' and 'Quirrel' in the Summary of Harry Potter and the Philosopher's Stone \relax }}{87}}
+\newlabel{fig:harry_quirrel_compare}{{30}{87}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}GETM Comparison}{88}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}GETM Interpretation}{88}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Entity Topic-Models}{89}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Harry Potter Corpus ETMs}{90}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \relax }}{90}}
+\newlabel{fig:hp_full_etm_stacked}{{31}{90}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\relax }}{91}}
+\newlabel{fig:hp_etm}{{32}{91}}
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \relax }}{92}}
+\newlabel{fig:etm_closeup}{{33}{92}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Comparison To Summary Corpus ETMs}{93}}
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\relax }}{93}}
+\newlabel{fig:hp_summary_etm}{{34}{93}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}ETM Comparison}{94}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Latent Entities}{95}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.1}Harry Potter Corpus Latent Entities}{96}}
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces  Pairwise Scatter Matrix of Entity Topic Model Topic Distributions Coloured According to Latent Entity they are Most Closely Associated With.\relax }}{97}}
+\newlabel{fig:hp_le_clusters}{{35}{97}}
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Magnification of Pairwise Scatter Matrix of Entity Topic Model Topic Distributions for Topics 1,2 and 3, against topics 6, 7 and 8.\relax }}{98}}
+\newlabel{fig:hp_le_cluster_zoom}{{36}{98}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.1.1}Latent Entity Composition.}{99}}
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Entity Topic Models most strongly represented by each Entity Topic Model.\relax }}{99}}
+\newlabel{tab:hp_le_summs}{{18}{99}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.2}Comparison to Summary Corpus Latent Entities.}{100}}
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces Entity Topic Models most strongly represented by each Entity Topic Model.\relax }}{100}}
+\newlabel{tab:hp_le_fulls}{{19}{100}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.3}Consistency}{101}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6.4}Cohesion and Interpretation}{102}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}Explorer Evaluation}{103}}
 \bibstyle{unsrt}
 \bibdata{./biblio}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion}{102}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion}{105}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Introduction}{102}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Introduction}{105}}
 \bibcite{Bkkbrad2018-yt}{1}
 \bibcite{WebServer-lc}{2}
 \bibcite{Brill1995-sr}{3}
@@ -318,3 +324,4 @@
 \bibcite{Dzhurov2009-sr}{52}
 \bibcite{Kiss2006-cm}{53}
 \bibcite{Jurafsky2014-yb}{54}
+\bibcite{noauthor_undated-kh}{55}

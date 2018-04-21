@@ -864,12 +864,21 @@ An alternative view of the reduction of required entry levels to positions is th
 \subsection{Social}
 The social implications of the project relate to those raised in the professional secetion. By providing means by which an individual can effectively analyse and understand a literary landscape, it allows a wider population to engage in writing with an understanding of what others enjoy and find interesting. Opening the doors to new writers of literature could bring numerous benefits to society.
 
-The potential flaw with increasing the rate at which literature is produced is that it becomes more challenging for individuals to find literature that they want and enjoy. It potentially 
+The potential flaw with increasing the rate at which literature is produced is that it becomes more challenging for individuals to find literature that they want and enjoy. It allows the inexperienced and novice writers to structure their documents in such a way that they are automatically flagged as being relevant to others.
+
+By stroke of the same brush, improving tools for analysis can also assist in distinguishing between subjective qualities of narratives, such that works that aren't very good could perhaps be more easily filtered.
 
 \subsection{Ethical}
+Ethically, the principal issue of this project relates to making available tools that could potentially be used to group, relate, and classify entities based on personal data. As the title suggests, Latent entities could be regarded as a form of stereotype, or an underlying classification that can be applied to groups of entities. If applied to personal data, then large groups of individuals could be automatically analysed and processed, with labels being applied to them without the ever realising.
 
+With respect to the analysis of literature, this project could be used to filter and effectively sensor literary works, preventing people from ever coming across certain documents should they not match preferences expressed through a corpus that has been analysed.
 
 \subsection{Legal}
+The primary legal concerns of this project relate to copyright and related UK legislation and laws. There is discussions to be had as to what use of an individuals work constitutes as fair usage, even within an academic context it is easy to stray across the line and violate copyright.
+
+For machine analysis, UK Law states that it is considered fair use as long as the project is for an academic, non-profit, and non-commercial reasons. However additional requirements are placed on this in the form of requiring legal access to resources protected under copyright. Fortunately, large collections of texts that are now in the public domain are available through project Gutenberg, an online resource invaluable to academics requiring a large and legal corpus of text.
+
+An additional legal question arises when considering the results of analysis of literature. If results of analysis form summaries, or can be used to describe a document, then there is potentially a case to be made about illegal distribution of work protected under copyright.
 
 
 %
@@ -1449,6 +1458,24 @@ Agatha Christie novels are strongly represented by topic 6, the top terms of whi
 The primary take away from this figure, is that the topic modelling applied to the whole corpus has been able to produce groupings of related documents without any information other than the terms within them. Whilst this is not a new finding when considering other literature, it serves as indication that the use of novels as a basis for corpora does allow topic modelling methods and to perform effectively, As the book level topic distributions across the corpus are somewhat similar, there is potential for entity topic models to vary for reasons aside from the novel they are in..
 
 \subsection{Harry Potter Summary Corpus Statistics}
+Formed as a corpus to evaluate the consistency of proposed methods, this corpus is formed as summary documents of each of the Harry Potter Novels by J. K. Rowling. The summaries are scraped from free online literature summary site 'SparkNotes' which compiles summaries of documents written by university graduates specialising in the subject being summarised.~\cite{noauthor_undated-kh}
+
+The corpus consists of 7 documents, with a total of 11,621 words $(\bar{x}=1660)$ and a total of 317 entities $(\bar{x}=45$. The book level topic distributions are shown in \label{fig:hp_summary_topic_dist}, whilst this corpus is not expect to provide as many interesting insights into any hidden relations between entities of a narrative, it can serve as a means of evaluating elements seen as significant in the corpus of full Harry Potter Novels.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{hp_summary_book_dist}
+  \caption{Topic Distributions for Summaries of Each Harry Potter Novel.\label{fig:hp_summary_topic_dist}}
+\end{figure}
+
+\begin{table}[h!]
+  \centering
+  \resizebox{1.0\textwidth}{!}{
+  \begin{tabular}{c | c | c | c | c | c | c | c | c | c}
+  
+ \end{tabular}}
+  \caption{Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Summary Corpus\label{tab:hp_summ_topics_terms}}
+\end{table}
 
 
 \clearpage
@@ -1464,24 +1491,15 @@ A consistency Metric was defined in chapter 3 for comparing two GETM calculated 
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.35]{phil_stone_getm}
-  \caption{Gaussian Entity Term Matrix for the full document of Harry Potter and the Philosopher's Stone\label{fig:hp_full_ps_getm}} 
+  \includegraphics[scale=0.7]{phil_stone_getm_snippet}
+  \caption{Portion of the Gaussian Entity Term Matrix for the full document of Harry Potter and the Philosopher's Stone\label{fig:hp_full_ps_getm}} 
 \end{figure}
-
-
 
 Displaying the GETM for a novel in a heat map form as shown in figure~\ref{fig:hp_full_ps_getm} really highlights the sparsity of associations between entities and terms. Only a select few entities really have some form of association with most terms throughout the corpus, with the majority of entities only having some degree of association with snippets of terms. When viewed in the context of a novel, this is a seemingly obvious observation, characters are frequently only present for specific scenes and portions of a book. The Harry Potter novels distinctly follow this structure, with entities like 'Katie Bell' being present in numerous books of the series, but mainly occurs in scenes oriented around the fictional sport of 'Quidditch'.
 
-The significant Entities visible from the GETM are those forming light coloured bands across the darker purple, the most distinct bands are highlighted for clarity by the yellow boxes. The highlighted bands incidentally relate to the entities 'Harry', 'Ron','Hermione' and 'Hagrid', each being characters of great significance to the story.
+The significant Entities visible from the GETM are those forming light coloured bands across the darker purple, the most distinct bands are highlighted for clarity by the yellow boxes. The highlighted bands for this portion of the GETM in figure~\ref{fig:hp_full_ps_getm} are 'Harry', and 'Ron'. In the full GETM, entities 'Hermione' and 'Hagrid' are also significant bands. Notably, each highlighted entity characters of great significance to the story.
 
 With respect to the rationale behind development of the method, the GETM does successfully apply a limit to the degree of a association between entities and terms. Further exploration is required to evaluate the effects of the GETM on the calculation of entity topic models and latent entities.
-
-\clearpage
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.8]{phil_stone_significant_getm}
-  \caption{Significant Entities seen in the GETM for Harry Potter and the Philosopher's Stone.\label{fig:hp_full_ps_sig_getm}} 
-\end{figure}
 
 The most significant entities in the philosophers stone according to the GETM are showed together in figure~\ref{fig:hp_full_ps_sig_getm}. The Term Matrix also encodes the significance that a term has to one entity in relation to its significance to other entities. Whilst there are light bands that show association between entities and terms, there are only a limited number of terms that are significant to that entity whilst being insignificant to most others.
 
@@ -1489,19 +1507,22 @@ Scaling from purple to yellow, as a term reaches the yellow end of the spectrum,
 
 The top band in figure~\ref{fig:hp_full_ps_sig_getm} shows the entity-term associations or the entity of 'Harry', some of the most significant terms include 'bloodcurdling', 'interesting-looking', and 'unbroken'.  The consequences of these term associations would be seen when deriving Entity Topic Models, when calculating the topic models any word distributions for topics that place emphasis on these terms will form larger proportions of the Entity Topic Model for that entity, this will then have a knock on effect when calculating Latent Entities. 
 
-\clearpage
-\subsection{Harry Potter Summary Corpus GETM}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.9]{phil_stone_significant_getm}
+  \caption{Significant Entities seen in the GETM for Harry Potter and the Philosopher's Stone.\label{fig:hp_full_ps_sig_getm}} 
+\end{figure}
 
+\clearpage
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
+\subsection{Comparison To Summary Corpus GETM.}
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.35]{hp_getm_summ_vis}
+  \includegraphics[scale=0.4]{hp_getm_summ_vis}
 \caption{Gaussian Entity-Term Matrix for the Summary document of Harry Potter and the Philosopher's Stone.\label{fig:hp_summ_getm}}
-\end{figure}
-\begin{figure}[h!]
   \centering
-\includegraphics[scale=1.0]{harry_quirrel_compare}
+  \includegraphics[scale=1.2]{harry_quirrel_compare}
 \caption{Magnification of GETM for 'Harry' and 'Quirrel' in the Summary of Harry Potter and the Philosopher's Stone \label{fig:harry_quirrel_compare}}
 \end{figure}
 \renewcommand{\baselinestretch}{2.0}\normalsize
@@ -1546,29 +1567,35 @@ As well as being significant proportions of all entity topic models, topics 1, 3
 \end{multicols}
 \clearpage
 
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 \begin{figure}[h!]
   \centering
-  \includegraphics[angle=-90, scale=0.8]{hp_full_etms}
+  \includegraphics[angle=0, scale=0.45]{hp_full_etms}
   \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\label{fig:hp_etm}}
 \end{figure}
-\clearpage
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+A pairwise matrix scatter plot of entity topic model topic proportions can show some insight into the variance and distributions of topics across corpus of entities. Figure~\ref{fig:hp_etm} confirms the significance of topics 1, 3, and 7 with regards to differentiating between entity topic models. The figure also highlights small but distinct groupings of entity topic models in Topics 0, 2, and 4, where the small groups consist of entity topic models feature significantly higher proportions of that topic when compared to the corpus at large.
 
-A pairwise matrix scatter plot of entity topic model topic proportions can show some insight into the variance and distributions of topics across corpus of entities. Figure~\ref{fig:hp_etm} confirms the significance of topics 1, 3, and 7 with regards to differentiating between entity topic models. Topics 0, 2, and 4, in this figure show a small but distinct separate grouping if entities that score highly in the topics where few others do. 
+For many of the topics, there are no obvious groupings of entity topic models, only what seems to be a linear distribution with a slight correlation between the topics plotted together. Topic 9 is one such topic that seems to have a proportional relationship with some topics. suggesting that for some entities, as the proportion of one topic increases, so does the proportion for topic 9. For this effect to take place it relies on the entity topic models being strongly composed of terms that are shared across multiple topic's word distributions, the shared terms however cannot be present across all word distributions for topics, otherwise the proportional topic distributions for an entity topic model would not change. The significance of this is that it suggests the entity topic modelling approach taken is capable of capturing some of the underlying semantics of words, which aligns with claims made in literature that certain modelling methods like latent semantic analysis are capable of doing such tasks.
 
-
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.10]{hp_full_etm_closeup}
+  \includegraphics[scale=0.15]{hp_full_etm_closeup}
   \caption{ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \label{fig:etm_closeup}}
 \end{figure}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
+The relationships between topics across entity topic models can be seen a little more clear when magnified. Figure~\ref{fig:etm_closeup} shows a closer look at pairwise scatter charts for topics 1, 2, and 3 against topics 6, 7, and 8. For topic 2, there is a positive correlation between topics 2 and 7 whilst there is a negative correlation between topic 2 and 7. When considering the ability of topic modelling methods abilities to capture some of the semantics of words, then the correlations would be explained if the topics were formed of opposing or oxymoronic words, or if the topics are formed of terms that grammatically would not make sense if used close proximity.
 
-
-
-
+Some subtle groupings can be identified in topics 3 against 7, in which there is a solid core of entity topic models, with 3 branches reaching roughly north, east and south west of the central core. This suggests that some of the relationships that may exist between terms, topics and entity topic models may be dependant on the entity involved.
 
 \clearpage
-\subsection{Harry Potter Summary Corpus ETMs}
+\subsection{Comparison To Summary Corpus ETMs}
 
 \begin{figure}[h!]
   \centering
@@ -1695,7 +1722,7 @@ For the full corpus of Harry Potter Novels, the five entities best represented b
 There is only one novel not contributing to the top 5 entity topic models for any of the latent entities, however entity topic models from the Chamber of Secrets are represented in the top 150 entities for each latent entity. This could have implications regarding the nature of characters within the novels, either from the descriptions of them, or the context which they are found, entities in the Chamber of Secrets might distinctly different to the rest of the series. Alternatively it could be a result of the process calculating the latent entities, there could be a need for additional clusters so that entity classifications can be better represented. It should be noted however, that entity topic models forming the top 150 entities for a latent entity form only 4.5\% of all entities
 
 \clearpage
-\subsection{Harry Potter Summary Corpus Latent Entities}
+\subsection{Comparison to Summary Corpus Latent Entities.}
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
@@ -1780,6 +1807,13 @@ Evaluating the implemented Explorer web application and associated system requir
 
 With regards to usability of the system, there are two aspects to the system, the command line interface, and the web application interface. The command line interface is simple and requires providing the directory of the corpus files which are to be analysed, there are no other settings for configuration. The limited interface somewhat reduces the flexibility of the analysis pipeline, built within the NLP toolkit is flexibility with regards to some of the hyper parameters within implemented models, including the choice of weighting function, as the number of topics, the number of terms to include within each topic, and the number of latent entities which the system should derive. As a result of excluding these parameters from command line arguments, the pipeline requires manually configuring from within the code base, reducing the accessibility and usability as a whole. 
 
+The Explorer Web Application however is a much more accessible tool when compared to the command line interface of the pipeline. It adheres to principals outlined in the Google Material Design specification providing bold and contrasting colours to provide a clear interface. The incompleteness of the interface is its largest drawback. For the interpretation of simple topic information the program is an effective window into the corpus. However the lack of simple visualisations reduce the scope of any investigation that an individual wishes conduct through the interface.
+
+There are some aspects of accessibility where the system is somewhat effective. Primarily it is in the way the system segments data about the corpus into logical sections (Book Data, Topic Data, and Entity Data). By segmenting information in this way, there is less risk of users being overloaded with numerical data. There is still room for improvement however, instead of presenting a panel of numerical comparisons of entity topic models, a dynamic figure could be implemented that allows for visual and interactive comparisons to be conducted.
+
+Considering the amount of data that can be extracted from a large corpus, the each request for lists of Books, entities, and topic information took on average $455ms$ for the application to receive after issuing the request. For a general indication as to whether these times are good or bad, Nottingham Trent University's Online Workspace (NOW), took over 10 seconds to load aspects of the page $(\bar{x}= 7.42 seconds, \sigma=0.72 seconds)$. The significantly longer loading times NOW suggest that the loading times of the Explorer application are somewhat acceptable.
+
+It should be noted that the assessment of load times is only against one website that has numerous users and transfers images as well as text information. The comparison is only to state that if 10 seconds of waiting for resources is acceptable, then 455ms is also acceptable.
 
 
 

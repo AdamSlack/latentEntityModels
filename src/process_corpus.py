@@ -25,7 +25,7 @@ def assimilate_document(fp, book, conn):
 
 def main():
     """ Main """
-    conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+    conn = db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
 
     dir_path = '../test_data/harry_potter_summaries/'
     glob_str = '*.txt'

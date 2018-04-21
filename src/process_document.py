@@ -3,7 +3,7 @@ from fyp_utilities import *
 
 def main():
     """ Main """
-    conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+    conn = db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
     book = 'alice_in_wonderland'
     #fp = '../books/Hitchhiker\'s Guide to the Galaxy - Douglas Adams.txt'
     #fp = '../books/Dirk Gently\'s Holistic Detective Agency - Douglas Adams.txt'
