@@ -1365,11 +1365,11 @@ Many of the topics are actually very similar with regards to the terms which the
 
 With regards to the coherence of the topics, there is little semantic relations between the terms of topics, however within the context of the novels, some relationships can be identified for example, the terms 'goblins', 'vault', 'locket', and 'horcruxes' are all related within the novels. Within the Harry Potter universe, the banking vaults are managed and guarded by goblins, whilst a significant item often simply referred to as the 'locket' was a horcrux. Additionally, a horcrux was also stored within a vault guarded by goblins. 
 
-
 \clearpage
+\subsubsection{Large Corpus Topic Distributions}
 
 \begin{multicols}{2}
-  \includegraphics[ width=0.9\linewidth, height=0.9\textheight]{book_topics_large}
+  \includegraphics[ width=0.9\linewidth, height=0.85\textheight]{book_topics_large}
   \captionof{figure}{Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \label{fig:book_topics_large}}
   
   \columnbreak
@@ -1378,12 +1378,13 @@ With regards to the coherence of the topics, there is little semantic relations 
 
   The set of rows indicated by the red block are books written by the author G. R. R. Martin, and include the novels behind the popular TV show 'A Game of Thrones', The the rows indicated by blue are the Harry Potter Novels that are used to evaluate other aspects of the project, the rows indicated by the green tag are narratives written by Agatha Christie.
 
-It turns out that for this large and diverse corpus, the topics that have been extracted are oriented around narratives that exist as part of a larger series, or books that are similar in subject matter. Whilst Topics 5 (pink), 6 (grey), and 8 (cyan), are essentially topics describing books written by G. R. R. Martin, Agatha Christie, and J. K. Rowling respectively, other are strongly indicative of other author's writings.
+It turns out that for this large and diverse corpus, the topics that have been extracted are oriented around narratives that exist as part of a larger series, or books that are similar in subject matter. Whilst Topics 5 (pink), 6 (grey), and 8 (cyan), are essentially topics describing books written by G. R. R. Martin, Agatha Christie, and J. K. Rowling respectively, other topics are strongly indicative of writings by other authors.
 \end{multicols}
+ 
 
 Topic 3 (red) is a relatively small portion2 of all narratives, however the books that this topic represents the most are all novels by Dan Brown. In contrast, topic 0 (orange), which represents a large proportion of many narratives, are largely factual or phyics related documents, with the books most represented by the topic being authored by Richard Feynmann.
 
-Whilst not the focus of this investigation, is not necessarily on the topic models of narratives, it is interesting to see how topic models can represent differences in an authors writing. It suggests that thare are distinct differences between some authors, whilst there remain major similarities between others.
+Whilst not the focus of this investigation, is not necessarily on the topic models of narratives, it is interesting to see how topic models can represent differences in an authors writing. It suggests that they are are distinct differences between some authors, whilst there remain major similarities between others.
 
 One concern is that in large series of narratives entities are often present throughout each document, perhaps resulting in any given topic's word distribution consisting primarily of entities from a series. When looking closer at the terms that form the topics, there are some topics that almost entirely consist of entities, whilst others are general terms relating to a specific subject.
 
@@ -1393,10 +1394,8 @@ The top terms for topic 0 are: 'Energy', 'Field', 'Example', 'Species', and 'dat
 
 Agatha Christie novels are strongly represented by topic 6, the top terms of which are: 'Poirot', 'Mr', 'Miss', 'Mrs', and 'Sir'. When looking in one Agatha Christie novel, 'The Mysterious Affair at Styles' There are 419, 180, 125, 234, and 113 mentions of each term respectively.
 
-The primary take away from this figure, is that the topic modelling applied to the whole corpus has been able to produce groupings of related documents without any information other than the terms within them. Whilst this is not a new finding when considering other literature, it serves as indication that the use of novels as a basis for corpora does allow topic modelling methods to perform effectively.
+The primary take away from this figure, is that the topic modelling applied to the whole corpus has been able to produce groupings of related documents without any information other than the terms within them. Whilst this is not a new finding when considering other literature, it serves as indication that the use of novels as a basis for corpora does allow topic modelling methods and to perform effectively, As the book level topic distributions across the corpus are somewhat similar, there is potential for entity topic models to vary for reasons aside from the novel they are in..
 
-
-\clearpage
 \subsection{Harry Potter Summary Corpus Statistics}
 
 
@@ -1496,13 +1495,13 @@ It is important to note, that Topics of one set of Entity Topic Models do not di
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.5]{hp_etms}
+  \includegraphics[scale=0.5]{hp_full_etms}
   \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\label{fig:hp_etm}}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.10]{etm_closeup}
+  \includegraphics[scale=0.10]{hp_full_etm_closeup}
   \caption{ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \label{fig:etm_closeup}}
 \end{figure}
 
@@ -1529,25 +1528,113 @@ The corpus pairings defined in this chapter will form the basis for evaluating t
 
 \clearpage
 \subsection{Harry Potter Corpus Latent Entities}
+To shows some visual insight into potential entity classifications entity topic models were plotted in a pairwise matrix of scatter charts, where each element in the matrix is the values of one topic against another, and colouring each entity topic model according to the extracted latent entity. Figure~\ref{fig:hp_le_clusters} shows the make up of five latent entity classifications that were extracted from Harry Potter corpus.
+
+As with the book level topic distributions, there are some topics that offer little variability between entities. Topic 0 appears to provide minimal insight irrespective of the other topics. In contrast, topic 7 indicates a distinct divide between entities, however this also appears to be irrespective of other topics.
+
+It is important to notice the different scales that are used across the pairwise plots of figure~\ref{fig:hp_le_clusters} Whilst topic 6 indicates a wide spread of entities, the range is actually more condensed than the ranges of other topics. should the scale for topic 6 be applied to seemingly dense topic plots seen for topics 0, 2, and others, and perhaps it might be visually more clear how the latent entity clusters are formed in those topics.
+
+In all plots that show a tight grouping of entity topic models, there are also extreme outliers. These entities have not been clustered as a distinct classification in their own right, and perhaps raise a question as to whether they should be, however there is no consistent classification across the outliers for each pairwise plot, which suggests that the entity topic models forming outliers in some topics, are more closely related to other entities in other topics.
+
+There is a seeming threshold for some topics that would result in an entity topic model being classified as a latent entity, for example, topic 1 sees all entities represented strongly by that topic classed as the green latent entity, topic 3 is the same but with the latent entity shown by black crosses, and topic 7 with the red coloured latent entity, this further suggests that certain topics play no role in forming a class of entity topic model.
+
+\clearpage
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.55]{hp_full_latent_entity_scatter}
-\caption{\label{fig:hp_le_clusters}}
+  \includegraphics[angle=-90, scale=0.8]{hp_full_le_clusters}
+\caption{ Pairwise Scatter Matrix of Entity Topic Model Topic Distributions Coloured According to Latent Entity they are Most Closely Associated With.\label{fig:hp_le_clusters}}
 \end{figure}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
+\clearpage
+The density of the plots in figure~\ref{fig:hp_le_clusters} makes it difficult to see the significance of some classes within each plot. Expanding the view for a few topics, figure~\ref{fig:hp_le_cluster_zoom} shows more insight into pair wise plots of topics 6,7, and 8 against topics 2, 3, and 4. When viewed this way an estimate of the dominant classifications can be viewed a little more clearly. Across the plots for topic 3 (bottom row) the significance of some of the latent entities can be seen a little more accurately, the latent entity marked by black points is formed by such a small proportion of entities when compared to the latent entity marked by blue.
 
+Topic 3 when inspected on a larger scale shows a much more varied spread of the entities that originally appeared to form a distinct classification, however some structure can still be seen when comparing distributions of topic 3 to topics 7, and 8. (bottom-middle, and bottom-right).
+
+The magnification also indicates the dominant latent entity the corpus a little more clearly, the latent entity indicated by blue is an approximation for far more entity topic models than the other potential classifications. 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.14]{hp_le_cluster_zoom}
-\caption{\label{fig:hp_le_cluster_zoom}}
+  \includegraphics[scale=0.14]{hp_full_le_clusters_zoom}
+\caption{Magnification of Pairwise Scatter Matrix of Entity Topic Model Topic Distributions for Topics 1,2 and 3, against topics 6, 7 and 8.\label{fig:hp_le_cluster_zoom}}
 \end{figure}
 
+\clearpage
+\subsubsection{Latent Entity Composition.}
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 0}\\
+    Entity    & Distance & Origins\\
+    \hline
+    gorgovitch  &	2.67&   	Deathly Hallows 	\\
+    georgie     &	3.90&   	Deathly Hallows     \\
+    miranda     &	4.14&   	Goblet of Fire       \\
+    goshawk     &	4.14&   	Goblet of Fire       \\
+    levine      &	5.09&   	Philosopher's Stone  
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 1}\\
+    Entity    & Distance & Origins\\
+    \hline
+    theodore &	    1.44    &    Order of the Phoenix\\
+    parvati  &	    1.76    &    Half-Blood Prince\\
+    johnson  &	    1.86    &    Prisoner of Azkaban\\
+    cho      &      2.05    &    Prisoner of Azkaban\\
+    maxime   &   	2.14    &    Order of the Phoenix
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 2}\\
+    Entity    & Distance & Origins\\
+    \hline
+    auror	    &1.51&	Half-Blood Prince\\
+    savage	    &1.51&	Half-Blood Prince\\
+    proudfoot	&1.51&	Half-Blood Prince\\
+    blinky	    &1.61&	Goblet of Fire   \\
+    krum	    &1.74&	Deathly Hallows  
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+\begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 3}\\
+    Entity    & Distance & Origins\\
+    \hline
+    katie	    &0.39&	Half-BloodPrince\\
+    malfoy	    &0.46&	Goblet of Fire  \\
+    pansy	    &0.56&	Goblet of Fire  \\
+    uncle	    &0.61&	Goblet of Fire  \\
+    cooperation	&0.61&	Goblet of Fire
+  \end{tabular}}
+    \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 4}\\
+    Entity   & Distance & Origins\\
+    \hline
+    beedle	    &0.70&	Deathly Hallows  \\
+    flamel	    &0.91&	Sorcerer's Stone \\
+    hagrid	    &1.01&	Sorcerer's Stone \\
+    petunia	    &1.14&	Half-Blood Prince\\
+    bellatrix	&1.17&	Deathly Hallows  
+  \end{tabular}}
+  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_summs}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
+Entities are deemed most closely associated, or best represented by a latent entity by calculating the euclidean distance between the topics of an Entity Topic model and the topics of a Latent Entity. The shorter the distance, the better representation the latent entity is for that entity topic model.
+
+For the full corpus of Harry Potter Novels, the five entities best represented by each Latent Entity is shown in table~\ref{tab:hp_le_fulls}. Notably, there is a diverse mix of characters in each latent entity with regards to the narrative which they are from, with four out of the five Latent Entities' top five entities being composed of entity topic models from three different narratives. When looking at more entity topic models for each latent entity, the diversity continues at the same rate.
+
+There is only one novel not contributing to the top 5 entity topic models for any of the latent entities, however entity topic models from the Chamber of Secrets are represented in the top 150 entities for each latent entity. This could have implications regarding the nature of characters within the novels, either from the descriptions of them, or the context which they are found, entities in the Chamber of Secrets might distinctly different to the rest of the series. Alternatively it could be a result of the process calculating the latent entities, there could be a need for additional clusters so that entity classifications can be better represented. It should be noted however, that entity topic models forming the top 150 entities for a latent entity form only 4.5\% of all entities
 
 \clearpage
 \subsection{Harry Potter Summary Corpus Latent Entities}
-
-
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \renewcommand{\arraystretch}{1.2}
@@ -1563,7 +1650,7 @@ The corpus pairings defined in this chapter will form the basis for evaluating t
     hogwarts  & $0.61$   & Half Blood Prince\\
     voldemort & $0.65$   & Half Blood Prince\\
     dumbledore& $0.66$   & Half Blood Prince
-  \end{tabular}}
+2  \end{tabular}}
   \resizebox{0.32\textwidth}{!}{%
   \begin{tabular}{c | c | c }
     \multicolumn{3}{c}{Latent Entity 1}\\
@@ -1608,11 +1695,11 @@ The corpus pairings defined in this chapter will form the basis for evaluating t
     harry    & $ 0.48 $ & Chamber of Secrets \\
     tom      & $ 0.60 $ & Chamber of Secrets  
   \end{tabular}}
-  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_summs}}
+  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_fulls}}
 \end{table}
-
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
+
 
 \clearpage
 \subsection{Consistency}

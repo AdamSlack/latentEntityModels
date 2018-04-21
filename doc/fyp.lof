@@ -28,10 +28,10 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {24}{\ignorespaces Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \relax }}{75}
 \contentsline {figure}{\numberline {25}{\ignorespaces Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \relax }}{77}
-\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{85}
-\contentsline {figure}{\numberline {27}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\relax }}{89}
-\contentsline {figure}{\numberline {28}{\ignorespaces ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \relax }}{89}
-\contentsline {figure}{\numberline {29}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\relax }}{90}
-\contentsline {figure}{\numberline {30}{\ignorespaces \relax }}{93}
-\contentsline {figure}{\numberline {31}{\ignorespaces \relax }}{93}
+\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{84}
+\contentsline {figure}{\numberline {27}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\relax }}{88}
+\contentsline {figure}{\numberline {28}{\ignorespaces ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \relax }}{88}
+\contentsline {figure}{\numberline {29}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\relax }}{89}
+\contentsline {figure}{\numberline {30}{\ignorespaces Pairwise Scatter Matrix of Entity Topic Model Topic Distributions Coloured According to Latent Entity they are Most Closely Associated With.\relax }}{93}
+\contentsline {figure}{\numberline {31}{\ignorespaces Magnification of Pairwise Scatter Matrix of Entity Topic Model Topic Distributions for Topics 1,2 and 3, against topics 6, 7 and 8.\relax }}{94}
 \addvspace {10\p@ }
