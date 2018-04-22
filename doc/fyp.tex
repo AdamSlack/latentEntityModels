@@ -1626,13 +1626,46 @@ The relationships between topics across entity topic models can be seen a little
 Some subtle groupings can be identified in topics 3 against 7, in which there is a solid core of entity topic models, with 3 branches reaching roughly north, east and south west of the central core. This suggests that some of the relationships that may exist between terms, topics and entity topic models may be dependant on the entity involved.
 
 \clearpage
-\subsection{Comparison To Summary Corpus ETMs}
+\subsection{Summary Corpus ETMs}
 
+For the corpus of full Harry Potter Novels, the Topic proportions for each Entity Topic Model roughly reflected the book level topic distributions. As a significantly shorter corpus, the summary documents see even less deviation from the book level topic distributions. The key difference between the Entity Topic models and the book level topic distributions is which topics are significant in distinguishing between elements. The summaries varied the most between topics 2 and 8, however the entity topic models see wider variance between topics 4, and 5.
+
+When considering the Entity Topic Models for the full novel corpus, it was also observed that the topics of difference between novels were not the same as the topics of difference between latent entities. It was originally assumed that the assumptions made in literature regarding entities and their relations to topics in a document were valid for smaller documents, however this consistency between the small and large corpus suggests that there is perhaps an argument to be made that irrespective of size, entities may have different degrees of association with different elements of a document.
+
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+\begin{table}[h!]
+  \centering
+    \resizebox{0.9\textwidth}{!}{%
+  \begin{tabular}{c | c | c | c | c | c | c | c | c | c | c }
+    &Topic 0&	Topic 1&	Topic 2&	Topic 3&	Topic 4&	Topic 5&	Topic 6&	Topic 7&	Topic 8&	Topic 9\\
+    \hline
+    $\bar{x}$ &8.44&	9.75&	8.68&	8.44&	8.47&	8.96&	18.38&	8.74&	8.64&	11.50\\
+    $\sigma$  &0.25&	0.71&	0.32&	0.22&	0.25&	0.35&	1.66&	0.24&	0.22&	1.24
+  \end{tabular}}
+\caption{Average and Variance of Topic Proportions across Entity Topic Models in the Summary Corpus\label{tab:hp_summ_etm_var}}
+\end{table}
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.5]{hp_etms_summary}
+  \includegraphics[scale=0.5]{summ_etm_figure}
+  \caption{Proportions of Topics Forming Entity Topic Models within the Summary Corpus\label{fig:hp_sum_etm_prop}}
+\end{figure}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\clearpage
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.4]{hp_etms_summary}
   \caption{ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\label{fig:hp_summary_etm}}
 \end{figure}
+
+In figure~\ref{fig:hp_sum_etm_prop} you can see distinct spikes across some entity topic models in topic 9, topic 1 and to some extent, topic 6. Some of these spikes can be seen in the form of distinct groupings of entities within figure~\ref{fig:hp_sum_etm_prop}. The pairwise scatter plots for topic 1 and other topics show a completely separated group of entity topic models, and whilst not entirely separated, topic 9 can also be seen to have two groups, particularly when topic 9 is compared to topic 8 or topic 1. These groups could suggest a potential classification that can be applied to Entity Topic models in the form of a Latent Entity.
+
+When you compare the pairwise plot of the Entity Topic Model Topics for the summary corpus, to the plot for the full corpus you can see that there are some similar structures formed. For the full corpus, there were topics that had a correlated relationship, where for some topic pairs, as the proportion of one topic in an entity topic model increased, the proportion of the other topic would decrease. There were also topic pairs that had the a positive correlative relationship, such that as the proportion of one topic increased, so did the other. With these similar formations observed across both corpora it suggests that the ETM approach used is capable of capturing some of the semantic structures within a corpus, or that the two processed corpora are similar in contents, meaning that the ETM method used has captured some of the semantic similarities between the two corpora.
+
+
 
 
 \clearpage
@@ -1751,7 +1784,7 @@ For the full corpus of Harry Potter Novels, the five entities best represented b
 There is only one novel not contributing to the top 5 entity topic models for any of the latent entities, however entity topic models from the Chamber of Secrets are represented in the top 150 entities for each latent entity. This could have implications regarding the nature of characters within the novels, either from the descriptions of them, or the context which they are found, entities in the Chamber of Secrets might distinctly different to the rest of the series. Alternatively it could be a result of the process calculating the latent entities, there could be a need for additional clusters so that entity classifications can be better represented. It should be noted however, that entity topic models forming the top 150 entities for a latent entity form only 4.5\% of all entities
 
 \clearpage
-\subsection{Comparison to Summary Corpus Latent Entities.}
+\subsection{Summary Corpus Latent Entities.}
 
 Despite having fewer numbers in the corpus, the same number of latent entities were extracted. Figure~\ref{hp_summ_le_pairs} shows the topic proportions of each Entity Topic Model, with each point on figure coloured according to which latent entity the associated entity topic model was classified as.
 
@@ -1839,14 +1872,28 @@ Given the sparsity of the pairwise plot for the summary corpus, a magnified view
 
 Considering the reduced set of Entity Topic Models that Latent Entities can be calculated from, it is of no surprise to see entirely different entities forming the core of each Latent Entity. There are a few similarities between the sets of latent entities, particularly when he origins of the entity are ignored. The entities 'krum', 'malfoy' and 'hagrid' are common to both sets of latent entities. Whilst there are multiple 'hagrid' entities in the top 5, the occurrence of note is the 'hagrid' originating from the 'Philosopher's Stone', which matches the occurrence in the Latent Entities Extracted from the full novel corpus.
 
+\subsubsection{Consistency}
 Cherry picking entities is not necessarily the best way of evaluating the similarities of the the two sets of latent entities. As a k-means clustering approach was taken, it is possible re-use the classifier of the summary set of entities on the entity topic models from the full corpus. By measuring the numbers of entities classified together from both classifiers, you can get some estimate as to whether the latent entities extracted from either corpus are the same. Additionally, using the previously defined consistency metric can provide more insight into the similarities of both sets of Latent Entities.
 
+The consistency metric defined previously involved treating one set of latent entity compositions as being the $de\, facto$ set of entities, and then checking if each entity pairing in the other corpus is present in the $de\, facto$ corpus.
+
+With matching entity topic model pairings being counted as true positive ($TP$) and non matching pairings being counted as false positives ($FP$) the consistency metric is defined as:
+\[
+  Consistency = \frac{TP - FP}{\sum^{N}_{i=1}{n_i\choose2}}
+\]
+Where $N$ is the number of Latent entities clusters, and $n_i$ is the number of entities within the latent entity cluster indexed by $i$.
+
+As the number of entities is drastically different between the two corpora used in this thesis, only entities present in both will be considered. Only using common entities ensures that the the metric has an emphasis on similarities as opposed to the differences.
+
+The consistency scores for the 
+
+It should be noted that this metric punishes inconsistencies greatly, a single difference across a latent entity will result in the FP being increased by the size of the cluster the entity was misplaced in. Additionally, if a single latent entity encompassed all entity topic models present in an opposing corpus, then a perfect consistency score would be given, even though there is really no consistency.
 
 
-\clearpage
 \subsection{Cohesion and Interpretation}
+To effectively evaluate the cohesion and interpretation using the proposed intruding entity metric requires a large sample of participants as well as an extensive suite of questions is required. Without a large sample, the validity and reliability of any conclusions is always going to be in doubt. It was determined early in development that attempting to survey a large sample would be entirely out of scope for the project, and as such accurately evaluating the cohesion and interpretation of the models is difficult to do.
 
-Prominent Latent Entities that influence the calculation of Latent Entities can be seen in ~\ref{tab:hp_le_summs}, the significance of an entity to the Latent Entity was determined by calculating the euclidean distance between the all Entity Topic Models and Latent Entitie. The most notable aspect of the Latent entities derived from the Harry potter summaries is that the top five for each Latent Entity originate from the same document. There is some degree of variation in the origin document for Entity Topic Models for Entities in the top 10 and top 20. 
+In order to provide some estimate of the cohesion and interpretability of the models, a personal evaluation on the models is given, it is acknowledged that this is not sufficient for real conclusions to be drawn, but any insight could be used as a basis for further study.
 
 
 \clearpage
@@ -1873,6 +1920,13 @@ It should be noted that the assessment of load times is only against one website
 \chapter{Conclusion}
 
 \section{Introduction}
+This thesis has presented, explored, and evaluated the concept of Latent Entities, a form of Topic Modelling that sits as a layer of abstraction from Entity Topic Models. The calculation of a set of Latent Entities for a corpus depends on numerous pre-processing steps including the extraction of entities and the calculation of Entity Topic Models. Classical approaches to Entity Topic Modelling fail to take into consideration the associations that entities within a narrative has with other terms in a document, and as such this thesis also explored the possibility of using an adapted co-occurrence matrix as a means of incorporating these features of narratives in the calculations of Entity Topic Models.
+
+Given the abstract nature of topic modelling methods, 
+
+\section{Limitations}
+
+\section{Future Work}
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \bibliographystyle{unsrt}

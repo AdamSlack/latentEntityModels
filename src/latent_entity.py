@@ -7,13 +7,15 @@ import matplotlib.pyplot as plt
 from pandas.plotting import radviz
 import seaborn as sns
 
-def db_conn():
-    return db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
+from itertools import combinations
+
+def db_conn(db_name):
+    return db.connect_to_db(host='localhost', dbname=db_name, user='postgres', password='password')
 
 
-def request_book_entity_topics():
+def request_book_entity_topics(db_conn):
     """ request a list of entities from the database """
-    res = db.select_book_entity_topics(db_conn())
+    res = db.select_book_entity_topics(db_conn)
 
     return [{
         'entity' : row[0],
@@ -21,13 +23,12 @@ def request_book_entity_topics():
         'topic' : row[2],
         'strength' : row[3]
     } for row in res]
+    
 
-def main():
-    """ Main Process Flow """
-    entity_topics = request_book_entity_topics()
-
+def calculate_latent_entities(le_prefix, db_name):
+    conn = db_conn(db_name)
+    entity_topics = request_book_entity_topics(conn)
     e_keys = [e['entity']+'-$-'+e['book'] for e in entity_topics]
-
     entities = {e:{'topic_ids' : [], 'topic_str' : []} for e in e_keys}
 
     for e in entity_topics:
@@ -45,6 +46,9 @@ def main():
             del entities[e]
 
     entity_topics = [entities[e]['topic_str'] for e in entities]
+    entity_names = [entities[e]['entity'] for e in entities]
+    entity_books = [entities[e]['book'] for e in entities]
+
 
     data = np.array(entity_topics)
 
@@ -55,9 +59,12 @@ def main():
     latent_frame = pd.DataFrame(kmeans.cluster_centers_, columns=['Topic ' + str(t) for t in range(0,10)])
 
     res = kmeans.predict(data)
-    entity_frame['class'] = res
+    entity_frame['Class'] = res
+    entity_frame['Entity'] = entity_names
+    entity_frame['Book'] = entity_books
+
     entity_frame = entity_frame[(entity_frame.T != 0).any()]
-    entity_frame.to_csv('../results/hp_summary_latent_entity_classification.csv')
+    entity_frame.to_csv('../results/test/'+le_prefix+'_classification.csv')
 
     for idx, e in enumerate(entities):
         entities[e]['closest_cluster'] = res[idx]
@@ -65,10 +72,72 @@ def main():
             entities[e]['latent_' + str(idx)] = np.linalg.norm(l - entities[e]['topic_str'])
             out_line = [entities[e]['entity'],'latent_' , str(idx), entities[e]['latent_' + str(idx)], entities[e]['book'] , '\n']
             values = ','.join(str(v) for v in out_line)
-            fp = '../results/hp_summary_entity_' + str(idx) + '.csv'
+            fp = '../results/test/'+le_prefix + str(idx) + '.csv'
             with open(fp, 'a+') as f:
                 f.write(' '.join(values))
     
+    return kmeans, entity_frame
+    
+
+def main():
+    """ Main Process Flow """
+    
+    summ_kmeans, summ_entities = calculate_latent_entities('summary_entities', 'hp_summary')
+    full_kmeans, full_entities = calculate_latent_entities('full_entities', 'hp_full')
+
+    summ_clusters = {
+        '0':[],
+        '1':[],
+        '2':[],
+        '3':[],
+        '4':[]
+    }
+
+    full_clusters = {
+        '0':[],
+        '1':[],
+        '2':[],
+        '3':[],
+        '4':[]
+    }
+
+    print('mapping summary entities')
+    for row in summ_entities.itertuples():
+        summ_clusters[str(row.Class)].append((row.Entity, row.Book))
+
+    print('mapping full entities')
+    for row in full_entities.itertuples():
+        full_clusters[str(row.Class)].append((row.Entity, row.Book))
+
+    print('performing cluster combinations')
+    for key in summ_clusters.keys():
+        summ_clusters[key] = list(set(combinations(summ_clusters[key], 2)))
+        full_clusters[key] = list(set(combinations(full_clusters[key], 2)))
+
+    TP = 0
+    FP = 0
+    total = 0
+
+    print('Calculating Consistency.')
+    for cluster in summ_clusters:
+        print('Consistency for Cluster' , str(cluster))
+        total += len(summ_clusters[cluster])
+        idx = 0
+        for pair in summ_clusters[cluster]:
+            idx += 1
+            print(str(idx),' Out Of ', str(len(summ_clusters[cluster])))
+            for other_cluster in full_clusters:
+                if pair in full_clusters[other_cluster]:
+                    TP += 1
+                    print(str(cluster), '-', str(idx), 'Found in', other_cluster)
+                    break
+
+    FP = total - TP
+    print(TP)
+    print(FP)
+    print(Total)
+    print(str((TP-FP)/total))
+
 
 
     #now plot using pandas 

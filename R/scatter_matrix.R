@@ -7,5 +7,5 @@ e_class[1] = NULL
 
 e_class[c("class")] <- lapply(e_class[c("class")], function(x) x+1)
 
-pairs(e_class[1:10], pch=4, cex.labels=2, col=e_class$class)
+pairs(e_class[1:10], pch=4, cex.labels=2)#, col=e_class$class)
 #hp_etms_summary
