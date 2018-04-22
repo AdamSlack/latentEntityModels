@@ -80,9 +80,12 @@
         \huge\vspace{0.5cm}
                 Exploring Hidden Classes of Entities using Latent Entity Modelling.
                 \vspace{1.5cm}
-               
+
+
         \large\textbf{Adam Slack}
 
+        \vfill
+        \large DRAFT THESIS
         \vfill
         
         \normalsize Project report in part fulfilment
@@ -1887,18 +1890,11 @@ As the number of entities is drastically different between the two corpora used 
 
 The consistency scores for the Latent Entities extracted from the full corpus and the summary corpus are as follows:
 \[
-  TP = 3,815
-\]
-\[
-  FP = 8,549
-\]
-\[
-  \sum^{N}_{i=1}{n_i\choose2} = 12,364
+  TP = 3,815, \quad \quad FP = 8,549, \quad \quad \sum^{N}_{i=1}{n_i\choose2} = 12,364
 \]
 \[
   consistency = -0.38
 \]
-
 Whilst this score is negative, implying that the Latent Entities are largely inconsistent between the two corpora, a score greater than -0.5 means that there is still a significant amount of consistent entity topic models being represented by the same latent entities.
 
 It should be noted that this metric punishes inconsistencies greatly, a single difference across a latent entity will result in the FP being increased by the size of the cluster the entity was misplaced in. Additionally, if a single latent entity encompassed all entity topic models present in an opposing corpus, then a perfect consistency score would be given, even though there is really no consistency.
@@ -1934,13 +1930,66 @@ It should be noted that the assessment of load times is only against one website
 \chapter{Conclusion}
 
 \section{Introduction}
-This thesis has presented, explored, and evaluated the concept of Latent Entities, a form of Topic Modelling that sits as a layer of abstraction from Entity Topic Models. The calculation of a set of Latent Entities for a corpus depends on numerous pre-processing steps including the extraction of entities and the calculation of Entity Topic Models. Classical approaches to Entity Topic Modelling fail to take into consideration the associations that entities within a narrative has with other terms in a document, and as such this thesis also explored the possibility of using an adapted co-occurrence matrix as a means of incorporating these features of narratives in the calculations of Entity Topic Models.
+This thesis has presented, explored, and evaluated the concept of Latent Entities, a form of Topic Modelling that sits as a layer of abstraction on top of a collection of Entity Topic Models. The calculation of a set of Latent Entities for a corpus depends on numerous pre-processing steps including the extraction of entities and the calculation of Entity Topic Models. Classical approaches to Entity Topic Modelling fail to take into consideration the associations that entities within a narrative has with other terms in a document, and as such this thesis also explored the possibility of using an adapted co-occurrence matrix as a means of incorporating these features of narratives in the calculations of Entity Topic Models.
 
-Given the abstract nature of topic modelling methods, 
+Given the abstract nature of topic modelling methods, alternative methods of evaluation have been considered. Visually exploring the results from two sets of related corpora provided some insight into the value of the methods as well as their shortcomings. A consistency metric was proposed and applied two related corpora to investigate the consistency of the resulting latent entities.
+
+To facilitate the exploration of Latent Entities a small system was implemented, the system was composed of an analysis pipeline, server architecture, and web application. Whilst only a secondary objective, the system was essential as a means of ensuring robust software methods for analysis were implemented.
+
+To support the exploration of Latent Entities the results from numerous other elements of the implemented analysis pipeline were explored, including the associated set of Entity Topic Models, sets of Gaussian Entity-Term Matrices, and book level Topic Models.
+
+\section{Outcomes}
+This thesis was successful in meeting its aims and objectives. An analysis pipeline, exploration interface, and consideration of novel methods of analysis were investigated and implemented. With regards to tangible outcomes, this thesis has now made available an Open Source suite of tools that others can use to explore and investigate Latent Entity Modelling.
+
+The implemented pipeline provides an extensive and robust code base that is ideal for future investigatory work. Despite the completeness of the suite, there are still drawbacks with regards to deployment as well as the interface through which the pipeline can be used. There are no tangible means of deploying the pipeline besides downloading and including the code base inside whatever project is being worked upon.
+
+A second tangible result of the thesis is an extensible API and Server system. By providing access to results from analysis, further investigatory and exploratory work on the Latent Entity Models can be carried out. As an Open Source implementation, it is easy for other developers to expand the API should there be required aspects that are unimplemented. The primary downside to the system is similar to the implemented pipeline, with no real means of deployment included with the system, individuals wishing to utilise it for personal projects are required to manually set up and configure each distinct element, including configuration files and database administration.
+
+The implemented interface is the weakest element of this thesis, it provides the minimum set of tools necessary for an individual to begin exploring the topical structure of entities and documents within a corpus. Whilst the visualisations maybe lacking in the explorer interface, the web application stayed within the bounds of the project scoping and satisfied the purpose for which it was developed.
+
+An additional outcome involved the implementation of a Viterbi decoded Hidden Markov Model POS tagger. A valuable tool to have when undertaking NLP oriented projects, the tagger performed somewhat better than expected. For closed classes of words the tagger performed comparably to taggers in literature, it was on open classes of words where hapax legomena were common that the implemented tagger had room for improvement.
+
+\subsection{Modelling Outcomes}
+As the focus of this thesis, the methods of analysis that were implemented are the strongest outcomes for the project, as three novel approaches to topic modelling were proposed, defined, and implemented.
+
+The Gaussian Entity-Term Matrix provided a means of preserving and expressing entity-term relationships that may be present within a document. As an approach, it is an adaptation of a standard co-occurrence matrix and can be utilised in statistical modelling methods like Latent Semantic analysis. Exploration of the resulting matrices showed that the method was capable of identifying terms of significance to entities within a document, as well as highlighting entities that are of significance to a document.
+
+An alternative approach to Entity Topic Modelling was then explored through the use of Latent Dirichlet Allocation and the Gaussian Entity-Term Matrix. The outcomes of the new approach to entity topic modelling is one that shows a potential to capture the semantic meanings and relationships of terms and entities within a document, as well as the semantic differences between terms and entities between documents in a corpus.
+
+With an approach to Entity Topic Modelling that incorporated varying entity-term and entity-topic relationships across a corpus, Latent Entity Modelling was shown to be able to form approximate classifications for groups of Entity Topic Models. The exploration and comparison of two corpora showed that the approach was capable of consistently identifying structures formed by entity topic models across a pair of related corpora. The resulting weakness of the approach is seen in the consistency of entity classifications, the inter-Latent Entity consistency between corpora was weaker than was hoped.
 
 \section{Limitations}
+From the extent of exploration and evaluation of implemented models, to the limited breadth of visualisations implemented in the exploration web interface, there are numerous limitations to the work presented in this thesis. Consideration of implementation limitations are discussed first, followed by the limitations from the evaluation and exploration aspect of the thesis.
+
+\subsection{Implementation Limitations}
+
+Whilst the Web interface provides a starting point for encouraging individuals to explore and learn about data analysis, natural language processing, and topic modelling, nothing more than surface level understanding can be obtained in its current form. The interface relies on users being numerate and does not accommodate users that are not comfortable with reading and interpreting figures and listings. A key oversight for the interface is that there is no explanation of any of the components presented to the user, and no explanation of how the user interacts. Whilst some elements are clear, that cannot be said for the application as a whole. This ultimately limits the usability of the application to users already familiar with topic modelling as a field.
+
+With no methods of deployment, easy means of configuration, and a requirement to manually configure large aspects of the pipeline, the reach that the system can have with regards to others using it for personal projects is severely limited. It also means that any expansion of the pipeline is a more challenging task. Whilst it is a successfully working prototype, there is a lot of refinement and formalisation that is required of the system before it could ever be considered a viable system for other researchers, businesses, or individuals to use.
+
+As a method of preserving entity-term relationships, the Gaussian Entity-Term Matrix is somewhat successful, as a fast and efficient processing tool, the implemented algorithm is a drastic failure. A result of limited processing resources the model implementation requires entity data to be written to disk frequently, either to a file or to a database, the process of calculating the Gaussian Entity-Term Matrix for a large corpus can take weeks of processing.
+
+As a result of pushing the results of the Gaussian Entity-Term Matrix to a database, the implementation of the proposed method of calculating Entity Topic Models relies on the database before any analysis can be done. As all results from the Gaussian Entity-Term matrix are required for the Entity Topic Models to be calculated, a hardware limitation is enforced. If there is not enough memory available in hardware, then it is impossible for this implementation to be completed. Whilst Topic Modelling approaches exist that allow for batches of processing to be carried out, this thesis does not implement or use any. Additionally the Entity Topic Modelling approach implemented requires the user to specify how many topics to build as well as how many terms are to form each topic, this could result in users having to run the full analysis pipeline numerous times before adequate parameters are found.
+
+The Latent Entity Modelling method draws most of its limitations from the k-means algorithm. Similarly to the entity topic modelling method, calculating Latent Entities requires users to specify how many latent entities are to be calculated. The chosen number of latent entities can have drastic effects on the quality of resulting models. When considered in conjunction with the other parameters that users have to choose for themselves, the large number of possible configurations that a user must try before finding results is a severe limitation of this project.
+
+\subsection{Evaluation Limitations}
+Whilst this thesis explored a range of different methods of analysis, the depth to which each method was investigated is a large limitation. Each stage of the pipeline consists of configurable aspects that could feasibly alter the results of later stages of the pipeline. This project was limited in its investigation of what effect each configuration would have on the resulting methods, which limits the validity of any conclusions and insights that may have been gained.
+
+Another key limitation of the project is the size and range of corpora that were used to evaluate the models. Whilst the corpora used provided a range of entities and did appear to be a valid option for analysis, without more corpora to compare the results to, there is insufficient evidence for any claims regarding each model's abilities to be validated. Using a range of corpora configurations, would provide more evidence towards the pipelines ability to identify latent information and latent classes of entities.
+
+Without a viable option for surveying a large population, the interpretability and thus usability of Latent Entity models cannot be effectively concluded. Whilst personal reflections are given on various interpretations of the latent classes that have been extracted, without knowing how other individuals interpret results then claims about their usefulness are somewhat invalid.
 
 \section{Future Work}
+
+Future work for this project is oriented around 3 key aspects, Exploration, Evaluation, and Interpretation. Whilst the thesis has demonstrated that Latent Entity Modelling may be a valuable addition to the field, it too many limitations that need to be addressed before the exact value of Latent Entity Modelling can be known.
+
+As abstract representation of documents, interpreting and exploring topic models is not straightforward. It requires individuals to be both numerate and somewhat familiar with the field to really grasp the meaning to the models. There is potential for a project to focus around the visualisation of Latent Entities, with the aim of determining the most effective ways of communicating the meaning of the models as well as the most effective ways of enabling individuals to explore and interpret each Latent entity.
+
+As a new concept, Latent Entities required new metrics for evaluation. Further investigation is required to determine exactly how Latent Entity Models should be evaluated. The proposed metric of consistency is not necessarily enough, especially given how much variation there can be between two corpora. The intruding entity test proposed in this project may be an effective way of evaluating Latent Entities and a full investigation of this would be interesting to see.
+
+Not necessarily a research project, further development can be carried out that formalises and improves the quality of the implemented system and pipeline. The development of a wider range of visualisations for the prototype web application could provide a solid framework for an investigation into effective visualisations of Topic models and Latent Entity Models.
+
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \bibliographystyle{unsrt}
