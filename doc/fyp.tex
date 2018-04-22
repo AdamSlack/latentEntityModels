@@ -1885,7 +1885,21 @@ Where $N$ is the number of Latent entities clusters, and $n_i$ is the number of 
 
 As the number of entities is drastically different between the two corpora used in this thesis, only entities present in both will be considered. Only using common entities ensures that the the metric has an emphasis on similarities as opposed to the differences.
 
-The consistency scores for the 
+The consistency scores for the Latent Entities extracted from the full corpus and the summary corpus are as follows:
+\[
+  TP = 3,815
+\]
+\[
+  FP = 8,549
+\]
+\[
+  \sum^{N}_{i=1}{n_i\choose2} = 12,364
+\]
+\[
+  consistency = -0.38
+\]
+
+Whilst this score is negative, implying that the Latent Entities are largely inconsistent between the two corpora, a score greater than -0.5 means that there is still a significant amount of consistent entity topic models being represented by the same latent entities.
 
 It should be noted that this metric punishes inconsistencies greatly, a single difference across a latent entity will result in the FP being increased by the size of the cluster the entity was misplaced in. Additionally, if a single latent entity encompassed all entity topic models present in an opposing corpus, then a perfect consistency score would be given, even though there is really no consistency.
 
