@@ -1753,22 +1753,29 @@ There is only one novel not contributing to the top 5 entity topic models for an
 \clearpage
 \subsection{Comparison to Summary Corpus Latent Entities.}
 
+Despite having fewer numbers in the corpus, the same number of latent entities were extracted. Figure~\ref{hp_summ_le_pairs} shows the topic proportions of each Entity Topic Model, with each point on figure coloured according to which latent entity the associated entity topic model was classified as.
+
+Even though there are significantly less entities in the summary corpus when compared to the corpus of full novels, there is similar spreads of entity topic models in terms of the range of topic distributions seen in both the summary corpus and the full novel corpus, this is particularly true in the topics that have the most variation in them. What is even more striking is the similar patterns of clustering, there is still degree of similarity visually. Even though isn't an exact mapping between Latent Entity clusters, but there remains the impression that only a select number of topics are actually key to extracting Latent Entities.
+
+For the full corpus, topics 1, 3 and 7 gave a clear indication of a threshold which was being used in grouping entity topic models, for the summary corpus, there is again 3 topics (1, 6 and 9) that provide a clear separation in groups of latent entities. Topic 1 shows a clear separation between the cyan latent entity class and the others, and topic 9 does the same for the green Latent Entity class. Topic 6 shows 3 distinct bands for red, blue, and black latent entity classes. Whilst the colours don't map to the full corpus, the same patterns occurred within its Latent Entity clustering.
+
+Whilst visually promising, there is still further investigation required in order to evaluate the quality of the Latent Entity Modelling method.
 
 \clearpage
 \begin{figure}[h!]
   \centering
 \includegraphics[angle=-90,scale=0.65]{hp_summary_latent_clusters}
-\caption{Pairwise Scatter Plot Matrix for Entity Topic Models Coloured According to their Latent Entity Classification\label{hp_summ_le_pairs}}
+\caption{Pairwise Scatter Plot Matrix for Summary Corpus Entity Topic Models Coloured According to their Latent Entity Classification\label{hp_summ_le_pairs}}
 \end{figure}
 
-
+\clearpage
 \begin{figure}[h!]
   \centering
 \includegraphics[scale=0.15]{hp_summ_le_large}
 \caption{Magnified View of Pairwise Scatter Plot Matrix for Entity Topic Models Coloured According to their Latent Entity Classification\label{hp_summ_le_large}}
 \end{figure}
 
-
+Really this is too sparse to see. (Should be clearer on paper...)
 
 \clearpage
 \subsection{Consistency}
@@ -1778,8 +1785,6 @@ Consistency is evaluated using 3 pairs of copora, the first set of results consi
 \subsection{Cohesion and Interpretation}
 
 Prominent Latent Entities that influence the calculation of Latent Entities can be seen in ~\ref{tab:hp_le_summs}, the significance of an entity to the Latent Entity was determined by calculating the euclidean distance between the all Entity Topic Models and Latent Entitie. The most notable aspect of the Latent entities derived from the Harry potter summaries is that the top five for each Latent Entity originate from the same document. There is some degree of variation in the origin document for Entity Topic Models for Entities in the top 10 and top 20. 
-
-
 
 
 \clearpage
