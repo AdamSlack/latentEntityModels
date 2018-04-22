@@ -1,10 +1,18 @@
-ERROR: Paragraph ended before \@@array was complete.
+ERROR: Illegal unit of measure (pt inserted).
 
 --- TeX said ---
 <to be read again> 
-                   \par 
-l.1328 
-       
+                   \futurelet 
+l.1788   \end{tabular}}
+                       
 --- HELP ---
-A blank line occurred in a command argument that shouldn't contain
-one. You probably forgot the right brace at the end of an argument.
+If you just got a
+
+      ! Missing number, treated as zero.
+
+error, then this is part of the same problem.  If not, it means that
+LaTeX was expecting a length as an argument and found a number
+instead.  The most common cause of this error is writing 0 instead of
+something like 0in for a length of zero, in which case typing return
+should result in correct output. However, the error can also be caused
+by omitting a command argument.

@@ -1739,7 +1739,7 @@ The magnification also indicates the dominant latent entity the corpus a little 
     petunia	    &1.14&	Half-Blood Prince\\
     bellatrix	&1.17&	Deathly Hallows  
   \end{tabular}}
-  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_summs}}
+  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_fulls}}
 \end{table}
 \renewcommand{\baselinestretch}{2.0}\normalsize
 \renewcommand{\arraystretch}{1.0}
@@ -1759,7 +1759,9 @@ Even though there are significantly less entities in the summary corpus when com
 
 For the full corpus, topics 1, 3 and 7 gave a clear indication of a threshold which was being used in grouping entity topic models, for the summary corpus, there is again 3 topics (1, 6 and 9) that provide a clear separation in groups of latent entities. Topic 1 shows a clear separation between the cyan latent entity class and the others, and topic 9 does the same for the green Latent Entity class. Topic 6 shows 3 distinct bands for red, blue, and black latent entity classes. Whilst the colours don't map to the full corpus, the same patterns occurred within its Latent Entity clustering.
 
-Whilst visually promising, there is still further investigation required in order to evaluate the quality of the Latent Entity Modelling method.
+Whilst visually promising, there is still further investigation required in order to evaluate the quality of the Latent Entity Modelling method. Consideration of the contents of each Latent Entity should be evaluated before conclusions can start to be drawn.
+
+Given the sparsity of the pairwise plot for the summary corpus, a magnified view provides little insight.
 
 \clearpage
 \begin{figure}[h!]
@@ -1769,17 +1771,77 @@ Whilst visually promising, there is still further investigation required in orde
 \end{figure}
 
 \clearpage
-\begin{figure}[h!]
+
+\subsubsection{Latent Entity Composition}
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
   \centering
-\includegraphics[scale=0.15]{hp_summ_le_large}
-\caption{Magnified View of Pairwise Scatter Plot Matrix for Entity Topic Models Coloured According to their Latent Entity Classification\label{hp_summ_le_large}}
-\end{figure}
+  \resizebox{0.32\textwidth}{!}{%
+    \begin{tabular}{c | c | c}
+      \multicolumn{3}{c}{Latent Entity 0}\\		
+      Entity	    &   Distance&	Origins\\
+      \hline
+      krum        &	0.46    &	Goblet of Fire \\
+      viktor      &	0.48    &	Goblet of Fire \\
+      cedric      &	0.48    &	Goblet of Fire \\
+      hagrid      &	0.54    &	Goblet of Fire \\
+      weasley     &	0.58    &	Chamber of Secrets 
+    \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+    \begin{tabular}{c | c | c}
+      \multicolumn{3}{c}{Latent Entity 1}\\		
+      Entity	    &   Distance&	Origins\\
+      \hline
+      school      &	0.32    &	Order of the Phoenix\\
+      witchcraft  &	0.39    &	Order of the Phoenix\\
+      moody       &	0.62    &	Deathly Hallows\\
+      nagini      &	0.70    &	Deathly Hallows\\
+      dolores     &	0.73    &	Order of the Phoenix\\
+    \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+    \begin{tabular}{c | c | c}
+      \multicolumn{3}{c}{Latent Entity 2}\\	
+      Entity	    &   Distance&	Origins\\
+      \hline
+      hagrid      &	0.32    &	Prisoner of Azkaban\\
+      voldemort   &	0.33    &	Prisoner of Azkaban\\
+      malfoy      &	0.53    &	Prisoner of Azkaban\\
+      mcgonagall  &	0.70    &	Goblet of Fire\\
+      dumbledore  &	0.72    &	Prisoner of Azkaban
+    \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+    \begin{tabular}{c | c | c}
+      \multicolumn{3}{c}{Latent Entity 3}\\
+      Entity	    &   Distance&	Origins\\	
+      \hline
+      hermione    &	0.26    &	Order of the Phoenix\\
+      harry       &	0.34    &	Order of the Phoenix\\
+      neville     &	0.43    &	Deathly Hallows\\
+      sirius      &	0.43    &	Order of the Phoenix\\
+      voldemort   &	0.49    &	Order of the Phoenix
+    \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+    \begin{tabular}{c | c | c}
+      \multicolumn{3}{c}{Latent Entity 4}\\	
+      Entity  	&   Distance&   Origins\\
+      \hline
+      hagrid      &	0.48    &	Philosopher's Stone\\
+      harry       &	0.55    &	Philosopher's Stone\\
+      dursley     &	0.57    &	Philosopher's Stone\\
+      voldemort   &	0.61    &	Philosopher's Stone\\
+      hermione    &	0.62    &	Philosopher's Stone
+    \end{tabular}}
+  \caption{ Top 5 Entity Topic Models Forming the Latent Entities for the Harry Potter Summary Corpus.\label{tab:hp_summ_le_top}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
 
-Really this is too sparse to see. (Should be clearer on paper...)
+Considering the reduced set of Entity Topic Models that Latent Entities can be calculated from, it is of no surprise to see entirely different entities forming the core of each Latent Entity. There are a few similarities between the sets of latent entities, particularly when he origins of the entity are ignored. The entities 'krum', 'malfoy' and 'hagrid' are common to both sets of latent entities. Whilst there are multiple 'hagrid' entities in the top 5, the occurrence of note is the 'hagrid' originating from the 'Philosopher's Stone', which matches the occurrence in the Latent Entities Extracted from the full novel corpus.
 
-\clearpage
-\subsection{Consistency}
-Consistency is evaluated using 3 pairs of copora, the first set of results consider the performance of the model when comparing a corpus of novels to a corpus to summarieis of those novels. 
+Cherry picking entities is not necessarily the best way of evaluating the similarities of the the two sets of latent entities. As a k-means clustering approach was taken, it is possible re-use the classifier of the summary set of entities on the entity topic models from the full corpus. By measuring the numbers of entities classified together from both classifiers, you can get some estimate as to whether the latent entities extracted from either corpus are the same. Additionally, using the previously defined consistency metric can provide more insight into the similarities of both sets of Latent Entities.
+
+
 
 \clearpage
 \subsection{Cohesion and Interpretation}
