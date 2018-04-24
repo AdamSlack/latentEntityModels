@@ -12,7 +12,7 @@
 import db as db
 
 def db_conn():
-    return db.connect_to_db(host='localhost', dbname='hp_summary', user='postgres', password='password')
+    return db.connect_to_db(host='localhost', dbname='hp_full', user='postgres', password='password')
 
 
 def request_entities(book_title):

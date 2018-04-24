@@ -98,8 +98,8 @@
         
         %\includegraphics[width=0.4\textwidth]{university}
         
-        Department of Computer Science\\
         Nottingham Trent University\\
+        School of Computer Science\\
         United Kingdom\\
         26-04-2018
         
@@ -109,24 +109,55 @@
 \addcontentsline{toc}{section}{Declaration}
 \section*{Declaration}
 
-I declare that this work is my own and not someone elses. May god beat down upon me with hellfire should this declaration be falsly claimed.
+I hereby declare that I am the sole author of this report. I authorize the Nottingham Trent University to lend this report to other institutions or individuals for the purpose of scholarly research.
+
+I also authorize the Nottingham Trent University to reproduce this report by photocopying or by other means, in total or in part, at the request of other institutions or individuals for the purpose of scholarly research.
+
+Signature
+
+Adam Slack
 
 \newpage
+\addcontentsline{toc}{section}{Acknowledgements}
 \section*{Acknowledgements}
-This thesis would not have been possible without the abundance of support I recieved from family and friends. 
+\renewcommand{\baselinestretch}{1.5}\normalsize
+
+This thesis would not have been possible without the abundance of moral support I received from family and friends. After months of hard work and numerous hours staring at a screen I am pleased to finally be able to give thanks to everyone who has helped this project come to fruition.
+
+Thanks must first be given to Rachael, as caring and understanding as ever you have provided me with a place of refuge that allowed me to take a break from the pressures of study, the value of which cannot be understated.
+
+To Dean, Jay, and the people of DevSoc, i thank you for the hours of interesting and stimulating conversation that kept us distracted from the mundane nature of sitting in the same room day in and day out.
+
+And last but by no means least, i would like to thank Caroline, for the hours of guidance, assistance, and valuable insights into the world of Computer Science and academia, all of which have helped me to progress personally, professionally, and academically.
+
+\renewcommand{\baselinestretch}{2.0}\normalsize
+
+Thanks and Kindest Regards,
+
+Adam Slack
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
 
 \newpage
 \addcontentsline{toc}{section}{Abstract}
 \section*{Abstract}
-Latent Entities are approximations of entities found within a corpus allowing for similar entities to be grouped into classes. Through the use of a document segmentation method processing entities and associated terms, LDA can be applied with the intention of extracting topics from each entity segmentation.
 
+\renewcommand{\baselinestretch}{1.5}\normalsize
+
+Latent Entities are an abstract representation of a collection of entities within a corpus, by extracting these classifications or stereotypes from a corpus, Latent Entity Modelling can allow interpretative insight into written narratives to be obtained. This thesis outlines the process of transforming a corpus into a set of Topic Models, Entity topic Models, and Latent Entities through the application of various Machine Learning and Natural Language methods. An adaptation to existing methods are also applied to overcome limitations expressed in recent literature. By exploring the results from each stage of analysis, the strengths and weaknesses of proposed methods are critically evaluated, with Latent Entities being shown as providing effective grounds for the interpretation of written literature.
+
+\renewcommand{\baselinestretch}{1.0}\normalsize
 
 
 % TABLE OF CONTENTS - SPACING CHANGE, TOC, SPACING CHANGE
 \renewcommand{\baselinestretch}{0.5}\normalsize
 \tableofcontents
-\listoffigures
-\listoftables
+
+\listoffigures\addcontentsline{toc}{section}{List of Figures}
+
+
+\listoftables\addcontentsline{toc}{section}{List of Tables}
+
 \renewcommand{\baselinestretch}{2.0}\normalsize
 
 %
@@ -2006,7 +2037,7 @@ As the focus of this thesis, the methods of analysis that were implemented are t
 
 The Gaussian Entity-Term Matrix provided a means of preserving and expressing entity-term relationships that may be present within a document. As an approach, it is an adaptation of a standard co-occurrence matrix and can be utilised in statistical modelling methods like Latent Semantic analysis. Exploration of the resulting matrices showed that the method was capable of identifying terms of significance to entities within a document, as well as highlighting entities that are of significance to a document.
 
-An alternative approach to Entity Topic Modelling was then explored through the use of Latent Dirichlet Allocation and the Gaussian Entity-Term Matrix. The outcomes of the new approach to entity topic modelling is one that shows a potential to capture the semantic meanings and relationships of terms and entities within a document, as well as the semantic differences between terms and entities between documents in a corpus.
+An alternative approach to Entity Topic Modelling was then explored through the use of Latent Dirichlet Allocation in conjunction with the Gaussian Entity-Term Matrix. The outcomes of the new approach to entity topic modelling is one that shows a potential to capture the semantic meanings and relationships of terms and entities within a document, as well as the semantic differences between terms and entities between documents in a corpus.
 
 With an approach to Entity Topic Modelling that incorporated varying entity-term and entity-topic relationships across a corpus, Latent Entity Modelling was shown to be able to form approximate classifications for groups of Entity Topic Models. The exploration and comparison of two corpora showed that the approach was capable of consistently identifying structures formed by entity topic models across a pair of related corpora. The resulting weakness of the approach is seen in the consistency of entity classifications, the inter-Latent Entity consistency between corpora was weaker than was hoped.
 
@@ -2025,6 +2056,8 @@ As a result of pushing the results of the Gaussian Entity-Term Matrix to a datab
 
 The Latent Entity Modelling method draws most of its limitations from the k-means algorithm. Similarly to the entity topic modelling method, calculating Latent Entities requires users to specify how many latent entities are to be calculated. The chosen number of latent entities can have drastic effects on the quality of resulting models. When considered in conjunction with the other parameters that users have to choose for themselves, the large number of possible configurations that a user must try before finding results is a severe limitation of this project.
 
+Whilst the tagging of entities that actually aren't entities is not a severe problem to this implementation, there are still some false entities that make it throughout the pipeline. Additionally, there some entities that might receive only one mention in a corpus, but could still be hailed as significant in Latent Entity Models. The failure to consider the number of occurrences that an entity may have is a limitation of this project.
+
 \subsection{Evaluation Limitations}
 Whilst this thesis explored a range of different methods of analysis, the depth to which each method was investigated is a large limitation. Each stage of the pipeline consists of configurable aspects that could feasibly alter the results of later stages of the pipeline. This project was limited in its investigation of what effect each configuration would have on the resulting methods, which limits the validity of any conclusions and insights that may have been gained.
 
@@ -2034,16 +2067,744 @@ Without a viable option for surveying a large population, the interpretability a
 
 \section{Future Work}
 
-Future work for this project is oriented around 3 key aspects, Exploration, Evaluation, and Interpretation. Whilst the thesis has demonstrated that Latent Entity Modelling may be a valuable addition to the field, it too many limitations that need to be addressed before the exact value of Latent Entity Modelling can be known.
+Future work for this project is oriented around 3 key aspects, Exploration, Evaluation, and Interpretation. Whilst the thesis has demonstrated that Latent Entity Modelling may be a valuable addition to the field, it has too many limitations that need to be addressed before the exact value of Latent Entity Modelling can be known.
 
 As abstract representation of documents, interpreting and exploring topic models is not straightforward. It requires individuals to be both numerate and somewhat familiar with the field to really grasp the meaning to the models. There is potential for a project to focus around the visualisation of Latent Entities, with the aim of determining the most effective ways of communicating the meaning of the models as well as the most effective ways of enabling individuals to explore and interpret each Latent entity.
 
-As a new concept, Latent Entities required new metrics for evaluation. Further investigation is required to determine exactly how Latent Entity Models should be evaluated. The proposed metric of consistency is not necessarily enough, especially given how much variation there can be between two corpora. The intruding entity test proposed in this project may be an effective way of evaluating Latent Entities and a full investigation of this would be interesting to see.
+As a new concept, Latent Entities required new metrics for evaluation. Further investigation is required to determine exactly how Latent Entity Models should be evaluated. The proposed metric of consistency is not nearly enough, especially given how much variation there can be between two corpora. The intruding entity test proposed in this project may be an effective way of evaluating Latent Entities and a full investigation of this would be interesting to see.
 
-Not necessarily a research project, further development can be carried out that formalises and improves the quality of the implemented system and pipeline. The development of a wider range of visualisations for the prototype web application could provide a solid framework for an investigation into effective visualisations of Topic models and Latent Entity Models.
+Not necessarily a research project, further development can be carried out to formalise and improve the quality of the implemented system, including the implemented pipeline and web application. The development of a wider range of visualisations for the prototype web application could then provide a solid framework for an investigation into effective visualisations of Topic models and Latent Entity Models.
 
 
 \renewcommand{\baselinestretch}{1.0}\normalsize
 \bibliographystyle{unsrt}
 \bibliography{./biblio}
+
+\begin{appendices}
+  \renewcommand{\baselinestretch}{2.0}\normalsize
+  \chapter{Additional Latent Entities}
+
+  For clarity, 5 Latent Entities were extracted and discussed in chapter 5. This appendix outlines some of the top Entity Topic Models that form when extracting more Latent Entities. For some of the Latent Entities, there are identical entities forming the top 5. The Entity Topic Models for krum, hogwarts, voldemort, dumbledore, and hagrid appear to be quite representative of many other entities, and as so many Latent Entities formed from these entities there may be a need to investigate means of introducing more variability within entities. Increasing the number of Latent Entities further does appear to produce more varied Latent Entities, however there is still lots of similarities between each Latent Entity. Table ~\ref{tab:Latent_entity_50} shows the top entities for 50 extracted Latent Entity Models.
+
+  \renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 0}\\
+    Entity    & Distance & Origins\\
+    \hline
+    krum        &	0.35 &	Goblet of Fire\\
+    voldemort   &	0.44 &	Half-Blood Prince\\
+    hogwarts    &	0.44 &	Half-Blood Prince\\
+    burkes      &	0.51 &	Deathly Hallows\\
+    borgin      &	0.51 &	Deathly Hallows\\
+  \end{tabular}}
+  \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 1}\\
+    Entity    & Distance & Origins\\
+    \hline
+  portkey &	1.02 & 	Goblet of Fire\\
+  fudge   &	0.78 & 	Prisoner of Azkaban\\
+  chris   &	0.75 & 	Prisoner of Azkaban\\
+  burkes  &	0.61 & 	Deathly Hallows\\
+  borgin  &	0.61 & 	Deathly Hallows\\
+  \end{tabular}}
+  \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 2}\\
+    Entity    & Distance & Origins\\
+    \hline
+voldemort & 			0.31 & 	Half-Blood Prince\\
+vernon    & 			0.35 & 	Goblet of Fire\\
+hogwarts  & 			0.46 & 	Half-Blood Prince\\
+ministry  & 			0.48 & 	Deathly Hallows\\
+gringotts & 			0.48 & 	Order of the Phoenix\\
+  \end{tabular}}
+  \resizebox{0.45\textwidth}{!}{%
+\begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 3}\\
+    Entity    & Distance & Origins\\
+    \hline
+patil     &	0.80 &	Order of the Phoenix\\
+firenze   &	0.72 &	Order of the Phoenix\\
+crabbe    &	0.71 &	Prisoner of Azkaban\\
+trelawney &	0.69 &	Goblet of Fire\\
+chris     &	0.56 &	Prisoner of Azkaban\\
+
+  \end{tabular}}
+    \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 4}\\
+    Entity   & Distance & Origins\\
+    \hline
+  fudge       & 			0.83 &	Prisoner of Azkaban\\
+  longbottom  & 			0.90 &	Half-Blood Prince\\
+  angelina    &  			1.03 &	Chamber of Secrets\\
+  johnson     & 			1.03 &	Chamber of Secrets\\
+  bell        & 			1.03 &	Chamber of Secrets\\
+  \end{tabular}}
+    \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 5}\\
+    Entity    & Distance & Origins\\
+    \hline
+    patil & 			    0.41 & 	Order of the Phoenix\\
+    ministry & 			  0.48 & 	Deathly Hallows\\
+    tonks & 			    0.50 & 	Order of the Phoenix\\
+    krum & 			      0.53 & 	Goblet of Fire\\
+    gringotts & 			0.55 & 	Order of the Phoenix\\
+
+  \end{tabular}}
+  \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 6}\\
+    Entity    & Distance & Origins\\
+    \hline
+krum & 			0.43 &	Goblet of Fire\\
+dumbledore & 			0.56 &	Goblet of Fire\\
+voldemort & 			0.57 &	Half-Blood Prince\\
+hogwarts & 			0.59 &	Half-Blood Prince\\
+hagrid & 			0.59 &	Goblet of Fire\\
+  \end{tabular}}
+  \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 7}\\
+    Entity    & Distance & Origins\\
+    \hline
+chris & 			0.74 & 	Prisoner of Azkaban\\
+tom & 			1.12 & 	Order of the Phoenix\\
+warrington & 			1.23 & 	Prisoner of Azkaban\\
+tom & 			1.30 & 	Order of the Phoenix\\
+oliver & 			1.32 & Philosopher's Stone\\
+
+  \end{tabular}}
+  \resizebox{0.45\textwidth}{!}{%
+\begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 8}\\
+    Entity    & Distance & Origins\\
+    \hline
+voldemort & 			0.38 &	Half-Blood Prince\\
+krum & 			0.45 &	Goblet of Fire\\
+hogwarts & 			0.46 &	Half-Blood Prince\\
+gringotts & 			0.51 &	Order of the Phoenix\\
+ministry & 			0.53 &	Deathly Hallows\\
+
+  \end{tabular}}
+    \resizebox{0.45\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 9}\\
+    Entity   & Distance & Origins\\
+    \hline
+    krum &			0.38 & 	Goblet of Fire\\
+    hogwarts &			0.49 & 	Half-Blood Prince\\
+    voldemort &			0.52 & 	Half-Blood Prince\\
+    dumbledore &			0.60 & 	Goblet of Fire\\
+    hagrid &			0.61 & 	Goblet of Fire\\
+  \end{tabular}}
+  \caption{Entity Topic Models Most Strongly Represented by Ten Latent Entities.\label{tab:hp_le_fulls_10s}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+  
+  \begin{figure}
+    \centering
+    \includegraphics[angle=-90, scale=0.7]{full_latent_entities_10}
+    \caption{Pairwise Topic Plots for Entity Topic Models classified into 10 Latent Entity Groups.\label{fig:full_latent_entities_ten}}
+  \end{figure}
+
+  \clearpage
+  \begin{table}
+    \centering
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 0}\\
+                Entity    & Distance & Origins\\
+                \hline
+                derrick	&	0.94	&	Order of the Phoenix \\
+                bole	&	0.94	&	Order of the Phoenix \\
+                coote	&	0.97	&	Half-Blood Prince\\
+                lynch	&	0.98	&	Goblet of Fire \\
+                flitwick	&	1.17	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 1}\\
+                Entity    & Distance & Origins\\
+                \hline
+                congress	&	1.81	&	Half-Blood Prince\\
+                number	&	1.81	&	Half-Blood Prince\\
+                york	&	1.81	&	Half-Blood Prince\\
+                broadway	&	1.81	&	Half-Blood Prince\\
+                permissions	&	1.81	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 2}\\
+                Entity    & Distance & Origins\\
+                \hline
+                draco	&	1.27	&	Philosopher's Stone \\
+                katie	&	1.90	&	Philosopher's Stone \\
+                weasleys	&	1.99	&	Chamber of Secrets \\
+                finch-fletchley	&	10.0	&	Goblet of Fire \\
+                justin	&	10.0	&	Goblet of Fire \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 3}\\
+                Entity    & Distance & Origins\\
+                \hline
+                group	&	1.07	&	Deathly Hallows \\
+                penguin	&	1.07	&	Deathly Hallows \\
+                usa	&	1.07	&	Deathly Hallows \\
+                fagles	&	1.07	&	Deathly Hallows \\
+                viking	&	1.07	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 4}\\
+                Entity    & Distance & Origins\\
+                \hline
+                ireland	&	1.83	&	Order of the Phoenix \\
+                aunt	&	1.83	&	Half-Blood Prince\\
+                teams	&	1.83	&	Order of the Phoenix \\
+                sickles	&	1.88	&	Order of the Phoenix \\
+                zacharias	&	10.0	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 5}\\
+                Entity    & Distance & Origins\\
+                \hline
+                polkiss	&	10.0	&	Philosopher's Stone \\
+                potter.	&	10.2	&	Prisoner of Azkaban \\
+                restriction	&	10.2	&	Prisoner of Azkaban \\
+                underage	&	10.2	&	Prisoner of Azkaban \\
+                padfoot	&	10.3	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 6}\\
+                Entity    & Distance & Origins\\
+                \hline
+                life	&	1.66	&	Philosopher's Stone \\
+                elixir	&	1.66	&	Philosopher's Stone \\
+                narcissa	&	1.94	&	Order of the Phoenix \\
+                lumos	&	10.0	&	Half-Blood Prince\\
+                malfoy.	&	10.0	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 7}\\
+                Entity    & Distance & Origins\\
+                \hline
+                london	&	10.0	&	Philosopher's Stone \\
+                caractacus	&	10.0	&	Half-Blood Prince\\
+                spect	&	10.1	&	Chamber of Secrets \\
+                prophet	&	10.1	&	Goblet of Fire \\
+                filius	&	10.1	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 8}\\
+                Entity    & Distance & Origins\\
+                \hline
+                gorgovitch	&	11.2	&	Deathly Hallows \\
+                arkie	&	11.4	&	Half-Blood Prince\\
+                philpott	&	11.4	&	Half-Blood Prince\\
+                wilkes	&	11.5	&	Goblet of Fire \\
+                vanishing	&	11.8	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 9}\\
+                Entity    & Distance & Origins\\
+                \hline
+                1719	&	2.12	&	11.7432278998498 \\
+                725	&	2.38	&	3.97775499591011 \\
+                2669	&	2.50	&	17.3213707911799 \\
+                1429	&	2.52	&	22.5742789952042 \\
+                2028	&	2.57	&	17.1897138188635 \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 10}\\
+                Entity    & Distance & Origins\\
+                \hline
+                moaning	&	1.63	&	Half-Blood Prince\\
+                pensieve	&	1.92	&	Goblet of Fire \\
+                filch	&	1.96	&	Prisoner of Azkaban \\
+                neville	&	10.0	&	Chamber of Secrets \\
+                peru	&	10.0	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 11}\\
+                Entity    & Distance & Origins\\
+                \hline
+                straightaway	&	10.1	&	Deathly Hallows \\
+                marvolo	&	10.2	&	Chamber of Secrets \\
+                portkeys	&	11.1	&	Half-Blood Prince\\
+                head	&	12.3	&	Chamber of Secrets \\
+                boy	&	12.3	&	Chamber of Secrets \\
+              \end{tabular}}
+          \end{table}
+          \begin{table}
+                \centering
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 12}\\
+                Entity    & Distance & Origins\\
+                \hline
+                marvolo	&	0.90	&	Half-Blood Prince\\
+                hufflepuffs	&	0.97	&	Deathly Hallows \\
+                fawcett	&	1.02	&	Goblet of Fire \\
+                headless	&	1.11	&	Half-Blood Prince\\
+                spinnet	&	1.30	&	Chamber of Secrets \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 13}\\
+                Entity    & Distance & Origins\\
+                \hline
+                mcgonagall	&	0.25	&	Order of the Phoenix \\
+                slughorn	&	0.35	&	Half-Blood Prince\\
+                george	&	0.36	&	Goblet of Fire \\
+                lupin	&	0.42	&	Half-Blood Prince\\
+                dursleys	&	0.45	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 14}\\
+                Entity    & Distance & Origins\\
+                \hline
+                catchpole	&	0.85	&	Deathly Hallows \\
+                ottery	&	0.85	&	Deathly Hallows \\
+                caps	&	1.18	&	Prisoner of Azkaban \\
+                red	&	1.18	&	Prisoner of Azkaban \\
+                borgin	&	1.31	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 15}\\
+                Entity    & Distance & Origins\\
+                \hline
+                sweden	&	1.13	&	Order of the Phoenix \\
+                rita	&	1.33	&	Half-Blood Prince\\
+                skeeter	&	1.33	&	Half-Blood Prince\\
+                choo	&	1.44	&	Prisoner of Azkaban \\
+                crescent	&	1.81	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 16}\\
+                Entity    & Distance & Origins\\
+                \hline
+                james	&	0.53	&	Order of the Phoenix \\
+                vernon	&	0.78	&	Philosopher's Stone \\
+                lupin	&	0.80	&	Prisoner of Azkaban \\
+                egypt	&	0.81	&	Prisoner of Azkaban \\
+                great	&	0.84	&	Philosopher's Stone \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 17}\\
+                Entity    & Distance & Origins\\
+                \hline
+                broadway	&	1.62	&	Order of the Phoenix \\
+                york	&	1.62	&	Order of the Phoenix \\
+                new	&	1.62	&	Order of the Phoenix \\
+                data	&	1.62	&	Order of the Phoenix \\
+                congress	&	1.62	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 18}\\
+                Entity    & Distance & Origins\\
+                \hline
+                tibbies	&	1.32	&	Philosopher's Stone \\
+                cleansweep	&	1.32	&	Half-Blood Prince\\
+                eleven	&	1.32	&	Half-Blood Prince\\
+                paws	&	1.32	&	Philosopher's Stone \\
+                road	&	1.32	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 19}\\
+                Entity    & Distance & Origins\\
+                \hline
+                spinnet	&	0.80	&	Philosopher's Stone \\
+                oliver	&	0.86	&	Order of the Phoenix \\
+                quill	&	1.12	&	Order of the Phoenix \\
+                arts	&	1.25	&	Goblet of Fire \\
+                broomsticks	&	1.30	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 20}\\
+                Entity    & Distance & Origins\\
+                \hline
+                grandpré	&	0.95	&	Deathly Hallows \\
+                illustrations	&	0.95	&	Deathly Hallows \\
+                publishing	&	0.95	&	Deathly Hallows \\
+                press	&	0.95	&	Deathly Hallows \\
+                j.	&	0.95	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 21}\\
+                Entity    & Distance & Origins\\
+                \hline
+                gwenog	&	10.0	&	Half-Blood Prince\\
+                jones	&	10.0	&	Half-Blood Prince\\
+                prewett	&	10.0	&	Deathly Hallows \\
+                quidditch	&	10.2	&	Philosopher's Stone \\
+                florence	&	10.2	&	Goblet of Fire \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 22}\\
+                Entity    & Distance & Origins\\
+                \hline
+                vernon	&	11.7	&	Deathly Hallows \\
+                school	&	12.1	&	Goblet of Fire \\
+                dean	&	12.3	&	Half-Blood Prince\\
+                chudley	&	27.8	&	Chamber of Secrets \\
+                cannon	&	27.8	&	Chamber of Secrets \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 23}\\
+                Entity    & Distance & Origins\\
+                \hline
+                portree	&	1.62	&	Order of the Phoenix \\
+                puddlemere	&	1.62	&	Order of the Phoenix \\
+                thomas	&	10.0	&	Philosopher's Stone \\
+                hannah	&	10.0	&	Chamber of Secrets \\
+                marcus	&	10.0	&	Half-Blood Prince\\
+              \end{tabular}}
+          \end{table}
+          \begin{table}
+                \centering
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 24}\\
+                Entity    & Distance & Origins\\
+                \hline
+                fudge	&	10.0	&	Half-Blood Prince\\
+                against	&	10.0	&	Deathly Hallows \\
+                defense	&	10.0	&	Deathly Hallows \\
+                hooch	&	10.0	&	Half-Blood Prince\\
+                madame	&	10.0	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 25}\\
+                Entity    & Distance & Origins\\
+                \hline
+                seamus	&	0.40	&	Half-Blood Prince\\
+                padfoot	&	0.76	&	Prisoner of Azkaban \\
+                madame	&	0.78	&	Order of the Phoenix \\
+                hogsmeade	&	1.17	&	Prisoner of Azkaban \\
+                pluto	&	1.18	&	Goblet of Fire \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 26}\\
+                Entity    & Distance & Origins\\
+                \hline
+                crookshanks	&	0.76	&	Prisoner of Azkaban \\
+                gaunt	&	0.76	&	Half-Blood Prince\\
+                pensieve	&	0.82	&	Order of the Phoenix \\
+                filch	&	0.95	&	Philosopher's Stone \\
+                magical	&	1.06	&	Goblet of Fire \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 27}\\
+                Entity    & Distance & Origins\\
+                \hline
+                emmeline	&	1.46	&	Half-Blood Prince\\
+                bone	&	1.59	&	Goblet of Fire \\
+                montgomery	&	1.68	&	Half-Blood Prince\\
+                quidditch	&	1.70	&	Philosopher's Stone \\
+                borage	&	1.80	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 28}\\
+                Entity    & Distance & Origins\\
+                \hline
+                gellert	&	0.72	&	Deathly Hallows \\
+                potter	&	1.14	&	Philosopher's Stone \\
+                james	&	1.16	&	Philosopher's Stone \\
+                dursleys	&	1.20	&	Philosopher's Stone \\
+                rowena	&	1.24	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 29}\\
+                Entity    & Distance & Origins\\
+                \hline
+                yaxley	&	10.4	&	Half-Blood Prince\\
+                avery	&	10.4	&	Half-Blood Prince\\
+                k.	&	10.5	&	Half-Blood Prince\\
+                a.	&	10.5	&	Half-Blood Prince\\
+                levine	&	10.5	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 30}\\
+                Entity    & Distance & Origins\\
+                \hline
+                pillsworth	&	1.37	&	Deathly Hallows \\
+                bernie	&	1.37	&	Deathly Hallows \\
+                barty	&	10.0	&	Goblet of Fire \\
+                spinnet	&	10.0	&	Philosopher's Stone \\
+                grammatica	&	10.0	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 31}\\
+                Entity    & Distance & Origins\\
+                \hline
+                muggle	&	1.57	&	Chamber of Secrets \\
+                house-elf	&	1.59	&	Goblet of Fire \\
+                blinky	&	1.59	&	Goblet of Fire \\
+                proudfoot	&	1.74	&	Half-Blood Prince\\
+                savage	&	1.74	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 32}\\
+                Entity    & Distance & Origins\\
+                \hline
+                flint	&	0.85	&	Philosopher's Stone \\
+                shunpike	&	0.95	&	Deathly Hallows \\
+                fabian	&	1.00	&	Order of the Phoenix \\
+                petunia	&	1.06	&	Philosopher's Stone \\
+                odo	&	1.37	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 33}\\
+                Entity    & Distance & Origins\\
+                \hline
+                ariana	&	0.56	&	Deathly Hallows \\
+                xenophilius	&	0.63	&	Deathly Hallows \\
+                spell	&	0.64	&	Deathly Hallows \\
+                crouch	&	0.70	&	Goblet of Fire \\
+                hallow	&	0.70	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 34}\\
+                Entity    & Distance & Origins\\
+                \hline
+                parkinson	&	10.0	&	Prisoner of Azkaban \\
+                clearwater	&	10.0	&	Prisoner of Azkaban \\
+                penny	&	10.0	&	Prisoner of Azkaban \\
+                law	&	10.0	&	Prisoner of Azkaban \\
+                magical	&	10.0	&	Prisoner of Azkaban \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 35}\\
+                Entity    & Distance & Origins\\
+                \hline
+                mark	&	1.81	&	Half-Blood Prince\\
+                forbidden	&	1.90	&	Goblet of Fire \\
+                quidditch	&	10.0	&	Philosopher's Stone \\
+                chaser	&	10.0	&	Order of the Phoenix \\
+                ladislaw	&	10.0	&	Order of the Phoenix \\
+              \end{tabular}}
+          \end{table}
+          \begin{table}
+                \centering
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 36}\\
+                Entity    & Distance & Origins\\
+                \hline
+                hall	&	0.56	&	Prisoner of Azkaban \\
+                great	&	0.56	&	Prisoner of Azkaban \\
+                drive	&	0.57	&	Goblet of Fire \\
+                privet	&	0.57	&	Goblet of Fire \\
+                hogsmeade	&	0.60	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 37}\\
+                Entity    & Distance & Origins\\
+                \hline
+                antigone	&	1.35	&	Half-Blood Prince\\
+                rosalind	&	1.35	&	Half-Blood Prince\\
+                bungs	&	1.35	&	Half-Blood Prince\\
+                three	&	1.46	&	Goblet of Fire \\
+                broomsticks	&	1.46	&	Goblet of Fire \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 38}\\
+                Entity    & Distance & Origins\\
+                \hline
+                arcus	&	1.57	&	Deathly Hallows \\
+                cross	&	1.75	&	Philosopher's Stone \\
+                loxias	&	1.78	&	Deathly Hallows \\
+                cadogan	&	1.79	&	Deathly Hallows \\
+                stanley	&	1.95	&	Deathly Hallows \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 39}\\
+                Entity    & Distance & Origins\\
+                \hline
+                express	&	1.76	&	Philosopher's Stone \\
+                algie	&	1.90	&	Order of the Phoenix \\
+                assyria	&	1.90	&	Order of the Phoenix \\
+                wistful	&	10.0	&	Order of the Phoenix \\
+                wilfred	&	10.0	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 40}\\
+                Entity    & Distance & Origins\\
+                \hline
+                jorkins	&	0.68	&	Goblet of Fire \\
+                galatea	&	1.45	&	Half-Blood Prince\\
+                minerva	&	1.49	&	Goblet of Fire \\
+                salmon	&	1.54	&	Deathly Hallows \\
+                marsh	&	1.60	&	Prisoner of Azkaban \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 41}\\
+                Entity    & Distance & Origins\\
+                \hline
+                wales	&	1.01	&	Goblet of Fire \\
+                davey	&	21.2	&	Prisoner of Azkaban \\
+                gudgeon	&	21.2	&	Prisoner of Azkaban \\
+                lockhart	&	21.5	&	Half-Blood Prince\\
+                howler	&	21.9	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 42}\\
+                Entity    & Distance & Origins\\
+                \hline
+                blotts	&	1.23	&	Half-Blood Prince\\
+                express	&	1.87	&	Deathly Hallows \\
+                road.	&	1.88	&	Deathly Hallows \\
+                dean	&	10.0	&	Order of the Phoenix \\
+                jordan	&	10.0	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 43}\\
+                Entity    & Distance & Origins\\
+                \hline
+                k.	&	0.84	&	Philosopher's Stone \\
+                department	&	0.84	&	Philosopher's Stone \\
+                data	&	0.84	&	Philosopher's Stone \\
+                ny	&	0.84	&	Philosopher's Stone \\
+                mary	&	0.84	&	Philosopher's Stone \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 44}\\
+                Entity    & Distance & Origins\\
+                \hline
+                patricia	&	1.43	&	Order of the Phoenix \\
+                stimpson	&	1.43	&	Order of the Phoenix \\
+                drive	&	1.81	&	Deathly Hallows \\
+                privet	&	1.81	&	Deathly Hallows \\
+                chris	&	1.92	&	Prisoner of Azkaban \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 45}\\
+                Entity    & Distance & Origins\\
+                \hline
+                weasleys	&	1.60	&	Goblet of Fire \\
+                bill	&	10.0	&	Half-Blood Prince\\
+                bogrod	&	10.0	&	Deathly Hallows \\
+                gryffindor	&	10.0	&	Deathly Hallows \\
+                sixty	&	10.0	&	Half-Blood Prince\\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 46}\\
+                Entity    & Distance & Origins\\
+                \hline
+                committee	&	10.1	&	Goblet of Fire \\
+                harkiss	&	10.1	&	Half-Blood Prince\\
+                dawlish	&	10.2	&	Half-Blood Prince\\
+                ottery	&	10.2	&	Goblet of Fire \\
+                catchpole	&	10.2	&	Goblet of Fire \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 47}\\
+                Entity    & Distance & Origins\\
+                \hline
+                patronuses	&	0.51	&	Deathly Hallows \\
+                dursley	&	0.88	&	Deathly Hallows \\
+                magorian	&	0.90	&	Order of the Phoenix \\
+                privet	&	0.91	&	Half-Blood Prince\\
+                drive	&	0.91	&	Half-Blood Prince\\
+              \end{tabular}}
+          \end{table}
+          \begin{table}
+                \centering
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 48}\\
+                Entity    & Distance & Origins\\
+                \hline
+                parvati	&	0.74	&	Prisoner of Azkaban \\
+                dedalus	&	0.82	&	Deathly Hallows \\
+                johnson	&	1.03	&	Prisoner of Azkaban \\
+                karkaroff	&	1.22	&	Half-Blood Prince\\
+                amelia	&	1.31	&	Order of the Phoenix \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 49}\\
+                Entity    & Distance & Origins\\
+                \hline
+                england	&	1.21	&	Chamber of Secrets \\
+                minerva	&	1.27	&	Deathly Hallows \\
+                wilhelmina	&	1.50	&	Order of the Phoenix \\
+                millicent	&	1.59	&	Chamber of Secrets \\
+                bulstrode	&	1.59	&	Chamber of Secrets \\
+              \end{tabular}}
+            \resizebox{0.33\textwidth}{!}{%
+              \begin{tabular}{c | c | c }
+                \multicolumn{3}{c}{Latent Entity 50}\\
+                Entity    & Distance & Origins\\
+                \hline
+                damocles	&	1.37	&	Half-Blood Prince\\
+                witch	&	1.42	&	Goblet of Fire \\
+                weekly	&	1.42	&	Goblet of Fire \\
+                halloween	&	1.61	&	Prisoner of Azkaban \\
+                diagon	&	10.0	&	Goblet of Fire \\
+              \end{tabular}}
+            \caption{Tables of Top Entity Topic Models for 50 Latent Entities extracted from the Harry Potter Novels\label{tab:Latent_entity_50}}
+          \end{table}
+
+          \begin{figure}
+            \centering
+          \includegraphics[angle=-90, scale=0.7]{latent_entity_50}
+          \caption{Pairwise Plot of Entity Topic Models when Coloured for 50 Latent Entity Group\label{fig:pairwise_50_le}}
+        \end{figure}
+          \chapter{Project Planning Document}
+  The following pages form the project planning document that initiated the investigation for this thesis. It outlines preliminary aims and objectives whilst also evaluating some of the risks that may be associated with the project going forward.
+  \includepdf[pages={1-}]{appendix/ppd.pdf}
+
+
+  
+\end{appendices}
 \end{document}

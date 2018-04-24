@@ -25,7 +25,7 @@ def request_book_entity_topics(db_conn):
     } for row in res]
     
 
-def calculate_latent_entities(le_prefix, db_name):
+def calculate_latent_entities(le_prefix, db_name, n_le):
     conn = db_conn(db_name)
     entity_topics = request_book_entity_topics(conn)
     e_keys = [e['entity']+'-$-'+e['book'] for e in entity_topics]
@@ -52,7 +52,7 @@ def calculate_latent_entities(le_prefix, db_name):
 
     data = np.array(entity_topics)
 
-    kmeans = KMeans(n_clusters = 5).fit(data)
+    kmeans = KMeans(n_clusters = n_le).fit(data)
 
     #first make some fake data with same layout as yours
     entity_frame = pd.DataFrame(data, columns=['Topic ' + str(t) for t in range(0,10)])
@@ -82,24 +82,19 @@ def calculate_latent_entities(le_prefix, db_name):
 def main():
     """ Main Process Flow """
     
-    summ_kmeans, summ_entities = calculate_latent_entities('summary_entities', 'hp_summary')
-    full_kmeans, full_entities = calculate_latent_entities('full_entities', 'hp_full')
+    summ_kmeans, summ_entities = calculate_latent_entities('summary_entities_50', 'hp_summary', n_le=50)
+    full_kmeans, full_entities = calculate_latent_entities('full_entities_50', 'hp_full', n_le=50)
 
+    
     summ_clusters = {
-        '0':[],
-        '1':[],
-        '2':[],
-        '3':[],
-        '4':[]
+        str(idx) : [] for idx, c in enumerate(summ_kmeans.cluster_centers_)
     }
 
-    full_clusters = {
-        '0':[],
-        '1':[],
-        '2':[],
-        '3':[],
-        '4':[]
+    full_clusters = {        
+        str(idx) : [] for idx, c in enumerate(full_kmeans.cluster_centers_)
     }
+    print(full_clusters)
+    print(summ_clusters)
 
     print('mapping summary entities')
     for row in summ_entities.itertuples():

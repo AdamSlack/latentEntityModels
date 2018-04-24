@@ -1,14 +1,17 @@
-ERROR: Missing number, treated as zero.
+ERROR: LaTeX Error: File `latent_entity_50' not found.
 
 --- TeX said ---
-<to be read again> 
-                   \def 
-l.1306 \begin
-             {subfigure}{0.45\textwidth}
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2799 ...[angle=-90, scale=0.7]{latent_entity_50}
+                                                  
 --- HELP ---
-This is usually caused by a LaTeX command expecting but not finding
-either a number or a length as an argument. You may have omitted an
-argument, or a square bracket in the text may have been mistaken for
-the beginning of an optional argument. This error is also caused by
-putting \protect in front of either a length command or a command such
-as \value that produces a number.
+From the .log file...
+
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.

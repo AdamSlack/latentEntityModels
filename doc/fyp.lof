@@ -43,3 +43,7 @@
 \contentsline {figure}{\numberline {38}{\ignorespaces Magnification of Pairwise Scatter Matrix of Entity Topic Model Topic Distributions for Topics 1,2 and 3, against topics 6, 7 and 8.\relax }}{100}
 \contentsline {figure}{\numberline {39}{\ignorespaces Pairwise Scatter Plot Matrix for Summary Corpus Entity Topic Models Coloured According to their Latent Entity Classification\relax }}{103}
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {40}{\ignorespaces Pairwise Topic Plots for Entity Topic Models classified into 10 Latent Entity Groups.\relax }}{123}
+\contentsline {figure}{\numberline {41}{\ignorespaces Pairwise Plot of Entity Topic Models when Coloured for 50 Latent Entity Group\relax }}{130}
+\addvspace {10\p@ }
