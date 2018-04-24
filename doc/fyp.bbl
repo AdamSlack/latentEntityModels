@@ -1,17 +1,24 @@
 \begin{thebibliography}{10}
 
-\bibitem{Bkkbrad2018-yt}
-{bkkbrad} and {Wikipedia contributors}.
-\newblock Latent dirichlet allocation.
-\newblock
-  \url{https://en.wikipedia.org/w/index.php?title=Latent_Dirichlet_allocation&oldid=835569966},
-  April 2018.
-\newblock Accessed: 2018-4-15.
-
 \bibitem{WebServer-lc}
 Web server survey | netcraft.
 \newblock \url{https://news.netcraft.com/archives/category/web-server-survey/}.
 \newblock Accessed: 2017-10-16.
+
+\bibitem{Van_Kleek2018-iy}
+Max Van~Kleek, Reuben Binns, Jun Zhao, Adam Slack, Sauyon Lee, Dean Ottewell,
+  and Nigel Shadbolt.
+\newblock {X-Ray} refine: Supporting the exploration and refinement of
+  information exposure resulting from smartphone apps.
+\newblock In {\em Proceedings of the 2018 {CHI} Conference on Human Factors in
+  Computing Systems}, CHI '18, pages 393:1--393:13, New York, NY, USA, 2018.
+  ACM.
+
+\bibitem{Romm2018-cu}
+Tony Romm and Tony Romm.
+\newblock Facebook's zuckerberg just survived 10 hours of questioning by
+  congress.
+\newblock {\em The Washington Post}, April 2018.
 
 \bibitem{Brill1995-sr}
 Eric Brill.
@@ -205,6 +212,14 @@ Cherukuri~Aswani Kumar and Suripeddi Srinivas.
   retrieval.
 \newblock {\em CIT. Journal of Computing and Information Technology},
   17(3):259--264, October 2004.
+
+\bibitem{Bkkbrad2018-yt}
+{bkkbrad} and {Wikipedia contributors}.
+\newblock Latent dirichlet allocation.
+\newblock
+  \url{https://en.wikipedia.org/w/index.php?title=Latent_Dirichlet_allocation&oldid=835569966},
+  April 2018.
+\newblock Accessed: 2018-4-15.
 
 \bibitem{Biro2008-ld}
 Istv{\'a}n B{\'\i}r{\'o}, J{\'a}cint Szab{\'o}, and Andr{\'a}s~A Bencz{\'u}r.

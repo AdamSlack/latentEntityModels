@@ -1,0 +1,14 @@
+ERROR: Missing number, treated as zero.
+
+--- TeX said ---
+<to be read again> 
+                   \def 
+l.1306 \begin
+             {subfigure}{0.45\textwidth}
+--- HELP ---
+This is usually caused by a LaTeX command expecting but not finding
+either a number or a length as an argument. You may have omitted an
+argument, or a square bracket in the text may have been mistaken for
+the beginning of an optional argument. This error is also caused by
+putting \protect in front of either a length command or a command such
+as \value that produces a number.
