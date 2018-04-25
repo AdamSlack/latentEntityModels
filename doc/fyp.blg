@@ -4,7 +4,7 @@ The top-level auxiliary file: fyp.aux
 The style file: unsrt.bst
 Database file #1: ./biblio.bib
 Warning--entry type for "Deerwester1989-yl" isn't style-file defined
---line 858 of file ./biblio.bib
+--line 861 of file ./biblio.bib
 Warning--empty publisher in garside1988computational
 Warning--empty journal in Borthwick1999-tg
 Warning--empty journal in Tjong_Kim2003-ym
@@ -13,16 +13,16 @@ Warning--empty journal in Dzhurov2009-sr
 Warning--empty journal in Jurafsky2014-yb
 You've used 57 entries,
             1791 wiz_defined-function locations,
-            836 strings with 15020 characters,
-and the built_in function-call counts, 15622 in all, are:
-= -- 1545
+            837 strings with 15109 characters,
+and the built_in function-call counts, 15642 in all, are:
+= -- 1550
 > -- 558
 < -- 28
 + -- 209
 - -- 152
 * -- 941
-:= -- 2233
-add.period$ -- 191
+:= -- 2238
+add.period$ -- 193
 call.type$ -- 57
 change.case$ -- 55
 chr.to.int$ -- 0
@@ -30,17 +30,17 @@ cite$ -- 63
 duplicate$ -- 778
 empty$ -- 1517
 format.name$ -- 152
-if$ -- 3697
+if$ -- 3702
 int.to.chr$ -- 0
 int.to.str$ -- 57
 missing$ -- 50
-newline$ -- 287
+newline$ -- 289
 num.names$ -- 56
-pop$ -- 205
+pop$ -- 207
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 503
+skip$ -- 498
 stack$ -- 0
 substring$ -- 1092
 swap$ -- 289
@@ -51,5 +51,5 @@ type$ -- 0
 warning$ -- 6
 while$ -- 156
 width$ -- 59
-write$ -- 657
+write$ -- 661
 (There were 7 warnings)

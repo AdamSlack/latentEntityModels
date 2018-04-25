@@ -1,5 +1,13 @@
 \begin{thebibliography}{10}
 
+\bibitem{Bkkbrad2018-yt}
+{bkkbrad} and {Wikipedia contributors}.
+\newblock Latent dirichlet allocation.
+\newblock
+  \url{https://en.wikipedia.org/w/index.php?title=Latent_Dirichlet_allocation&oldid=835569966},
+  April 2018.
+\newblock Accessed: 2018-4-15.
+
 \bibitem{WebServer-lc}
 Web server survey | netcraft.
 \newblock \url{https://news.netcraft.com/archives/category/web-server-survey/}.
@@ -213,14 +221,6 @@ Cherukuri~Aswani Kumar and Suripeddi Srinivas.
 \newblock {\em CIT. Journal of Computing and Information Technology},
   17(3):259--264, October 2004.
 
-\bibitem{Bkkbrad2018-yt}
-{bkkbrad} and {Wikipedia contributors}.
-\newblock Latent dirichlet allocation.
-\newblock
-  \url{https://en.wikipedia.org/w/index.php?title=Latent_Dirichlet_allocation&oldid=835569966},
-  April 2018.
-\newblock Accessed: 2018-4-15.
-
 \bibitem{Biro2008-ld}
 Istv{\'a}n B{\'\i}r{\'o}, J{\'a}cint Szab{\'o}, and Andr{\'a}s~A Bencz{\'u}r.
 \newblock Latent dirichlet allocation in web spam filtering.
@@ -252,7 +252,9 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
 
 \bibitem{Hoffman_undated-nx}
 Matthew~D Hoffman.
-\newblock Online {LDA}.
+\newblock Online variational bayes for latent dirichlet allocation.
+\newblock \url{https://github.com/blei-lab/onlineldavb}.
+\newblock Accessed: 2018-4-15.
 
 \bibitem{rehurek_lrec}
 Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.
