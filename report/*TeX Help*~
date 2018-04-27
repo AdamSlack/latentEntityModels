@@ -1,0 +1,10 @@
+ERROR: Paragraph ended before \@@array was complete.
+
+--- TeX said ---
+<to be read again> 
+                   \par 
+l.1328 
+       
+--- HELP ---
+A blank line occurred in a command argument that shouldn't contain
+one. You probably forgot the right brace at the end of an argument.

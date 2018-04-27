@@ -1,0 +1,31 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1}{\ignorespaces The 12 Tags Forming the Universal Tag Set.\relax }}{20}
+\contentsline {table}{\numberline {2}{\ignorespaces The 36 Tags Forming the Penn-Treebank Tag Set\relax }}{21}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3}{\ignorespaces Example GETM for entities within text \relax }}{38}
+\contentsline {table}{\numberline {4}{\ignorespaces Example entity-term associations between three entities\relax }}{41}
+\contentsline {table}{\numberline {5}{\ignorespaces Example E ntity-Topic distributions for entities in Table\nobreakspace {}4\hbox {} and the associated Latent Entity. \relax }}{41}
+\contentsline {table}{\numberline {6}{\ignorespaces Left \& Right: Entities Within Clusters Behind Latent Entities.\relax }}{46}
+\contentsline {table}{\numberline {7}{\ignorespaces Consistencies and Inconstencies Between Clusters Forming Latent Entities\relax }}{46}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8}{\ignorespaces Selection of API Endpoints. Text between guillemots represent variables of the URI.\relax }}{55}
+\contentsline {table}{\numberline {9}{\ignorespaces Select Methods from the DB Repository Layer. \relax }}{58}
+\contentsline {table}{\numberline {10}{\ignorespaces NLP Ultity Methods\relax }}{61}
+\contentsline {table}{\numberline {11}{\ignorespaces Key Methods Forming the HMM POS Tagger.\relax }}{62}
+\contentsline {table}{\numberline {12}{\ignorespaces Expected Format for Entity and Term Data for calculating GETM.\relax }}{63}
+\contentsline {table}{\numberline {13}{\ignorespaces Methods used in the formatting of data and calculation of GETM.\relax }}{63}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {14}{\ignorespaces Table of POS Tagging Results\relax }}{77}
+\contentsline {table}{\numberline {15}{\ignorespaces Topic Distributions for the Harry Potter Novels by J. K. Rowling \relax }}{79}
+\contentsline {table}{\numberline {16}{\ignorespaces Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Corpus\relax }}{80}
+\contentsline {table}{\numberline {17}{\ignorespaces Proportional Distributions of Topic Models for the Harry Potter Novel Summaries.\relax }}{83}
+\contentsline {table}{\numberline {18}{\ignorespaces Top Ten Words in the Topic-Word Distributions of Calculated Topics for the Harry Potter Summary Corpus\relax }}{84}
+\contentsline {table}{\numberline {19}{\ignorespaces Average and Variance of Topic Proportions across Entity Topic Models in the Summary Corpus\relax }}{95}
+\contentsline {table}{\numberline {20}{\ignorespaces Entity Topic Models most strongly represented by each Entity Topic Model.\relax }}{101}
+\contentsline {table}{\numberline {21}{\ignorespaces Top 5 Entity Topic Models Forming the Latent Entities for the Harry Potter Summary Corpus.\relax }}{104}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {22}{\ignorespaces Entity Topic Models Most Strongly Represented by Ten Latent Entities.\relax }}{124}
+\contentsline {table}{\numberline {23}{\ignorespaces Tables of Top Entity Topic Models for 50 Latent Entities extracted from the Harry Potter Novels\relax }}{129}
+\addvspace {10\p@ }

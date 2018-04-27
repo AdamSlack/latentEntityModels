@@ -1,0 +1,123 @@
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h!]
+  \centering
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 0}\\
+    Entity    & Distance & Origins\\
+    \hline
+    krum        &	0.35 &	Goblet of Fire\\
+    voldemort   &	0.44 &	Half-Blood Prince\\
+    hogwarts    &	0.44 &	Half-Blood Prince\\
+    burkes      &	0.51 &	Deathly Hallows\\
+    borgin      &	0.51 &	Deathly Hallows\\
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 1}\\
+    Entity    & Distance & Origins\\
+    \hline
+  portkey &	1.02 & 	Goblet of Fire\\
+  fudge   &	0.78 & 	Prisoner of Azkaban\\
+  chris   &	0.75 & 	Prisoner of Azkaban\\
+  burkes  &	0.61 & 	Deathly Hallows\\
+  borgin  &	0.61 & 	Deathly Hallows\\
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 2}\\
+    Entity    & Distance & Origins\\
+    \hline
+voldemort & 			0.31 & 	Half-Blood Prince\\
+vernon    & 			0.35 & 	Goblet of Fire\\
+hogwarts  & 			0.46 & 	Half-Blood Prince\\
+ministry  & 			0.48 & 	Deathly Hallows\\
+gringotts & 			0.48 & 	Order of the Phoenix\\
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+\begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 3}\\
+    Entity    & Distance & Origins\\
+    \hline
+patil     &	0.80 &	Order of the Phoenix\\
+firenze   &	0.72 &	Order of the Phoenix\\
+crabbe    &	0.71 &	Prisoner of Azkaban\\
+trelawney &	0.69 &	Goblet of Fire\\
+chris     &	0.56 &	Prisoner of Azkaban\\
+
+  \end{tabular}}
+    \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 4}\\
+    Entity   & Distance & Origins\\
+    \hline
+  fudge       & 			0.83 &	Prisoner of Azkaban\\
+  longbottom  & 			0.90 &	Half-Blood Prince\\
+  angelina    &  			1.03 &	Chamber of Secrets\\
+  johnson     & 			1.03 &	Chamber of Secrets\\
+  bell        & 			1.03 &	Chamber of Secrets\\
+  \end{tabular}}
+    \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 5}\\
+    Entity    & Distance & Origins\\
+    \hline
+    patil & 			    0.41 & 	Order of the Phoenix\\
+    ministry & 			  0.48 & 	Deathly Hallows\\
+    tonks & 			    0.50 & 	Order of the Phoenix\\
+    krum & 			      0.53 & 	Goblet of Fire\\
+    gringotts & 			0.55 & 	Order of the Phoenix\\
+
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 6}\\
+    Entity    & Distance & Origins\\
+    \hline
+krum & 			0.43 &	Goblet of Fire\\
+dumbledore & 			0.56 &	Goblet of Fire\\
+voldemort & 			0.57 &	Half-Blood Prince\\
+hogwarts & 			0.59 &	Half-Blood Prince\\
+hagrid & 			0.59 &	Goblet of Fire\\
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 7}\\
+    Entity    & Distance & Origins\\
+    \hline
+chris & 			0.74 & 	Prisoner of Azkaban\\
+tom & 			1.12 & 	Order of the Phoenix\\
+warrington & 			1.23 & 	Prisoner of Azkaban\\
+tom & 			1.30 & 	Order of the Phoenix\\
+oliver & 			1.32 & Philosopher's Stone\\
+
+  \end{tabular}}
+  \resizebox{0.32\textwidth}{!}{%
+\begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 8}\\
+    Entity    & Distance & Origins\\
+    \hline
+voldemort & 			0.38 &	Half-Blood Prince\\
+krum & 			0.45 &	Goblet of Fire\\
+hogwarts & 			0.46 &	Half-Blood Prince\\
+gringotts & 			0.51 &	Order of the Phoenix\\
+ministry & 			0.53 &	Deathly Hallows\\
+
+  \end{tabular}}
+    \resizebox{0.32\textwidth}{!}{%
+  \begin{tabular}{c | c | c }
+    \multicolumn{3}{c}{Latent Entity 9}\\
+    Entity   & Distance & Origins\\
+    \hline
+krum &			0.38 & 	Goblet of Fire\\
+hogwarts &			0.49 & 	Half-Blood Prince\\
+voldemort &			0.52 & 	Half-Blood Prince\\
+dumbledore &			0.60 & 	Goblet of Fire\\
+hagrid &			0.61 & 	Goblet of Fire\\
+
+  \end{tabular}}
+  \caption{Entity Topic Models most strongly represented by each Entity Topic Model.\label{tab:hp_le_fulls}}
+\end{table}
+\renewcommand{\baselinestretch}{2.0}\normalsize
+\renewcommand{\arraystretch}{1.0}

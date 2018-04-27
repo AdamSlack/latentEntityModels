@@ -1,0 +1,17 @@
+ERROR: LaTeX Error: File `latent_entity_50' not found.
+
+--- TeX said ---
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2799 ...[angle=-90, scale=0.7]{latent_entity_50}
+                                                  
+--- HELP ---
+From the .log file...
+
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
