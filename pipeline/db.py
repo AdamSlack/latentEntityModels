@@ -57,6 +57,12 @@ def insert_entity_topic_model(db,book,entity,topics):
         cursor.close()
         db.commit()
     return True
+
+def select_entity_topic_model(db, book, entity):
+    cursor = db.cursor()
+    cursor.execute("""select * from book_entity_topics where lower(book_title) = lower(%s) and lower(entity) = lower(%s)""",(book, entity))
+    return cursor
+
 #
 #
 #

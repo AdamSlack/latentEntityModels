@@ -60,3 +60,4 @@ commit;
 
 -- create index book_idx on books(book_title, entity);
 -- create index topics on topics(term);
+-- create index entity_topic_idx on book_entity_topics(book_title, entity);

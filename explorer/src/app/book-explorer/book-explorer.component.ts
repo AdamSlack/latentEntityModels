@@ -38,6 +38,7 @@ export class BookExplorerComponent implements OnInit {
   private bookTopicSubscription : Subscription
   private topicIDSubscription: Subscription;
   private topicTermSubscriptions: Array<Subscription> = [];
+  private entityTopicSubscription;
 
   constructor(public bookQuery : ExplorerApiService) {
 
@@ -58,10 +59,18 @@ export class BookExplorerComponent implements OnInit {
     if(this.entityTermSubscription) {
       this.entityTermSubscription.unsubscribe();
     }
+    if(this.entityTopicSubscription) {
+      this.entityTopicSubscription.unsubscribe();
+    }
+
     this.entityTermSubscription = this.bookQuery.requestEntityTerms(this.selectedBook, entity).subscribe((res) => {
       this.selectedEntity = entity;
       this.terms = res.terms;
-      this.mapEntityTermTopics(track)
+    });
+
+    this.entityTopicSubscription = this.bookQuery.requestEntityTopics(this.selectedBook, entity).subscribe((res) => {
+      this.trackEntityTopics(track)
+      this.mapEntityTermTopics(res);      
     });
   }
 
@@ -75,29 +84,7 @@ export class BookExplorerComponent implements OnInit {
       this.filterEntities();
     })
   }
-
-  public mapEntityTermTopics(track : boolean = false) {
-    console.log(this.terms);
-    console.log(this.topicTerms);
-    let entityTerms = this.terms.map((t) => t.term.toLowerCase());
-    let presentTerms = this.topicTerms.map((topic) => {
-      return {
-        topicID: topic.topic_id,
-        terms : topic.terms.filter((term) => entityTerms.indexOf(term.term.toLowerCase()) > -1 )
-      }
-    });
-    console.log('Present Terms')
-    console.log(presentTerms);
-    let topicScores = presentTerms.map((t) => {
-      return {topicID : t.topicID, score : t.terms.reduce((a,b) => a + b.strength, 0)}
-    });
-    console.log('Topic Scores');
-    console.log(topicScores);
-
-    let sum = topicScores.reduce((a,b) => a + b.score, 0);
-    this.entityTopics = topicScores.map((t) => {
-      return {topicID : t.topicID, pct : ((t.score/sum) * 100 ).toFixed(2)}
-    });
+  public trackEntityTopics(track: boolean = false) {    
     if(track) {
       this.trackedEntities.push({
         name: this.selectedEntity,
@@ -105,8 +92,13 @@ export class BookExplorerComponent implements OnInit {
         topics : this.entityTopics
       });
     }
-    console.log('Entity Topics')
-    console.log(this.entityTopics)
+  }
+  
+  public mapEntityTermTopics(topics : {topics : Array<{entity: string, book:string, topicID:number, strength:number}>}) {
+
+    this.entityTopics = topics.topics.map((t) => {
+      return {topicID : t.topicID, pct : t.strength.toFixed(2)}
+    });
 }
 
   public requestTopics(bookTitle: string) {

@@ -38,13 +38,33 @@ export class ExplorerApiService {
 
     public requestTopicIDs() : Observable<any> {
       let url = this.ROOT + 'topics';
-      console.log('url');
+      console.log(url)
       return this.http.get(url);
     }
 
     public requestTopicTerms(topicID : number) : Observable<any>{
       let url = this.ROOT + 'topics/' + topicID.toString();
-      console.log('url')
+      console.log(url)
       return this.http.get(url);
+    }
+
+    public requestEntityTopics(bookTitle: string, entityName: string) : Observable<{
+      topics : Array<{
+        entity: string,
+        book:string,
+        topicID:number,
+        strength:number
+      }>
+    }>{
+      let url = this.ROOT + 'topics/' + bookTitle + '/' + entityName;
+      console.log(url);
+      return this.http.get<{
+        topics : Array<{
+          entity: string,
+          book:string,
+          topicID:number,
+          strength:number
+        }>
+      }>(url);
     }
 }

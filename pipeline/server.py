@@ -73,6 +73,20 @@ class Server(BaseHTTPRequestHandler):
         conn.close()
         return res
 
+    def fetch_book_enitity_topics(self, book_title, entity):
+        """ selects all topics for a given book and entity """
+        print('Selecting topic distributions for: ', book_title, '---', entity)
+        conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+        res = db.select_entity_topic_model(conn, book_title, entity)
+        entity_topics = [{
+            'entity': row[0],
+            'book': row[1],
+            'topicID': row[2],
+            'strength':row[3]
+        } for row in res]
+        print(entity_topics)
+        return entity_topics
+
     def fetch_book_titles(self):
         """ """
         conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
@@ -84,9 +98,6 @@ class Server(BaseHTTPRequestHandler):
         components = url.lower().strip('/').replace('api/','').split('/')
         print(components)
         comp_len = len(components)
-        if comp_len == 0 or comp_len > 4:
-            self.send_response(400)
-            return 'INVALID URL RECIEVED'
         
         if comp_len == 1 and components[0] == 'topics':
             res = self.fetch_topic_ids()
@@ -98,6 +109,14 @@ class Server(BaseHTTPRequestHandler):
             topic_id = components[1]
             res = self.fetch_topic_terms(topic_id)
             json_obj = json.dumps({'topic_id': topic_id, 'terms': res})
+            self.send_response(200)
+            return json_obj
+        
+        if comp_len == 3 and components[0] == 'topics':
+            book_title = unquote(components[1])
+            entity_name = unquote(components[2])
+            res = self.fetch_book_enitity_topics(book_title, entity_name)
+            json_obj = json.dumps({'topics' : res}, indent=2)
             self.send_response(200)
             return json_obj
 

@@ -41,7 +41,7 @@ export class TopicModelsComponent implements OnInit {
     // });
 
     let topicIDs = this.topicIDs;
-    let books = this.topicDistributions.map((t) => t.book);
+    let books = this.topicDistributions.map((t) => decodeURIComponent(t.book));
     let topicData = this.topicDistributions.map((t, idx) =>  {
       let scores = t.topics.map((t) => t.score)
       let sum = scores.reduce((a,b) => a + b, 0);
@@ -62,7 +62,7 @@ export class TopicModelsComponent implements OnInit {
     console.log(data);
 
     var margin = {top: 0, right: 0, bottom: 0, left: 0},
-        width = 2999 - margin.left - margin.right,
+        width = 10*topicIDs.length - margin.left - margin.right,
         height = 360 - margin.top - margin.bottom;
         
     var svg = d3.select(this.chart.nativeElement)
@@ -109,7 +109,9 @@ export class TopicModelsComponent implements OnInit {
       
       var bars = book.selectAll("rect")
             .data(function(d) {
-              d.data.book_title = d.book; 
+              topicIDs.forEach((id) => {
+                d.data[id]['book'] = d.book;
+              });
               return d.data; 
             })
           .enter().append("rect")
@@ -117,12 +119,14 @@ export class TopicModelsComponent implements OnInit {
             .attr("y", function(d) { return y(d.y1); })
             .attr("height", function(d) { return y(d.y0) - y(d.y1); })
             .style("fill", function(d) { return z(d.topicID); })
-            .on("mousemove", (d) => {
+          .on("mousemove", (d) => {
               div.style("left", d3.event.pageX+10+"px");
               div.style("top", d3.event.pageY-25+"px");
               div.style("display", "inline-block");
-              console.log(d);
-              div.html('<strong>' + d.book_title + '</strong>');
+              div.html(
+                '<strong>' + d.book + '</strong>' +
+                '<br>'+
+                'Topic ' + d.topicID + ': ' + (d.y1-d.y0).toFixed(2)) + '%';
             })
             .on('mouseout', (d) => {
               div.style("display", "none")
@@ -147,7 +151,7 @@ export class TopicModelsComponent implements OnInit {
     this.topicIDSubscription = this.api.requestTopicIDs().subscribe((res) => {
       console.log(res);
       this.topicIDs = res.topic_ids;
-      this.bookTitleSubscription = this.api.requestBookTitles().subscribe((titleRes) => {
+      this.bookTitleSubscription = this.api.requestBookTitles().subscribe((titleRes :{ books : string[]}) => {
         this.topicDisributionSubscriptions = titleRes.books.map((book) => {
           return this.api.requestBookTopics(book).subscribe((bookRes) => {
             this.topicDistributions.push(bookRes)
