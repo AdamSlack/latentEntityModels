@@ -13,6 +13,7 @@ create table books( -- Actually book_entity_terms
     primary key(book_title, entity, term)
 );
 
+
 create table topics(
     topic_id    int     not null,
     term        text    not null,
@@ -56,3 +57,6 @@ create table latent_entity_entities(
 
 
 commit;
+
+-- create index book_idx on books(book_title, entity);
+-- create index topics on topics(term);
