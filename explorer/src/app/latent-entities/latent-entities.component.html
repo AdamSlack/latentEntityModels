@@ -1,0 +1,10 @@
+
+<div class="container latent-collection">
+  <div class="title">
+      <div class="left">☕ Latent Entities.</div><div class="right">N=<input type="number" [(ngModel)]=latentCount  step="1" min="5" max="10000" class="search"></div>
+  </div>
+  <div class="calc-btn" (click)="requestLatentEntities()">Calculate</div>
+  <div class="latent-entity-collection">
+    <svg #chart></svg>    
+  </div>
+</div>

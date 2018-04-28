@@ -6,6 +6,7 @@ import json
 
 ## DB Utilities
 import db as db
+import latent_entity as latent_entity
 
 ## POS tagging
 import viterbi as viterbi
@@ -73,6 +74,9 @@ class Server(BaseHTTPRequestHandler):
         conn.close()
         return res
 
+    def calculate_latent_entities(self, n_entities):
+        return latent_entity.calculate_latent_entities('books', n_entities)
+
     def fetch_book_enitity_topics(self, book_title, entity):
         """ selects all topics for a given book and entity """
         print('Selecting topic distributions for: ', book_title, '---', entity)
@@ -94,11 +98,27 @@ class Server(BaseHTTPRequestHandler):
 
     def process_GET(self, url):
         """ parse an incoming url """
-            
-        components = url.lower().strip('/').replace('api/','').split('/')
-        print(components)
+        clean_url = url.lower().strip('/').replace('api/','')
+        split_url = clean_url.split('?')
+        components = split_url[0].split('/')
+        print('URL:', components)
+        if len(split_url) > 1:
+            query_components = [c.split('=') for c in split_url[1].split('&')]
+            query = {c[0] : c[1] for c in query_components}
+            print('QUERY:', query)
         comp_len = len(components)
         
+        if comp_len == 1 and components[0] == 'latent_entities':
+            print('Latent Entity Request Recieved.')
+            print('Number of Entities:', query['number'])
+            if 'number' not in query:
+                self.send_response(400)
+                return
+            kmeans, _ = self.calculate_latent_entities(int(query['number']))
+            json_obj = json.dumps({'latent_entities': [[p for p in c] for c in kmeans.cluster_centers_]})
+            self.send_response(200)
+            return json_obj
+
         if comp_len == 1 and components[0] == 'topics':
             res = self.fetch_topic_ids()
             json_obj = json.dumps({'topic_ids': res}, indent=2)
@@ -161,7 +181,7 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(200)
             return json_obj
 
-        
+
         self.send_response(400)
         json_obj = json.loads('{"Invalid URL": "Oooh-Weee, Don\'t quite know what you\'re wanting there!"}')
         return  json.dumps(json_obj, indent=2)

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExplorerApiService } from '../services/explorer-api.service'
 import { Subscription } from 'rxjs/Subscription';
 import { Subscriber } from 'rxjs/Subscriber';
+import { Subscribable } from 'rxjs/Observable';
 @Component({
   selector: 'app-book-explorer',
   templateUrl: './book-explorer.component.html',
@@ -31,6 +32,7 @@ export class BookExplorerComponent implements OnInit {
   public entitySearch : string = '';
   public bookSearch : string = '';
 
+ 
   // subscriptions
   private entitySubscription : Subscription;
   private entityTermSubscription : Subscription;
@@ -38,7 +40,8 @@ export class BookExplorerComponent implements OnInit {
   private bookTopicSubscription : Subscription
   private topicIDSubscription: Subscription;
   private topicTermSubscriptions: Array<Subscription> = [];
-  private entityTopicSubscription;
+  private entityTopicSubscription : Subscription;
+
 
   constructor(public bookQuery : ExplorerApiService) {
 

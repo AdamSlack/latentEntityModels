@@ -8,13 +8,15 @@ import { BookExplorerComponent } from './book-explorer/book-explorer.component';
 import { ExplorerApiService } from './services/explorer-api.service';
 import { BannerComponent } from './banner/banner.component';
 import { TopicModelsComponent } from './topic-models/topic-models.component';
+import { LatentEntitiesComponent } from './latent-entities/latent-entities.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookExplorerComponent,
     BannerComponent,
-    TopicModelsComponent
+    TopicModelsComponent,
+    LatentEntitiesComponent
   ],
   imports: [
     BrowserModule,

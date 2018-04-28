@@ -67,4 +67,11 @@ export class ExplorerApiService {
         }>
       }>(url);
     }
+
+    public requestLatentEntities(n_entities = 5) : Observable<{latent_entities : Array<Array<number>>}>{
+      let url = this.ROOT + 'latent_entities?number=' + n_entities;
+      console.log(url);
+      return this.http.get<{latent_entities : Array<Array<number>>}>(url);
+    }
 }
+

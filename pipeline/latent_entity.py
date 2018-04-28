@@ -25,9 +25,14 @@ def request_book_entity_topics(db_conn):
     } for row in res]
     
 
-def calculate_latent_entities(le_prefix, db_name, n_le):
+#def calculate_latent_entities(le_prefix, db_name, n_le):
+def calculate_latent_entities(db_name, n_le):
+    print('Latent Entities Connecting to DB')
     conn = db_conn(db_name)
+    print('Requesting Entity Topics')
     entity_topics = request_book_entity_topics(conn)
+
+    print('Processing Entity Topics')
     e_keys = [e['entity']+'-$-'+e['book'] for e in entity_topics]
     entities = {e:{'topic_ids' : [], 'topic_str' : []} for e in e_keys}
 
@@ -51,7 +56,7 @@ def calculate_latent_entities(le_prefix, db_name, n_le):
 
 
     data = np.array(entity_topics)
-
+    print('Calculating K Means')
     kmeans = KMeans(n_clusters = n_le).fit(data)
 
     #first make some fake data with same layout as yours
@@ -64,7 +69,7 @@ def calculate_latent_entities(le_prefix, db_name, n_le):
     entity_frame['Book'] = entity_books
 
     entity_frame = entity_frame[(entity_frame.T != 0).any()]
-    entity_frame.to_csv('../results/test/'+le_prefix+'_classification.csv')
+    #entity_frame.to_csv('../results/test/'+le_prefix+'_classification.csv')
 
     for idx, e in enumerate(entities):
         entities[e]['closest_cluster'] = res[idx]
@@ -72,9 +77,9 @@ def calculate_latent_entities(le_prefix, db_name, n_le):
             entities[e]['latent_' + str(idx)] = np.linalg.norm(l - entities[e]['topic_str'])
             out_line = [entities[e]['entity'],'latent_' , str(idx), entities[e]['latent_' + str(idx)], entities[e]['book'] , '\n']
             values = ','.join(str(v) for v in out_line)
-            fp = '../results/test/'+le_prefix + str(idx) + '.csv'
-            with open(fp, 'a+') as f:
-                f.write(' '.join(values))
+            # fp = '../results/test/'+le_prefix + str(idx) + '.csv'
+            # with open(fp, 'a+') as f:
+            #     f.write(' '.join(values))
     
     return kmeans, entity_frame
     

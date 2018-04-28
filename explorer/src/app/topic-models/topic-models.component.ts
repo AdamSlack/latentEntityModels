@@ -126,8 +126,7 @@ export class TopicModelsComponent implements OnInit {
               div.html(
                 '<strong>' + d.book + '</strong>' +
                 '<br>'+
-                'Topic ' + d.topicID + ': ' + (d.y1-d.y0).toFixed(2)) + '%';
-            })
+                'Topic ' + d.topicID + ': ' + (d.y1-d.y0).toFixed(2) + '%')})
             .on('mouseout', (d) => {
               div.style("display", "none")
             });
