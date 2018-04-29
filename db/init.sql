@@ -61,3 +61,25 @@ commit;
 -- create index book_idx on books(book_title, entity);
 -- create index topics on topics(term);
 -- create index entity_topic_idx on book_entity_topics(book_title, entity);
+
+
+-- Godsend, super simple way of doing it!
+-- https://stackoverflow.com/questions/34272482/postgresql-create-function-euclidean-distance-n-dimensions
+CREATE OR REPLACE FUNCTION distance(l real[], r real[]) RETURNS real AS $$
+DECLARE
+  s real;
+BEGIN
+  s := 0;
+  FOR i IN 1..4 LOOP
+    s := s + ((l[i] - r[i]) * (l[i] - r[i]));
+  END LOOP;
+  RETURN |/ s;
+END;
+$$ LANGUAGE plpgsql;
+
+-- EXAMPLE USAGE
+-- select distance(str_array::real[], ARRAY[0,0,0,0,0,0,0,0,0,0]), entity, book_title
+--   from ( 
+--      select array_agg(strength) as str_array, entity, book_title
+--        from book_entity_topics group by entity, book_title
+--   ) as a;
