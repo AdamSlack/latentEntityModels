@@ -74,6 +74,13 @@ class Server(BaseHTTPRequestHandler):
         conn.close()
         return res
 
+    def request_closest_ten_entities(self, latent_entity):
+        conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
+        res = db.request_closest_ten_entities(conn, latent_entity)
+        res = [{'distance' : row[0], 'entity' : row[1], 'book' : row[2]} for row in res]
+        conn.close()
+        return res
+
     def calculate_latent_entities(self, n_entities):
         return latent_entity.calculate_latent_entities('books', n_entities)
 
@@ -116,6 +123,26 @@ class Server(BaseHTTPRequestHandler):
                 return
             kmeans, _ = self.calculate_latent_entities(int(query['number']))
             json_obj = json.dumps({'latent_entities': [[p for p in c] for c in kmeans.cluster_centers_]})
+            self.send_response(200)
+            return json_obj
+
+        if comp_len == 2 and components[0] == 'latent_entities' and components[1] == 'closest':
+            print('Fetching closest 10 Entities.')
+            # latent_entities/closest?1=0&2=0&3=0
+            print(query)
+            num_topics = len(query)
+            strengths = []
+            for i in range(0, num_topics):
+                if 'topic_'+str(i) not in query:
+                    self.send_response(400)
+                    return json.dumps({'INVALID_TOPICS': query})
+                strengths.append(query['topic_'+str(i)])
+            entity_topic_models = self.request_closest_ten_entities(strengths)
+            json_obj = json.dumps({
+                'latent_entity' : strengths,
+                'query' : query,
+                'closest': entity_topic_models
+            })
             self.send_response(200)
             return json_obj
 

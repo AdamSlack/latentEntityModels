@@ -17,6 +17,25 @@ def connect_to_db(host, dbname, user, password):
     except:
         print('Unable to connect to DB')
 
+
+def request_closest_ten_entities(db, latent_entitiy):
+    cursor = db.cursor()
+
+    cursor.execute(
+        """ 
+        select distance(str_array::real[], %s::real[]) as dist, entity, book_title
+           from ( 
+               select array_agg(strength) as str_array, entity, book_title
+                 from book_entity_topics group by entity, book_title
+            ) as a
+        order by dist
+        limit 10
+        
+        """,(latent_entitiy,)
+    )
+
+    return cursor
+
 #
 #
 #
