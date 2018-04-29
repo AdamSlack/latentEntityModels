@@ -12,6 +12,12 @@ export class LatentEntitiesComponent implements OnInit {
 
 
   private latentEntityRequestSubscription : Subscription;
+  private closestEntityRequestSubscription : Subscription;
+  
+  public selectedLatentEntity : any;
+  public closestEntities : any;
+  private latentEntities : any;
+  private tipDisabled : boolean = true;
   
  // Latent Entities
  public latentCount : number = 5;
@@ -28,10 +34,11 @@ export class LatentEntitiesComponent implements OnInit {
         le.reduce((a, b, idx) => accum[idx] = a + b, 0);
         return {
           latentEntity : idx,
+          strengths : latentEntities[idx],
           data : accum.map((y, idx) => {return {y1: y, y0: y - le[idx], topicID: idx}})
         }
       });
-      
+
      var margin = {top: 0, right: 0, bottom: 0, left: 0},
          width = 15*latentEntityIDs.length - margin.left - margin.right,
          height = 360 - margin.top - margin.bottom;
@@ -82,6 +89,7 @@ export class LatentEntitiesComponent implements OnInit {
              .data(function(d) {
                 topicIDs.forEach((id) => {
                   d.data[id]['latentEntity'] = d.latentEntity;
+                  d.data[id]['strengths'] = d.strengths;
                 });
                return d.data; 
              })
@@ -89,17 +97,30 @@ export class LatentEntitiesComponent implements OnInit {
              .attr("width", x.bandwidth())
              .attr("y", function(d) { return y(d.y1); })
              .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+             .attr("stroke", (d) => {
+              if (d.latentEntity == this.selectedLatentEntity) {
+                return 'white'
+              }
+              return 'none'
+            })
              .style("fill", function(d) { return z(d.topicID); })
            .on("mousemove", (d) => {
-               div.style("left", d3.event.pageX+10+"px");
-               div.style("top", d3.event.pageY-25+"px");
-               div.style("display", "inline-block");
-               div.html('<strong> Latent Entity '+ d.latentEntity +'<\strong><br>Topic ' + d.topicID + ': ' + (d.y1-d.y0).toFixed(2) + '%')})
-             .on('mouseout', (d) => {
+              if(!this.tipDisabled){
+                  div.style("left", d3.event.pageX+10+"px");
+                  div.style("top", d3.event.pageY-25+"px");
+                  div.style("display", "inline-block");
+                  div.html('<strong> Latent Entity '+ d.latentEntity +'<\strong><br>Topic ' + d.topicID + ': ' + (d.y1-d.y0).toFixed(2) + '%')
+              }
+            })
+            .on('mouseout', (d) => {
                div.style("display", "none")
-             })
+            })
              .on('click', (d) => {
+               this.tipDisabled = true;
+                div.style("display", "none")              
                console.log('FETCHING TOP ENTITIES FOR LATENT ENTITY: ', d.latentEntity)
+               console.log(d.strengths);
+               this.requestClosestEntities(d.latentEntity, d.strengths);
              });
  
          var div = d3.select("body").append("div").attr("class", "toolTip");
@@ -115,17 +136,30 @@ export class LatentEntitiesComponent implements OnInit {
                 .style('font-size', '0.75em')
                 .style('padding', '5px')
                 .style('text-align', 'left');
+          this.tipDisabled=false;
    }
 
   ngOnInit() {
   }
 
+  public requestClosestEntities(latentID, strengths) {
+    this.selectedLatentEntity = latentID;
+    if(this.closestEntityRequestSubscription) {
+      this.closestEntityRequestSubscription.unsubscribe();
+    }
+    this.closestEntityRequestSubscription = this.bookQuery.requestClosestEntities(strengths).subscribe((res) => {
+      console.log(res);
+      this.closestEntities = res.closest;
+      this.buildDistributionFigure(this.latentEntities)      
+    })
+  }
 
   public requestLatentEntities() {
     if (this.latentEntityRequestSubscription) {
       this.latentEntityRequestSubscription.unsubscribe();
     }
-    this.bookQuery.requestLatentEntities(this.latentCount).subscribe((res : {latent_entities : Array<Array<number>>}) => {
+    this.latentEntityRequestSubscription = this.bookQuery.requestLatentEntities(this.latentCount).subscribe((res : {latent_entities : Array<Array<number>>}) => {
+      this.latentEntities = res.latent_entities;
       this.buildDistributionFigure(res.latent_entities);
     });
   }

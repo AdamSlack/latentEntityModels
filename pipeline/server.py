@@ -77,7 +77,7 @@ class Server(BaseHTTPRequestHandler):
     def request_closest_ten_entities(self, latent_entity):
         conn = db.connect_to_db(host='localhost', dbname='books', user='postgres', password='password')
         res = db.request_closest_ten_entities(conn, latent_entity)
-        res = [{'distance' : row[0], 'entity' : row[1], 'book' : row[2]} for row in res]
+        res = [{'distance' : row[0], 'entity' : row[1], 'book' : row[2], 'strengths' : row[3]} for row in res]
         conn.close()
         return res
 
@@ -136,7 +136,7 @@ class Server(BaseHTTPRequestHandler):
                 if 'topic_'+str(i) not in query:
                     self.send_response(400)
                     return json.dumps({'INVALID_TOPICS': query})
-                strengths.append(query['topic_'+str(i)])
+                strengths.append(float(query['topic_'+str(i)]))
             entity_topic_models = self.request_closest_ten_entities(strengths)
             json_obj = json.dumps({
                 'latent_entity' : strengths,

@@ -23,7 +23,7 @@ def request_closest_ten_entities(db, latent_entitiy):
 
     cursor.execute(
         """ 
-        select distance(str_array::real[], %s::real[]) as dist, entity, book_title
+        select distance(str_array::real[], %s::real[]) as dist, entity, book_title, str_array
            from ( 
                select array_agg(strength) as str_array, entity, book_title
                  from book_entity_topics group by entity, book_title

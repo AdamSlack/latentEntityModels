@@ -73,5 +73,30 @@ export class ExplorerApiService {
       console.log(url);
       return this.http.get<{latent_entities : Array<Array<number>>}>(url);
     }
+
+    public requestClosestEntities(latent_entity:Array<number>): Observable<
+      {
+        latent_entity : Array<number>,
+        closest : Array<{
+         entity : string,
+         book : string,
+         distance : number,
+         strengths : Array<number> 
+        }>
+      }
+    >{
+      let url = this.ROOT + 'latent_entities/closest?' + latent_entity.map((str, idx) => 'topic_' + idx + '=' + str).join('&');
+      console.log(url);
+      
+      return this.http.get<{
+        latent_entity : Array<number>,
+        closest : Array<{
+         entity : string,
+         book : string,
+         distance : number,
+         strengths : Array<number> 
+        }>
+      }>(url)
+    }
 }
 

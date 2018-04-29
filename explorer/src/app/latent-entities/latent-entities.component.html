@@ -8,3 +8,25 @@
     <svg #chart></svg>    
   </div>
 </div>
+
+<div class="container latent-collection">
+  <div class="title">
+      <div class="left">☕ Closest Entities.</div>
+  </div>
+  <div class="entity-collection">
+    <table class="entity-collection">
+      <tr><td>Distance</td><td>Entity</td><td>Book</td></tr>
+      <tr *ngFor="let e of closestEntities">
+        <td class="">
+          {{e.distance.toFixed(2)}}
+        </td>
+        <td class="">
+           {{e.entity}}
+        </td>
+        <td class="">
+          {{e.book}}
+       </td>
+      </tr>
+    </table>
+  </div>
+</div>
