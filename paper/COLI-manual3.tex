@@ -33,11 +33,19 @@
 \maketitle
 
 \begin{abstract}
-  We present a novel approach to extracting the semantic relationships between entities across a
-  corpus, considering how the context surrounding an entity can be retained in bag-of-word statistical
+  We present a novel approach to extracting latent semantic relationships between entities across a
+  corpus, by considering how the context surrounding an entity can be retained in bag-of-word statistical
   models, particularly, when a corpus of longer written narratives is used. Latent Entities, or
-  entity stereotypes are extracted by applying clustering methods to entity-oriented topic models
-  derived from a Gaussian-filtered entity-term co-occurence matrix.
+  entity stereotypes are extracted by applying clustering methods to entity-oriented topic models 
+  which are derived from a Gaussian-filtered entity-term co-occurrence matrix. Using this approach, it
+  is demonstrated that the proposed methods can provide semantically meaningful latent entity models,
+  which in turn can be interpreted by a human. The use of a modified co-occurrence matrix allows for
+  the production of entity topic models with distinguishing topic distributions at an intra-document
+  and inter-document level, highlighting the model's ability  to capture surrounding contextual
+  similarities and differences between entities within a document and across a corpus. The quality
+  of resulting models are explored using a blend of qualitative and quantitative methods, using
+  consistency metrics to compare models extracted from two corpora, as well as visualisations
+  exploring the qualitative aspects of extracted models. 
 \end{abstract}
 
 \section{Introduction}
