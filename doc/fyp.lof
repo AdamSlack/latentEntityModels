@@ -1,0 +1,49 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces Plate Notation for the LDA Method\nobreakspace {}\cite {Bkkbrad2018-yt}. \relax }}{27}
+\contentsline {figure}{\numberline {2}{\ignorespaces Output format of lda implementation in scikit-learn. where \(t_i\) is the topic, \(w_j\) is the word, and \(s_{i,j}\) is the strength of ownership between the topic and the word. \relax }}{29}
+\contentsline {figure}{\numberline {3}{\ignorespaces Bipartite topic conceptual similarity graph. (Middle, Right) \relax }}{33}
+\contentsline {figure}{\numberline {4}{\ignorespaces Document relationships formed by LSA and LDA topic modelling methods\relax }}{33}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5}{\ignorespaces Structure of Gaussian Entity-Term Matrix With Columns Labelled by entities and Rows Labelled by Words.\relax }}{37}
+\contentsline {figure}{\numberline {6}{\ignorespaces Example Set of Entities for the Intruding Entity Test.\relax }}{43}
+\contentsline {figure}{\numberline {7}{\ignorespaces Example Set of Entities with Set of Associated Terms.\relax }}{44}
+\contentsline {figure}{\numberline {8}{\ignorespaces Analysis Pipeline for the Extraction of Latent Entity Information.\relax }}{47}
+\contentsline {figure}{\numberline {9}{\ignorespaces Adapted PXP Process for the development of this Project and Thesis\relax }}{50}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {10}{\ignorespaces Architecture overview of the Latent Entity Model Analysis and Exploration System. \relax }}{54}
+\contentsline {figure}{\numberline {11}{\ignorespaces Entity Relationship Diagram Showing the Structure of the System's Database.\relax }}{56}
+\contentsline {figure}{\numberline {12}{\ignorespaces Process taken to pre-process a single document in the corpus.\relax }}{60}
+\contentsline {figure}{\numberline {13}{\ignorespaces Full Zoomed-out View of the GETM Heat Map for the Alice's Adventures In Wonderland Novel.\relax }}{65}
+\contentsline {figure}{\numberline {14}{\ignorespaces Restricted View of the GETM Visualisation for the Alice's Adventures in Wonderland Novel.\relax }}{65}
+\contentsline {figure}{\numberline {15}{\ignorespaces Pairwise Matrix of Scatter Plots for Topic of a Collection of Entity Topic Models.\relax }}{67}
+\contentsline {figure}{\numberline {16}{\ignorespaces Structure of the Web Application. \relax }}{68}
+\contentsline {figure}{\numberline {17}{\ignorespaces UI mockup layout. \relax }}{69}
+\contentsline {figure}{\numberline {18}{\ignorespaces Book Selection Component for Navigating the Explorer.\relax }}{70}
+\contentsline {figure}{\numberline {19}{\ignorespaces Book-Topic Distribution Panel for Comparing Topical Makeup of the Corpus. \relax }}{71}
+\contentsline {figure}{\numberline {20}{\ignorespaces Book-Topic distributions for a Selected Book. \relax }}{72}
+\contentsline {figure}{\numberline {21}{\ignorespaces Entity Listings for the Selected book (Alice's Adventures In Wonderland)\relax }}{73}
+\contentsline {figure}{\numberline {22}{\ignorespaces Entity Topic Distributions for Entity Topic Model. \relax }}{74}
+\contentsline {figure}{\numberline {23}{\ignorespaces Top Terms Associated with Entity resulting from GETM. \relax }}{74}
+\contentsline {figure}{\numberline {24}{\ignorespaces Entity Comparison Panel for inspecting Entity Topic Distributions\relax }}{74}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {25}{\ignorespaces Propotional Topic Distributions for the Harry Potter Novels by J. K. Rowling \relax }}{79}
+\contentsline {figure}{\numberline {26}{\ignorespaces Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \relax }}{81}
+\contentsline {figure}{\numberline {27}{\ignorespaces Topic Distributions for Summaries of Each Harry Potter Novel.\relax }}{84}
+\contentsline {figure}{\numberline {28}{\ignorespaces Portion of the Gaussian Entity Term Matrix for the full document of Harry Potter and the Philosopher's Stone (Contrasts adjusted for clarity)\relax }}{86}
+\contentsline {figure}{\numberline {29}{\ignorespaces Significant Entities seen in the GETM for Harry Potter and the Philosopher's Stone. (Contrasts adjusted for clarity)\relax }}{87}
+\contentsline {figure}{\numberline {30}{\ignorespaces Gaussian Entity-Term Matrix for the Summary document of Harry Potter and the Philosopher's Stone.\relax }}{88}
+\contentsline {figure}{\numberline {31}{\ignorespaces Magnification of GETM for 'Harry' and 'Quirrel' in the Summary of Harry Potter and the Philosopher's Stone \relax }}{88}
+\contentsline {figure}{\numberline {32}{\ignorespaces Book Topic Distributions for a Large Corpus of Fiction and Non-Fiction Books \relax }}{91}
+\contentsline {figure}{\numberline {33}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novels.\relax }}{92}
+\contentsline {figure}{\numberline {34}{\ignorespaces ETM Pairwise Scatter Matrix Zoomed in on A Selection of Topics of the Harry Potter Novels. \relax }}{93}
+\contentsline {figure}{\numberline {35}{\ignorespaces Proportions of Topics Forming Entity Topic Models within the Summary Corpus\relax }}{95}
+\contentsline {figure}{\numberline {36}{\ignorespaces ETM Pairwise Scatter Matrix for Entities in the Harry Potter Novel Summaries.\relax }}{96}
+\contentsline {figure}{\numberline {37}{\ignorespaces Pairwise Scatter Matrix of Entity Topic Model Topic Distributions Coloured According to Latent Entity they are Most Closely Associated With.\relax }}{99}
+\contentsline {figure}{\numberline {38}{\ignorespaces Magnification of Pairwise Scatter Matrix of Entity Topic Model Topic Distributions for Topics 1,2 and 3, against topics 6, 7 and 8.\relax }}{100}
+\contentsline {figure}{\numberline {39}{\ignorespaces Pairwise Scatter Plot Matrix for Summary Corpus Entity Topic Models Coloured According to their Latent Entity Classification\relax }}{103}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {40}{\ignorespaces Pairwise Topic Plots for Entity Topic Models classified into 10 Latent Entity Groups.\relax }}{123}
+\contentsline {figure}{\numberline {41}{\ignorespaces Pairwise Plot of Entity Topic Models when Coloured for 50 Latent Entity Group\relax }}{130}
+\addvspace {10\p@ }

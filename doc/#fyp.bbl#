@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{noauthor_undated-lc}
+Web server survey | netcraft.
+\newblock \url{https://news.netcraft.com/archives/category/web-server-survey/}.
+\newblock Accessed: 2017-10-16.
+
+\bibitem{Brill1992-hh}
+E.~Brill.
+\newblock A simple rule-based part of speech tagger.
+\newblock In {\em Proceedings of the Workshop on Speech and Natural Language},
+  HLT '91, pages 112--116, Stroudsburg, PA, USA, 1992. Association for
+  Computational Linguistics.
+
+\bibitem{Brill1995-sr}
+E.~Brill.
+\newblock Transformation-based error-driven learning and natural language
+  processing: A case study in part-of-speech tagging.
+\newblock {\em Comput. Linguist.}, 21(4):543--565, Dec. 1995.
+
+\end{thebibliography}
